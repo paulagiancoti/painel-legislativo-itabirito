@@ -32,7 +32,12 @@ def carregar_dados():
         materiaassuntos = json.load(f)
 
     df_vereadores    = pd.DataFrame(vereadores)[['id', 'nome_completo', 'nome_parlamentar', 'fotografia']]
-    df_autores       = pd.DataFrame(autores)[['id', 'nome', 'tipo_descricao']]
+    MAPA_TIPO_AUTOR = {
+        1: 'Parlamentar', 2: 'Comissão', 3: 'Bancada', 4: 'Externo',
+        5: 'Frente', 6: 'Bloco', 7: 'Órgão', 8: 'Chefe do Executivo',
+    }
+    df_autores = pd.DataFrame(autores)[['id', 'nome', 'tipo']].copy()
+    df_autores['tipo_descricao'] = df_autores['tipo'].map(MAPA_TIPO_AUTOR).fillna('Desconhecido')
     df_materias      = pd.DataFrame(materias)        # só 2026 — exibição
     df_materias_hist = pd.DataFrame(materias_hist)   # 2025+2026 — cruzamento normas
     df_normas        = pd.DataFrame(normas)
