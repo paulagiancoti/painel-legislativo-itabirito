@@ -1,0 +1,29 @@
+[
+  {
+    "id": 69,
+    "__str__": "Léo do Social - Presidente",
+    "link_detail_backend": "",
+    "metadata": {},
+    "parlamentar": 17,
+    "cargo": 1,
+    "mesa_diretora": 49
+  },
+  {
+    "id": 71,
+    "__str__": "Fernando da Sheila - Secretário",
+    "link_detail_backend": "",
+    "metadata": {},
+    "parlamentar": 186,
+    "cargo": 4,
+    "mesa_diretora": 49
+  },
+  {
+    "id": 70,
+    "__str__": "Danilo Grilo - Vice-Presidente",
+    "link_detail_backend": "",
+    "metadata": {},
+    "parlamentar": 39,
+    "cargo": 2,
+    "mesa_diretora": 49
+  }
+]

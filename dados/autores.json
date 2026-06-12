@@ -1,0 +1,1430 @@
+[
+  {
+    "id": 81,
+    "__str__": "Agostinho Antônio Rodrigues",
+    "link_detail_backend": "/sistema/autor/81",
+    "metadata": {},
+    "autor_related": {
+      "value": 94,
+      "text": "Agostinho Antônio Rodrigues"
+    },
+    "object_id": 94,
+    "nome": "Agostinho Antônio Rodrigues",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 10,
+    "__str__": "Alexander Salvador - Prefeito",
+    "link_detail_backend": "/sistema/autor/10",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Alexander Salvador",
+    "cargo": "Prefeito",
+    "tipo": 8,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 1,
+    "__str__": "Alexander Silva Salvador (Alex Salvador)",
+    "link_detail_backend": "/sistema/autor/1",
+    "metadata": {},
+    "autor_related": {
+      "value": 1,
+      "text": "Alexander Silva Salvador (Alex Salvador)"
+    },
+    "object_id": 1,
+    "nome": "Alexander Silva Salvador (Alex Salvador)",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 72,
+    "__str__": "Anderson do Sou Notícia",
+    "link_detail_backend": "/sistema/autor/72",
+    "metadata": {},
+    "autor_related": {
+      "value": 33,
+      "text": "Anderson do Sou Notícia"
+    },
+    "object_id": 33,
+    "nome": "Anderson do Sou Notícia",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      69,
+      92,
+      72,
+      93,
+      135,
+      136
+    ]
+  },
+  {
+    "id": 14,
+    "__str__": "Arnaldo - Gilmar - Ceará - Toninho - Max - Davi - VEREADORES",
+    "link_detail_backend": "/sistema/autor/14",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Arnaldo - Gilmar - Ceará - Toninho - Max - Davi",
+    "cargo": "VEREADORES",
+    "tipo": 3,
+    "content_type": null,
+    "operadores": [
+      11
+    ]
+  },
+  {
+    "id": 22,
+    "__str__": "Arnaldo Pereira",
+    "link_detail_backend": "/sistema/autor/22",
+    "metadata": {},
+    "autor_related": {
+      "value": 13,
+      "text": "Arnaldo Pereira"
+    },
+    "object_id": 13,
+    "nome": "Arnaldo Pereira",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      73
+    ]
+  },
+  {
+    "id": 66,
+    "__str__": "Arnaldo Pereira do Santos (Prefeito Interino) - Prefeito Municipal de Itabirito",
+    "link_detail_backend": "/sistema/autor/66",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Arnaldo Pereira do Santos (Prefeito Interino)",
+    "cargo": "Prefeito Municipal de Itabirito",
+    "tipo": 4,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 25,
+    "__str__": "Ceará",
+    "link_detail_backend": "/sistema/autor/25",
+    "metadata": {},
+    "autor_related": {
+      "value": 15,
+      "text": "Ceará"
+    },
+    "object_id": 15,
+    "nome": "Ceará",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 50,
+    "__str__": "CEC - Comissão de Educação e Cultura",
+    "link_detail_backend": "/sistema/autor/50",
+    "metadata": {},
+    "autor_related": {
+      "value": 11,
+      "text": "CEC - Comissão de Educação e Cultura"
+    },
+    "object_id": 11,
+    "nome": "CEC - Comissão de Educação e Cultura",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 2,
+    "__str__": "Celina Advogada",
+    "link_detail_backend": "/sistema/autor/2",
+    "metadata": {},
+    "autor_related": {
+      "value": 2,
+      "text": "Celina Advogada"
+    },
+    "object_id": 2,
+    "nome": "Celina Advogada",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 109,
+    "__str__": "CELOM - Comissão Especial para dar parecer sobre propostas de emenda à Lei Orgânica",
+    "link_detail_backend": "/sistema/autor/109",
+    "metadata": {},
+    "autor_related": {
+      "value": 24,
+      "text": "CELOM - Comissão Especial para dar parecer sobre propostas de emenda à Lei Orgânica"
+    },
+    "object_id": 24,
+    "nome": "CELOM - Comissão Especial para dar parecer sobre propostas de emenda à Lei Orgânica",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 107,
+    "__str__": "CEM - Comissão Especial para dar parecer sobre moção",
+    "link_detail_backend": "/sistema/autor/107",
+    "metadata": {},
+    "autor_related": {
+      "value": 22,
+      "text": "CEM - Comissão Especial para dar parecer sobre moção"
+    },
+    "object_id": 22,
+    "nome": "CEM - Comissão Especial para dar parecer sobre moção",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 108,
+    "__str__": "CER - Comissão Especial para dar parecer sobre projetos de resolução",
+    "link_detail_backend": "/sistema/autor/108",
+    "metadata": {},
+    "autor_related": {
+      "value": 23,
+      "text": "CER - Comissão Especial para dar parecer sobre projetos de resolução"
+    },
+    "object_id": 23,
+    "nome": "CER - Comissão Especial para dar parecer sobre projetos de resolução",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 106,
+    "__str__": "CEV - Comissão Especial para dar parecer sobre veto à proposição de lei",
+    "link_detail_backend": "/sistema/autor/106",
+    "metadata": {},
+    "autor_related": {
+      "value": 21,
+      "text": "CEV - Comissão Especial para dar parecer sobre veto à proposição de lei"
+    },
+    "object_id": 21,
+    "nome": "CEV - Comissão Especial para dar parecer sobre veto à proposição de lei",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 51,
+    "__str__": "CFORC - Comissão de Finanças, Orçamento e Tomada de Contas",
+    "link_detail_backend": "/sistema/autor/51",
+    "metadata": {},
+    "autor_related": {
+      "value": 10,
+      "text": "CFORC - Comissão de Finanças, Orçamento e Tomada de Contas"
+    },
+    "object_id": 10,
+    "nome": "CFORC - Comissão de Finanças, Orçamento e Tomada de Contas",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 52,
+    "__str__": "CICM - Comissão de Indústria, Comércio e Mineração",
+    "link_detail_backend": "/sistema/autor/52",
+    "metadata": {},
+    "autor_related": {
+      "value": 7,
+      "text": "CICM - Comissão de Indústria, Comércio e Mineração"
+    },
+    "object_id": 7,
+    "nome": "CICM - Comissão de Indústria, Comércio e Mineração",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 53,
+    "__str__": "CLJ - Comissão de Legislação e Justiça",
+    "link_detail_backend": "/sistema/autor/53",
+    "metadata": {},
+    "autor_related": {
+      "value": 1,
+      "text": "CLJ - Comissão de Legislação e Justiça"
+    },
+    "object_id": 1,
+    "nome": "CLJ - Comissão de Legislação e Justiça",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 79,
+    "__str__": "Contabilidade - CONT",
+    "link_detail_backend": "/sistema/autor/79",
+    "metadata": {},
+    "autor_related": {
+      "value": 12,
+      "text": "Contabilidade - CONT"
+    },
+    "object_id": 12,
+    "nome": "Contabilidade - CONT",
+    "cargo": "",
+    "tipo": 7,
+    "content_type": 61,
+    "operadores": []
+  },
+  {
+    "id": 54,
+    "__str__": "CR - Comissão de Redação",
+    "link_detail_backend": "/sistema/autor/54",
+    "metadata": {},
+    "autor_related": {
+      "value": 4,
+      "text": "CR - Comissão de Redação"
+    },
+    "object_id": 4,
+    "nome": "CR - Comissão de Redação",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 56,
+    "__str__": "CSDDH - Comissão de Segurança e Defesa dos Direitos Humanos",
+    "link_detail_backend": "/sistema/autor/56",
+    "metadata": {},
+    "autor_related": {
+      "value": 8,
+      "text": "CSDDH - Comissão de Segurança e Defesa dos Direitos Humanos"
+    },
+    "object_id": 8,
+    "nome": "CSDDH - Comissão de Segurança e Defesa dos Direitos Humanos",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 55,
+    "__str__": "CSMA - Comissão de Saúde e Meio Ambiente",
+    "link_detail_backend": "/sistema/autor/55",
+    "metadata": {},
+    "autor_related": {
+      "value": 6,
+      "text": "CSMA - Comissão de Saúde e Meio Ambiente"
+    },
+    "object_id": 6,
+    "nome": "CSMA - Comissão de Saúde e Meio Ambiente",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 57,
+    "__str__": "CSPM - Comissão de Serviços Públicos Municipais",
+    "link_detail_backend": "/sistema/autor/57",
+    "metadata": {},
+    "autor_related": {
+      "value": 2,
+      "text": "CSPM - Comissão de Serviços Públicos Municipais"
+    },
+    "object_id": 2,
+    "nome": "CSPM - Comissão de Serviços Públicos Municipais",
+    "cargo": "",
+    "tipo": 2,
+    "content_type": 39,
+    "operadores": []
+  },
+  {
+    "id": 71,
+    "__str__": "Daniel Sudano",
+    "link_detail_backend": "/sistema/autor/71",
+    "metadata": {},
+    "autor_related": {
+      "value": 32,
+      "text": "Daniel Sudano"
+    },
+    "object_id": 32,
+    "nome": "Daniel Sudano",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      74,
+      38,
+      94,
+      95
+    ]
+  },
+  {
+    "id": 97,
+    "__str__": "Danilo Donato do Só Por Hoje",
+    "link_detail_backend": "/sistema/autor/97",
+    "metadata": {},
+    "autor_related": {
+      "value": 187,
+      "text": "Danilo Donato do Só Por Hoje"
+    },
+    "object_id": 187,
+    "nome": "Danilo Donato do Só Por Hoje",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      96,
+      118,
+      119,
+      134
+    ]
+  },
+  {
+    "id": 78,
+    "__str__": "Danilo Grilo",
+    "link_detail_backend": "/sistema/autor/78",
+    "metadata": {},
+    "autor_related": {
+      "value": 39,
+      "text": "Danilo Grilo"
+    },
+    "object_id": 39,
+    "nome": "Danilo Grilo",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      84,
+      120,
+      63,
+      121
+    ]
+  },
+  {
+    "id": 23,
+    "__str__": "Davi Mió-que-tem",
+    "link_detail_backend": "/sistema/autor/23",
+    "metadata": {},
+    "autor_related": {
+      "value": 12,
+      "text": "Davi Mió-que-tem"
+    },
+    "object_id": 12,
+    "nome": "Davi Mió-que-tem",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 70,
+    "__str__": "Diretoria Administrativa - DADM",
+    "link_detail_backend": "/sistema/autor/70",
+    "metadata": {},
+    "autor_related": {
+      "value": 11,
+      "text": "Diretoria Administrativa - DADM"
+    },
+    "object_id": 11,
+    "nome": "Diretoria Administrativa - DADM",
+    "cargo": "",
+    "tipo": 7,
+    "content_type": 61,
+    "operadores": []
+  },
+  {
+    "id": 69,
+    "__str__": "Diretoria Parlamentar - DPARL",
+    "link_detail_backend": "/sistema/autor/69",
+    "metadata": {},
+    "autor_related": {
+      "value": 10,
+      "text": "Diretoria Parlamentar - DPARL"
+    },
+    "object_id": 10,
+    "nome": "Diretoria Parlamentar - DPARL",
+    "cargo": "",
+    "tipo": 7,
+    "content_type": 61,
+    "operadores": []
+  },
+  {
+    "id": 59,
+    "__str__": "Dr. Edson",
+    "link_detail_backend": "/sistema/autor/59",
+    "metadata": {},
+    "autor_related": {
+      "value": 27,
+      "text": "Dr. Edson"
+    },
+    "object_id": 27,
+    "nome": "Dr. Edson",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      48,
+      75,
+      58,
+      101,
+      122
+    ]
+  },
+  {
+    "id": 3,
+    "__str__": "Edgar Franzen de Lima (Edgar Boca Preta)",
+    "link_detail_backend": "/sistema/autor/3",
+    "metadata": {},
+    "autor_related": {
+      "value": 3,
+      "text": "Edgar Franzen de Lima (Edgar Boca Preta)"
+    },
+    "object_id": 3,
+    "nome": "Edgar Franzen de Lima (Edgar Boca Preta)",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 93,
+    "__str__": "Elio da Mata - Prefeito",
+    "link_detail_backend": "/sistema/autor/93",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Elio da Mata",
+    "cargo": "Prefeito",
+    "tipo": 8,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 94,
+    "__str__": "Ezio Pimenta",
+    "link_detail_backend": "/sistema/autor/94",
+    "metadata": {},
+    "autor_related": {
+      "value": 185,
+      "text": "Ezio Pimenta"
+    },
+    "object_id": 185,
+    "nome": "Ezio Pimenta",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      102,
+      131,
+      97
+    ]
+  },
+  {
+    "id": 73,
+    "__str__": "Fabinho Fonseca",
+    "link_detail_backend": "/sistema/autor/73",
+    "metadata": {},
+    "autor_related": {
+      "value": 34,
+      "text": "Fabinho Fonseca"
+    },
+    "object_id": 34,
+    "nome": "Fabinho Fonseca",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      76,
+      125,
+      64,
+      132
+    ]
+  },
+  {
+    "id": 28,
+    "__str__": "Fernando Bolotinha",
+    "link_detail_backend": "/sistema/autor/28",
+    "metadata": {},
+    "autor_related": {
+      "value": 18,
+      "text": "Fernando Bolotinha"
+    },
+    "object_id": 18,
+    "nome": "Fernando Bolotinha",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 96,
+    "__str__": "Fernando da Sheila",
+    "link_detail_backend": "/sistema/autor/96",
+    "metadata": {},
+    "autor_related": {
+      "value": 186,
+      "text": "Fernando da Sheila"
+    },
+    "object_id": 186,
+    "nome": "Fernando da Sheila",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      98,
+      105,
+      137
+    ]
+  },
+  {
+    "id": 83,
+    "__str__": "Fernando José Gonçalves (Fernando da POP)",
+    "link_detail_backend": "/sistema/autor/83",
+    "metadata": {},
+    "autor_related": {
+      "value": 46,
+      "text": "Fernando José Gonçalves (Fernando da POP)"
+    },
+    "object_id": 46,
+    "nome": "Fernando José Gonçalves (Fernando da POP)",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 89,
+    "__str__": "Francisco Carlos Bernardes de Oliveira (Chico)",
+    "link_detail_backend": "/sistema/autor/89",
+    "metadata": {},
+    "autor_related": {
+      "value": 43,
+      "text": "Francisco Carlos Bernardes de Oliveira (Chico)"
+    },
+    "object_id": 43,
+    "nome": "Francisco Carlos Bernardes de Oliveira (Chico)",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 90,
+    "__str__": "Francisco Gonçalves de Oliveira",
+    "link_detail_backend": "/sistema/autor/90",
+    "metadata": {},
+    "autor_related": {
+      "value": 105,
+      "text": "Francisco Gonçalves de Oliveira"
+    },
+    "object_id": 105,
+    "nome": "Francisco Gonçalves de Oliveira",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 91,
+    "__str__": "Francisco Marques Júnior",
+    "link_detail_backend": "/sistema/autor/91",
+    "metadata": {},
+    "autor_related": {
+      "value": 115,
+      "text": "Francisco Marques Júnior"
+    },
+    "object_id": 115,
+    "nome": "Francisco Marques Júnior",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 80,
+    "__str__": "Gastão Melillo - Prefeito",
+    "link_detail_backend": "/sistema/autor/80",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Gastão Melillo",
+    "cargo": "Prefeito",
+    "tipo": 8,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 18,
+    "__str__": "Geraldo Gonçalves e Celina Rodrigues - Vereadores",
+    "link_detail_backend": "/sistema/autor/18",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Geraldo Gonçalves e Celina Rodrigues",
+    "cargo": "Vereadores",
+    "tipo": 3,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 92,
+    "__str__": "Geraldo Magno de Almeida - Prefeito",
+    "link_detail_backend": "/sistema/autor/92",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Geraldo Magno de Almeida",
+    "cargo": "Prefeito",
+    "tipo": 8,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 4,
+    "__str__": "Geraldo Mendanha",
+    "link_detail_backend": "/sistema/autor/4",
+    "metadata": {},
+    "autor_related": {
+      "value": 4,
+      "text": "Geraldo Mendanha"
+    },
+    "object_id": 4,
+    "nome": "Geraldo Mendanha",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 26,
+    "__str__": "Gilmar Alfenas (Gilmar Capoeira)",
+    "link_detail_backend": "/sistema/autor/26",
+    "metadata": {},
+    "autor_related": {
+      "value": 16,
+      "text": "Gilmar Alfenas (Gilmar Capoeira)"
+    },
+    "object_id": 16,
+    "nome": "Gilmar Alfenas (Gilmar Capoeira)",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 5,
+    "__str__": "Hélio Garcia (Primo)",
+    "link_detail_backend": "/sistema/autor/5",
+    "metadata": {},
+    "autor_related": {
+      "value": 5,
+      "text": "Hélio Garcia (Primo)"
+    },
+    "object_id": 5,
+    "nome": "Hélio Garcia (Primo)",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 74,
+    "__str__": "Igor Júnior - (Nego Liso)",
+    "link_detail_backend": "/sistema/autor/74",
+    "metadata": {},
+    "autor_related": {
+      "value": 35,
+      "text": "Igor Júnior - (Nego Liso)"
+    },
+    "object_id": 35,
+    "nome": "Igor Júnior - (Nego Liso)",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      77
+    ]
+  },
+  {
+    "id": 13,
+    "__str__": "Ilacy - Edgar - Geraldo  - Rosilene - Vereadores",
+    "link_detail_backend": "/sistema/autor/13",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Ilacy - Edgar - Geraldo  - Rosilene",
+    "cargo": "Vereadores",
+    "tipo": 3,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 6,
+    "__str__": "Ilacy Simões",
+    "link_detail_backend": "/sistema/autor/6",
+    "metadata": {},
+    "autor_related": {
+      "value": 6,
+      "text": "Ilacy Simões"
+    },
+    "object_id": 6,
+    "nome": "Ilacy Simões",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 82,
+    "__str__": "Ivair José Lopes",
+    "link_detail_backend": "/sistema/autor/82",
+    "metadata": {},
+    "autor_related": {
+      "value": 158,
+      "text": "Ivair José Lopes"
+    },
+    "object_id": 158,
+    "nome": "Ivair José Lopes",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 85,
+    "__str__": "José Agatha de Alcântara",
+    "link_detail_backend": "/sistema/autor/85",
+    "metadata": {},
+    "autor_related": {
+      "value": 160,
+      "text": "José Agatha de Alcântara"
+    },
+    "object_id": 160,
+    "nome": "José Agatha de Alcântara",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 88,
+    "__str__": "José Alves",
+    "link_detail_backend": "/sistema/autor/88",
+    "metadata": {},
+    "autor_related": {
+      "value": 174,
+      "text": "José Alves"
+    },
+    "object_id": 174,
+    "nome": "José Alves",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 84,
+    "__str__": "José Augusto de Araújo",
+    "link_detail_backend": "/sistema/autor/84",
+    "metadata": {},
+    "autor_related": {
+      "value": 108,
+      "text": "José Augusto de Araújo"
+    },
+    "object_id": 108,
+    "nome": "José Augusto de Araújo",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 86,
+    "__str__": "José Augusto França",
+    "link_detail_backend": "/sistema/autor/86",
+    "metadata": {},
+    "autor_related": {
+      "value": 103,
+      "text": "José Augusto França"
+    },
+    "object_id": 103,
+    "nome": "José Augusto França",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 61,
+    "__str__": "José Maria Gonçalves dos Santos (Zé Maria)",
+    "link_detail_backend": "/sistema/autor/61",
+    "metadata": {},
+    "autor_related": {
+      "value": 26,
+      "text": "José Maria Gonçalves dos Santos (Zé Maria)"
+    },
+    "object_id": 26,
+    "nome": "José Maria Gonçalves dos Santos (Zé Maria)",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 87,
+    "__str__": "José Parreiras Antunes (Parreiras)",
+    "link_detail_backend": "/sistema/autor/87",
+    "metadata": {},
+    "autor_related": {
+      "value": 41,
+      "text": "José Parreiras Antunes (Parreiras)"
+    },
+    "object_id": 41,
+    "nome": "José Parreiras Antunes (Parreiras)",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 27,
+    "__str__": "Léo do Social",
+    "link_detail_backend": "/sistema/autor/27",
+    "metadata": {},
+    "autor_related": {
+      "value": 17,
+      "text": "Léo do Social"
+    },
+    "object_id": 17,
+    "nome": "Léo do Social",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      20,
+      78,
+      107,
+      62
+    ]
+  },
+  {
+    "id": 112,
+    "__str__": "Loja Esperança de Itabirito",
+    "link_detail_backend": "/sistema/autor/112",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Loja Esperança de Itabirito",
+    "cargo": "",
+    "tipo": 4,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 111,
+    "__str__": "Loja o Caminho dos Inconfidentes",
+    "link_detail_backend": "/sistema/autor/111",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Loja o Caminho dos Inconfidentes",
+    "cargo": "",
+    "tipo": 4,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 110,
+    "__str__": "Lojas Maçônicas de Itabirito",
+    "link_detail_backend": "/sistema/autor/110",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Lojas Maçônicas de Itabirito",
+    "cargo": "",
+    "tipo": 4,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 75,
+    "__str__": "Lucas do Zé Maria",
+    "link_detail_backend": "/sistema/autor/75",
+    "metadata": {},
+    "autor_related": {
+      "value": 36,
+      "text": "Lucas do Zé Maria"
+    },
+    "object_id": 36,
+    "nome": "Lucas do Zé Maria",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      108,
+      66,
+      109,
+      79
+    ]
+  },
+  {
+    "id": 8,
+    "__str__": "Luis Fernando Carolino Xavier",
+    "link_detail_backend": "/sistema/autor/8",
+    "metadata": {},
+    "autor_related": {
+      "value": 8,
+      "text": "Luis Fernando Carolino Xavier"
+    },
+    "object_id": 8,
+    "nome": "Luis Fernando Carolino Xavier",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 95,
+    "__str__": "Manoel da Autoescola",
+    "link_detail_backend": "/sistema/autor/95",
+    "metadata": {},
+    "autor_related": {
+      "value": 188,
+      "text": "Manoel da Autoescola"
+    },
+    "object_id": 188,
+    "nome": "Manoel da Autoescola",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      110,
+      111,
+      99,
+      133
+    ]
+  },
+  {
+    "id": 76,
+    "__str__": "Márcio Juninho",
+    "link_detail_backend": "/sistema/autor/76",
+    "metadata": {},
+    "autor_related": {
+      "value": 37,
+      "text": "Márcio Juninho"
+    },
+    "object_id": 37,
+    "nome": "Márcio Juninho",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      126,
+      80,
+      112,
+      113,
+      67
+    ]
+  },
+  {
+    "id": 29,
+    "__str__": "Max Fortes",
+    "link_detail_backend": "/sistema/autor/29",
+    "metadata": {},
+    "autor_related": {
+      "value": 19,
+      "text": "Max Fortes"
+    },
+    "object_id": 19,
+    "nome": "Max Fortes",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      114,
+      127,
+      68,
+      115,
+      81
+    ]
+  },
+  {
+    "id": 11,
+    "__str__": "Mesa Diretora - Mesa Diretora",
+    "link_detail_backend": "/sistema/autor/11",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Mesa Diretora",
+    "cargo": "Mesa Diretora",
+    "tipo": 3,
+    "content_type": null,
+    "operadores": [
+      10
+    ]
+  },
+  {
+    "id": 68,
+    "__str__": "Mesa Diretora - MESA",
+    "link_detail_backend": "/sistema/autor/68",
+    "metadata": {},
+    "autor_related": {
+      "value": 9,
+      "text": "Mesa Diretora - MESA"
+    },
+    "object_id": 9,
+    "nome": "Mesa Diretora - MESA",
+    "cargo": "",
+    "tipo": 7,
+    "content_type": 61,
+    "operadores": []
+  },
+  {
+    "id": 64,
+    "__str__": "Nilson Tem Tudo",
+    "link_detail_backend": "/sistema/autor/64",
+    "metadata": {},
+    "autor_related": {
+      "value": 30,
+      "text": "Nilson Tem Tudo"
+    },
+    "object_id": 30,
+    "nome": "Nilson Tem Tudo",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 67,
+    "__str__": "Orlando Amorim Caldeira - Prefeito Municipal de Itabirito",
+    "link_detail_backend": "/sistema/autor/67",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Orlando Amorim Caldeira",
+    "cargo": "Prefeito Municipal de Itabirito",
+    "tipo": 8,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 77,
+    "__str__": "Paulinho",
+    "link_detail_backend": "/sistema/autor/77",
+    "metadata": {},
+    "autor_related": {
+      "value": 38,
+      "text": "Paulinho"
+    },
+    "object_id": 38,
+    "nome": "Paulinho",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      82
+    ]
+  },
+  {
+    "id": 62,
+    "__str__": "Renê Butekus",
+    "link_detail_backend": "/sistema/autor/62",
+    "metadata": {},
+    "autor_related": {
+      "value": 28,
+      "text": "Renê Butekus"
+    },
+    "object_id": 28,
+    "nome": "Renê Butekus",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      116,
+      50,
+      117,
+      83,
+      129
+    ]
+  },
+  {
+    "id": 16,
+    "__str__": "Ricardo Francisco de Paula Alves Cruz",
+    "link_detail_backend": "/sistema/autor/16",
+    "metadata": {},
+    "autor_related": {
+      "value": 10,
+      "text": "Ricardo Francisco de Paula Alves Cruz"
+    },
+    "object_id": 10,
+    "nome": "Ricardo Francisco de Paula Alves Cruz",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 63,
+    "__str__": "Ricardo Oliveira",
+    "link_detail_backend": "/sistema/autor/63",
+    "metadata": {},
+    "autor_related": {
+      "value": 25,
+      "text": "Ricardo Oliveira"
+    },
+    "object_id": 25,
+    "nome": "Ricardo Oliveira",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 20,
+    "__str__": "Rildo - Bolotinha - Ricardo - Léo - Rose - Rocha - Vereadores",
+    "link_detail_backend": "/sistema/autor/20",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Rildo - Bolotinha - Ricardo - Léo - Rose - Rocha",
+    "cargo": "Vereadores",
+    "tipo": 3,
+    "content_type": null,
+    "operadores": [
+      13
+    ]
+  },
+  {
+    "id": 32,
+    "__str__": "Rildo Xavier de Morais (Rildox)",
+    "link_detail_backend": "/sistema/autor/32",
+    "metadata": {},
+    "autor_related": {
+      "value": 21,
+      "text": "Rildo Xavier de Morais (Rildox)"
+    },
+    "object_id": 21,
+    "nome": "Rildo Xavier de Morais (Rildox)",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 24,
+    "__str__": "Rocha do PT",
+    "link_detail_backend": "/sistema/autor/24",
+    "metadata": {},
+    "autor_related": {
+      "value": 14,
+      "text": "Rocha do PT"
+    },
+    "object_id": 14,
+    "nome": "Rocha do PT",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 33,
+    "__str__": "Rodrigo do Porco",
+    "link_detail_backend": "/sistema/autor/33",
+    "metadata": {},
+    "autor_related": {
+      "value": 22,
+      "text": "Rodrigo do Porco"
+    },
+    "object_id": 22,
+    "nome": "Rodrigo do Porco",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 30,
+    "__str__": "Rose da Saúde",
+    "link_detail_backend": "/sistema/autor/30",
+    "metadata": {},
+    "autor_related": {
+      "value": 23,
+      "text": "Rose da Saúde"
+    },
+    "object_id": 23,
+    "nome": "Rose da Saúde",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": [
+      100,
+      124,
+      123
+    ]
+  },
+  {
+    "id": 19,
+    "__str__": "Rosilene do Carmo Cardoso e Celina R. da Cunha Oli - VEREADORAS",
+    "link_detail_backend": "/sistema/autor/19",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Rosilene do Carmo Cardoso e Celina R. da Cunha Oli",
+    "cargo": "VEREADORAS",
+    "tipo": 3,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 17,
+    "__str__": " Suplente vereador em 2009 - Urbano Braga de Matos - Suplente Vereador Alex",
+    "link_detail_backend": "/sistema/autor/17",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": " Suplente vereador em 2009 - Urbano Braga de Matos",
+    "cargo": "Suplente Vereador Alex",
+    "tipo": 3,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 58,
+    "__str__": "Tila do Social",
+    "link_detail_backend": "/sistema/autor/58",
+    "metadata": {},
+    "autor_related": {
+      "value": 29,
+      "text": "Tila do Social"
+    },
+    "object_id": 29,
+    "nome": "Tila do Social",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 15,
+    "__str__": "Todos os Vereadores - Vereadores",
+    "link_detail_backend": "/sistema/autor/15",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Todos os Vereadores",
+    "cargo": "Vereadores",
+    "tipo": 3,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 21,
+    "__str__": "Toninho da Associação",
+    "link_detail_backend": "/sistema/autor/21",
+    "metadata": {},
+    "autor_related": {
+      "value": 24,
+      "text": "Toninho da Associação"
+    },
+    "object_id": 24,
+    "nome": "Toninho da Associação",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 12,
+    "__str__": "Varios Vereadores - Vereador",
+    "link_detail_backend": "/sistema/autor/12",
+    "metadata": {},
+    "autor_related": null,
+    "object_id": null,
+    "nome": "Varios Vereadores",
+    "cargo": "Vereador",
+    "tipo": 3,
+    "content_type": null,
+    "operadores": []
+  },
+  {
+    "id": 65,
+    "__str__": "Veirlaneo Souza",
+    "link_detail_backend": "/sistema/autor/65",
+    "metadata": {},
+    "autor_related": {
+      "value": 31,
+      "text": "Veirlaneo Souza"
+    },
+    "object_id": 31,
+    "nome": "Veirlaneo Souza",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 31,
+    "__str__": "x",
+    "link_detail_backend": "/sistema/autor/31",
+    "metadata": {},
+    "autor_related": {
+      "value": 20,
+      "text": "x"
+    },
+    "object_id": 20,
+    "nome": "x",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 9,
+    "__str__": "z",
+    "link_detail_backend": "/sistema/autor/9",
+    "metadata": {},
+    "autor_related": {
+      "value": 9,
+      "text": "z"
+    },
+    "object_id": 9,
+    "nome": "z",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  },
+  {
+    "id": 7,
+    "__str__": "Zé Maria",
+    "link_detail_backend": "/sistema/autor/7",
+    "metadata": {},
+    "autor_related": {
+      "value": 7,
+      "text": "Zé Maria"
+    },
+    "object_id": 7,
+    "nome": "Zé Maria",
+    "cargo": "",
+    "tipo": 1,
+    "content_type": 27,
+    "operadores": []
+  }
+]

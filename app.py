@@ -1,0 +1,882 @@
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+import json
+import os
+from collections import defaultdict
+
+st.set_page_config(
+    page_title="Painel Legislativo — Itabirito",
+    page_icon="🏛️",
+    layout="wide"
+)
+
+@st.cache_data(ttl=3600)
+def carregar_dados():
+    with open("dados/vereadores.json", encoding="utf-8") as f:
+        vereadores = json.load(f)
+    with open("dados/mesa_diretora.json", encoding="utf-8") as f:
+        mesa = json.load(f)
+    with open("dados/autores.json", encoding="utf-8") as f:
+        autores = json.load(f)
+    with open("dados/materias.json", encoding="utf-8") as f:
+        materias = json.load(f)
+    hist_path = "dados/materias_historico.json"
+    with open(hist_path if os.path.exists(hist_path) else "dados/materias.json", encoding="utf-8") as f:
+        materias_hist = json.load(f)
+    with open("dados/normas.json", encoding="utf-8") as f:
+        normas = json.load(f)
+    with open("dados/assuntos.json", encoding="utf-8") as f:
+        assuntos = json.load(f)
+    with open("dados/materiaassuntos.json", encoding="utf-8") as f:
+        materiaassuntos = json.load(f)
+
+    df_vereadores    = pd.DataFrame(vereadores)[['id', 'nome_completo', 'nome_parlamentar', 'fotografia']]
+    df_autores       = pd.DataFrame(autores)[['id', 'nome', 'tipo_descricao']]
+    df_materias      = pd.DataFrame(materias)        # só 2026 — exibição
+    df_materias_hist = pd.DataFrame(materias_hist)   # 2025+2026 — cruzamento normas
+    df_normas        = pd.DataFrame(normas)
+
+    mapa_cargo_mesa = {str(m['parlamentar']): m['cargo_nome'] for m in mesa}
+    df_vereadores['cargo_mesa'] = df_vereadores['id'].astype(str).map(mapa_cargo_mesa).fillna('')
+
+    mapa_assunto_nome = {a['id']: a['assunto'] for a in assuntos}
+    mapa_id_assuntos  = defaultdict(list)
+    for v in materiaassuntos:
+        nome = mapa_assunto_nome.get(v['assunto'], f"ID {v['assunto']}")
+        mapa_id_assuntos[str(v['materia'])].append(nome)
+
+    mapa_id_numero = {
+        str(row['id']): int(row['numero'])
+        for _, row in df_materias.iterrows()
+        if row['tipo__sigla'] in ('PLO', 'PLS', 'PLS2')
+    }
+    assuntos_por_numero = defaultdict(set)
+    for mid, ass_lista in mapa_id_assuntos.items():
+        numero = mapa_id_numero.get(mid)
+        if numero is not None:
+            for a in ass_lista:
+                assuntos_por_numero[numero].add(a)
+
+    # Expandir autorias — só 2026
+    linhas = []
+    for _, row in df_materias.iterrows():
+        autoria_raw = row['autoria'] or ''
+        numero      = int(row['numero'])
+        tipo_sigla  = row['tipo__sigla']
+        assuntos_proj = (
+            list(assuntos_por_numero.get(numero, []))
+            if tipo_sigla == 'PLO'
+            else mapa_id_assuntos.get(str(row['id']), [])
+        )
+        for nome_autor in [a.strip() for a in autoria_raw.split(',') if a.strip()]:
+            linhas.append({
+                'materia_id':     row['id'],
+                'numero':         numero,
+                'ano':            row['ano'],
+                'tipo_sigla':     tipo_sigla,
+                'tipo_descricao': row['tipo__descricao'],
+                'ementa':         row['ementa'],
+                'autor_nome':     nome_autor,
+                'assuntos':       assuntos_proj,
+                'tem_assunto':    len(assuntos_proj) > 0,
+            })
+
+    df = pd.DataFrame(linhas)
+    mapa_tipo    = df_autores.set_index('nome')['tipo_descricao'].to_dict()
+    nomes_ativos = set(df_vereadores['nome_parlamentar'])
+    df['autor_tipo']       = df['autor_nome'].map(mapa_tipo).fillna('Desconhecido')
+    df['e_vereador_ativo'] = df['autor_nome'].isin(nomes_ativos)
+
+    pls_numeros = set(df[df['tipo_sigla'].isin(['PLS', 'PLS2'])]['numero'])
+    df['plo_teve_substitutivo'] = (
+        (df['tipo_sigla'] == 'PLO') & (df['numero'].isin(pls_numeros))
+    )
+
+    # ── Cruzamento normas → PLOs (histórico 2025+2026) ──────────────────────────
+    df_materias_hist['id_str']     = df_materias_hist['id'].astype(str)
+    df_materias_hist['numero_int'] = df_materias_hist['numero'].astype(int)
+    mapa_tipo_mat   = df_materias_hist.set_index('id_str')['tipo__sigla'].to_dict()
+    mapa_numero_mat = df_materias_hist.set_index('id_str')['numero_int'].to_dict()
+    mapa_plo_num    = (
+        df_materias_hist[df_materias_hist['tipo__sigla'] == 'PLO']
+        .set_index('numero_int')['id_str'].to_dict()
+    )
+    # Mapa: plo_id → autoria (do histórico)
+    mapa_plo_autoria = (
+        df_materias_hist[df_materias_hist['tipo__sigla'] == 'PLO']
+        .set_index('id_str')['autoria']
+        .fillna('')
+        .to_dict()
+    )
+
+    detalhes_leis = []
+    for _, norma in df_normas[df_normas['materia'].notna()].iterrows():
+        mid  = str(int(norma['materia']))
+        tipo = mapa_tipo_mat.get(mid)
+        num  = mapa_numero_mat.get(mid)
+        if not tipo or num is None:
+            continue
+        if tipo == 'PLO':
+            plo_id = mid
+        elif tipo in ('PLS', 'PLS2'):
+            plo_id = mapa_plo_num.get(num)
+            if not plo_id:
+                continue
+        else:
+            continue
+
+        # Autores do PLO original (pode ser de 2025 ou 2026)
+        autoria_plo = mapa_plo_autoria.get(plo_id, '')
+        autores_plo = [a.strip() for a in autoria_plo.split(',') if a.strip()] or ['']
+
+        for autor_plo in autores_plo:
+            detalhes_leis.append({
+                'plo_id':        plo_id,
+                'numero_plo':    num,
+                'vinculado_via': tipo,
+                'lei_numero':    norma['numero'],
+                'lei_ementa':    norma['ementa'],
+                'autor_nome':    autor_plo,
+            })
+
+    df_leis = (
+        pd.DataFrame(detalhes_leis).drop_duplicates(['plo_id', 'autor_nome'])
+        if detalhes_leis else pd.DataFrame(
+            columns=['plo_id', 'numero_plo', 'vinculado_via', 'lei_numero', 'lei_ementa', 'autor_nome']
+        )
+    )
+
+    # Marca plo_virou_lei em df (2026) para uso nas flags de assunto
+    plos_lei_set = set(df_leis['plo_id'])
+    df['plo_virou_lei'] = (
+        (df['tipo_sigla'] == 'PLO') &
+        (df['materia_id'].astype(str).isin(plos_lei_set))
+    )
+
+    # ── Resumo por vereador ──────────────────────────────────────────────────────
+    df_parl     = df[df['e_vereador_ativo']]
+    df_plo_parl = df[(df['e_vereador_ativo']) & (df['tipo_sigla'] == 'PLO')]
+
+    ids_mesa   = set(str(m['parlamentar']) for m in mesa)
+    nomes_mesa = set(df_vereadores[df_vereadores['id'].astype(str).isin(ids_mesa)]['nome_parlamentar'])
+    qtd_mesa   = len(df[
+        (df['autor_nome'] == 'Mesa Diretora - MESA') |
+        (df['autor_nome'].str.contains('Mesa Diretora', na=False))
+    ]['materia_id'].unique())
+    df_vereadores['materias_mesa'] = df_vereadores['nome_parlamentar'].apply(
+        lambda n: qtd_mesa if n in nomes_mesa else 0
+    )
+
+    resumo = (
+        df_parl[~df_parl['tipo_sigla'].isin(['PLS', 'PLS2'])].groupby('autor_nome')
+        .agg(
+            total_geral   = ('materia_id', 'count'),
+            indicacoes    = ('tipo_sigla', lambda x: (x == 'IND').sum()),
+            requerimentos = ('tipo_sigla', lambda x: (x == 'REQ').sum()),
+            emendas       = ('tipo_sigla', lambda x: (x == 'EME').sum()),
+            mocoes        = ('tipo_sigla', lambda x: x.isin(['MOC']).sum()),
+            resolucoes    = ('tipo_sigla', lambda x: (x == 'PRE').sum()),
+        )
+        .reset_index()
+    )
+
+    # PLOs por vereador — contagem única (deduplifica co-autorias)
+    plo_por_autor = (
+        df_plo_parl.groupby('autor_nome')['materia_id']
+        .nunique().reset_index(name='projetos_lei')
+    )
+    sub_por_autor = (
+        df_plo_parl.groupby('autor_nome')['plo_teve_substitutivo']
+        .sum().reset_index(name='projetos_com_substitutivo')
+    )
+
+    # PLOs aprovados por vereador — via df_leis (inclui 2025+2026)
+    df_leis_ativos = df_leis[df_leis['autor_nome'].isin(nomes_ativos)]
+    aprov_por_autor = (
+        df_leis_ativos.groupby('autor_nome')['plo_id']
+        .nunique().reset_index(name='projetos_virou_lei')
+    )
+
+    plo_res = plo_por_autor.merge(sub_por_autor, on='autor_nome', how='left')
+    plo_res = plo_res.merge(aprov_por_autor, on='autor_nome', how='left')
+    plo_res = plo_res.fillna(0)
+    for col in ['projetos_lei', 'projetos_com_substitutivo', 'projetos_virou_lei']:
+        plo_res[col] = plo_res[col].astype(int)
+
+    resumo = resumo.merge(plo_res, on='autor_nome', how='left').fillna(0)
+    for col in ['projetos_lei', 'projetos_com_substitutivo', 'projetos_virou_lei']:
+        resumo[col] = resumo[col].astype(int)
+
+    resumo['taxa_aprovacao'] = (
+        (resumo['projetos_virou_lei'] / resumo['projetos_lei'] * 100)
+        .round(1).fillna(0)
+    )
+    mapa_materias_mesa = df_vereadores.set_index('nome_parlamentar')['materias_mesa'].to_dict()
+    resumo['materias_mesa'] = resumo['autor_nome'].map(mapa_materias_mesa).fillna(0).astype(int)
+
+    # Assuntos por PLO (2026)
+    linhas_ass = []
+    for _, row in df_plo_parl[df_plo_parl['tem_assunto']].iterrows():
+        for assunto in row['assuntos']:
+            linhas_ass.append({
+                'autor_nome': row['autor_nome'],
+                'assunto':    assunto,
+                'materia_id': row['materia_id'],
+            })
+    df_ass = (
+        pd.DataFrame(linhas_ass).drop_duplicates(['autor_nome', 'materia_id', 'assunto'])
+        if linhas_ass else pd.DataFrame(columns=['autor_nome', 'assunto', 'materia_id'])
+    )
+    df_ass['virou_lei'] = df_ass['materia_id'].astype(str).isin(plos_lei_set)
+
+    return df_vereadores, df, df_parl, resumo, df_leis, df_ass
+
+
+df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass = carregar_dados()
+
+# ─── CABEÇALHO ─────────────────────────────────────────────────────────────────
+
+st.title("🏛️ Painel Legislativo — Câmara Municipal de Itabirito")
+st.caption("Dados: SAPL · Câmara Municipal de Itabirito (MG) · 2026")
+
+# ─── FILTROS (barra horizontal no topo) ────────────────────────────────────────
+
+f1, f2, f3, f4 = st.columns([1.6, 1.4, 1.4, 1])
+
+assunto_selecionado = "Todos"
+tipo_opcoes = ["Todos"] + sorted([
+    t for t in df_parl['tipo_descricao'].unique()
+    if t not in ['Projeto de Lei Substitutivo', 'Projeto de Lei Substitutivo (2)']
+])
+
+# Tipo precisa ser lido antes do assunto (mas exibido depois) — calcula primeiro
+with f3:
+    tipo_selecionado = st.selectbox("📁 Tipo de matéria", tipo_opcoes)
+
+with f1:
+    if tipo_selecionado in ["Todos", "Projeto de Lei Ordinária"]:
+        assuntos_lista = ["Todos"] + sorted(df_ass['assunto'].unique().tolist())
+        total_plos     = df_parl[df_parl['tipo_sigla'] == 'PLO']['materia_id'].nunique()
+        plos_c_assunto = df_ass['materia_id'].nunique()
+        pct            = round(plos_c_assunto / total_plos * 100, 1) if total_plos > 0 else 0
+        assunto_selecionado = st.selectbox(
+            "🏷️ Assunto (Projetos de Lei)", assuntos_lista,
+            help=f"Assuntos disponíveis para {pct}% dos PLOs cadastrados"
+        )
+    else:
+        st.write("")
+
+with f2:
+    vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
+    vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
+
+with f4:
+    tema = st.selectbox("🎨 Tema", ["🌞 Claro", "🌙 Escuro", "🏛️ Institucional"])
+
+st.caption("ℹ️ PLS e PLS2 são substitutivos de PLOs e não contam como projetos separados.")
+
+# ─── DATA DA ÚLTIMA ATUALIZAÇÃO ─────────────────────────────────────────────────
+import datetime
+try:
+    ultima_atualizacao = max(
+        os.path.getmtime(f"dados/{arq}")
+        for arq in ["materias.json", "normas.json", "assuntos.json", "materiaassuntos.json", "vereadores.json"]
+        if os.path.exists(f"dados/{arq}")
+    )
+    data_fmt = datetime.datetime.fromtimestamp(ultima_atualizacao).strftime("%d/%m/%Y às %H:%M")
+    st.caption(f"🔄 Última atualização dos dados: {data_fmt}")
+except Exception:
+    pass
+
+# ─── TEMAS ─────────────────────────────────────────────────────────────────────
+
+if tema == "🌞 Claro":
+    st.markdown("""<style>
+    header[data-testid="stHeader"] { background-color: #FFFFFF !important; }
+    [data-testid="stHeader"]::before { background-color: #FFFFFF !important; }
+    .stApp { background-color: #FFFFFF !important; }
+    .stApp, .stApp p, .stApp span, .stApp div, .stApp label { color: #1A1A1A !important; }
+    h1, h2, h3 { color: #0063A9 !important; }
+    [data-testid="stMetricValue"] { color: #0063A9 !important; }
+    .stTabs [aria-selected="true"] { color: #0063A9 !important; border-bottom-color: #0063A9 !important; }
+    .card-pop { border: 1px solid rgba(0,99,169,0.2) !important; }
+    </style>""", unsafe_allow_html=True)
+    plot_bg = "#FFFFFF"; plot_paper = "#FFFFFF"; plot_font = "#1A1A1A"; plot_grid = "#E5E5E5"
+    plot_colorscale = 'Blues'
+    aprov_bg = "#f0faf0"; aprov_color = "#2d8a2d"; card_border = "rgba(0,99,169,0.2)"
+
+elif tema == "🌙 Escuro":
+    st.markdown("""<style>
+    header[data-testid="stHeader"] { background-color: #0E1117 !important; }
+    [data-testid="stHeader"]::before { background-color: #0E1117 !important; }
+    .stApp { background-color: #0E1117 !important; }
+    .stApp, .stApp p, .stApp span, .stApp div, .stApp label { color: #FAFAFA !important; }
+    h1, h2, h3 { color: #5B9BD5 !important; }
+    [data-testid="stMetricValue"] { color: #5B9BD5 !important; }
+    .stTabs [aria-selected="true"] { color: #5B9BD5 !important; border-bottom-color: #5B9BD5 !important; }
+    .stSelectbox > div > div { background-color: #1A1F2E !important; color: #FAFAFA !important; }
+    [data-testid="stDataFrame"] iframe { filter: invert(0.85) hue-rotate(180deg); }
+    .card-pop { border: 1px solid rgba(255,255,255,0.25) !important; }
+    </style>""", unsafe_allow_html=True)
+    plot_bg = "#0E1117"; plot_paper = "#0E1117"; plot_font = "#FAFAFA"; plot_grid = "#2D3748"
+    plot_colorscale = 'Blues'
+    aprov_bg = "rgba(112,173,71,0.25)"; aprov_color = "#90d470"; card_border = "rgba(255,255,255,0.25)"
+
+elif tema == "🏛️ Institucional":
+    st.markdown("""<style>
+    header[data-testid="stHeader"] { background-color: #0063A9 !important; }
+    [data-testid="stHeader"]::before { background-color: #0063A9 !important; }
+    .stApp { background-color: #0063A9 !important; }
+    .stApp, .stApp p, .stApp span, .stApp div, .stApp label { color: #FFFFFF !important; }
+    h1 { color: #FFCD00 !important; } h2, h3 { color: #FFCD00 !important; }
+    [data-testid="stMetricLabel"] { color: rgba(255,255,255,0.85) !important; }
+    [data-testid="stMetricValue"] { color: #FFCD00 !important; }
+    .stTabs [data-baseweb="tab"] { color: rgba(255,255,255,0.7) !important; }
+    .stTabs [aria-selected="true"] { color: #FFCD00 !important; border-bottom-color: #FFCD00 !important; }
+    .stSelectbox > div > div { background-color: #004F8A !important; color: #FFFFFF !important; border-color: rgba(255,255,255,0.3) !important; }
+    hr { border-color: rgba(255,255,255,0.2) !important; }
+    .stAlert { background-color: #004F8A !important; color: #FFFFFF !important; }
+    .stCaption { color: rgba(255,255,255,0.65) !important; }
+    [data-testid="stDataFrame"] iframe { filter: invert(0.85) hue-rotate(200deg) saturate(1.5); }
+    .card-pop { border: 1px solid rgba(255,205,0,0.5) !important; }
+    </style>""", unsafe_allow_html=True)
+    plot_bg = "#0063A9"; plot_paper = "#0063A9"; plot_font = "#FFFFFF"; plot_grid = "rgba(255,255,255,0.2)"
+    plot_colorscale = [[0, 'rgba(255,255,255,0.35)'], [1, '#FFCD00']] #grade amarela.
+    #plot_colorscale = 'Greys'
+    aprov_bg = "rgba(255,205,0,0.2)"; aprov_color = "#FFCD00"; card_border = "rgba(255,205,0,0.5)"
+
+st.markdown("""<style>
+/* Responsivo para embed em iframe (window do Plone) */
+[data-testid="stHorizontalBlock"] {
+    flex-wrap: wrap !important;
+    gap: 0.8rem;
+}
+[data-testid="stHorizontalBlock"] > [data-testid="column"] {
+    min-width: 150px;
+    flex: 1 1 150px;
+}
+@media (max-width: 640px) {
+    [data-testid="stHorizontalBlock"] > [data-testid="column"] {
+        min-width: 45%;
+        flex: 1 1 45%;
+    }
+    [data-testid="stMetricValue"] { font-size: 1.4rem !important; }
+    h1 { font-size: 1.6rem !important; }
+}
+.block-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    max-width: 100% !important;
+}
+</style>""", unsafe_allow_html=True)
+
+st.markdown(f"""<style>
+.card-pop {{ border-radius:16px;padding:20px 16px;text-align:center;margin-bottom:14px;
+             min-height:260px;display:flex;flex-direction:column;justify-content:space-between; }}
+.card-secondary {{ background:rgba(128,128,128,0.15);border-radius:8px;padding:6px;font-size:11px; }}
+.card-nome {{ font-size:14px;font-weight:600;color:var(--text-color);margin-bottom:6px;
+              min-height:44px;display:flex;align-items:center;justify-content:center; }}
+.card-muted {{ font-size:10px;color:var(--text-color);opacity:0.55;margin-top:3px; }}
+.pill-ass {{ background:rgba(91,155,213,0.2);color:var(--text-color);border-radius:20px;
+             padding:5px 14px;font-size:13px;font-weight:500;margin:3px;display:inline-block; }}
+</style>""", unsafe_allow_html=True)
+
+def aplicar_tema_plot(fig):
+    fig.update_layout(
+        plot_bgcolor=plot_bg, paper_bgcolor=plot_paper, font_color=plot_font,
+        xaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid),
+        yaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid),
+        legend=dict(bgcolor=plot_paper, font=dict(color=plot_font),
+                    bordercolor=plot_grid, borderwidth=1),
+    )
+    return fig
+
+# ─── FILTRAR ───────────────────────────────────────────────────────────────────
+
+df_sem_pls  = df_parl[~df_parl['tipo_sigla'].isin(['PLS', 'PLS2'])].copy()
+df_filtrado = df_sem_pls.copy()
+if tipo_selecionado != "Todos":
+    df_filtrado = df_filtrado[df_filtrado['tipo_descricao'] == tipo_selecionado]
+if vereador_selecionado != "Todos":
+    df_filtrado = df_filtrado[df_filtrado['autor_nome'] == vereador_selecionado]
+if assunto_selecionado != "Todos":
+    ids_com_assunto = set(df_ass[df_ass['assunto'] == assunto_selecionado]['materia_id'])
+    df_filtrado = df_filtrado[df_filtrado['materia_id'].isin(ids_com_assunto)]
+
+# ─── CARDS GERAIS ──────────────────────────────────────────────────────────────
+
+# Contagens únicas (sem inflar por co-autorias)
+total_plos_unicos    = df_parl[df_parl['tipo_sigla'] == 'PLO']['materia_id'].nunique()
+nomes_ativos_set     = set(df_vereadores['nome_parlamentar'])
+total_aprov_unicos   = df_leis[df_leis['autor_nome'].isin(nomes_ativos_set)]['plo_id'].nunique()
+taxa_geral           = round(total_aprov_unicos / total_plos_unicos * 100, 1) if total_plos_unicos else 0
+
+c1, c2, c3, c4, c5 = st.columns(5)
+with c1:
+    st.metric("Vereadores ativos", len(df_vereadores))
+with c2:
+    st.metric("Matérias apresentadas", df_sem_pls['materia_id'].nunique())
+with c3:
+    st.metric("Projetos de Lei", total_plos_unicos)
+with c4:
+    st.metric("PLOs aprovados", total_aprov_unicos)
+with c5:
+    st.metric("Taxa geral de aprovação", f"{taxa_geral}%")
+
+st.divider()
+
+# ─── NOTA DE TRANSPARÊNCIA ─────────────────────────────────────────────────────
+
+qtd_executivo = df_expandido[df_expandido['autor_tipo'] == 'Chefe do Executivo']['materia_id'].nunique()
+qtd_mesa_dir  = df_expandido[df_expandido['autor_nome'].str.contains('Mesa Diretora', na=False)]['materia_id'].nunique()
+qtd_externos  = df_expandido[df_expandido['autor_tipo'] == 'Externo']['materia_id'].nunique()
+qtd_pls_pls2  = df_expandido[
+    df_expandido['e_vereador_ativo'] & df_expandido['tipo_sigla'].isin(['PLS', 'PLS2'])
+]['materia_id'].nunique()
+
+partes = []
+if qtd_executivo > 0:
+    partes.append(f"**{qtd_executivo} matérias** pelo Poder Executivo (Élio da Mata)")
+if qtd_mesa_dir > 0:
+    partes.append(f"**{qtd_mesa_dir} matérias** pela Mesa Diretora")
+if qtd_externos > 0:
+    partes.append(f"**{qtd_externos} matéria{"s" if qtd_externos > 1 else ""}** por autores externos")
+if qtd_pls_pls2 > 0:
+    partes.append(f"**{qtd_pls_pls2} substitutivos** de PLOs (PLS/PLS2), contados junto ao projeto original")
+if partes:
+    qtd_leis_nao_vereadores = df_leis[
+        ~df_leis['autor_nome'].isin(nomes_ativos_set)
+    ]['plo_id'].nunique()
+    nota_leis = ""
+    if qtd_leis_nao_vereadores > 0:
+        nota_leis = (
+            f" Além disso, **{qtd_leis_nao_vereadores}**"
+            f" lei{'s foram aprovadas' if qtd_leis_nao_vereadores > 1 else ' foi aprovada'}"
+            f" a partir de projetos do Executivo e da Mesa Diretora"
+            f" — não contabilizadas nos {total_aprov_unicos} PLOs aprovados acima."
+        )
+    st.caption(
+        "ℹ️ Em 2026 também foram apresentados: " +
+        ", ".join(partes) +
+        " — não incluídos nos comparativos entre vereadores." +
+        nota_leis
+    )
+
+# ─── HELPERS ───────────────────────────────────────────────────────────────────
+
+mapa_foto  = df_vereadores.set_index('nome_parlamentar')['fotografia'].fillna('').to_dict()
+mapa_cargo = df_vereadores.set_index('nome_parlamentar')['cargo_mesa'].fillna('').to_dict()
+
+def foto_html(nome, foto_url, size=80):
+    if foto_url:
+        return (
+            f'<img src="{foto_url}" style="width:{size}px;height:{size}px;border-radius:50%;'
+            f'object-fit:cover;border:3px solid rgba(128,128,128,0.3);display:block;margin:0 auto">'
+        )
+    iniciais = ''.join(p[0].upper() for p in nome.split()[:2])
+    cores = ['#5b9bd5', '#70ad47', '#ed7d31', '#a855f7', '#ec4899', '#14b8a6']
+    cor = cores[hash(nome) % len(cores)]
+    return (
+        f'<div style="width:{size}px;height:{size}px;border-radius:50%;background:{cor};'
+        f'display:flex;align-items:center;justify-content:center;font-size:{size//3}px;'
+        f'font-weight:700;color:white;border:3px solid rgba(128,128,128,0.3);margin:0 auto">{iniciais}</div>'
+    )
+
+# ─── VISÃO GERAL ───────────────────────────────────────────────────────────────
+
+if vereador_selecionado == "Todos":
+
+    aba1, aba2, aba3, aba_pop = st.tabs([
+        "📊 Ranking por matérias", "⚖️ Aprovação de PLOs",
+        "🏷️ Projetos por assunto", "📱 Em Destaque",
+    ])
+
+    with aba1:
+        df_ranking = (
+            df_filtrado.groupby('autor_nome').size()
+            .reset_index(name='total').sort_values('total', ascending=True)
+        )
+        fig = px.bar(df_ranking, x='total', y='autor_nome', orientation='h',
+                     labels={'total': 'Total de matérias', 'autor_nome': ''},
+                     color='total', color_continuous_scale=plot_colorscale, text='total')
+        fig.update_traces(textposition='outside')
+        fig.update_layout(coloraxis_showscale=False, height=500, margin=dict(l=10, r=40, t=10, b=10))
+        fig = aplicar_tema_plot(fig)
+        st.plotly_chart(fig, width='stretch')
+
+    with aba2:
+        df_aprov = df_resumo[df_resumo['projetos_lei'] > 0].sort_values('taxa_aprovacao', ascending=True)
+        fig2 = px.bar(df_aprov, x='taxa_aprovacao', y='autor_nome', orientation='h',
+                      labels={'taxa_aprovacao': 'Taxa de aprovação (%)', 'autor_nome': ''},
+                      color='taxa_aprovacao', color_continuous_scale='Greens', text='taxa_aprovacao')
+        fig2.update_traces(texttemplate='%{text}%', textposition='outside')
+        fig2.update_layout(coloraxis_showscale=False, height=500, margin=dict(l=10, r=40, t=10, b=10))
+        fig2 = aplicar_tema_plot(fig2)
+        st.plotly_chart(fig2, width='stretch')
+        st.dataframe(
+            df_aprov[['autor_nome', 'projetos_lei', 'projetos_virou_lei',
+                      'taxa_aprovacao', 'projetos_com_substitutivo']]
+            .rename(columns={'autor_nome': 'Vereador', 'projetos_lei': 'PLOs',
+                             'projetos_virou_lei': 'Aprovados', 'taxa_aprovacao': 'Taxa (%)',
+                             'projetos_com_substitutivo': 'Com substitutivo'})
+            .sort_values('Taxa (%)', ascending=False),
+            width='stretch', hide_index=True
+        )
+
+    with aba3:
+        if df_ass.empty:
+            st.info("Nenhum assunto cadastrado nos dados carregados.")
+        else:
+            top_assuntos = (
+                df_ass.groupby('assunto')['materia_id'].nunique()
+                .sort_values(ascending=False).head(15).index.tolist()
+            )
+            df_ass_top = df_ass[df_ass['assunto'].isin(top_assuntos)]
+            df_comp = (
+                df_ass_top.groupby('assunto')
+                .agg(
+                    apresentados=('materia_id', 'nunique'),
+                    aprovados=('virou_lei', lambda x: df_ass_top.loc[x.index]
+                               .drop_duplicates('materia_id')['virou_lei'].sum()),
+                )
+                .reset_index().sort_values('apresentados', ascending=False)
+            )
+            df_comp_long = df_comp.melt(
+                id_vars='assunto', value_vars=['apresentados', 'aprovados'],
+                var_name='situação', value_name='projetos'
+            )
+            fig_comp = px.bar(
+                df_comp_long, x='assunto', y='projetos', color='situação', barmode='group',
+                labels={'assunto': '', 'projetos': 'Projetos de Lei', 'situação': ''},
+                color_discrete_map={'apresentados': '#5b9bd5', 'aprovados': '#70ad47'},
+                title="Projetos de Lei por assunto — apresentados vs aprovados"
+            )
+            fig_comp.update_layout(height=480, xaxis_tickangle=-40,
+                                   margin=dict(l=10, r=10, t=40, b=140),
+                                   legend=dict(orientation='h', y=1.05))
+            fig_comp = aplicar_tema_plot(fig_comp)
+            st.plotly_chart(fig_comp, width='stretch')
+            df_comp['taxa'] = (df_comp['aprovados'] / df_comp['apresentados'] * 100).round(1)
+            df_comp.columns = ['Assunto', 'Apresentados', 'Aprovados', 'Taxa (%)']
+            st.dataframe(df_comp.sort_values('Taxa (%)', ascending=False),
+                         width='stretch', hide_index=True)
+            st.divider()
+            st.markdown("**Comparativo entre vereadores por assunto**")
+            df_heat = (
+                df_ass_top.groupby(['autor_nome', 'assunto'])
+                ['materia_id'].nunique().reset_index(name='qtd')
+            )
+            fig_heat = px.density_heatmap(
+                df_heat, x='assunto', y='autor_nome', z='qtd',
+                color_continuous_scale='Blues',
+                labels={'assunto': 'Assunto', 'autor_nome': 'Vereador', 'qtd': 'Projetos'},
+            )
+            fig_heat.update_layout(height=500, xaxis_tickangle=-40,
+                                   margin=dict(l=10, r=10, t=20, b=140))
+            fig_heat = aplicar_tema_plot(fig_heat)
+            st.plotly_chart(fig_heat, width='stretch')
+
+    with aba_pop:
+        if assunto_selecionado == "Todos":
+            st.markdown("### Vereadores de Itabirito — 2026")
+            df_grid_list = list(df_resumo.sort_values('taxa_aprovacao', ascending=False).iterrows())
+            for row_start in range(0, len(df_grid_list), 3):
+                cols = st.columns(3)
+                for j, (_, row) in enumerate(df_grid_list[row_start:row_start + 3]):
+                    nome       = row['autor_nome']
+                    foto       = mapa_foto.get(nome, '')
+                    cargo_mesa = mapa_cargo.get(nome, '')
+                    cargo_badge = (
+                        f'<div style="font-size:10px;font-weight:600;color:#ed7d31;'
+                        f'margin-bottom:8px;letter-spacing:0.5px">⭐ {cargo_mesa}</div>'
+                    ) if cargo_mesa else '<div style="height:22px"></div>'
+                    with cols[j]:
+                        st.markdown(
+                            f'<div class="card-pop" style="border:1px solid {card_border}">'
+                            f'<div style="margin-bottom:12px">{foto_html(nome, foto, 80)}</div>'
+                            f'<div class="card-nome">{nome}</div>{cargo_badge}'
+                            f'<div style="display:flex;justify-content:space-around;margin-bottom:12px">'
+                            f'<div><div style="font-size:26px;font-weight:700;color:#5b9bd5;line-height:1">{int(row["projetos_lei"])}</div>'
+                            f'<div class="card-muted">Projetos</div></div>'
+                            f'<div><div style="font-size:26px;font-weight:700;color:#70ad47;line-height:1">{int(row["projetos_virou_lei"])}</div>'
+                            f'<div class="card-muted">Aprovados</div></div>'
+                            f'<div><div style="font-size:26px;font-weight:700;color:#ed7d31;line-height:1">{row["taxa_aprovacao"]}%</div>'
+                            f'<div class="card-muted">Taxa</div></div></div>'
+                            f'<div class="card-secondary">{int(row["total_geral"])} matérias apresentadas</div>'
+                            f'</div>',
+                            unsafe_allow_html=True
+                        )
+        else:
+            st.markdown(f"### 🏷️ {assunto_selecionado}")
+            st.markdown("**Vereadores com mais projetos neste tema:**")
+            top3 = (
+                df_ass[df_ass['assunto'] == assunto_selecionado]
+                .groupby('autor_nome')['materia_id'].nunique()
+                .sort_values(ascending=False).head(3)
+            )
+            cols     = st.columns(len(top3))
+            bordas   = ['#ffd700', '#adb5bd', '#cd7f32']
+            medalhas = ['🥇', '🥈', '🥉']
+            for i, (nome, qtd) in enumerate(top3.items()):
+                foto  = mapa_foto.get(nome, '')
+                aprov = df_ass[
+                    (df_ass['autor_nome'] == nome) &
+                    (df_ass['assunto']    == assunto_selecionado) &
+                    (df_ass['virou_lei'])
+                ]['materia_id'].nunique()
+                with cols[i]:
+                    st.markdown(
+                        f'<div style="background:{plot_paper};border-radius:16px;'
+                        f'border:2px solid {bordas[i]};padding:28px 16px;text-align:center">'
+                        f'<div style="font-size:32px;margin-bottom:10px">{medalhas[i]}</div>'
+                        f'<div style="margin-bottom:14px">{foto_html(nome, foto, 100)}</div>'
+                        f'<div style="font-size:15px;font-weight:600;color:{plot_font};margin-bottom:18px">{nome}</div>'
+                        f'<div style="font-size:42px;font-weight:700;color:#5b9bd5;line-height:1">{qtd}</div>'
+                        f'<div style="font-size:12px;color:{plot_font};opacity:0.7;margin-bottom:14px">'
+                        f'projeto{"s" if qtd > 1 else ""} sobre {assunto_selecionado}</div>'
+                        f'<div style="background:{aprov_bg};border-radius:8px;padding:8px;'
+                        f'font-size:13px;font-weight:600;color:{aprov_color}">'
+                        f'✅ {aprov} aprovado{"s" if aprov != 1 else ""}</div>'
+                        f'</div>',
+                        unsafe_allow_html=True
+                    )
+
+# ─── DETALHE DO VEREADOR ───────────────────────────────────────────────────────
+
+if vereador_selecionado != "Todos":
+    dados_v    = df_resumo[df_resumo['autor_nome'] == vereador_selecionado].iloc[0]
+    df_detalhe = df_parl[df_parl['autor_nome'] == vereador_selecionado]
+    foto       = mapa_foto.get(vereador_selecionado, '')
+    cargo_v    = mapa_cargo.get(vereador_selecionado, '')
+
+    aba_pop2, aba_d1, aba_d2, aba_d3 = st.tabs([
+        "📱 Em Destaque", "📂 Matérias", "✅ PLOs aprovados", "🏷️ Assuntos"
+    ])
+
+    with aba_pop2:
+        taxa     = float(dados_v['taxa_aprovacao'])
+        taxa_cor = '#70ad47' if taxa >= 50 else '#ed7d31' if taxa >= 25 else '#dc3545'
+        taxa_bar = min(int(taxa), 100)
+        cargo_str = (
+            f' <span style="font-size:14px;font-weight:500;color:#ed7d31">⭐ {cargo_v}</span>'
+        ) if cargo_v else ''
+        # Assuntos apenas dos PLOs aprovados
+        plos_aprov_v = set(df_leis[df_leis['autor_nome'] == vereador_selecionado]['plo_id'])
+        ass_v_aprov  = df_ass[
+            (df_ass['autor_nome'] == vereador_selecionado) &
+            (df_ass['materia_id'].astype(str).isin(plos_aprov_v))
+        ]
+        top_ass = (
+            ass_v_aprov.groupby('assunto')['materia_id'].nunique()
+            .sort_values(ascending=False).head(6).index.tolist()
+            if not ass_v_aprov.empty else []
+        )
+        pills = ''.join(f'<span class="pill-ass">{a}</span>' for a in top_ass) or \
+            f'<span style="color:{plot_font};opacity:0.6;font-size:13px">Nenhum assunto em PLOs aprovados</span>'
+
+        col_f, col_i = st.columns([1, 2])
+        with col_f:
+            st.markdown(
+                f'<div style="text-align:center;padding:30px 10px">'
+                f'{foto_html(vereador_selecionado, foto, 180)}</div>',
+                unsafe_allow_html=True
+            )
+        with col_i:
+            st.markdown(f'<h2 style="margin:0">{vereador_selecionado}{cargo_str}</h2>',
+                        unsafe_allow_html=True)
+            r1, r2, r3 = st.columns(3)
+            with r1:
+                st.metric("📋 Total de matérias", int(dados_v['total_geral']))
+            with r2:
+                st.metric("📜 Projetos de Lei", int(dados_v['projetos_lei']))
+            with r3:
+                st.metric("✅ PLOs aprovados", int(dados_v['projetos_virou_lei']))
+            r4, r5, r6 = st.columns(3)
+            with r4:
+                st.metric("📊 Taxa de aprovação", f"{taxa}%")
+            with r5:
+                st.metric("📨 Indicações", int(dados_v['indicacoes']))
+            with r6:
+                st.metric("📝 Requerimentos", int(dados_v['requerimentos']))
+            st.markdown(f"""
+            <div style="margin-top:8px">
+                <div style="font-size:12px;color:{plot_font};opacity:0.7;margin-bottom:4px">Taxa de aprovação de PLOs</div>
+                <div style="background:rgba(128,128,128,0.2);border-radius:8px;height:12px;overflow:hidden">
+                    <div style="background:{taxa_cor};width:{taxa_bar}%;height:100%;border-radius:8px"></div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        st.divider()
+        st.markdown("**🏷️ Principais assuntos de atuação**")
+        st.markdown(f'<div style="padding:6px 0 16px 0">{pills}</div>', unsafe_allow_html=True)
+        materias_mesa = int(dados_v.get('materias_mesa', 0))
+        if materias_mesa > 0:
+            st.markdown(
+                f'<div style="font-size:13px;color:{plot_font};opacity:0.7;margin-top:4px">'
+                f'+ {materias_mesa} matéria{"s" if materias_mesa > 1 else ""} '
+                f'apresentada{"s" if materias_mesa > 1 else ""} como Mesa Diretora</div>',
+                unsafe_allow_html=True
+            )
+
+    with aba_d1:
+        st.subheader(f"📋 {vereador_selecionado}")
+        c1, c2, c3, c4, c5, c6 = st.columns(6)
+        with c1:
+            st.metric("Total de matérias", int(dados_v['total_geral']))
+        with c2:
+            st.metric("Projetos de Lei", int(dados_v['projetos_lei']))
+        with c3:
+            st.metric("PLOs aprovados", int(dados_v['projetos_virou_lei']))
+        with c4:
+            st.metric("Taxa de aprovação", f"{dados_v['taxa_aprovacao']}%")
+        with c5:
+            st.metric("Requerimentos", int(dados_v['requerimentos']))
+        with c6:
+            st.metric("Indicações", int(dados_v['indicacoes']))
+        st.divider()
+        materias_mesa = int(dados_v.get('materias_mesa', 0))
+        if materias_mesa > 0:
+            st.caption(
+                f"ℹ️ + {materias_mesa} matéria(s) apresentada(s) como Mesa Diretora "
+                f"(não incluídas no total acima)"
+            )
+        col_pizza, col_lista = st.columns([1, 2])
+        with col_pizza:
+            df_tipos = (
+                df_detalhe[~df_detalhe['tipo_sigla'].isin(['PLS', 'PLS2'])]
+                .groupby('tipo_descricao').size()
+                .reset_index(name='quantidade').sort_values('quantidade', ascending=False)
+            )
+            fig4 = px.pie(df_tipos, values='quantidade', names='tipo_descricao',
+                          title="Distribuição por tipo")
+            fig4.update_traces(textposition='inside', textinfo='percent+label')
+            fig4.update_layout(showlegend=False)
+            fig4 = aplicar_tema_plot(fig4)
+            st.plotly_chart(fig4, width='stretch')
+        with col_lista:
+            tipo_det = st.selectbox(
+                "Filtrar por tipo",
+                ["Todos"] + sorted(
+                    df_detalhe[~df_detalhe['tipo_sigla'].isin(['PLS', 'PLS2'])]
+                    ['tipo_descricao'].unique().tolist()
+                ),
+                key="tipo_detalhe"
+            )
+            df_lista = df_detalhe[~df_detalhe['tipo_sigla'].isin(['PLS', 'PLS2'])].copy()
+            if tipo_det != "Todos":
+                df_lista = df_lista[df_lista['tipo_descricao'] == tipo_det]
+            df_lista = df_lista[['tipo_sigla', 'numero', 'ano', 'ementa']].copy()
+            df_lista.columns = ['Tipo', 'Nº', 'Ano', 'Ementa']
+            st.dataframe(df_lista, width='stretch', hide_index=True, height=320)
+
+    with aba_d2:
+        st.subheader(f"✅ {vereador_selecionado}")
+        st.divider()
+        # PLOs aprovados do vereador (inclui PLOs de 2025 via df_leis)
+        df_leis_v = df_leis[df_leis['autor_nome'] == vereador_selecionado].drop_duplicates('plo_id')
+        if df_leis_v.empty:
+            st.info("Nenhum PLO aprovado como lei até o momento.")
+        else:
+            df_leis_v = df_leis_v[['numero_plo', 'lei_numero', 'vinculado_via', 'lei_ementa']].copy()
+            df_leis_v.columns = ['Nº PLO', 'Lei nº', 'Via', 'Ementa da Lei']
+            st.dataframe(df_leis_v.sort_values('Nº PLO'), width='stretch', hide_index=True)
+        # Projetos com substitutivo — todos onde o vereador participou (PLO, PLS ou PLS2)
+        numeros_com_subst = set(df_parl[df_parl['tipo_sigla'].isin(['PLS', 'PLS2'])]['numero'])
+        numeros_participou = set(
+            df_parl[
+                (df_parl['autor_nome'] == vereador_selecionado) &
+                (df_parl['tipo_sigla'].isin(['PLO', 'PLS', 'PLS2']))
+            ]['numero']
+        )
+        numeros_relevantes = sorted(numeros_participou & numeros_com_subst)
+
+        if numeros_relevantes:
+            st.divider()
+            st.markdown("**🔄 Projetos com substitutivo — participação**")
+            linhas_subst = []
+            for num in numeros_relevantes:
+                versoes_vereador = df_parl[
+                    (df_parl['autor_nome'] == vereador_selecionado) &
+                    (df_parl['numero'] == num)
+                ]['tipo_sigla'].unique().tolist()
+                autores_plo = df_parl[
+                    (df_parl['tipo_sigla'] == 'PLO') &
+                    (df_parl['numero'] == num)
+                ]['autor_nome'].unique().tolist()
+                ementa_rows = df_parl[(df_parl['numero'] == num) & (df_parl['tipo_sigla'] == 'PLO')]['ementa']
+                ementa = ementa_rows.iloc[0] if not ementa_rows.empty else ''
+                roles = []
+                if 'PLO' in versoes_vereador:
+                    roles.append('autor do PLO')
+                if 'PLS' in versoes_vereador:
+                    roles.append('co-autor do PLS')
+                if 'PLS2' in versoes_vereador:
+                    roles.append('co-autor do PLS2')
+                linhas_subst.append({
+                    'Nº': num,
+                    'Papel': ', '.join(roles),
+                    'Autores do PLO original': ', '.join(autores_plo),
+                    'Ementa': ementa[:80],
+                })
+            st.dataframe(pd.DataFrame(linhas_subst), width='stretch', hide_index=True)
+
+    with aba_d3:
+        st.subheader(f"🏷️ {vereador_selecionado}")
+        st.divider()
+        df_ass_v = df_ass[df_ass['autor_nome'] == vereador_selecionado]
+        if df_ass_v.empty:
+            st.info("Nenhum assunto cadastrado nos PLOs deste vereador.")
+        else:
+            df_ass_count = (
+                df_ass_v.groupby('assunto').size()
+                .reset_index(name='projetos').sort_values('projetos', ascending=True)
+            )
+            fig5 = px.bar(df_ass_count, x='projetos', y='assunto', orientation='h',
+                          labels={'projetos': 'Projetos de Lei', 'assunto': ''},
+                          color='projetos', color_continuous_scale=plot_colorscale, text='projetos')
+            fig5.update_traces(textposition='outside')
+            fig5.update_layout(coloraxis_showscale=False, height=400,
+                               margin=dict(l=10, r=40, t=10, b=10))
+            fig5 = aplicar_tema_plot(fig5)
+            st.plotly_chart(fig5, width='stretch')
+            pct_cobertura = round(
+                len(df_ass_v['materia_id'].unique()) / int(dados_v['projetos_lei']) * 100, 1
+            )
+            st.caption(
+                f"ℹ️ Assuntos cadastrados em {len(df_ass_v['materia_id'].unique())} "
+                f"de {int(dados_v['projetos_lei'])} PLOs ({pct_cobertura}%)"
+            )
+            df_ass_v_aprov = df_ass_v.groupby('assunto').agg(
+                apresentados=('materia_id', 'nunique'),
+                aprovados=('virou_lei', lambda x: df_ass_v.loc[x.index]
+                           .drop_duplicates('materia_id')['virou_lei'].sum())
+            ).reset_index()
+            if df_ass_v_aprov['aprovados'].sum() > 0:
+                df_aprov_long = df_ass_v_aprov.melt(
+                    id_vars='assunto', value_vars=['apresentados', 'aprovados'],
+                    var_name='situação', value_name='projetos'
+                )
+                fig6 = px.bar(
+                    df_aprov_long, x='assunto', y='projetos',
+                    color='situação', barmode='group',
+                    labels={'assunto': '', 'projetos': 'PLOs', 'situação': ''},
+                    color_discrete_map={'apresentados': '#5b9bd5', 'aprovados': '#70ad47'},
+                    title="Apresentados vs aprovados por assunto"
+                )
+                fig6.update_layout(height=350, xaxis_tickangle=-35,
+                                   margin=dict(l=10, r=10, t=40, b=100),
+                                   legend=dict(orientation='h', y=1.08))
+                fig6 = aplicar_tema_plot(fig6)
+                st.plotly_chart(fig6, width='stretch')
+# ─── RODAPÉ INSTITUCIONAL ───────────────────────────────────────────────────────
+
+st.divider()
+st.caption(
+    "ℹ️ O Painel Legislativo tem caráter informativo e educativo, e constitui uma das "
+    "formas de publicação eletrônica da Câmara Municipal de Itabirito, dada sua "
+    "capacidade de alcance e transparência. Os dados são extraídos automaticamente "
+    "do Sistema de Apoio ao Processo Legislativo (SAPL). Em caso de divergência, "
+    "ou para consulta aos textos integrais das matérias, recomenda-se sempre a "
+    "verificação direta no SAPL."
+)
