@@ -42,7 +42,10 @@ def carregar_dados():
     df_materias_hist = pd.DataFrame(materias_hist)   # 2025+2026 — cruzamento normas
     df_normas        = pd.DataFrame(normas)
 
-    mapa_cargo_mesa = {str(m['parlamentar']): m['cargo_nome'] for m in mesa}
+    mapa_cargo_mesa = {
+        str(m['parlamentar']): m['__str__'].split(' - ')[-1].strip()
+        for m in mesa
+    }
     df_vereadores['cargo_mesa'] = df_vereadores['id'].astype(str).map(mapa_cargo_mesa).fillna('')
 
     mapa_assunto_nome = {a['id']: a['assunto'] for a in assuntos}
