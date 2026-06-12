@@ -292,7 +292,8 @@ try:
         for arq in ["materias.json", "normas.json", "assuntos.json", "materiaassuntos.json", "vereadores.json"]
         if os.path.exists(f"dados/{arq}")
     )
-    data_fmt = datetime.datetime.fromtimestamp(ultima_atualizacao).strftime("%d/%m/%Y às %H:%M")
+    fuso_brasilia = datetime.timezone(datetime.timedelta(hours=-3))
+    data_fmt = datetime.datetime.fromtimestamp(ultima_atualizacao, tz=fuso_brasilia).strftime("%d/%m/%Y às %H:%M")
     st.caption(f"🔄 Última atualização dos dados: {data_fmt}")
 except Exception:
     pass
