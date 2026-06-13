@@ -112,6 +112,14 @@
     "materia": 20832
   },
   {
+    "id": 663,
+    "__str__": "Projeto de Lei Ordinária nº 155 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/663",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23159
+  },
+  {
     "id": 539,
     "__str__": "Projeto de Lei Ordinária nº 142 de 2026 - Administração Pública",
     "link_detail_backend": "/materia/materiaassunto/539",
@@ -344,6 +352,14 @@
     "materia": 21528
   },
   {
+    "id": 666,
+    "__str__": "Projeto de Lei Ordinária nº 157 de 2026 - Associação",
+    "link_detail_backend": "/materia/materiaassunto/666",
+    "metadata": {},
+    "assunto": 25,
+    "materia": 23166
+  },
+  {
     "id": 465,
     "__str__": "Projeto de Lei Ordinária nº 106 de 2026 - Associação",
     "link_detail_backend": "/materia/materiaassunto/465",
@@ -494,6 +510,22 @@
     "metadata": {},
     "assunto": 1,
     "materia": 22085
+  },
+  {
+    "id": 668,
+    "__str__": "Projeto de Lei Ordinária nº 158 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/668",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 23179
+  },
+  {
+    "id": 664,
+    "__str__": "Projeto de Lei Ordinária nº 156 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/664",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 23165
   },
   {
     "id": 543,
@@ -3104,6 +3136,14 @@
     "materia": 20832
   },
   {
+    "id": 662,
+    "__str__": "Projeto de Lei Ordinária nº 155 de 2026 - Indústria, Comércio e Serviços",
+    "link_detail_backend": "/materia/materiaassunto/662",
+    "metadata": {},
+    "assunto": 45,
+    "materia": 23159
+  },
+  {
     "id": 531,
     "__str__": "Projeto de Lei Ordinária nº 118 de 2026 - Indústria, Comércio e Serviços",
     "link_detail_backend": "/materia/materiaassunto/531",
@@ -3646,6 +3686,22 @@
     "metadata": {},
     "assunto": 43,
     "materia": 22085
+  },
+  {
+    "id": 669,
+    "__str__": "Projeto de Lei Ordinária nº 158 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/669",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 23179
+  },
+  {
+    "id": 665,
+    "__str__": "Projeto de Lei Ordinária nº 156 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/665",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 23165
   },
   {
     "id": 654,
@@ -4878,6 +4934,14 @@
     "metadata": {},
     "assunto": 26,
     "materia": 21528
+  },
+  {
+    "id": 667,
+    "__str__": "Projeto de Lei Ordinária nº 157 de 2026 - Utilidade Pública",
+    "link_detail_backend": "/materia/materiaassunto/667",
+    "metadata": {},
+    "assunto": 26,
+    "materia": 23166
   },
   {
     "id": 466,
