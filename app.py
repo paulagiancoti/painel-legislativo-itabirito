@@ -486,26 +486,30 @@ mapa_foto  = df_vereadores.set_index('nome_parlamentar')['fotografia'].fillna(''
 mapa_cargo = df_vereadores.set_index('nome_parlamentar')['cargo_mesa'].fillna('').to_dict()
 
 BASE_SAPL_URL = "https://sapl.itabirito.mg.leg.br"
-BASE_PESQUISA = (
-    f"{BASE_SAPL_URL}/materia/pesquisar-materia?tipo=&ementa=&numero="
-    f"&numeracao__numero_materia=&numero_protocolo=&autoria__primeiro_autor=unknown"
-    f"&autoria__autor__tipo=&autoria__autor__parlamentar_set__filiacao__partido=&o="
-    f"&tipo_listagem=1&tipo_origem_externa=&numero_origem_externa=&ano_origem_externa="
-    f"&data_origem_externa_0=&data_origem_externa_1=&local_origem_externa="
-    f"&data_apresentacao_0=&data_apresentacao_1=&data_publicacao_0=&data_publicacao_1="
-    f"&relatoria__parlamentar_id=&em_tramitacao=&tramitacao__unidade_tramitacao_destino="
-    f"&tramitacao__status=&indexacao=&regime_tramitacao=&salvar=Pesquisar"
-)
 
-def url_sapl(ano=2026, autor_id=None, assunto_id=None):
-    """Monta URL de pesquisa no SAPL com filtros opcionais de autor e/ou assunto."""
-    url = BASE_PESQUISA + f"&ano={ano}"
+# Tipo de matéria no SAPL (sigla → id)
+TIPO_MATERIA_SAPL = {'PLO': 11}  # PLO = Projeto de Lei Ordinária, id=11 no SAPL de Itabirito
+
+def url_sapl(ano=2026, autor_id=None, assunto_id=None, so_parlamentar=False, tipo_materia_id=None):
+    """Monta URL de pesquisa no SAPL com filtros opcionais."""
+    tipo_autor = "1" if so_parlamentar else ""  # 1 = Parlamentar
+    tipo_mat   = str(tipo_materia_id) if tipo_materia_id else ""
+    url = (
+        f"{BASE_SAPL_URL}/materia/pesquisar-materia"
+        f"?tipo={tipo_mat}&ementa=&numero=&numeracao__numero_materia="
+        f"&numero_protocolo=&autoria__primeiro_autor=unknown"
+        f"&autoria__autor__tipo={tipo_autor}"
+        f"&autoria__autor__parlamentar_set__filiacao__partido=&o="
+        f"&tipo_listagem=1&tipo_origem_externa=&numero_origem_externa=&ano_origem_externa="
+        f"&data_origem_externa_0=&data_origem_externa_1=&local_origem_externa="
+        f"&data_apresentacao_0=&data_apresentacao_1=&data_publicacao_0=&data_publicacao_1="
+        f"&relatoria__parlamentar_id=&em_tramitacao=&tramitacao__unidade_tramitacao_destino="
+        f"&tramitacao__status=&indexacao=&regime_tramitacao=&salvar=Pesquisar"
+        f"&ano={ano}"
+    )
     if autor_id:
         url += f"&autoria__autor={autor_id}"
-    if assunto_id:
-        url += f"&materiaassunto__assunto={assunto_id}"
-    else:
-        url += "&materiaassunto__assunto="
+    url += f"&materiaassunto__assunto={assunto_id if assunto_id else ''}"
     return url
 
 def foto_html(nome, foto_url, size=80):
@@ -570,14 +574,14 @@ if vereador_selecionado == "Todos":
         if pontos2:
             nome_sel2 = pontos2[0].get("y")
             autor_id2 = mapa_autor_id.get(nome_sel2)
-            assunto_id_sel2 = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
             if autor_id2:
                 st.link_button(
-                    f"🔗 Ver matérias de {nome_sel2} em 2026 no SAPL",
-                    url_sapl(ano=2026, autor_id=autor_id2, assunto_id=assunto_id_sel2)
+                    f"🔗 Ver Projetos de Lei de {nome_sel2} em 2026 no SAPL",
+                    url_sapl(ano=2026, autor_id=autor_id2, so_parlamentar=True,
+                             tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
                 )
         else:
-            st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
+            st.caption("💡 Clique em uma barra para abrir os Projetos de Lei do vereador no SAPL.")
         st.dataframe(
             df_aprov[['autor_nome', 'projetos_lei', 'projetos_virou_lei',
                       'taxa_aprovacao', 'projetos_com_substitutivo']]
@@ -630,7 +634,9 @@ if vereador_selecionado == "Todos":
                     label = f"🔗 Ver PLOs sobre '{assunto_clicado}' em 2026 no SAPL"
                     if autor_id_fil:
                         label += f" ({vereador_selecionado})"
-                    st.link_button(label, url_sapl(ano=2026, autor_id=autor_id_fil, assunto_id=assunto_id_clicado))
+                    st.link_button(label, url_sapl(ano=2026, autor_id=autor_id_fil,
+                                                   assunto_id=assunto_id_clicado,
+                                                   so_parlamentar=True))
             else:
                 st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
             df_comp['taxa'] = (df_comp['aprovados'] / df_comp['apresentados'] * 100).round(1)
@@ -661,7 +667,7 @@ if vereador_selecionado == "Todos":
                 if aid_h and ssid_h:
                     st.link_button(
                         f"🔗 Ver PLOs de {autor_h} sobre '{assunto_h}' no SAPL",
-                        url_sapl(ano=2026, autor_id=aid_h, assunto_id=ssid_h)
+                        url_sapl(ano=2026, autor_id=aid_h, assunto_id=ssid_h, so_parlamentar=True)
                     )
             else:
                 st.caption("💡 Clique em uma célula para filtrar vereador + assunto no SAPL.")
