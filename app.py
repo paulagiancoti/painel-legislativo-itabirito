@@ -543,15 +543,18 @@ if vereador_selecionado == "Todos":
         )
         fig = px.bar(df_ranking, x='total', y='autor_nome', orientation='h',
                      labels={'total': 'Total de matérias', 'autor_nome': ''},
-                     color='total', color_continuous_scale=plot_colorscale, text='total')
+                     color='total', color_continuous_scale=plot_colorscale, text='total',
+                     custom_data=['autor_nome'])
         fig.update_traces(textposition='outside')
         fig.update_layout(coloraxis_showscale=False, height=500, margin=dict(l=10, r=40, t=10, b=10))
         fig = aplicar_tema_plot(fig)
         evento1 = st.plotly_chart(fig, width='stretch', on_select="rerun", key="chart_ranking")
         pontos = evento1.get("selection", {}).get("points", []) if evento1 else []
         if pontos:
-            nome_sel = pontos[0].get("y")
-            autor_id = mapa_autor_id.get(nome_sel)
+            ponto1    = pontos[0]
+            cd1       = ponto1.get("customdata") or []
+            nome_sel  = cd1[0] if cd1 else ponto1.get("y")
+            autor_id  = mapa_autor_id.get(nome_sel)
             assunto_id_sel = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
             if autor_id:
                 st.link_button(
@@ -565,14 +568,18 @@ if vereador_selecionado == "Todos":
         df_aprov = df_resumo[df_resumo['projetos_lei'] > 0].sort_values('taxa_aprovacao', ascending=True)
         fig2 = px.bar(df_aprov, x='taxa_aprovacao', y='autor_nome', orientation='h',
                       labels={'taxa_aprovacao': 'Taxa de aprovação (%)', 'autor_nome': ''},
-                      color='taxa_aprovacao', color_continuous_scale='Greens', text='taxa_aprovacao')
+                      color='taxa_aprovacao', color_continuous_scale='Greens', text='taxa_aprovacao',
+                      custom_data=['autor_nome'])
         fig2.update_traces(texttemplate='%{text}%', textposition='outside')
         fig2.update_layout(coloraxis_showscale=False, height=500, margin=dict(l=10, r=40, t=10, b=10))
         fig2 = aplicar_tema_plot(fig2)
         evento2 = st.plotly_chart(fig2, width='stretch', on_select="rerun", key="chart_aprovacao")
         pontos2 = evento2.get("selection", {}).get("points", []) if evento2 else []
         if pontos2:
-            nome_sel2 = pontos2[0].get("y")
+            ponto2   = pontos2[0]
+            # customdata é mais confiável que y em gráficos com colorscale
+            cd2      = ponto2.get("customdata") or []
+            nome_sel2 = cd2[0] if cd2 else ponto2.get("y")
             autor_id2 = mapa_autor_id.get(nome_sel2)
             if autor_id2:
                 st.link_button(
