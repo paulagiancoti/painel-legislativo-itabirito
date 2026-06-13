@@ -55,6 +55,8 @@ def carregar_dados():
     df_vereadores['cargo_mesa'] = df_vereadores['id'].astype(str).map(mapa_cargo_mesa).fillna('')
 
     mapa_assunto_nome = {a['id']: a['assunto'] for a in assuntos}
+    # nome do assunto → id (para montar links de pesquisa)
+    mapa_assunto_id = {a['assunto']: a['id'] for a in assuntos}
     mapa_id_assuntos  = defaultdict(list)
     for v in materiaassuntos:
         nome = mapa_assunto_nome.get(v['assunto'], f"ID {v['assunto']}")
@@ -244,10 +246,10 @@ def carregar_dados():
     )
     df_ass['virou_lei'] = df_ass['materia_id'].astype(str).isin(plos_lei_set)
 
-    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id
+    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id
 
 
-df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id = carregar_dados()
+df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id = carregar_dados()
 
 # ─── CABEÇALHO ─────────────────────────────────────────────────────────────────
 
@@ -484,18 +486,27 @@ mapa_foto  = df_vereadores.set_index('nome_parlamentar')['fotografia'].fillna(''
 mapa_cargo = df_vereadores.set_index('nome_parlamentar')['cargo_mesa'].fillna('').to_dict()
 
 BASE_SAPL_URL = "https://sapl.itabirito.mg.leg.br"
+BASE_PESQUISA = (
+    f"{BASE_SAPL_URL}/materia/pesquisar-materia?tipo=&ementa=&numero="
+    f"&numeracao__numero_materia=&numero_protocolo=&autoria__primeiro_autor=unknown"
+    f"&autoria__autor__tipo=&autoria__autor__parlamentar_set__filiacao__partido=&o="
+    f"&tipo_listagem=1&tipo_origem_externa=&numero_origem_externa=&ano_origem_externa="
+    f"&data_origem_externa_0=&data_origem_externa_1=&local_origem_externa="
+    f"&data_apresentacao_0=&data_apresentacao_1=&data_publicacao_0=&data_publicacao_1="
+    f"&relatoria__parlamentar_id=&em_tramitacao=&tramitacao__unidade_tramitacao_destino="
+    f"&tramitacao__status=&indexacao=&regime_tramitacao=&salvar=Pesquisar"
+)
 
-def url_sapl_autor(autor_id, ano=2026):
-    return (
-        f"{BASE_SAPL_URL}/materia/pesquisar-materia?tipo=&ementa=&numero=&numeracao__numero_materia="
-        f"&numero_protocolo=&ano={ano}&autoria__autor={autor_id}&autoria__primeiro_autor=unknown"
-        f"&autoria__autor__tipo=&autoria__autor__parlamentar_set__filiacao__partido=&o="
-        f"&tipo_listagem=1&tipo_origem_externa=&numero_origem_externa=&ano_origem_externa="
-        f"&data_origem_externa_0=&data_origem_externa_1=&local_origem_externa="
-        f"&data_apresentacao_0=&data_apresentacao_1=&data_publicacao_0=&data_publicacao_1="
-        f"&relatoria__parlamentar_id=&em_tramitacao=&tramitacao__unidade_tramitacao_destino="
-        f"&tramitacao__status=&materiaassunto__assunto=&indexacao=&regime_tramitacao=&salvar=Pesquisar"
-    )
+def url_sapl(ano=2026, autor_id=None, assunto_id=None):
+    """Monta URL de pesquisa no SAPL com filtros opcionais de autor e/ou assunto."""
+    url = BASE_PESQUISA + f"&ano={ano}"
+    if autor_id:
+        url += f"&autoria__autor={autor_id}"
+    if assunto_id:
+        url += f"&materiaassunto__assunto={assunto_id}"
+    else:
+        url += "&materiaassunto__assunto="
+    return url
 
 def foto_html(nome, foto_url, size=80):
     if foto_url:
@@ -537,10 +548,11 @@ if vereador_selecionado == "Todos":
         if pontos:
             nome_sel = pontos[0].get("y")
             autor_id = mapa_autor_id.get(nome_sel)
+            assunto_id_sel = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
             if autor_id:
                 st.link_button(
                     f"🔗 Ver matérias de {nome_sel} em 2026 no SAPL",
-                    url_sapl_autor(autor_id, ano=2026)
+                    url_sapl(ano=2026, autor_id=autor_id, assunto_id=assunto_id_sel)
                 )
         else:
             st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
@@ -558,10 +570,11 @@ if vereador_selecionado == "Todos":
         if pontos2:
             nome_sel2 = pontos2[0].get("y")
             autor_id2 = mapa_autor_id.get(nome_sel2)
+            assunto_id_sel2 = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
             if autor_id2:
                 st.link_button(
                     f"🔗 Ver matérias de {nome_sel2} em 2026 no SAPL",
-                    url_sapl_autor(autor_id2, ano=2026)
+                    url_sapl(ano=2026, autor_id=autor_id2, assunto_id=assunto_id_sel2)
                 )
         else:
             st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
@@ -607,7 +620,19 @@ if vereador_selecionado == "Todos":
                                    margin=dict(l=10, r=10, t=40, b=140),
                                    legend=dict(orientation='h', y=1.05))
             fig_comp = aplicar_tema_plot(fig_comp)
-            st.plotly_chart(fig_comp, width='stretch')
+            evento_ass = st.plotly_chart(fig_comp, width='stretch', on_select="rerun", key="chart_assunto")
+            pontos_ass = evento_ass.get("selection", {}).get("points", []) if evento_ass else []
+            autor_id_fil = mapa_autor_id.get(vereador_selecionado) if vereador_selecionado != "Todos" else None
+            if pontos_ass:
+                assunto_clicado = pontos_ass[0].get("x")
+                assunto_id_clicado = mapa_assunto_id.get(assunto_clicado)
+                if assunto_id_clicado:
+                    label = f"🔗 Ver PLOs sobre '{assunto_clicado}' em 2026 no SAPL"
+                    if autor_id_fil:
+                        label += f" ({vereador_selecionado})"
+                    st.link_button(label, url_sapl(ano=2026, autor_id=autor_id_fil, assunto_id=assunto_id_clicado))
+            else:
+                st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
             df_comp['taxa'] = (df_comp['aprovados'] / df_comp['apresentados'] * 100).round(1)
             df_comp.columns = ['Assunto', 'Apresentados', 'Aprovados', 'Taxa (%)']
             st.dataframe(df_comp.sort_values('Taxa (%)', ascending=False),
@@ -626,7 +651,20 @@ if vereador_selecionado == "Todos":
             fig_heat.update_layout(height=500, xaxis_tickangle=-40,
                                    margin=dict(l=10, r=10, t=20, b=140))
             fig_heat = aplicar_tema_plot(fig_heat)
-            st.plotly_chart(fig_heat, width='stretch')
+            evento_heat = st.plotly_chart(fig_heat, width='stretch', on_select="rerun", key="chart_heat")
+            pontos_heat = evento_heat.get("selection", {}).get("points", []) if evento_heat else []
+            if pontos_heat:
+                autor_h  = pontos_heat[0].get("y")
+                assunto_h = pontos_heat[0].get("x")
+                aid_h = mapa_autor_id.get(autor_h)
+                ssid_h = mapa_assunto_id.get(assunto_h)
+                if aid_h and ssid_h:
+                    st.link_button(
+                        f"🔗 Ver PLOs de {autor_h} sobre '{assunto_h}' no SAPL",
+                        url_sapl(ano=2026, autor_id=aid_h, assunto_id=ssid_h)
+                    )
+            else:
+                st.caption("💡 Clique em uma célula para filtrar vereador + assunto no SAPL.")
 
     with aba_pop:
         if assunto_selecionado == "Todos":
