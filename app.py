@@ -38,6 +38,12 @@ def carregar_dados():
     }
     df_autores = pd.DataFrame(autores)[['id', 'nome', 'tipo']].copy()
     df_autores['tipo_descricao'] = df_autores['tipo'].map(MAPA_TIPO_AUTOR).fillna('Desconhecido')
+
+    # nome do parlamentar → id de Autor no SAPL (para montar links de pesquisa)
+    mapa_autor_id = (
+        df_autores[df_autores['tipo'] == 1]
+        .set_index('nome')['id'].to_dict()
+    )
     df_materias      = pd.DataFrame(materias)        # só 2026 — exibição
     df_materias_hist = pd.DataFrame(materias_hist)   # 2025+2026 — cruzamento normas
     df_normas        = pd.DataFrame(normas)
@@ -238,10 +244,10 @@ def carregar_dados():
     )
     df_ass['virou_lei'] = df_ass['materia_id'].astype(str).isin(plos_lei_set)
 
-    return df_vereadores, df, df_parl, resumo, df_leis, df_ass
+    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id
 
 
-df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass = carregar_dados()
+df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id = carregar_dados()
 
 # ─── CABEÇALHO ─────────────────────────────────────────────────────────────────
 
@@ -477,6 +483,20 @@ if partes:
 mapa_foto  = df_vereadores.set_index('nome_parlamentar')['fotografia'].fillna('').to_dict()
 mapa_cargo = df_vereadores.set_index('nome_parlamentar')['cargo_mesa'].fillna('').to_dict()
 
+BASE_SAPL_URL = "https://sapl.itabirito.mg.leg.br"
+
+def url_sapl_autor(autor_id, ano=2026):
+    return (
+        f"{BASE_SAPL_URL}/materia/pesquisar-materia?tipo=&ementa=&numero=&numeracao__numero_materia="
+        f"&numero_protocolo=&ano={ano}&autoria__autor={autor_id}&autoria__primeiro_autor=unknown"
+        f"&autoria__autor__tipo=&autoria__autor__parlamentar_set__filiacao__partido=&o="
+        f"&tipo_listagem=1&tipo_origem_externa=&numero_origem_externa=&ano_origem_externa="
+        f"&data_origem_externa_0=&data_origem_externa_1=&local_origem_externa="
+        f"&data_apresentacao_0=&data_apresentacao_1=&data_publicacao_0=&data_publicacao_1="
+        f"&relatoria__parlamentar_id=&em_tramitacao=&tramitacao__unidade_tramitacao_destino="
+        f"&tramitacao__status=&materiaassunto__assunto=&indexacao=&regime_tramitacao=&salvar=Pesquisar"
+    )
+
 def foto_html(nome, foto_url, size=80):
     if foto_url:
         return (
@@ -512,7 +532,18 @@ if vereador_selecionado == "Todos":
         fig.update_traces(textposition='outside')
         fig.update_layout(coloraxis_showscale=False, height=500, margin=dict(l=10, r=40, t=10, b=10))
         fig = aplicar_tema_plot(fig)
-        st.plotly_chart(fig, width='stretch')
+        evento1 = st.plotly_chart(fig, width='stretch', on_select="rerun", key="chart_ranking")
+        pontos = evento1.get("selection", {}).get("points", []) if evento1 else []
+        if pontos:
+            nome_sel = pontos[0].get("y")
+            autor_id = mapa_autor_id.get(nome_sel)
+            if autor_id:
+                st.link_button(
+                    f"🔗 Ver matérias de {nome_sel} em 2026 no SAPL",
+                    url_sapl_autor(autor_id, ano=2026)
+                )
+        else:
+            st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
 
     with aba2:
         df_aprov = df_resumo[df_resumo['projetos_lei'] > 0].sort_values('taxa_aprovacao', ascending=True)
@@ -522,7 +553,18 @@ if vereador_selecionado == "Todos":
         fig2.update_traces(texttemplate='%{text}%', textposition='outside')
         fig2.update_layout(coloraxis_showscale=False, height=500, margin=dict(l=10, r=40, t=10, b=10))
         fig2 = aplicar_tema_plot(fig2)
-        st.plotly_chart(fig2, width='stretch')
+        evento2 = st.plotly_chart(fig2, width='stretch', on_select="rerun", key="chart_aprovacao")
+        pontos2 = evento2.get("selection", {}).get("points", []) if evento2 else []
+        if pontos2:
+            nome_sel2 = pontos2[0].get("y")
+            autor_id2 = mapa_autor_id.get(nome_sel2)
+            if autor_id2:
+                st.link_button(
+                    f"🔗 Ver matérias de {nome_sel2} em 2026 no SAPL",
+                    url_sapl_autor(autor_id2, ano=2026)
+                )
+        else:
+            st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
         st.dataframe(
             df_aprov[['autor_nome', 'projetos_lei', 'projetos_virou_lei',
                       'taxa_aprovacao', 'projetos_com_substitutivo']]
