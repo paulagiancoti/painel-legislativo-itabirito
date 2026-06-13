@@ -77,7 +77,7 @@ def carregar_dados():
     # Expandir autorias — só 2026
     linhas = []
     for _, row in df_materias.iterrows():
-        autoria_raw = row['autoria'] or ''
+        autoria_raw = row.get('autoria') or ''
         numero      = int(row['numero'])
         tipo_sigla  = row['tipo__sigla']
         assuntos_proj = (
@@ -99,6 +99,11 @@ def carregar_dados():
             })
 
     df = pd.DataFrame(linhas)
+    if df.empty or 'autor_nome' not in df.columns:
+        df = pd.DataFrame(columns=[
+            'materia_id', 'numero', 'ano', 'tipo_sigla', 'tipo_descricao',
+            'ementa', 'autor_nome', 'assuntos', 'tem_assunto'
+        ])
     mapa_tipo    = df_autores.set_index('nome')['tipo_descricao'].to_dict()
     nomes_ativos = set(df_vereadores['nome_parlamentar'])
     df['autor_tipo']       = df['autor_nome'].map(mapa_tipo).fillna('Desconhecido')
