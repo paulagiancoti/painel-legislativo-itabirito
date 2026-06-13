@@ -344,7 +344,7 @@ elif tema == "🏛️ Institucional":
     st.markdown("""<style>
     header[data-testid="stHeader"] { background-color: #0063A9 !important; }
     [data-testid="stHeader"]::before { background-color: #0063A9 !important; }
-    .stApp { background-color: #003F6B !important; }
+    .stApp { background-color: #1A3A5C !important; }
     .stApp, .stApp p, .stApp span, .stApp div, .stApp label { color: #FFFFFF !important; }
     h1 { color: #FFCD00 !important; } h2, h3 { color: #FFCD00 !important; }
     [data-testid="stMetricLabel"] { color: rgba(255,255,255,0.85) !important; }
