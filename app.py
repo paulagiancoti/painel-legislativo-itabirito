@@ -488,7 +488,7 @@ mapa_cargo = df_vereadores.set_index('nome_parlamentar')['cargo_mesa'].fillna(''
 BASE_SAPL_URL = "https://sapl.itabirito.mg.leg.br"
 
 # Tipo de matéria no SAPL (sigla → id)
-TIPO_MATERIA_SAPL = {'PLO': 11}  # PLO = Projeto de Lei Ordinária, id=11 no SAPL de Itabirito
+TIPO_MATERIA_SAPL = {'PLO': 1}  # PLO = Projeto de Lei Ordinária, id=1 no SAPL de Itabirito
 
 def url_sapl(ano=2026, autor_id=None, assunto_id=None, so_parlamentar=False, tipo_materia_id=None):
     """Monta URL de pesquisa no SAPL com filtros opcionais."""
