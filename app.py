@@ -774,7 +774,19 @@ if vereador_selecionado != "Todos":
             .sort_values(ascending=False).head(6).index.tolist()
             if not ass_v_aprov.empty else []
         )
-        pills = ''.join(f'<span class="pill-ass">{a}</span>' for a in top_ass) or \
+        autor_id_v = mapa_autor_id.get(vereador_selecionado)
+        pills_parts = []
+        for a in top_ass:
+            aid = mapa_assunto_id.get(a)
+            if autor_id_v and aid:
+                href = url_sapl(ano=2026, autor_id=autor_id_v, assunto_id=aid, so_parlamentar=True)
+                pills_parts.append(
+                    f'<a href="{href}" target="_blank" class="pill-ass" '
+                    f'style="text-decoration:none;cursor:pointer" title="Ver no SAPL">{a} 🔗</a>'
+                )
+            else:
+                pills_parts.append(f'<span class="pill-ass">{a}</span>')
+        pills = ''.join(pills_parts) or \
             f'<span style="color:{plot_font};opacity:0.6;font-size:13px">Nenhum assunto em PLOs aprovados</span>'
 
         col_f, col_i = st.columns([1, 2])
