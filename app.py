@@ -314,9 +314,9 @@ if tema == "🌞 Claro":
     [data-testid="stHeader"]::before { background-color: #FFFFFF !important; }
     .stApp { background-color: #FFFFFF !important; }
     .stApp, .stApp p, .stApp span, .stApp div, .stApp label { color: #1A1A1A !important; }
-    h1, h2, h3 { color: #0063A9 !important; }
-    [data-testid="stMetricValue"] { color: #0063A9 !important; }
-    .stTabs [aria-selected="true"] { color: #0063A9 !important; border-bottom-color: #0063A9 !important; }
+    h1, h2, h3 { color: #033983 !important; }
+    [data-testid="stMetricValue"] { color: #033983 !important; }
+    .stTabs [aria-selected="true"] { color: #033983 !important; border-bottom-color: #033983 !important; }
     .card-pop { border: 1px solid rgba(0,99,169,0.2) !important; }
     </style>""", unsafe_allow_html=True)
     plot_bg = "#FFFFFF"; plot_paper = "#FFFFFF"; plot_font = "#1A1A1A"; plot_grid = "#E5E5E5"
@@ -342,23 +342,23 @@ elif tema == "🌙 Escuro":
 
 elif tema == "🏛️ Institucional":
     st.markdown("""<style>
-    header[data-testid="stHeader"] { background-color: #0063A9 !important; }
-    [data-testid="stHeader"]::before { background-color: #0063A9 !important; }
-    .stApp { background-color: #1A3A5C !important; }
+    header[data-testid="stHeader"] { background-color: #033983 !important; }
+    [data-testid="stHeader"]::before { background-color: #033983 !important; }
+    .stApp { background-color: #033983 !important; }
     .stApp, .stApp p, .stApp span, .stApp div, .stApp label { color: #FFFFFF !important; }
     h1 { color: #FFCD00 !important; } h2, h3 { color: #FFCD00 !important; }
     [data-testid="stMetricLabel"] { color: rgba(255,255,255,0.85) !important; }
     [data-testid="stMetricValue"] { color: #FFCD00 !important; }
     .stTabs [data-baseweb="tab"] { color: rgba(255,255,255,0.7) !important; }
     .stTabs [aria-selected="true"] { color: #FFCD00 !important; border-bottom-color: #FFCD00 !important; }
-    .stSelectbox > div > div { background-color: #004F8A !important; color: #FFFFFF !important; border-color: rgba(255,255,255,0.3) !important; }
+    .stSelectbox > div > div { background-color: #022B6B !important; color: #FFFFFF !important; border-color: rgba(255,255,255,0.3) !important; }
     hr { border-color: rgba(255,255,255,0.2) !important; }
-    .stAlert { background-color: #004F8A !important; color: #FFFFFF !important; }
+    .stAlert { background-color: #022B6B !important; color: #FFFFFF !important; }
     .stCaption { color: rgba(255,255,255,0.65) !important; }
     [data-testid="stDataFrame"] iframe { filter: invert(0.85) hue-rotate(200deg) saturate(1.5); }
     .card-pop { border: 1px solid rgba(255,205,0,0.5) !important; }
     </style>""", unsafe_allow_html=True)
-    plot_bg = "#0063A9"; plot_paper = "#0063A9"; plot_font = "#FFFFFF"; plot_grid = "rgba(255,255,255,0.2)"
+    plot_bg = "#033983"; plot_paper = "#033983"; plot_font = "#FFFFFF"; plot_grid = "rgba(255,255,255,0.2)"
     plot_colorscale = [[0, 'rgba(255,255,255,0.35)'], [1, '#FFCD00']] #grade amarela.
     #plot_colorscale = 'Greys'
     aprov_bg = "rgba(255,205,0,0.2)"; aprov_color = "#FFCD00"; card_border = "rgba(255,205,0,0.5)"
