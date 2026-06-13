@@ -936,12 +936,27 @@ if vereador_selecionado != "Todos":
             )
             fig5 = px.bar(df_ass_count, x='projetos', y='assunto', orientation='h',
                           labels={'projetos': 'Projetos de Lei', 'assunto': ''},
-                          color='projetos', color_continuous_scale=plot_colorscale, text='projetos')
+                          color='projetos', color_continuous_scale=plot_colorscale, text='projetos',
+                          custom_data=['assunto'])
             fig5.update_traces(textposition='outside')
             fig5.update_layout(coloraxis_showscale=False, height=400,
                                margin=dict(l=10, r=40, t=10, b=10))
             fig5 = aplicar_tema_plot(fig5)
-            st.plotly_chart(fig5, width='stretch')
+            autor_id_v = mapa_autor_id.get(vereador_selecionado)
+            evento5 = st.plotly_chart(fig5, width='stretch', on_select="rerun", key="chart_ass_v")
+            pontos5 = evento5.get("selection", {}).get("points", []) if evento5 else []
+            if pontos5:
+                cd5 = pontos5[0].get("customdata") or []
+                assunto_clicado5 = cd5[0] if cd5 else pontos5[0].get("y")
+                assunto_id5 = mapa_assunto_id.get(assunto_clicado5)
+                if assunto_id5:
+                    st.link_button(
+                        f"🔗 Ver PLOs de {vereador_selecionado} sobre '{assunto_clicado5}' no SAPL",
+                        url_sapl(ano=2026, autor_id=autor_id_v,
+                                 assunto_id=assunto_id5, so_parlamentar=True)
+                    )
+            else:
+                st.caption("💡 Clique em uma barra para abrir os PLOs deste assunto no SAPL.")
             pct_cobertura = round(
                 len(df_ass_v['materia_id'].unique()) / int(dados_v['projetos_lei']) * 100, 1
             )
@@ -970,7 +985,19 @@ if vereador_selecionado != "Todos":
                                    margin=dict(l=10, r=10, t=40, b=100),
                                    legend=dict(orientation='h', y=1.08))
                 fig6 = aplicar_tema_plot(fig6)
-                st.plotly_chart(fig6, width='stretch')
+                evento6 = st.plotly_chart(fig6, width='stretch', on_select="rerun", key="chart_ass_v2")
+                pontos6 = evento6.get("selection", {}).get("points", []) if evento6 else []
+                if pontos6:
+                    assunto_clicado6 = pontos6[0].get("x")
+                    assunto_id6 = mapa_assunto_id.get(assunto_clicado6)
+                    if assunto_id6:
+                        st.link_button(
+                            f"🔗 Ver PLOs de {vereador_selecionado} sobre '{assunto_clicado6}' no SAPL",
+                            url_sapl(ano=2026, autor_id=autor_id_v,
+                                     assunto_id=assunto_id6, so_parlamentar=True)
+                        )
+                else:
+                    st.caption("💡 Clique em uma barra para abrir os PLOs deste assunto no SAPL.")
 # ─── RODAPÉ INSTITUCIONAL ───────────────────────────────────────────────────────
 
 st.divider()
