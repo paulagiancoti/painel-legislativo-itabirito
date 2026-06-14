@@ -264,6 +264,9 @@ def carregar_dados():
 
 df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id = carregar_dados()
 
+# ID do parlamentar no SAPL → para URL /parlamentar/<id>
+mapa_parlamentar_id = df_vereadores.set_index('nome_parlamentar')['id'].to_dict()
+
 # ─── CABEÇALHO ─────────────────────────────────────────────────────────────────
 
 st.markdown(
@@ -735,10 +738,29 @@ if vereador_selecionado == "Todos":
                         f'<div style="font-size:10px;font-weight:600;color:#ed7d31;'
                         f'margin-bottom:8px;letter-spacing:0.5px">⭐ {cargo_mesa}</div>'
                     ) if cargo_mesa else '<div style="height:22px"></div>'
+
+                    # URL da foto: pesquisa filtrada (com assunto) ou página do parlamentar
+                    parl_id    = mapa_parlamentar_id.get(nome)
+                    autor_id_c = mapa_autor_id.get(nome)
+                    assunto_id_c = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
+                    if assunto_id_c and autor_id_c:
+                        foto_href = url_sapl(ano=2026, autor_id=autor_id_c, assunto_id=assunto_id_c, so_parlamentar=True)
+                        foto_title = f"Ver PLOs sobre {assunto_selecionado} no SAPL"
+                    elif parl_id:
+                        foto_href  = f"https://sapl.itabirito.mg.leg.br/parlamentar/{parl_id}"
+                        foto_title = "Ver parlamentar no SAPL"
+                    else:
+                        foto_href  = None
+                        foto_title = ""
+                    foto_tag = (
+                        f'<a href="{foto_href}" target="_blank" style="display:block;cursor:pointer" title="{foto_title}">'
+                        f'{foto_html(nome, foto, 80)}</a>'
+                    ) if foto_href else foto_html(nome, foto, 80)
+
                     with cols[j]:
                         st.markdown(
                             f'<div class="card-pop" style="border:1px solid {card_border}">'
-                            f'<div style="margin-bottom:12px">{foto_html(nome, foto, 80)}</div>'
+                            f'<div style="margin-bottom:12px">{foto_tag}</div>'
                             f'<div class="card-nome">{nome}</div>{cargo_badge}'
                             f'<div style="display:flex;justify-content:space-around;margin-bottom:12px">'
                             f'<div><div style="font-size:26px;font-weight:700;color:#5b9bd5;line-height:1">{int(row["projetos_lei"])}</div>'
