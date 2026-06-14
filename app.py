@@ -785,18 +785,30 @@ if vereador_selecionado == "Todos":
             bordas   = ['#ffd700', '#adb5bd', '#cd7f32']
             medalhas = ['🥇', '🥈', '🥉']
             for i, (nome, qtd) in enumerate(top3.items()):
-                foto  = mapa_foto.get(nome, '')
+                foto       = mapa_foto.get(nome, '')
+                autor_id_p = mapa_autor_id.get(nome)
+                assunto_id_p = mapa_assunto_id.get(assunto_selecionado)
                 aprov = df_ass[
                     (df_ass['autor_nome'] == nome) &
                     (df_ass['assunto']    == assunto_selecionado) &
                     (df_ass['virou_lei'])
                 ]['materia_id'].nunique()
+                # Foto clicável → pesquisa autor + assunto no SAPL
+                if autor_id_p and assunto_id_p:
+                    foto_link_p = url_sapl(ano=2026, autor_id=autor_id_p, assunto_id=assunto_id_p, so_parlamentar=True)
+                    foto_tag_p  = (
+                        f'<a href="{foto_link_p}" target="_blank" style="display:block;cursor:pointer" '
+                        f'title="Ver PLOs sobre {assunto_selecionado} no SAPL">'
+                        f'{foto_html(nome, foto, 100)}</a>'
+                    )
+                else:
+                    foto_tag_p = foto_html(nome, foto, 100)
                 with cols[i]:
                     st.markdown(
                         f'<div style="background:{plot_paper};border-radius:16px;'
                         f'border:2px solid {bordas[i]};padding:28px 16px;text-align:center">'
                         f'<div style="font-size:32px;margin-bottom:10px">{medalhas[i]}</div>'
-                        f'<div style="margin-bottom:14px">{foto_html(nome, foto, 100)}</div>'
+                        f'<div style="margin-bottom:14px">{foto_tag_p}</div>'
                         f'<div style="font-size:15px;font-weight:600;color:{plot_font};margin-bottom:18px">{nome}</div>'
                         f'<div style="font-size:42px;font-weight:700;color:#5b9bd5;line-height:1">{qtd}</div>'
                         f'<div style="font-size:12px;color:{plot_font};opacity:0.7;margin-bottom:14px">'
