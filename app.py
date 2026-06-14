@@ -266,7 +266,6 @@ df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id,
 
 # ─── CABEÇALHO ─────────────────────────────────────────────────────────────────
 
-st.title("🏛️ Painel Legislativo — Câmara Municipal de Itabirito")
 st.caption("Dados: SAPL · Câmara Municipal de Itabirito (MG) · 2026")
 
 # ─── FILTROS (barra horizontal no topo) ────────────────────────────────────────
@@ -377,12 +376,14 @@ elif tema == "🏛️ Institucional":
     aprov_bg = "rgba(255,205,0,0.2)"; aprov_color = "#FFCD00"; card_border = "rgba(255,205,0,0.5)"
 
 st.markdown("""<style>
-/* Remove toolbar, rodapé e espaços extras do Streamlit */
+/* Remove toolbar, rodapé, header e espaços extras do Streamlit */
 footer { display: none !important; }
 #MainMenu { display: none !important; }
 [data-testid="stToolbar"] { display: none !important; }
 [data-testid="stDecoration"] { display: none !important; }
 [data-testid="stStatusWidget"] { display: none !important; }
+header[data-testid="stHeader"] { display: none !important; height: 0 !important; }
+.stApp > header { display: none !important; }
 
 /* Força o app a caber em qualquer largura de iframe */
 .stApp {
@@ -414,21 +415,14 @@ footer { display: none !important; }
     flex: 1 1 120px !important;
 }
 
-/* Título menor em telas estreitas */
+/* h2/h3 menores em telas estreitas */
 @media (max-width: 900px) {
-    h1 { font-size: 1.3rem !important; }
     h2 { font-size: 1.1rem !important; }
     [data-testid="stMetricValue"] { font-size: 1.4rem !important; }
     [data-testid="stHorizontalBlock"] > [data-testid="column"] {
         min-width: 90px !important;
         flex: 1 1 90px !important;
     }
-}
-/* Força título em linha única reduzido para iframe de site */
-h1 {
-    font-size: clamp(1.1rem, 2vw, 2rem) !important;
-    white-space: normal !important;
-    line-height: 1.2 !important;
 }
 </style>""", unsafe_allow_html=True)
 
