@@ -266,6 +266,7 @@ df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id,
 
 # ─── CABEÇALHO ─────────────────────────────────────────────────────────────────
 
+st.markdown("## 🏛️ Painel Legislativo — Câmara Municipal de Itabirito")
 st.caption("Dados: SAPL · Câmara Municipal de Itabirito (MG) · 2026")
 
 # ─── FILTROS (barra horizontal no topo) ────────────────────────────────────────
