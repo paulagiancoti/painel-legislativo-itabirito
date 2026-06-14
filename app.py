@@ -77,7 +77,12 @@ def carregar_dados():
     # Expandir autorias — só 2026
     linhas = []
     for _, row in df_materias.iterrows():
-        autoria_raw = row.get('autoria') or ''
+        autoria_raw = (
+            row.get('autoria') or
+            row.get('autoria_set') or
+            row.get('autores') or
+            ''
+        )
         numero      = int(row['numero'])
         tipo_sigla  = row['tipo__sigla']
         assuntos_proj = (
@@ -100,10 +105,13 @@ def carregar_dados():
 
     df = pd.DataFrame(linhas)
     if df.empty or 'autor_nome' not in df.columns:
-        df = pd.DataFrame(columns=[
-            'materia_id', 'numero', 'ano', 'tipo_sigla', 'tipo_descricao',
-            'ementa', 'autor_nome', 'assuntos', 'tem_assunto'
-        ])
+        # Diagnóstico: mostra estrutura do primeiro registro para debug
+        _campos = list(df_materias.columns) if not df_materias.empty else []
+        _autoria_sample = str(df_materias.iloc[0].get('autoria', 'CAMPO NÃO ENCONTRADO')) if not df_materias.empty else 'DataFrame vazio'
+        raise ValueError(
+            f"Nenhuma matéria expandida. Campos disponíveis: {_campos}. "
+            f"Amostra de autoria: {_autoria_sample}"
+        )
     mapa_tipo    = df_autores.set_index('nome')['tipo_descricao'].to_dict()
     nomes_ativos = set(df_vereadores['nome_parlamentar'])
     df['autor_tipo']       = df['autor_nome'].map(mapa_tipo).fillna('Desconhecido')
@@ -369,6 +377,13 @@ elif tema == "🏛️ Institucional":
     aprov_bg = "rgba(255,205,0,0.2)"; aprov_color = "#FFCD00"; card_border = "rgba(255,205,0,0.5)"
 
 st.markdown("""<style>
+/* Remove toolbar, rodapé e espaços extras do Streamlit */
+footer { display: none !important; }
+#MainMenu { display: none !important; }
+[data-testid="stToolbar"] { display: none !important; }
+[data-testid="stDecoration"] { display: none !important; }
+[data-testid="stStatusWidget"] { display: none !important; }
+
 /* Responsivo para embed em iframe (window do Plone) */
 [data-testid="stHorizontalBlock"] {
     flex-wrap: wrap !important;
@@ -386,10 +401,17 @@ st.markdown("""<style>
     [data-testid="stMetricValue"] { font-size: 1.4rem !important; }
     h1 { font-size: 1.6rem !important; }
 }
+
+/* Padding compacto */
 .block-container {
+    padding-top: 1rem !important;
+    padding-bottom: 0.5rem !important;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
     max-width: 100% !important;
+}
+[data-testid="stAppViewBlockContainer"] {
+    padding-bottom: 0 !important;
 }
 </style>""", unsafe_allow_html=True)
 
