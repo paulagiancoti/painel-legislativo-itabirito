@@ -701,20 +701,32 @@ if vereador_selecionado == "Todos":
                 df_ass_top.groupby(['autor_nome', 'assunto'])
                 ['materia_id'].nunique().reset_index(name='qtd')
             )
-            fig_heat = px.density_heatmap(
-                df_heat, x='assunto', y='autor_nome', z='qtd',
-                color_continuous_scale='Blues',
-                labels={'assunto': 'Assunto', 'autor_nome': 'Vereador', 'qtd': 'Projetos'},
-            )
+            # Tabela pivot para go.Heatmap (suporta on_select corretamente)
+            import plotly.graph_objects as go
+            df_pivot   = df_heat.pivot_table(values='qtd', index='autor_nome', columns='assunto', fill_value=0)
+            autores_px = df_pivot.index.tolist()
+            assuntos_px = df_pivot.columns.tolist()
+            # customdata: matriz com (autor, assunto) por célula
+            custom = [[[a, s] for s in assuntos_px] for a in autores_px]
+            fig_heat = go.Figure(data=go.Heatmap(
+                z=df_pivot.values.tolist(),
+                x=assuntos_px,
+                y=autores_px,
+                colorscale=plot_colorscale if isinstance(plot_colorscale, list) else 'Blues',
+                customdata=custom,
+                hovertemplate='<b>%{y}</b><br>%{x}: %{z} PLO(s)<extra></extra>',
+            ))
             fig_heat.update_layout(height=500, xaxis_tickangle=-40,
                                    margin=dict(l=10, r=10, t=20, b=140))
             fig_heat = aplicar_tema_plot(fig_heat)
             evento_heat = st.plotly_chart(fig_heat, width='stretch', on_select="rerun", key="chart_heat")
             pontos_heat = evento_heat.get("selection", {}).get("points", []) if evento_heat else []
             if pontos_heat:
-                autor_h  = pontos_heat[0].get("y")
-                assunto_h = pontos_heat[0].get("x")
-                aid_h = mapa_autor_id.get(autor_h)
+                pt       = pontos_heat[0]
+                cd       = pt.get("customdata") or []
+                autor_h  = cd[0] if len(cd) > 0 else pt.get("y")
+                assunto_h = cd[1] if len(cd) > 1 else pt.get("x")
+                aid_h  = mapa_autor_id.get(autor_h)
                 ssid_h = mapa_assunto_id.get(assunto_h)
                 if aid_h and ssid_h:
                     st.link_button(
