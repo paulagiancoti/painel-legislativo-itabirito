@@ -719,22 +719,7 @@ if vereador_selecionado == "Todos":
             fig_heat.update_layout(height=500, xaxis_tickangle=-40,
                                    margin=dict(l=10, r=10, t=20, b=140))
             fig_heat = aplicar_tema_plot(fig_heat)
-            evento_heat = st.plotly_chart(fig_heat, width='stretch', on_select="rerun", key="chart_heat")
-            pontos_heat = evento_heat.get("selection", {}).get("points", []) if evento_heat else []
-            if pontos_heat:
-                pt       = pontos_heat[0]
-                cd       = pt.get("customdata") or []
-                autor_h  = cd[0] if len(cd) > 0 else pt.get("y")
-                assunto_h = cd[1] if len(cd) > 1 else pt.get("x")
-                aid_h  = mapa_autor_id.get(autor_h)
-                ssid_h = mapa_assunto_id.get(assunto_h)
-                if aid_h and ssid_h:
-                    st.link_button(
-                        f"🔗 Ver PLOs de {autor_h} sobre '{assunto_h}' no SAPL",
-                        url_sapl(ano=2026, autor_id=aid_h, assunto_id=ssid_h, so_parlamentar=True)
-                    )
-            else:
-                st.caption("💡 Clique em uma célula para filtrar vereador + assunto no SAPL.")
+            st.plotly_chart(fig_heat, width='stretch', key="chart_heat")
 
     with aba_pop:
         if assunto_selecionado == "Todos":
