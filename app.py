@@ -424,6 +424,12 @@ footer { display: none !important; }
         flex: 1 1 90px !important;
     }
 }
+/* Força título em linha única reduzido para iframe de site */
+h1 {
+    font-size: clamp(1.1rem, 2vw, 2rem) !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
+}
 </style>""", unsafe_allow_html=True)
 
 st.markdown(f"""<style>
