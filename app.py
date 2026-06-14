@@ -384,26 +384,14 @@ footer { display: none !important; }
 [data-testid="stDecoration"] { display: none !important; }
 [data-testid="stStatusWidget"] { display: none !important; }
 
-/* Responsivo para embed em iframe (window do Plone) */
-[data-testid="stHorizontalBlock"] {
-    flex-wrap: wrap !important;
-    gap: 0.8rem;
+/* Força o app a caber em qualquer largura de iframe */
+.stApp {
+    min-width: 0 !important;
+    overflow-x: hidden !important;
 }
-[data-testid="stHorizontalBlock"] > [data-testid="column"] {
-    min-width: 150px;
-    flex: 1 1 150px;
-}
-@media (max-width: 640px) {
-    [data-testid="stHorizontalBlock"] > [data-testid="column"] {
-        min-width: 45%;
-        flex: 1 1 45%;
-    }
-    [data-testid="stMetricValue"] { font-size: 1.4rem !important; }
-    h1 { font-size: 1.6rem !important; }
-}
-
-/* Padding compacto */
 .block-container {
+    min-width: 0 !important;
+    width: 100% !important;
     padding-top: 1rem !important;
     padding-bottom: 0.5rem !important;
     padding-left: 1rem !important;
@@ -412,6 +400,29 @@ footer { display: none !important; }
 }
 [data-testid="stAppViewBlockContainer"] {
     padding-bottom: 0 !important;
+    min-width: 0 !important;
+}
+
+/* Colunas responsivas — quebram linha em vez de criar scroll */
+[data-testid="stHorizontalBlock"] {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    min-width: 0 !important;
+}
+[data-testid="stHorizontalBlock"] > [data-testid="column"] {
+    min-width: 120px !important;
+    flex: 1 1 120px !important;
+}
+
+/* Título menor em telas estreitas */
+@media (max-width: 900px) {
+    h1 { font-size: 1.3rem !important; }
+    h2 { font-size: 1.1rem !important; }
+    [data-testid="stMetricValue"] { font-size: 1.4rem !important; }
+    [data-testid="stHorizontalBlock"] > [data-testid="column"] {
+        min-width: 90px !important;
+        flex: 1 1 90px !important;
+    }
 }
 </style>""", unsafe_allow_html=True)
 
