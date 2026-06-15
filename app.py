@@ -46,6 +46,32 @@ def carregar_dados():
     )
     df_materias      = pd.DataFrame(materias)        # só 2026 — exibição
     df_materias_hist = pd.DataFrame(materias_hist)   # 2025+2026 — cruzamento normas
+
+    def normalizar_campos(df):
+        """Garante que os campos tipo__sigla, tipo__descricao e autoria existam,
+        independente de virem do endpoint de pesquisa ou da API REST."""
+        if df.empty:
+            return df
+        # tipo__sigla / tipo__descricao — API REST retorna campo 'tipo' como objeto
+        if 'tipo__sigla' not in df.columns:
+            if 'tipo' in df.columns:
+                df['tipo__sigla']    = df['tipo'].apply(
+                    lambda t: t.get('sigla', '') if isinstance(t, dict) else '')
+                df['tipo__descricao'] = df['tipo'].apply(
+                    lambda t: t.get('descricao', '') if isinstance(t, dict) else '')
+            else:
+                df['tipo__sigla']    = ''
+                df['tipo__descricao'] = ''
+        # autoria — API REST pode usar 'autoria_set' em vez de 'autoria'
+        if 'autoria' not in df.columns:
+            if 'autoria_set' in df.columns:
+                df['autoria'] = df['autoria_set']
+            else:
+                df['autoria'] = ''
+        return df
+
+    df_materias      = normalizar_campos(df_materias)
+    df_materias_hist = normalizar_campos(df_materias_hist)
     df_normas        = pd.DataFrame(normas)
 
     mapa_cargo_mesa = {
