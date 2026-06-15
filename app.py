@@ -109,6 +109,30 @@ def carregar_dados():
             row.get('autores') or
             ''
         )
+        # Extrai nomes de autores — pode vir como:
+        # 1. String "Nome1, Nome2" (endpoint pesquisar-materia)
+        # 2. Lista de objetos [{autor: {nome: "..."}, ...}] (API REST)
+        if isinstance(autoria_raw, list):
+            nomes_autores = []
+            for item in autoria_raw:
+                if isinstance(item, dict):
+                    # Tenta vários caminhos possíveis no objeto
+                    nome = (
+                        (item.get('autor') or {}).get('nome') or
+                        (item.get('autor') or {}).get('__str__') or
+                        item.get('nome') or
+                        item.get('__str__') or
+                        ''
+                    )
+                    if nome:
+                        nomes_autores.append(nome.strip())
+                elif isinstance(item, str) and item.strip():
+                    nomes_autores.append(item.strip())
+        elif isinstance(autoria_raw, str):
+            nomes_autores = [a.strip() for a in autoria_raw.split(',') if a.strip()]
+        else:
+            nomes_autores = []
+
         numero      = int(row['numero'])
         tipo_sigla  = row['tipo__sigla']
         assuntos_proj = (
@@ -116,7 +140,7 @@ def carregar_dados():
             if tipo_sigla == 'PLO'
             else mapa_id_assuntos.get(str(row['id']), [])
         )
-        for nome_autor in [a.strip() for a in autoria_raw.split(',') if a.strip()]:
+        for nome_autor in nomes_autores:
             linhas.append({
                 'materia_id':     row['id'],
                 'numero':         numero,
