@@ -474,8 +474,30 @@ def aplicar_tema_plot(fig):
         yaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid),
         legend=dict(bgcolor=plot_paper, font=dict(color=plot_font),
                     bordercolor=plot_grid, borderwidth=1),
+        modebar=dict(
+            remove=[
+                "zoom", "pan", "select", "lasso2d",
+                "zoomIn2d", "zoomOut2d", "autoScale2d",
+                "select2d", "lasso2d", "drawclosedpath",
+                "drawopenpath", "drawline", "drawrect",
+                "drawcircle", "eraseshape",
+            ],
+            add=["zoomIn2d", "zoomOut2d", "resetAxes", "toImage"],
+            orientation="v",
+        ),
     )
     return fig
+
+PLOT_CONFIG = {
+    "modeBarButtonsToRemove": [
+        "zoom2d", "pan2d", "select2d", "lasso2d",
+        "autoScale2d", "hoverClosestCartesian", "hoverCompareCartesian",
+        "toggleSpikelines",
+    ],
+    "modeBarButtonsToAdd": ["zoomIn2d", "zoomOut2d", "resetAxes"],
+    "displaylogo": False,
+    "responsive": True,
+}
 
 # ─── FILTRAR ───────────────────────────────────────────────────────────────────
 
@@ -616,7 +638,7 @@ if vereador_selecionado == "Todos":
         fig.update_traces(textposition='outside')
         fig.update_layout(coloraxis_showscale=False, height=500, margin=dict(l=10, r=40, t=10, b=10))
         fig = aplicar_tema_plot(fig)
-        evento1 = st.plotly_chart(fig, width='stretch', on_select="rerun", key="chart_ranking")
+        evento1 = st.plotly_chart(fig, width='stretch', on_select="rerun", key="chart_ranking", config=PLOT_CONFIG)
         pontos = evento1.get("selection", {}).get("points", []) if evento1 else []
         if pontos:
             ponto1    = pontos[0]
@@ -641,7 +663,7 @@ if vereador_selecionado == "Todos":
         fig2.update_traces(texttemplate='%{text}%', textposition='outside')
         fig2.update_layout(coloraxis_showscale=False, height=500, margin=dict(l=10, r=40, t=10, b=10))
         fig2 = aplicar_tema_plot(fig2)
-        evento2 = st.plotly_chart(fig2, width='stretch', on_select="rerun", key="chart_aprovacao")
+        evento2 = st.plotly_chart(fig2, width='stretch', on_select="rerun", key="chart_aprovacao", config=PLOT_CONFIG)
         pontos2 = evento2.get("selection", {}).get("points", []) if evento2 else []
         if pontos2:
             ponto2   = pontos2[0]
@@ -699,7 +721,7 @@ if vereador_selecionado == "Todos":
                                    margin=dict(l=10, r=10, t=40, b=140),
                                    legend=dict(orientation='h', y=1.05))
             fig_comp = aplicar_tema_plot(fig_comp)
-            evento_ass = st.plotly_chart(fig_comp, width='stretch', on_select="rerun", key="chart_assunto")
+            evento_ass = st.plotly_chart(fig_comp, width='stretch', on_select="rerun", key="chart_assunto", config=PLOT_CONFIG)
             pontos_ass = evento_ass.get("selection", {}).get("points", []) if evento_ass else []
             autor_id_fil = mapa_autor_id.get(vereador_selecionado) if vereador_selecionado != "Todos" else None
             if pontos_ass:
@@ -742,7 +764,7 @@ if vereador_selecionado == "Todos":
             fig_heat.update_layout(height=500, xaxis_tickangle=-40,
                                    margin=dict(l=10, r=10, t=20, b=140))
             fig_heat = aplicar_tema_plot(fig_heat)
-            st.plotly_chart(fig_heat, width='stretch', key="chart_heat")
+            st.plotly_chart(fig_heat, width='stretch', key="chart_heat", config=PLOT_CONFIG)
 
     with aba_pop:
         if assunto_selecionado == "Todos":
@@ -963,7 +985,7 @@ if vereador_selecionado != "Todos":
             fig4.update_traces(textposition='inside', textinfo='percent+label')
             fig4.update_layout(showlegend=False)
             fig4 = aplicar_tema_plot(fig4)
-            st.plotly_chart(fig4, width='stretch')
+            st.plotly_chart(fig4, width='stretch', config=PLOT_CONFIG)
         with col_lista:
             tipo_det = st.selectbox(
                 "Filtrar por tipo",
@@ -1051,7 +1073,7 @@ if vereador_selecionado != "Todos":
                                margin=dict(l=10, r=40, t=10, b=10))
             fig5 = aplicar_tema_plot(fig5)
             autor_id_v = mapa_autor_id.get(vereador_selecionado)
-            evento5 = st.plotly_chart(fig5, width='stretch', on_select="rerun", key="chart_ass_v")
+            evento5 = st.plotly_chart(fig5, width='stretch', on_select="rerun", key="chart_ass_v", config=PLOT_CONFIG)
             pontos5 = evento5.get("selection", {}).get("points", []) if evento5 else []
             if pontos5:
                 cd5 = pontos5[0].get("customdata") or []
@@ -1093,7 +1115,7 @@ if vereador_selecionado != "Todos":
                                    margin=dict(l=10, r=10, t=40, b=100),
                                    legend=dict(orientation='h', y=1.08))
                 fig6 = aplicar_tema_plot(fig6)
-                evento6 = st.plotly_chart(fig6, width='stretch', on_select="rerun", key="chart_ass_v2")
+                evento6 = st.plotly_chart(fig6, width='stretch', on_select="rerun", key="chart_ass_v2", config=PLOT_CONFIG)
                 pontos6 = evento6.get("selection", {}).get("points", []) if evento6 else []
                 if pontos6:
                     assunto_clicado6 = pontos6[0].get("x")
