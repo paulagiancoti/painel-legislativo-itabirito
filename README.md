@@ -124,4 +124,12 @@ Para atualizar os dados manualmente fora do horário agendado, consulte o arquiv
 
 ---
 
+## Créditos
+
+Os dados exibidos neste painel são extraídos do **SAPL — Sistema de Apoio ao Processo Legislativo**, desenvolvido e mantido pelo [Interlegis](https://github.com/interlegis/sapl). O SAPL é um software livre utilizado por câmaras municipais em todo o Brasil.
+
+O painel foi desenvolvido em parceria com **[Claude](https://claude.ai)** (Anthropic) — o código, a arquitetura e as soluções técnicas foram construídos de forma colaborativa ao longo de múltiplas sessões de trabalho.
+
+---
+
 *Desenvolvido para a Câmara Municipal de Itabirito (MG) · 2026*
