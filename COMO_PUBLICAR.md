@@ -137,8 +137,8 @@ O título do painel tem um link ↗ que redireciona para esta URL (versão mais 
 No portal Interlegis/Plone, ao adicionar o Window:
 
 - **URL:** `https://painel-legislativo-itabirito.onrender.com/?embed=true`
-- **Page Width:** `100%`
-- **Page Height:** `2500px`
+- **Page Width:** 
+- **Page Height:** `1800`
 - Marcar **"Hide Metadata?"**
 
 > O Streamlit Cloud não pode ser usado em iframe diretamente (bloqueia por política
