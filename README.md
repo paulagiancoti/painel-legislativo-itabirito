@@ -50,7 +50,6 @@ painel-legislativo-itabirito/
 ├── app.py                      # Painel principal (Streamlit)
 ├── atualizar_dados.py          # Coleta diária: matérias, normas, assuntos
 ├── coletar_dados_iniciais.py   # Coleta única: vereadores, autores, mesa
-├── gerar_relatorio_assuntos.py # Gerador de relatório Excel por assunto
 ├── requirements.txt            # Dependências Python
 ├── COMO_PUBLICAR.md            # Guia completo de publicação e manutenção
 ├── .streamlit/
