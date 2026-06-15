@@ -357,6 +357,16 @@ elif tema == "🌙 Escuro":
     .stSelectbox > div > div { background-color: #1A1F2E !important; color: #FAFAFA !important; }
     [data-testid="stDataFrame"] iframe { filter: invert(0.85) hue-rotate(180deg); }
     .card-pop { border: 1px solid rgba(255,255,255,0.25) !important; }
+    /* Botão de link — tema escuro */
+    [data-testid="stLinkButton"] a {
+        background-color: #1A1F2E !important;
+        color: #FAFAFA !important;
+        border: 1px solid rgba(255,255,255,0.35) !important;
+    }
+    [data-testid="stLinkButton"] a:hover {
+        background-color: #2D3748 !important;
+        color: #FFFFFF !important;
+    }
     </style>""", unsafe_allow_html=True)
     plot_bg = "#0E1117"; plot_paper = "#0E1117"; plot_font = "#FAFAFA"; plot_grid = "#2D3748"
     plot_colorscale = 'Blues'
@@ -379,6 +389,16 @@ elif tema == "🏛️ Institucional":
     .stCaption { color: rgba(255,255,255,0.65) !important; }
     [data-testid="stDataFrame"] iframe { filter: invert(0.85) hue-rotate(200deg) saturate(1.5); }
     .card-pop { border: 1px solid rgba(255,205,0,0.5) !important; }
+    /* Botão de link — tema institucional */
+    [data-testid="stLinkButton"] a {
+        background-color: #033983 !important;
+        color: #FFFFFF !important;
+        border: 1px solid #FFCD00 !important;
+    }
+    [data-testid="stLinkButton"] a:hover {
+        background-color: #022B6B !important;
+        color: #FFCD00 !important;
+    }
     </style>""", unsafe_allow_html=True)
     plot_bg = "#033983"; plot_paper = "#033983"; plot_font = "#FFFFFF"; plot_grid = "rgba(255,255,255,0.2)"
     plot_colorscale = [[0, 'rgba(255,255,255,0.35)'], [1, '#FFCD00']] #grade amarela.
