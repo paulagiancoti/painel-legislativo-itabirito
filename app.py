@@ -155,13 +155,15 @@ def carregar_dados():
 
     df = pd.DataFrame(linhas)
     if df.empty or 'autor_nome' not in df.columns:
-        # Diagnóstico: mostra estrutura do primeiro registro para debug
-        _campos = list(df_materias.columns) if not df_materias.empty else []
-        _autoria_sample = str(df_materias.iloc[0].get('autoria', 'CAMPO NÃO ENCONTRADO')) if not df_materias.empty else 'DataFrame vazio'
-        raise ValueError(
-            f"Nenhuma matéria expandida. Campos disponíveis: {_campos}. "
-            f"Amostra de autoria: {_autoria_sample}"
+        st.warning(
+            "⚠️ Os dados de autoria das matérias não foram encontrados. "
+            "Rode `atualizar_dados.py` localmente e suba os JSONs atualizados para o GitHub. "
+            f"Campos disponíveis: {list(df_materias.columns[:8]) if not df_materias.empty else 'arquivo vazio'}"
         )
+        df = pd.DataFrame(columns=[
+            'materia_id', 'numero', 'ano', 'tipo_sigla', 'tipo_descricao',
+            'ementa', 'autor_nome', 'assuntos', 'tem_assunto'
+        ])
     mapa_tipo    = df_autores.set_index('nome')['tipo_descricao'].to_dict()
     nomes_ativos = set(df_vereadores['nome_parlamentar'])
     df['autor_tipo']       = df['autor_nome'].map(mapa_tipo).fillna('Desconhecido')
