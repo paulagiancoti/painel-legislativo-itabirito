@@ -1,5 +1,13 @@
 [
   {
+    "id": 670,
+    "__str__": "Projeto de Lei Substitutivo nº 107 de 2026 - Acessibilidade",
+    "link_detail_backend": "/materia/materiaassunto/670",
+    "metadata": {},
+    "assunto": 40,
+    "materia": 23158
+  },
+  {
     "id": 487,
     "__str__": "Projeto de Lei Ordinária nº 140 de 2026 - Acessibilidade",
     "link_detail_backend": "/materia/materiaassunto/487",
@@ -14,14 +22,6 @@
     "metadata": {},
     "assunto": 40,
     "materia": 22146
-  },
-  {
-    "id": 467,
-    "__str__": "Projeto de Lei Ordinária nº 107 de 2026 - Acessibilidade",
-    "link_detail_backend": "/materia/materiaassunto/467",
-    "metadata": {},
-    "assunto": 40,
-    "materia": 22145
   },
   {
     "id": 442,
@@ -542,14 +542,6 @@
     "metadata": {},
     "assunto": 1,
     "materia": 22811
-  },
-  {
-    "id": 499,
-    "__str__": "Projeto de Lei Ordinária nº 123 de 2026 - Calendário Oficial",
-    "link_detail_backend": "/materia/materiaassunto/499",
-    "metadata": {},
-    "assunto": 1,
-    "materia": 22467
   },
   {
     "id": 503,
@@ -1392,20 +1384,20 @@
     "materia": 20601
   },
   {
+    "id": 671,
+    "__str__": "Projeto de Lei Substitutivo nº 107 de 2026 - Desenvolvimento Urbano",
+    "link_detail_backend": "/materia/materiaassunto/671",
+    "metadata": {},
+    "assunto": 53,
+    "materia": 23158
+  },
+  {
     "id": 560,
     "__str__": "Projeto de Lei Ordinária nº 112 de 2026 - Desenvolvimento Urbano",
     "link_detail_backend": "/materia/materiaassunto/560",
     "metadata": {},
     "assunto": 53,
     "materia": 22175
-  },
-  {
-    "id": 565,
-    "__str__": "Projeto de Lei Ordinária nº 107 de 2026 - Desenvolvimento Urbano",
-    "link_detail_backend": "/materia/materiaassunto/565",
-    "metadata": {},
-    "assunto": 53,
-    "materia": 22145
   },
   {
     "id": 658,
@@ -3680,6 +3672,14 @@
     "materia": 22176
   },
   {
+    "id": 672,
+    "__str__": "Projeto de Lei Substitutivo nº 107 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/672",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 23158
+  },
+  {
     "id": 576,
     "__str__": "Projeto de Lei Substitutivo nº 96 de 2026 - Política Pública Social",
     "link_detail_backend": "/materia/materiaassunto/576",
@@ -3782,14 +3782,6 @@
     "metadata": {},
     "assunto": 43,
     "materia": 22146
-  },
-  {
-    "id": 566,
-    "__str__": "Projeto de Lei Ordinária nº 107 de 2026 - Política Pública Social",
-    "link_detail_backend": "/materia/materiaassunto/566",
-    "metadata": {},
-    "assunto": 43,
-    "materia": 22145
   },
   {
     "id": 573,
@@ -4392,14 +4384,6 @@
     "materia": 22701
   },
   {
-    "id": 500,
-    "__str__": "Projeto de Lei Ordinária nº 123 de 2026 - Saúde",
-    "link_detail_backend": "/materia/materiaassunto/500",
-    "metadata": {},
-    "assunto": 21,
-    "materia": 22467
-  },
-  {
     "id": 506,
     "__str__": "Projeto de Lei Ordinária nº 116 de 2026 - Saúde",
     "link_detail_backend": "/materia/materiaassunto/506",
@@ -4664,6 +4648,14 @@
     "materia": 8054
   },
   {
+    "id": 673,
+    "__str__": "Projeto de Lei Substitutivo nº 107 de 2026 - Social",
+    "link_detail_backend": "/materia/materiaassunto/673",
+    "metadata": {},
+    "assunto": 22,
+    "materia": 23158
+  },
+  {
     "id": 538,
     "__str__": "Projeto de Lei Ordinária nº 137 de 2026 - Social",
     "link_detail_backend": "/materia/materiaassunto/538",
@@ -4678,14 +4670,6 @@
     "metadata": {},
     "assunto": 22,
     "materia": 22175
-  },
-  {
-    "id": 468,
-    "__str__": "Projeto de Lei Ordinária nº 107 de 2026 - Social",
-    "link_detail_backend": "/materia/materiaassunto/468",
-    "metadata": {},
-    "assunto": 22,
-    "materia": 22145
   },
   {
     "id": 443,
