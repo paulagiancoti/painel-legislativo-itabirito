@@ -2,8 +2,9 @@ name: Atualizar dados SAPL
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # 06:00 UTC = 03:00 em Brasília
-  workflow_dispatch:        # permite rodar manualmente pelo GitHub também
+    # Roda à 1h UTC = 22h Brasília (véspera) — mesmo com atraso de horas, fica de madrugada
+    - cron: '0 1 * * *'
+  workflow_dispatch:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -15,6 +16,16 @@ jobs:
   atualizar:
     runs-on: ubuntu-latest
     steps:
+      - name: Verificar horário (protege horário comercial)
+        run: |
+          HORA_BRASILIA=$(TZ="America/Sao_Paulo" date +%H)
+          echo "Hora em Brasília: $HORA_BRASILIA"
+          if [ "$HORA_BRASILIA" -ge 7 ] && [ "$HORA_BRASILIA" -le 22 ]; then
+            echo "⛔ Horário comercial detectado ($HORA_BRASILIA h). Cancelando para não impactar o site."
+            exit 1
+          fi
+          echo "✓ Horário seguro ($HORA_BRASILIA h). Prosseguindo."
+
       - name: Baixar repositório
         uses: actions/checkout@v4
 
@@ -43,12 +54,12 @@ jobs:
               dados = json.load(open(arq))
               print(f'{arq}: {len(dados)} registros')
               if len(dados) == 0:
-                  print(f'AVISO: {arq} esta vazio - commit cancelado')
+                  print(f'ERRO: {arq} esta vazio - commit cancelado')
                   ok = False
           sys.exit(0 if ok else 1)
           EOF
 
-      - name: Commitar mudanças (se houver dados)
+      - name: Commitar mudanças (somente se dados válidos)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
