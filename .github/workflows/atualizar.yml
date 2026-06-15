@@ -2,8 +2,11 @@ name: Atualizar dados SAPL
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # 06:00 UTC = 03:00 em Brasília (horário fixo, sem DST)
+    - cron: '0 6 * * *'   # 06:00 UTC = 03:00 em Brasília
   workflow_dispatch:        # permite rodar manualmente pelo GitHub também
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 permissions:
   contents: write
@@ -26,10 +29,29 @@ jobs:
       - name: Rodar atualização
         run: python atualizar_dados.py
 
-      - name: Commitar mudanças (se houver)
+      - name: Verificar se dados foram coletados
+        run: |
+          python3 - << 'EOF'
+          import json, sys, os
+          arquivos = ['dados/materias.json', 'dados/normas.json', 'dados/assuntos.json']
+          ok = True
+          for arq in arquivos:
+              if not os.path.exists(arq):
+                  print(f'ERRO: {arq} nao encontrado')
+                  ok = False
+                  continue
+              dados = json.load(open(arq))
+              print(f'{arq}: {len(dados)} registros')
+              if len(dados) == 0:
+                  print(f'AVISO: {arq} esta vazio - commit cancelado')
+                  ok = False
+          sys.exit(0 if ok else 1)
+          EOF
+
+      - name: Commitar mudanças (se houver dados)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add dados/
-          git diff --staged --quiet || git commit -m "Atualização automática dos dados SAPL"
+          git diff --staged --quiet || git commit -m "Atualizacao automatica dos dados SAPL"
           git push
