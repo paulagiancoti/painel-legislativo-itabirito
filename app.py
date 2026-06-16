@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide"
 )
 
-@st.cache_data(ttl=3600)
+@st.cache_data(ttl=3600, show_spinner="⏳ Carregando dados do Painel Legislativo...")
 def carregar_dados():
     with open("dados/vereadores.json", encoding="utf-8") as f:
         vereadores = json.load(f)
