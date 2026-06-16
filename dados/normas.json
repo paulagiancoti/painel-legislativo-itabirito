@@ -1,5 +1,142 @@
 [
   {
+    "id": 4732,
+    "__str__": "Lei Ordinária Municipal nº 4.582, de 12 de junho de 2026",
+    "link_detail_backend": "/norma/4732",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-12T13:14:17-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4732/lei_4582.pdf",
+    "numero": "4582",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-12",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes gerais de incentivo ao fortalecimento comunitário e à cooperação\r\ninstitucional entre o Poder Público Municipal e entidades sem fins lucrativos, e dá outras\r\nprovidências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-16T08:08:24.773996-03:00",
+    "data_ultima_atualizacao": "2026-06-16T08:08:24.939682-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-16T08:06:06.450680-03:00",
+    "tipo": 1,
+    "materia": 22664,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
+    "autores": []
+  },
+  {
+    "id": 4731,
+    "__str__": "Lei Ordinária Municipal nº 4.581, de 12 de junho de 2026",
+    "link_detail_backend": "/norma/4731",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-12T13:16:10-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4731/lei_4581.pdf",
+    "numero": "4581",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-12",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Campanha “IPTU Premiado”, que institui premiação por adimplência, e dá outras\r\nprovidências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-16T08:05:50.191310-03:00",
+    "data_ultima_atualizacao": "2026-06-16T08:05:50.357705-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-16T08:03:39.288467-03:00",
+    "tipo": 1,
+    "materia": 22634,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      32
+    ],
+    "autores": []
+  },
+  {
+    "id": 4730,
+    "__str__": "Lei Ordinária Municipal nº 4.580, de 12 de junho de 2026",
+    "link_detail_backend": "/norma/4730",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-12T13:12:23-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4730/lei_4580.pdf",
+    "numero": "4580",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-12",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Autoriza o Poder Executivo Municipal a desafetar área pública localizada na Rua Miguel Ribeiro, Bairro Serra Azul, Itabirito/MG, e a permutá-la por área particular, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-16T08:03:18.897569-03:00",
+    "data_ultima_atualizacao": "2026-06-16T08:03:19.126422-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-16T08:00:16.737470-03:00",
+    "tipo": 1,
+    "materia": 22176,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
+    "autores": []
+  },
+  {
     "id": 4700,
     "__str__": "Lei Ordinária Municipal nº 4.579, de 10 de junho de 2026",
     "link_detail_backend": "/norma/4700",
