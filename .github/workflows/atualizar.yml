@@ -16,11 +16,15 @@ jobs:
   atualizar:
     runs-on: ubuntu-latest
     steps:
-      - name: Verificar horário (protege horário comercial)
+      - name: Verificar horário (protege horário comercial — apenas execução automática)
         run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "✓ Execução manual — proteção de horário ignorada."
+            exit 0
+          fi
           HORA_BRASILIA=$(TZ="America/Sao_Paulo" date +%H)
           echo "Hora em Brasília: $HORA_BRASILIA"
-          if [ "$HORA_BRASILIA" -ge 7 ] && [ "$HORA_BRASILIA" -le 22 ]; then
+          if [ "$HORA_BRASILIA" -ge 8 ] && [ "$HORA_BRASILIA" -le 23 ]; then
             echo "⛔ Horário comercial detectado ($HORA_BRASILIA h). Cancelando para não impactar o site."
             exit 1
           fi
