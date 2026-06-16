@@ -639,31 +639,21 @@ mapa_foto  = df_vereadores.set_index('nome_parlamentar')['fotografia'].fillna(''
 mapa_cargo = df_vereadores.set_index('nome_parlamentar')['cargo_mesa'].fillna('').to_dict()
 
 BASE_SAPL_URL = "https://sapl.itabirito.mg.leg.br"
-
-# Tipo de matéria no SAPL (sigla → id)
-TIPO_MATERIA_SAPL = {'PLO': 1}  # PLO = Projeto de Lei Ordinária, id=1 no SAPL de Itabirito
+TIPO_MATERIA_SAPL = {'PLO': 1}
 
 def url_sapl(ano=2026, autor_id=None, assunto_id=None, so_parlamentar=False, tipo_materia_id=None):
-    """Monta URL de pesquisa no SAPL com filtros opcionais."""
-    tipo_autor = "1" if so_parlamentar else ""  # 1 = Parlamentar
-    tipo_mat   = str(tipo_materia_id) if tipo_materia_id else ""
-    url = (
-        f"{BASE_SAPL_URL}/materia/pesquisar-materia"
-        f"?tipo={tipo_mat}&ementa=&numero=&numeracao__numero_materia="
-        f"&numero_protocolo=&autoria__primeiro_autor=unknown"
-        f"&autoria__autor__tipo={tipo_autor}"
-        f"&autoria__autor__parlamentar_set__filiacao__partido=&o="
-        f"&tipo_listagem=1&tipo_origem_externa=&numero_origem_externa=&ano_origem_externa="
-        f"&data_origem_externa_0=&data_origem_externa_1=&local_origem_externa="
-        f"&data_apresentacao_0=&data_apresentacao_1=&data_publicacao_0=&data_publicacao_1="
-        f"&relatoria__parlamentar_id=&em_tramitacao=&tramitacao__unidade_tramitacao_destino="
-        f"&tramitacao__status=&indexacao=&regime_tramitacao=&salvar=Pesquisar"
-        f"&ano={ano}"
-    )
+    """Monta URL curta de pesquisa no SAPL com apenas os filtros necessários."""
+    params = {"salvar": "Pesquisar", "ano": ano}
     if autor_id:
-        url += f"&autoria__autor={autor_id}"
-    url += f"&materiaassunto__assunto={assunto_id if assunto_id else ''}"
-    return url
+        params["autoria__autor"] = autor_id
+    if tipo_materia_id:
+        params["tipo"] = tipo_materia_id
+    if assunto_id:
+        params["materiaassunto__assunto"] = assunto_id
+    if so_parlamentar:
+        params["autoria__autor__tipo"] = 1
+    query = "&".join(f"{k}={v}" for k, v in params.items())
+    return f"{BASE_SAPL_URL}/materia/pesquisar-materia?{query}"
 
 def foto_html(nome, foto_url, size=80):
     if foto_url:
