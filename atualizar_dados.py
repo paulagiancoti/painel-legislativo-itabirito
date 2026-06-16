@@ -123,3 +123,12 @@ for arq in ["materias.json", "materias_historico.json", "normas.json",
         print(f"  {arq}: {len(d)} registros")
     else:
         print(f"  {arq}: arquivo não encontrado")
+
+# ─── TIMESTAMP DA ATUALIZAÇÃO ─────────────────────────────────────────────────
+# Grava horário de Brasília para exibição no painel
+from datetime import datetime, timezone, timedelta
+fuso = timezone(timedelta(hours=-3))
+agora = datetime.now(tz=fuso).strftime("%d/%m/%Y às %H:%M")
+with open("dados/ultima_atualizacao.json", "w", encoding="utf-8") as f:
+    json.dump({"data_hora": agora}, f, ensure_ascii=False)
+print(f"\n  Timestamp gravado: {agora}")
