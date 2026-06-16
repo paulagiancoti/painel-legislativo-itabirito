@@ -369,14 +369,25 @@ st.caption("ℹ️ PLS e PLS2 são substitutivos de PLOs e não contam como proj
 # ─── DATA DA ÚLTIMA ATUALIZAÇÃO ─────────────────────────────────────────────────
 import datetime
 try:
-    ultima_atualizacao = max(
-        os.path.getmtime(f"dados/{arq}")
-        for arq in ["materias.json", "normas.json", "assuntos.json", "materiaassuntos.json", "vereadores.json"]
-        if os.path.exists(f"dados/{arq}")
-    )
-    fuso_brasilia = datetime.timezone(datetime.timedelta(hours=-3))
-    data_fmt = datetime.datetime.fromtimestamp(ultima_atualizacao, tz=fuso_brasilia).strftime("%d/%m/%Y às %H:%M")
-    st.caption(f"🔄 Última atualização dos dados: {data_fmt}")
+    try:
+        import json as _json
+        _ts = _json.load(open("dados/ultima_atualizacao.json", encoding="utf-8"))
+        data_fmt = _ts.get("data_hora", "desconhecida")
+        st.caption(f"🔄 Última atualização dos dados: {data_fmt}")
+    except Exception:
+        # fallback para getmtime se o arquivo não existir
+        try:
+            import datetime
+            ultima_atualizacao = max(
+                os.path.getmtime(f"dados/{arq}")
+                for arq in ["materias.json", "normas.json", "assuntos.json", "materiaassuntos.json", "vereadores.json"]
+                if os.path.exists(f"dados/{arq}")
+            )
+            fuso_brasilia = datetime.timezone(datetime.timedelta(hours=-3))
+            data_fmt = datetime.datetime.fromtimestamp(ultima_atualizacao, tz=fuso_brasilia).strftime("%d/%m/%Y às %H:%M")
+            st.caption(f"🔄 Última atualização dos dados: {data_fmt}")
+        except Exception:
+            pass
 except Exception:
     pass
 
