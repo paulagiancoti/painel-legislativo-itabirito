@@ -8,7 +8,14 @@ import time
 sys.stdout.reconfigure(line_buffering=True)
 from datetime import datetime, timezone, timedelta
 
+# ╔══════════════════════════════════════════════════════════════════╗
+# ║  PERSONALIZAÇÃO — ajuste estas variáveis para outra Casa        ║
+# ╚══════════════════════════════════════════════════════════════════╝
+
+# URL do SAPL da sua Casa Legislativa
 BASE_URL = "https://sapl.itabirito.mg.leg.br"
+# Anos a coletar. Adicione anos anteriores para ter histórico completo.
+# Quanto mais anos, mais lenta a coleta — avalie o necessário.
 ANOS     = [2025, 2026]
 FUSO     = timezone(timedelta(hours=-3))
 
@@ -160,6 +167,7 @@ print(f"  Leis Ordinárias existentes (tipo 1): {total_leis_anterior}")
 novas_normas = coletar_paginado("/api/norma/normajuridica/?format=json&ano=2026")
 if novas_normas:
     merged_normas = merge_por_id(existentes_normas, novas_normas)
+    # PERSONALIZAÇÃO: mesmo ID de lei ordinária acima
     total_leis_novo = sum(
         1 for n in merged_normas
         if n.get("tipo") == 1 or (isinstance(n.get("tipo"), dict) and n["tipo"].get("id") == 1)
