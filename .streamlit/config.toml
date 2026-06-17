@@ -1,2 +1,5 @@
 [theme]
 font = "sans serif"
+
+[server]
+enableStaticServing = true
