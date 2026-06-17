@@ -10,6 +10,11 @@ import json
 import os
 import time
 
+# ╔══════════════════════════════════════════════════════════════════╗
+# ║  PERSONALIZAÇÃO — ajuste estas variáveis para outra Casa        ║
+# ╚══════════════════════════════════════════════════════════════════╝
+
+# URL do SAPL da sua Casa Legislativa
 BASE_URL = "https://sapl.itabirito.mg.leg.br"
 
 def coletar_todas_paginas(endpoint):
@@ -80,7 +85,10 @@ salvar_json("autores.json", autores)
 
 print("\n[3/3] Coletando mesa diretora...")
 # IMPORTANTE: ajuste o ID da composição da mesa atual conforme o ano/legislatura
-MESA_DIRETORA_ID = 49  # "2026 Atual" — confirme em /api/parlamentares/composicaomesa/
+# ID da composição de mesa diretora ativa. Consulte o ID correto em:
+# <BASE_URL>/api/parlamentares/composicaomesa/?format=json
+# Procure a entrada com a legislatura/ano atual e copie o campo "id" da mesa_diretora.
+MESA_DIRETORA_ID = 49  # Itabirito 2026 — altere conforme sua Casa
 try:
     url = f"{BASE_URL}/api/parlamentares/composicaomesa/?format=json&mesa_diretora={MESA_DIRETORA_ID}"
     resposta = requests.get(url, timeout=30)
