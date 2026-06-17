@@ -1,7 +1,11 @@
 import requests
 import json
 import os
+import sys
 import time
+
+# Garante saída imediata nos logs do GitHub Actions
+sys.stdout.reconfigure(line_buffering=True)
 from datetime import datetime, timezone, timedelta
 
 BASE_URL = "https://sapl.itabirito.mg.leg.br"
@@ -22,10 +26,10 @@ HEADERS = {
 
 # ─── HELPERS ──────────────────────────────────────────────────────────────────
 
-def get_json(url, tentativas=3, espera=5):
+def get_json(url, tentativas=2, espera=3):
     for i in range(tentativas):
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=90)
+            resp = requests.get(url, headers=HEADERS, timeout=(15, 60))
             if resp.status_code == 200 and resp.text.strip():
                 return resp.json()
             print(f"    HTTP {resp.status_code} — tentativa {i+1}/{tentativas}")
