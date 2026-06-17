@@ -635,7 +635,17 @@ if partes:
 
 # ─── HELPERS ───────────────────────────────────────────────────────────────────
 
-mapa_foto  = df_vereadores.set_index('nome_parlamentar')['fotografia'].fillna('').to_dict()
+def foto_local_ou_sapl(vid, foto_sapl):
+    """Retorna caminho local se existir, senão URL do SAPL."""
+    caminho = f"static/fotos/{vid}.jpg"
+    if os.path.exists(caminho):
+        return caminho
+    return foto_sapl or ''
+
+mapa_foto = {
+    row['nome_parlamentar']: foto_local_ou_sapl(row['id'], row['fotografia'])
+    for _, row in df_vereadores.iterrows()
+}
 mapa_cargo = df_vereadores.set_index('nome_parlamentar')['cargo_mesa'].fillna('').to_dict()
 
 BASE_SAPL_URL = "https://sapl.itabirito.mg.leg.br"
