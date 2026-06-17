@@ -1,7 +1,8 @@
 # Painel Legislativo — Itabirito — Guia de Publicação e Manutenção
 
 Este guia cobre desde a publicação inicial até a manutenção completa do painel,
-incluindo como realizar todas as tarefas **sem depender de um computador pessoal**,
+incluindo como realizar todas as tarefas **sem depender de um ambiente de desenvolvimento local**
+(como VS Code ou Python instalados no computador),
 usando apenas o navegador.
 
 ## Arquivos do projeto
