@@ -11,8 +11,10 @@ st.set_page_config(
     layout="wide"
 )
 
-@st.cache_data(ttl=3600, show_spinner="⏳ Carregando dados do Painel Legislativo...")
-def carregar_dados():
+@st.cache_data(show_spinner="⏳ Carregando dados do Painel Legislativo...")
+def carregar_dados(ultima_atualizacao=""):
+    """O parâmetro ultima_atualizacao serve como chave de cache:
+    quando os dados são atualizados, o timestamp muda e o cache é invalidado automaticamente."""
     with open("dados/vereadores.json", encoding="utf-8") as f:
         vereadores = json.load(f)
     with open("dados/mesa_diretora.json", encoding="utf-8") as f:
@@ -314,7 +316,12 @@ def carregar_dados():
     return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id
 
 
-df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id = carregar_dados()
+try:
+    _ts = json.load(open("dados/ultima_atualizacao.json", encoding="utf-8")).get("data_hora", "")
+except Exception:
+    _ts = ""
+
+df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id = carregar_dados(_ts)
 
 # ID do parlamentar no SAPL → para URL /parlamentar/<id>
 mapa_parlamentar_id = df_vereadores.set_index('nome_parlamentar')['id'].to_dict()
