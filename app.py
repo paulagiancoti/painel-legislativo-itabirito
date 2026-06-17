@@ -635,17 +635,28 @@ if partes:
 
 # ─── HELPERS ───────────────────────────────────────────────────────────────────
 
-def foto_local_ou_sapl(vid, foto_sapl):
-    """Retorna URL da foto local (via static serving) se existir, senão URL do SAPL."""
-    caminho = f"static/fotos/{vid}.jpg"
-    if os.path.exists(caminho):
-        return f"/app/static/fotos/{vid}.jpg"  # URL servida pelo Streamlit static server
-    return foto_sapl or ''
+@st.cache_data
+def carregar_fotos():
+    """Carrega fotos locais como base64 (sem depender de URL do servidor).
+    Fallback para URL do SAPL se o arquivo local não existir."""
+    import base64
+    fotos = {}
+    for _, row in df_vereadores.iterrows():
+        vid  = row['id']
+        nome = row['nome_parlamentar']
+        caminho = f"static/fotos/{vid}.jpg"
+        if os.path.exists(caminho):
+            try:
+                with open(caminho, "rb") as f:
+                    data = base64.b64encode(f.read()).decode()
+                fotos[nome] = f"data:image/jpeg;base64,{data}"
+            except Exception:
+                fotos[nome] = row.get('fotografia', '') or ''
+        else:
+            fotos[nome] = row.get('fotografia', '') or ''
+    return fotos
 
-mapa_foto = {
-    row['nome_parlamentar']: foto_local_ou_sapl(row['id'], row['fotografia'])
-    for _, row in df_vereadores.iterrows()
-}
+mapa_foto = carregar_fotos()
 mapa_cargo = df_vereadores.set_index('nome_parlamentar')['cargo_mesa'].fillna('').to_dict()
 
 BASE_SAPL_URL = "https://sapl.itabirito.mg.leg.br"
