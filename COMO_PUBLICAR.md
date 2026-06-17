@@ -310,3 +310,158 @@ Fotos dos vereadores
 | Cache desatualizado | Não deve ocorrer | O timestamp invalida o cache automaticamente |
 | E-mail de falha | Coleta falhou no SAPL | Dados anteriores preservados; rodar manual |
 | Streamlit dormindo | Pouco tráfego | Aceitar ou configurar Playwright (avançado) |
+
+---
+
+## ADAPTAÇÃO PARA OUTRAS CASAS LEGISLATIVAS
+
+Este projeto foi desenvolvido para a Câmara Municipal de Itabirito (MG),
+mas pode ser adaptado para qualquer Casa que use o SAPL (Interlegis).
+Abaixo estão todos os pontos que precisam ser ajustados.
+
+> **Atenção:** os comentários `# PERSONALIZAÇÃO:` marcam exatamente os
+> trechos a alterar nos arquivos de código.
+
+---
+
+### 1. URL do SAPL
+
+Em **todos os três scripts** (`app.py`, `atualizar_dados.py`, `coletar_dados_iniciais.py`),
+troque a URL base:
+
+```python
+BASE_URL = "https://sapl.itabirito.mg.leg.br"
+# → substitua pela URL do SAPL da sua Casa
+```
+
+---
+
+### 2. Anos a coletar
+
+Em `atualizar_dados.py`:
+
+```python
+ANOS = [2025, 2026]
+# → inclua os anos que quiser exibir no painel
+```
+
+Em `app.py`, o filtro `str(m.get("ano")) == "2026"` para `materias.json`
+também precisa ser ajustado se quiser outro ano principal de exibição.
+
+---
+
+### 3. ID da mesa diretora
+
+Em `coletar_dados_iniciais.py`:
+
+```python
+MESA_DIRETORA_ID = 49  # Itabirito 2026
+```
+
+Consulte o ID correto em:
+```
+<URL do SAPL>/api/parlamentares/composicaomesa/?format=json
+```
+Procure a entrada da mesa diretora atual e copie o campo `"id"` de `"mesa_diretora"`.
+
+---
+
+### 4. Siglas dos tipos de matéria
+
+Em `app.py`, todas as referências a `'PLO'`, `'PLS'`, `'PLS2'` assumem que
+sua Casa usa essas siglas para Projeto de Lei Ordinária e seus substitutivos.
+
+Verifique as siglas da sua Casa em:
+```
+<URL do SAPL>/api/materia/tipomateria/?format=json
+```
+
+Substitua as siglas em todos os trechos marcados com `# PERSONALIZAÇÃO: siglas`.
+
+---
+
+### 5. ID do tipo "Projeto de Lei Ordinária" nos links para o SAPL
+
+Em `app.py`:
+
+```python
+TIPO_MATERIA_SAPL = {'PLO': 1}
+# → ID 1 = PLO no SAPL de Itabirito
+```
+
+Confirme o ID em:
+```
+<URL do SAPL>/api/materia/tipomateria/?format=json
+```
+
+---
+
+### 6. Tipos de autor
+
+O SAPL tem tipos de autor **fixos** (iguais em qualquer instalação) e tipos
+**criados por cada Casa**. Os fixos são:
+
+| ID | Tipo |
+|---|---|
+| 1 | Parlamentar |
+| 2 | Comissão |
+| 3 | Bancada |
+| 4 | Externo |
+| 5 | Frente |
+| 6 | Bloco |
+| 7 | Órgão |
+
+A partir do ID 8, cada Casa cria os seus próprios. Em Itabirito,
+`8 = Chefe do Poder Executivo Municipal`.
+
+Em `app.py`, o `MAPA_TIPO_AUTOR` mapeia esses IDs para nomes legíveis.
+Verifique os tipos da sua Casa em:
+```
+<URL do SAPL>/api/base/tipodeautor/?format=json
+```
+
+> **Atenção:** alguns SAPLs têm tipos duplicados criados por engano (ex:
+> um "Vereador" além do "Parlamentar" padrão). Isso pode fazer matérias
+> aparecerem com tipo "Desconhecido" no painel — basta adicionar o ID
+> ao `MAPA_TIPO_AUTOR`.
+
+---
+
+### 7. ID do tipo "Lei Ordinária" na validação de normas
+
+Em `atualizar_dados.py`, a validação de normas monitora se o número de
+**Leis Ordinárias** diminuiu (o que indicaria exclusão indevida):
+
+```python
+if n.get("tipo") == 1  # ID 1 = Lei Ordinária em Itabirito
+```
+
+Verifique o ID correto em:
+```
+<URL do SAPL>/api/norma/tiponorma/?format=json
+```
+
+---
+
+### 8. Nome e links do painel
+
+Em `app.py`, troque o nome da Casa e os links:
+
+```python
+# Título do painel
+'🏛️ Painel Legislativo — Câmara Municipal de Itabirito ↗'
+
+# Link para o Streamlit Cloud
+'https://painel-legislativo-itabirito.streamlit.app/'
+```
+
+---
+
+### 9. Conceito PLO → PLS → PLS2
+
+A lógica de "projeto de lei que virou substitutivo" é específica de como
+Itabirito registra suas matérias: quando um PLO recebe emenda substitutiva,
+entra um PLS com o mesmo número. Isso pode não se aplicar a todas as Casas.
+
+Se sua Casa não usar essa nomenclatura, a aba "Aprovação de PLOs" pode não
+funcionar corretamente — entre em contato para avaliar a adaptação.
