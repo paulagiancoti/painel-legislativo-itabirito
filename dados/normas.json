@@ -3815,5 +3815,52 @@
       31
     ],
     "autores": []
+  },
+  {
+    "id": 4745,
+    "__str__": "Lei Ordinária Municipal nº 4.583, de 15 de junho de 2026",
+    "link_detail_backend": "/norma/4745",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-15T15:11:18-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4745/lei_4583.pdf",
+    "numero": "4583",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-15",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Autoriza a abertura de Crédito Especial no orçamento vigente da Prefeitura Municipal de\r\nItabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-17T08:28:52.887140-03:00",
+    "data_ultima_atualizacao": "2026-06-17T08:28:53.050767-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-17T08:26:33.030788-03:00",
+    "tipo": 1,
+    "materia": 22787,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      17
+    ],
+    "autores": []
   }
 ]
