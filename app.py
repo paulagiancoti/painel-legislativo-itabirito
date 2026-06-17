@@ -636,10 +636,10 @@ if partes:
 # ─── HELPERS ───────────────────────────────────────────────────────────────────
 
 def foto_local_ou_sapl(vid, foto_sapl):
-    """Retorna caminho local se existir, senão URL do SAPL."""
+    """Retorna URL da foto local (via static serving) se existir, senão URL do SAPL."""
     caminho = f"static/fotos/{vid}.jpg"
     if os.path.exists(caminho):
-        return caminho
+        return f"/app/static/fotos/{vid}.jpg"  # URL servida pelo Streamlit static server
     return foto_sapl or ''
 
 mapa_foto = {
