@@ -34,6 +34,16 @@ def carregar_dados(ultima_atualizacao=""):
         materiaassuntos = json.load(f)
 
     df_vereadores    = pd.DataFrame(vereadores)[['id', 'nome_completo', 'nome_parlamentar', 'fotografia']]
+    # ╔══════════════════════════════════════════════════════════════════╗
+    # ║  PERSONALIZAÇÃO — ajuste conforme os tipos de autor da sua Casa  ║
+    # ╚══════════════════════════════════════════════════════════════════╝
+    # Os IDs 1-7 são tipos fixos do SAPL (iguais em qualquer instalação):
+    #   1=Parlamentar, 2=Comissão, 3=Bancada, 4=Externo,
+    #   5=Frente, 6=Bloco, 7=Órgão
+    # A partir do ID 8 são tipos criados por cada Casa — verifique em:
+    # <BASE_SAPL_URL>/api/base/tipodeautor/?format=json
+    # No SAPL de Itabirito: 8=Chefe do Executivo (tipo local da Casa)
+    # Em outras Casas, "Chefe do Executivo" pode ter outro ID ou nome diferente.
     MAPA_TIPO_AUTOR = {
         1: 'Parlamentar', 2: 'Comissão', 3: 'Bancada', 4: 'Externo',
         5: 'Frente', 6: 'Bloco', 7: 'Órgão', 8: 'Chefe do Executivo',
@@ -42,6 +52,8 @@ def carregar_dados(ultima_atualizacao=""):
     df_autores['tipo_descricao'] = df_autores['tipo'].map(MAPA_TIPO_AUTOR).fillna('Desconhecido')
 
     # nome do parlamentar → id de Autor no SAPL (para montar links de pesquisa)
+    # PERSONALIZAÇÃO: tipo == 1 filtra apenas "Parlamentar" (fixo no SAPL).
+    # Se sua Casa usar tipo diferente para vereadores, ajuste aqui.
     mapa_autor_id = (
         df_autores[df_autores['tipo'] == 1]
         .set_index('nome')['id'].to_dict()
@@ -93,6 +105,9 @@ def carregar_dados(ultima_atualizacao=""):
     mapa_id_numero = {
         str(row['id']): int(row['numero'])
         for _, row in df_materias.iterrows()
+        # PERSONALIZAÇÃO: siglas dos tipos de matéria da sua Casa.
+        # PLO=Projeto de Lei Ordinária, PLS=Substitutivo, PLS2=2º Substitutivo.
+        # Verifique as siglas em /api/materia/tipomateria/?format=json
         if row['tipo__sigla'] in ('PLO', 'PLS', 'PLS2')
     }
     assuntos_por_numero = defaultdict(set)
@@ -329,9 +344,11 @@ mapa_parlamentar_id = df_vereadores.set_index('nome_parlamentar')['id'].to_dict(
 # ─── CABEÇALHO ─────────────────────────────────────────────────────────────────
 
 st.markdown(
+    # PERSONALIZAÇÃO: URL do seu app no Streamlit Cloud
     '## <a href="https://painel-legislativo-itabirito.streamlit.app/" '
     'target="_blank" style="text-decoration:none;color:inherit" '
     'title="Abrir versão completa no Streamlit">'
+    # PERSONALIZAÇÃO: nome da sua Casa no título do painel
     '🏛️ Painel Legislativo — Câmara Municipal de Itabirito ↗</a>',
     unsafe_allow_html=True
 )
@@ -666,9 +683,20 @@ def carregar_fotos():
 mapa_foto = carregar_fotos()
 mapa_cargo = df_vereadores.set_index('nome_parlamentar')['cargo_mesa'].fillna('').to_dict()
 
+# ╔══════════════════════════════════════════════════════════════════╗
+# ║  PERSONALIZAÇÃO — URLs e IDs de tipos de matéria                ║
+# ╚══════════════════════════════════════════════════════════════════╝
+
+# URL do SAPL da sua Casa
 BASE_SAPL_URL = "https://sapl.itabirito.mg.leg.br"
+
+# ID do tipo "Projeto de Lei Ordinária" no SAPL.
+# Verifique em <BASE_SAPL_URL>/api/materia/tipomateria/?format=json
+# No SAPL de Itabirito, PLO = ID 1. Pode ser diferente em outras Casas.
 TIPO_MATERIA_SAPL = {'PLO': 1}
 
+# PERSONALIZAÇÃO: o padrão ano=2026 nas URLs de pesquisa.
+# Se adaptar para múltiplos anos, o ano virá do contexto de cada chamada.
 def url_sapl(ano=2026, autor_id=None, assunto_id=None, so_parlamentar=False, tipo_materia_id=None):
     """Monta URL curta de pesquisa no SAPL com apenas os filtros necessários."""
     params = {"salvar": "Pesquisar", "ano": ano}
