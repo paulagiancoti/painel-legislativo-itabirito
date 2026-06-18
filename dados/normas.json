@@ -3862,5 +3862,52 @@
       17
     ],
     "autores": []
+  },
+  {
+    "id": 4770,
+    "__str__": "Lei Ordinária Municipal nº 4.584, de 16 de junho de 2026",
+    "link_detail_backend": "/norma/4770",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-16T16:55:01-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4770/lei_4584.pdf",
+    "numero": "4584",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Altera o Anexo III da Lei nº 4506, de 22 de dezembro de 2025, que dispõe sobre a concessão de Subvenções Econômicas, Auxílios Financeiros, Subvenções Sociais e Contribuições ao Terceiro Setor para o Exercício Financeiro de 2026.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-18T10:56:28.329411-03:00",
+    "data_ultima_atualizacao": "2026-06-18T10:56:28.355730-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-18T10:56:27.748187-03:00",
+    "tipo": 1,
+    "materia": 22759,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      13
+    ],
+    "autores": []
   }
 ]

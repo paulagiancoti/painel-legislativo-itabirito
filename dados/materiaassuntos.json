@@ -112,6 +112,14 @@
     "materia": 20832
   },
   {
+    "id": 679,
+    "__str__": "Projeto de Lei Ordinária nº 160 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/679",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23249
+  },
+  {
     "id": 663,
     "__str__": "Projeto de Lei Ordinária nº 155 de 2026 - Administração Pública",
     "link_detail_backend": "/materia/materiaassunto/663",
@@ -848,6 +856,14 @@
     "materia": 21508
   },
   {
+    "id": 678,
+    "__str__": "Projeto de Lei Ordinária nº 160 de 2026 - Comunicação",
+    "link_detail_backend": "/materia/materiaassunto/678",
+    "metadata": {},
+    "assunto": 3,
+    "materia": 23249
+  },
+  {
     "id": 521,
     "__str__": "Projeto de Lei Ordinária nº 73 de 2026 - Comunicação",
     "link_detail_backend": "/materia/materiaassunto/521",
@@ -1030,6 +1046,14 @@
     "metadata": {},
     "assunto": 28,
     "materia": 22073
+  },
+  {
+    "id": 674,
+    "__str__": "Projeto de Lei Ordinária nº 159 de 2026 - Defesa e Segurança",
+    "link_detail_backend": "/materia/materiaassunto/674",
+    "metadata": {},
+    "assunto": 28,
+    "materia": 23234
   },
   {
     "id": 533,
@@ -1680,6 +1704,14 @@
     "materia": 7793
   },
   {
+    "id": 681,
+    "__str__": "Projeto de Lei Ordinária nº 161 de 2026 - Esporte",
+    "link_detail_backend": "/materia/materiaassunto/681",
+    "metadata": {},
+    "assunto": 11,
+    "materia": 23282
+  },
+  {
     "id": 441,
     "__str__": "Projeto de Lei Ordinária nº 95 de 2026 - Esporte",
     "link_detail_backend": "/materia/materiaassunto/441",
@@ -2014,6 +2046,14 @@
     "metadata": {},
     "assunto": 29,
     "materia": 22341
+  },
+  {
+    "id": 675,
+    "__str__": "Projeto de Lei Ordinária nº 159 de 2026 - Fiscalização",
+    "link_detail_backend": "/materia/materiaassunto/675",
+    "metadata": {},
+    "assunto": 29,
+    "materia": 23234
   },
   {
     "id": 574,
@@ -3200,6 +3240,14 @@
     "materia": 22341
   },
   {
+    "id": 676,
+    "__str__": "Projeto de Lei Ordinária nº 159 de 2026 - Lazer",
+    "link_detail_backend": "/materia/materiaassunto/676",
+    "metadata": {},
+    "assunto": 14,
+    "materia": 23234
+  },
+  {
     "id": 470,
     "__str__": "Projeto de Lei Ordinária nº 108 de 2026 - Lazer",
     "link_detail_backend": "/materia/materiaassunto/470",
@@ -4032,6 +4080,14 @@
     "materia": 22073
   },
   {
+    "id": 680,
+    "__str__": "Projeto de Lei Ordinária nº 161 de 2026 - Programa",
+    "link_detail_backend": "/materia/materiaassunto/680",
+    "metadata": {},
+    "assunto": 27,
+    "materia": 23282
+  },
+  {
     "id": 452,
     "__str__": "Projeto de Lei Ordinária nº 103 de 2026 - Programa",
     "link_detail_backend": "/materia/materiaassunto/452",
@@ -4766,6 +4822,14 @@
     "metadata": {},
     "assunto": 23,
     "materia": 20624
+  },
+  {
+    "id": 677,
+    "__str__": "Projeto de Lei Ordinária nº 160 de 2026 - Transparência",
+    "link_detail_backend": "/materia/materiaassunto/677",
+    "metadata": {},
+    "assunto": 50,
+    "materia": 23249
   },
   {
     "id": 489,
