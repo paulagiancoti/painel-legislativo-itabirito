@@ -8,7 +8,11 @@ sem precisar esperar a coleta de matérias, normas e assuntos.
 import requests
 import json
 import os
+import sys
 import time
+
+# Garante saída imediata nos logs do GitHub Actions
+sys.stdout.reconfigure(line_buffering=True)
 
 BASE_URL = "https://sapl.itabirito.mg.leg.br"
 
@@ -115,8 +119,10 @@ else:
 # ─── TIPOS DE MATÉRIA ─────────────────────────────────────────────────────────
 
 print("\n[2] Tentando coletar tipos de matéria...")
-# PERSONALIZAÇÃO: endpoint de tipo de matéria — tente as variações abaixo.
+# PERSONALIZAÇÃO: endpoint de tipo de matéria.
+# Itabirito usa tipomaterialegislativa — outras instalações podem variar.
 ENDPOINTS_TIPOMATERIA = [
+    "/api/materia/tipomaterialegislativa/?format=json",   # ← correto para Itabirito
     "/api/materia/tipomateria/?format=json",
     "/api/materia/tipo/?format=json",
 ]
