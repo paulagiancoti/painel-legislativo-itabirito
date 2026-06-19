@@ -215,7 +215,7 @@ else:
 # ─── 6. COMISSÕES ─────────────────────────────────────────────────────────────
 
 print("\n[6/6] Coletando comissões...")
-comissoes = coletar_paginado("/api/comissao/comissao/?format=json")
+comissoes = coletar_paginado("/api/comissoes/comissao/?format=json")  # PERSONALIZAÇÃO: verifique o endpoint
 if comissoes:
     salvar_json("comissoes.json", comissoes)
 else:
