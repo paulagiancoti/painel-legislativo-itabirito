@@ -81,10 +81,11 @@ def salvar_json(nome, dados):
 # PERSONALIZAÇÃO: tente os endpoints abaixo em ordem até um funcionar
 
 print("\n[1] Tentando coletar comissões...")
+# PERSONALIZAÇÃO: endpoint confirmado para Itabirito é /api/comissoes/comissao/
+# Para outras instalações, tente as variações abaixo em ordem.
 ENDPOINTS_COMISSAO = [
+    "/api/comissoes/comissao/?format=json",   # ← correto para Itabirito
     "/api/comissao/comissao/?format=json",
-    "/api/comissoes/comissao/?format=json",
-    "/comissao/comissao/?format=json",
     "/api/comissao/?format=json",
 ]
 
@@ -114,10 +115,10 @@ else:
 # ─── TIPOS DE MATÉRIA ─────────────────────────────────────────────────────────
 
 print("\n[2] Tentando coletar tipos de matéria...")
+# PERSONALIZAÇÃO: endpoint de tipo de matéria — tente as variações abaixo.
 ENDPOINTS_TIPOMATERIA = [
     "/api/materia/tipomateria/?format=json",
     "/api/materia/tipo/?format=json",
-    "/api/materia/tipos/?format=json",
 ]
 
 tipomaterias = []
