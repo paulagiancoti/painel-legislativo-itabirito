@@ -203,12 +203,27 @@ else:
 
 print("\n[5/6] Coletando relatorias...")
 existentes_rel = carregar_existente("relatorias.json")
-print(f"  Relatorias existentes: {len(existentes_rel)}, maior ID={max((r['id'] for r in existentes_rel), default=0)}")
-novas_rel = coletar_paginado("/api/materia/relatoria/?format=json")
+max_id_rel = max((r["id"] for r in existentes_rel), default=0)
+print(f"  Relatorias existentes: {len(existentes_rel)}, maior ID={max_id_rel}")
+
+if max_id_rel > 0:
+    # Baixa apenas relatorias com ID maior que o já armazenado.
+    # Matérias antigas podem receber relator novo a qualquer momento —
+    # o ID da RELATORIA é sempre novo, então filtrar por id__gt é seguro.
+    endpoint_rel = f"/api/materia/relatoria/?format=json&id__gt={max_id_rel}"
+    print(f"  Buscando apenas novas (id > {max_id_rel})...")
+else:
+    endpoint_rel = "/api/materia/relatoria/?format=json"
+    print("  Primeira coleta — baixando todas...")
+
+novas_rel = coletar_paginado(endpoint_rel)
 if novas_rel:
     merged_rel = merge_por_id(existentes_rel, novas_rel)
+    print(f"  {len(novas_rel)} nova(s) relatoria(s) encontrada(s)")
     salvar_json("relatorias.json", merged_rel)
-    print(f"  Após merge: {len(merged_rel)} relatorias")
+    print(f"  Total após merge: {len(merged_rel)} relatorias")
+elif max_id_rel > 0:
+    print("  Nenhuma relatoria nova — dados anteriores mantidos")
 else:
     alertar("Nenhuma relatoria coletada — mantendo dados anteriores")
 
