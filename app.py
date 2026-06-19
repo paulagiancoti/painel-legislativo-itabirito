@@ -32,6 +32,15 @@ def carregar_dados(ultima_atualizacao=""):
         assuntos = json.load(f)
     with open("dados/materiaassuntos.json", encoding="utf-8") as f:
         materiaassuntos = json.load(f)
+    # Relatorias e comissões — opcionais (arquivo pode não existir ainda)
+    relatorias_raw = []
+    if os.path.exists("dados/relatorias.json"):
+        with open("dados/relatorias.json", encoding="utf-8") as f:
+            relatorias_raw = json.load(f)
+    comissoes_raw = []
+    if os.path.exists("dados/comissoes.json"):
+        with open("dados/comissoes.json", encoding="utf-8") as f:
+            comissoes_raw = json.load(f)
 
     df_vereadores    = pd.DataFrame(vereadores)[['id', 'nome_completo', 'nome_parlamentar', 'fotografia']]
     # ╔══════════════════════════════════════════════════════════════════╗
@@ -328,7 +337,29 @@ def carregar_dados(ultima_atualizacao=""):
     )
     df_ass['virou_lei'] = df_ass['materia_id'].astype(str).isin(plos_lei_set)
 
-    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id
+    # Processa relatorias
+    mapa_comissao = {str(c['id']): c.get('nome', f"Comissão {c['id']}") for c in comissoes_raw}
+    mapa_materia  = {str(m['id']): m for m in materias_hist}
+    linhas_rel = []
+    for r in relatorias_raw:
+        mid  = str(r.get('materia', ''))
+        mat  = mapa_materia.get(mid, {})
+        linhas_rel.append({
+            'rel_id':       r['id'],
+            'parlamentar':  r.get('parlamentar'),
+            'materia_id':   r.get('materia'),
+            'comissao_id':  r.get('comissao'),
+            'comissao':     mapa_comissao.get(str(r.get('comissao', '')), '—'),
+            'tipo_sigla':   mat.get('tipo__sigla', ''),
+            'numero':       mat.get('numero', ''),
+            'ano':          mat.get('ano', ''),
+            'ementa':       mat.get('ementa', ''),
+        })
+    df_rel = pd.DataFrame(linhas_rel) if linhas_rel else pd.DataFrame(
+        columns=['rel_id','parlamentar','materia_id','comissao_id','comissao',
+                 'tipo_sigla','numero','ano','ementa'])
+
+    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_rel
 
 
 try:
@@ -336,7 +367,7 @@ try:
 except Exception:
     _ts = ""
 
-df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id = carregar_dados(_ts)
+df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_relatorias = carregar_dados(_ts)
 
 # ID do parlamentar no SAPL → para URL /parlamentar/<id>
 mapa_parlamentar_id = df_vereadores.set_index('nome_parlamentar')['id'].to_dict()
@@ -386,7 +417,7 @@ with f2:
     vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
 
 with f4:
-    tema = st.selectbox("🎨 Tema", ["🌞 Claro", "🌙 Escuro", "🏛️ Institucional"])
+    tema = st.selectbox("🎨 Contraste", ["🌞 Claro", "🌙 Escuro", "🏛️ Institucional"])
 
 st.caption("ℹ️ PLS e PLS2 são substitutivos de PLOs e não contam como projetos separados.")
 
@@ -979,8 +1010,8 @@ if vereador_selecionado != "Todos":
     foto       = mapa_foto.get(vereador_selecionado, '')
     cargo_v    = mapa_cargo.get(vereador_selecionado, '')
 
-    aba_pop2, aba_d1, aba_d2, aba_d3 = st.tabs([
-        "📱 Em Destaque", "📂 Matérias", "✅ PLOs aprovados", "🏷️ Assuntos"
+    aba_pop2, aba_d1, aba_d2, aba_d3, aba_rel = st.tabs([
+        "📱 Em Destaque", "📂 Matérias", "✅ PLOs aprovados", "🏷️ Assuntos", "📋 Relatorias"
     ])
 
     with aba_pop2:
@@ -1237,6 +1268,39 @@ if vereador_selecionado != "Todos":
                         )
                 else:
                     st.caption("💡 Clique em uma barra para abrir os PLOs deste assunto no SAPL.")
+# ─── ABA RELATORIAS ────────────────────────────────────────────────────────────
+
+    with aba_rel:
+        parl_id_v  = int(df_vereadores[df_vereadores['nome_parlamentar'] == vereador_selecionado]['id'].iloc[0])
+        df_rel_v   = df_relatorias[df_relatorias['parlamentar'] == parl_id_v].copy()
+
+        if df_relatorias.empty:
+            st.info("📋 Os dados de relatorias ainda não foram coletados. "
+                    "Execute o workflow 'Atualizar dados SAPL' para incluí-los.")
+        elif df_rel_v.empty:
+            st.info(f"Nenhuma relatoria registrada para {vereador_selecionado} no período disponível.")
+        else:
+            st.markdown(f"**{len(df_rel_v)} relatoria(s) registrada(s) para {vereador_selecionado}**")
+
+            # Filtro de comissão
+            comissoes_v = ["Todas"] + sorted(df_rel_v['comissao'].dropna().unique().tolist())
+            comissao_sel = st.selectbox("🏛️ Comissão", comissoes_v, key="sel_comissao_rel")
+            if comissao_sel != "Todas":
+                df_rel_v = df_rel_v[df_rel_v['comissao'] == comissao_sel]
+
+            # Tabela
+            df_exibir = df_rel_v[['tipo_sigla', 'numero', 'ano', 'ementa', 'comissao']].copy()
+            df_exibir.columns = ['Tipo', 'Número', 'Ano', 'Ementa', 'Comissão']
+            df_exibir = df_exibir.sort_values(['Ano', 'Número'], ascending=[False, False])
+            st.dataframe(df_exibir, use_container_width=True, hide_index=True,
+                         column_config={
+                             'Ementa': st.column_config.TextColumn(width='large'),
+                             'Número': st.column_config.NumberColumn(format='%d'),
+                             'Ano':    st.column_config.NumberColumn(format='%d'),
+                         })
+            if comissao_sel != "Todas":
+                st.caption(f"Mostrando {len(df_rel_v)} relatoria(s) na comissão '{comissao_sel}'.")
+
 # ─── RODAPÉ INSTITUCIONAL ───────────────────────────────────────────────────────
 
 st.divider()
