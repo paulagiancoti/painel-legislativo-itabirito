@@ -367,11 +367,14 @@ def carregar_dados(ultima_atualizacao=""):
     mapa_tipo_sapl_id = {}
     mapa_tipo_seq = {}   # sigla → sequencia_regimental (para ordenação)
     for t in tipomaterias_raw:
-        desc = t.get('descricao') or t.get('nome') or ''
+        desc  = t.get('descricao') or t.get('nome') or ''
         sigla = t.get('sigla', '')
         seq   = t.get('sequencia_regimental') or 999
-        if desc and t.get('id'):
-            mapa_tipo_sapl_id[desc] = t['id']
+        tid   = t.get('id')
+        if desc and tid:
+            mapa_tipo_sapl_id[desc]  = tid   # descricao → id
+        if sigla and tid:
+            mapa_tipo_sapl_id[sigla] = tid   # sigla → id (para filtro de relatorias)
         if sigla:
             mapa_tipo_seq[sigla] = seq
 
@@ -1327,6 +1330,21 @@ if vereador_selecionado != "Todos":
                     df_rel_v = df_rel_v[df_rel_v['tipo_sigla'] == tipo_rel_sel]
                 if comissao_sel != "Todas":
                     df_rel_v = df_rel_v[df_rel_v['comissao'] == comissao_sel]
+
+                # Botão de link para o SAPL
+                tipo_id_rel = mapa_tipo_sapl_id.get(tipo_rel_sel) if tipo_rel_sel != "Todos" else None
+                url_rel = (
+                    f"{BASE_SAPL_URL}/materia/pesquisar-materia"
+                    f"?salvar=Pesquisar&ano=2026&relatoria__parlamentar_id={parl_id_v}"
+                )
+                if tipo_id_rel:
+                    url_rel += f"&tipo={tipo_id_rel}"
+                label_rel = (
+                    f"🔗 Ver matérias de relatoria de {vereador_selecionado} em 2026 no SAPL"
+                    if tipo_rel_sel == "Todos"
+                    else f"🔗 Ver {tipo_rel_sel} de relatoria de {vereador_selecionado} em 2026 no SAPL"
+                )
+                st.link_button(label_rel, url_rel)
 
                 # Tabela
                 df_exibir = df_rel_v[['tipo_sigla', 'numero', 'ementa', 'comissao']].copy()
