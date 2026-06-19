@@ -199,12 +199,38 @@ if novos_ma:
 else:
     alertar("Nenhum vínculo de assunto coletado — mantendo dados anteriores")
 
-# ─── TIMESTAMP ────────────────────────────────────────────────────────────────
+# ─── 5. RELATORIAS (merge por ID — retroativas são comuns) ───────────────────
 
-agora = datetime.now(tz=FUSO).strftime("%d/%m/%Y às %H:%M")
-with open("dados/ultima_atualizacao.json", "w", encoding="utf-8") as f:
-    json.dump({"data_hora": agora}, f, ensure_ascii=False)
-print(f"\n  Timestamp gravado: {agora}")
+print("\n[5/6] Coletando relatorias...")
+existentes_rel = carregar_existente("relatorias.json")
+print(f"  Relatorias existentes: {len(existentes_rel)}, maior ID={max((r['id'] for r in existentes_rel), default=0)}")
+novas_rel = coletar_paginado("/api/materia/relatoria/?format=json")
+if novas_rel:
+    merged_rel = merge_por_id(existentes_rel, novas_rel)
+    salvar_json("relatorias.json", merged_rel)
+    print(f"  Após merge: {len(merged_rel)} relatorias")
+else:
+    alertar("Nenhuma relatoria coletada — mantendo dados anteriores")
+
+# ─── 6. COMISSÕES ─────────────────────────────────────────────────────────────
+
+print("\n[6/6] Coletando comissões...")
+comissoes = coletar_paginado("/api/comissao/comissao/?format=json")
+if comissoes:
+    salvar_json("comissoes.json", comissoes)
+else:
+    alertar("Nenhuma comissão coletada — mantendo dados anteriores")
+
+# ─── TIMESTAMP ────────────────────────────────────────────────────────────────
+# Só grava o timestamp se pelo menos as matérias foram coletadas com sucesso
+
+if novos_hist:
+    agora = datetime.now(tz=FUSO).strftime("%d/%m/%Y às %H:%M")
+    with open("dados/ultima_atualizacao.json", "w", encoding="utf-8") as f:
+        json.dump({"data_hora": agora}, f, ensure_ascii=False)
+    print(f"\n  Timestamp gravado: {agora}")
+else:
+    print("\n  Timestamp NÃO atualizado — coleta falhou, mantendo data anterior.")
 
 # ─── RESULTADO FINAL ──────────────────────────────────────────────────────────
 
