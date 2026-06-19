@@ -365,12 +365,17 @@ def carregar_dados(ultima_atualizacao=""):
 
     # Mapa tipo_descricao → id SAPL (para links do ranking com filtro de tipo)
     mapa_tipo_sapl_id = {}
+    mapa_tipo_seq = {}   # sigla → sequencia_regimental (para ordenação)
     for t in tipomaterias_raw:
         desc = t.get('descricao') or t.get('nome') or ''
+        sigla = t.get('sigla', '')
+        seq   = t.get('sequencia_regimental') or 999
         if desc and t.get('id'):
             mapa_tipo_sapl_id[desc] = t['id']
+        if sigla:
+            mapa_tipo_seq[sigla] = seq
 
-    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_rel, mapa_tipo_sapl_id
+    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_rel, mapa_tipo_sapl_id, mapa_tipo_seq
 
 
 try:
@@ -378,7 +383,7 @@ try:
 except Exception:
     _ts = ""
 
-df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_relatorias, mapa_tipo_sapl_id = carregar_dados(_ts)
+df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_relatorias, mapa_tipo_sapl_id, mapa_tipo_seq = carregar_dados(_ts)
 
 # ID do parlamentar no SAPL → para URL /parlamentar/<id>
 mapa_parlamentar_id = df_vereadores.set_index('nome_parlamentar')['id'].to_dict()
@@ -1284,35 +1289,55 @@ if vereador_selecionado != "Todos":
 # ─── ABA RELATORIAS ────────────────────────────────────────────────────────────
 
     with aba_rel:
-        parl_id_v  = int(df_vereadores[df_vereadores['nome_parlamentar'] == vereador_selecionado]['id'].iloc[0])
-        df_rel_v   = df_relatorias[df_relatorias['parlamentar'] == parl_id_v].copy()
+        st.markdown(f"### 🏷️ {vereador_selecionado}")
+        st.divider()
+
+        parl_id_v = int(df_vereadores[df_vereadores['nome_parlamentar'] == vereador_selecionado]['id'].iloc[0])
 
         if df_relatorias.empty:
             st.info("📋 Os dados de relatorias ainda não foram coletados. "
                     "Execute o workflow 'Atualizar dados SAPL' para incluí-los.")
-        elif df_rel_v.empty:
-            st.info(f"Nenhuma relatoria registrada para {vereador_selecionado} no período disponível.")
         else:
-            st.markdown(f"**{len(df_rel_v)} relatoria(s) registrada(s) para {vereador_selecionado}**")
+            # Filtra por vereador e por 2026
+            df_rel_v = df_relatorias[
+                (df_relatorias['parlamentar'] == parl_id_v) &
+                (df_relatorias['ano'].astype(str) == '2026')
+            ].copy()
 
-            # Filtro de comissão
-            comissoes_v = ["Todas"] + sorted(df_rel_v['comissao'].dropna().unique().tolist())
-            comissao_sel = st.selectbox("🏛️ Comissão", comissoes_v, key="sel_comissao_rel")
-            if comissao_sel != "Todas":
-                df_rel_v = df_rel_v[df_rel_v['comissao'] == comissao_sel]
+            total_rel = len(df_rel_v)
+            st.caption(f"📋 {total_rel} relatoria(s) registrada(s) para {vereador_selecionado} em 2026")
 
-            # Tabela
-            df_exibir = df_rel_v[['tipo_sigla', 'numero', 'ano', 'ementa', 'comissao']].copy()
-            df_exibir.columns = ['Tipo', 'Número', 'Ano', 'Ementa', 'Comissão']
-            df_exibir = df_exibir.sort_values(['Ano', 'Número'], ascending=[False, False])
-            st.dataframe(df_exibir, use_container_width=True, hide_index=True,
-                         column_config={
-                             'Ementa': st.column_config.TextColumn(width='large'),
-                             'Número': st.column_config.NumberColumn(format='%d'),
-                             'Ano':    st.column_config.NumberColumn(format='%d'),
-                         })
-            if comissao_sel != "Todas":
-                st.caption(f"Mostrando {len(df_rel_v)} relatoria(s) na comissão '{comissao_sel}'.")
+            if df_rel_v.empty:
+                st.info(f"Nenhuma relatoria registrada para {vereador_selecionado} em 2026.")
+            else:
+                # Ordenação: sequencia_regimental → número → comissão
+                df_rel_v['seq_reg'] = df_rel_v['tipo_sigla'].map(mapa_tipo_seq).fillna(999)
+                df_rel_v = df_rel_v.sort_values(['seq_reg', 'numero', 'comissao'])
+
+                # Filtros lado a lado
+                fc1, fc2 = st.columns(2)
+                with fc1:
+                    tipos_v = ["Todos"] + sorted(df_rel_v['tipo_sigla'].dropna().unique().tolist())
+                    tipo_rel_sel = st.selectbox("📁 Tipo de matéria", tipos_v, key="sel_tipo_rel")
+                with fc2:
+                    comissoes_v = ["Todas"] + sorted(df_rel_v['comissao'].dropna().unique().tolist())
+                    comissao_sel = st.selectbox("🏛️ Comissão", comissoes_v, key="sel_comissao_rel")
+
+                if tipo_rel_sel != "Todos":
+                    df_rel_v = df_rel_v[df_rel_v['tipo_sigla'] == tipo_rel_sel]
+                if comissao_sel != "Todas":
+                    df_rel_v = df_rel_v[df_rel_v['comissao'] == comissao_sel]
+
+                # Tabela
+                df_exibir = df_rel_v[['tipo_sigla', 'numero', 'ementa', 'comissao']].copy()
+                df_exibir.columns = ['Tipo', 'Número', 'Ementa', 'Comissão']
+                st.dataframe(df_exibir, use_container_width=True, hide_index=True,
+                             column_config={
+                                 'Ementa':  st.column_config.TextColumn(width='large'),
+                                 'Número':  st.column_config.NumberColumn(format='%d'),
+                             })
+                if tipo_rel_sel != "Todos" or comissao_sel != "Todas":
+                    st.caption(f"Mostrando {len(df_rel_v)} de {total_rel} relatoria(s).")
 
 # ─── RODAPÉ INSTITUCIONAL ───────────────────────────────────────────────────────
 
