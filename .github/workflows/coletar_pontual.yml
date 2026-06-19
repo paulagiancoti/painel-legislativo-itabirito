@@ -1,0 +1,36 @@
+name: Coletar dados pontuais
+
+on:
+  workflow_dispatch:   # apenas manual
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+permissions:
+  contents: write
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Rodar coleta pontual
+        run: python coletar_pontual.py
+
+      - name: Commitar arquivos coletados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dados/comissoes.json dados/tipomaterias.json dados/relatorias.json || true
+          git diff --staged --quiet || git commit -m "Coleta pontual: comissoes, tipomaterias, relatorias"
+          git push
