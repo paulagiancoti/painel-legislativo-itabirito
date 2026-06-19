@@ -41,6 +41,10 @@ def carregar_dados(ultima_atualizacao=""):
     if os.path.exists("dados/comissoes.json"):
         with open("dados/comissoes.json", encoding="utf-8") as f:
             comissoes_raw = json.load(f)
+    tipomaterias_raw = []
+    if os.path.exists("dados/tipomaterias.json"):
+        with open("dados/tipomaterias.json", encoding="utf-8") as f:
+            tipomaterias_raw = json.load(f)
 
     df_vereadores    = pd.DataFrame(vereadores)[['id', 'nome_completo', 'nome_parlamentar', 'fotografia']]
     # ╔══════════════════════════════════════════════════════════════════╗
@@ -359,7 +363,14 @@ def carregar_dados(ultima_atualizacao=""):
         columns=['rel_id','parlamentar','materia_id','comissao_id','comissao',
                  'tipo_sigla','numero','ano','ementa'])
 
-    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_rel
+    # Mapa tipo_descricao → id SAPL (para links do ranking com filtro de tipo)
+    mapa_tipo_sapl_id = {}
+    for t in tipomaterias_raw:
+        desc = t.get('descricao') or t.get('nome') or ''
+        if desc and t.get('id'):
+            mapa_tipo_sapl_id[desc] = t['id']
+
+    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_rel, mapa_tipo_sapl_id
 
 
 try:
@@ -367,7 +378,7 @@ try:
 except Exception:
     _ts = ""
 
-df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_relatorias = carregar_dados(_ts)
+df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_relatorias, mapa_tipo_sapl_id = carregar_dados(_ts)
 
 # ID do parlamentar no SAPL → para URL /parlamentar/<id>
 mapa_parlamentar_id = df_vereadores.set_index('nome_parlamentar')['id'].to_dict()
@@ -786,10 +797,12 @@ if vereador_selecionado == "Todos":
             nome_sel  = cd1[0] if cd1 else ponto1.get("y")
             autor_id  = mapa_autor_id.get(nome_sel)
             assunto_id_sel = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
+            tipo_id_sel = mapa_tipo_sapl_id.get(tipo_selecionado) if tipo_selecionado != "Todos" else None
             if autor_id:
                 st.link_button(
                     f"🔗 Ver matérias de {nome_sel} em 2026 no SAPL",
-                    url_sapl(ano=2026, autor_id=autor_id, assunto_id=assunto_id_sel)
+                    url_sapl(ano=2026, autor_id=autor_id, assunto_id=assunto_id_sel,
+                             tipo_materia_id=tipo_id_sel)
                 )
         else:
             st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
