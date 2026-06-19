@@ -223,7 +223,7 @@ else:
 
 # Tipos de matéria (raramente mudam, mas precisamos do mapeamento descricao→id)
 print("\n[Extra] Coletando tipos de matéria...")
-tiposmaterias = coletar_paginado("/api/materia/tipomateria/?format=json")
+tiposmaterias = coletar_paginado("/api/materia/tipomaterialegislativa/?format=json")  # PERSONALIZAÇÃO: verifique o endpoint
 if tiposmaterias:
     salvar_json("tipomaterias.json", tiposmaterias)
 
