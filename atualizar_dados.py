@@ -221,6 +221,12 @@ if comissoes:
 else:
     alertar("Nenhuma comissão coletada — mantendo dados anteriores")
 
+# Tipos de matéria (raramente mudam, mas precisamos do mapeamento descricao→id)
+print("\n[Extra] Coletando tipos de matéria...")
+tiposmaterias = coletar_paginado("/api/materia/tipomateria/?format=json")
+if tiposmaterias:
+    salvar_json("tipomaterias.json", tiposmaterias)
+
 # ─── TIMESTAMP ────────────────────────────────────────────────────────────────
 # Só grava o timestamp se pelo menos as matérias foram coletadas com sucesso
 
