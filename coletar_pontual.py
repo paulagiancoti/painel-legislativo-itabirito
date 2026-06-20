@@ -133,3 +133,14 @@ for arq in ["oradores.json", "sessoes.json"]:
         print(f"  {arq}: {len(d)} registros")
     else:
         print(f"  {arq}: não encontrado")
+
+# ─── TIMESTAMP (invalida cache do Streamlit/Render) ───────────────────────────
+
+from datetime import datetime, timezone, timedelta
+FUSO = timezone(timedelta(hours=-3))
+agora = datetime.now(tz=FUSO).strftime("%d/%m/%Y às %H:%M")
+os.makedirs("dados", exist_ok=True)
+with open("dados/ultima_atualizacao.json", "w", encoding="utf-8") as f:
+    json.dump({"data_hora": agora}, f, ensure_ascii=False)
+print(f"\nTimestamp gravado: {agora}")
+print("→ Cache do Streamlit será invalidado no próximo acesso.")
