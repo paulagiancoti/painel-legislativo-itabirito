@@ -406,9 +406,10 @@ def carregar_dados(ultima_atualizacao=""):
             'ano':          str(data[:4]) if data else '',
             'sessao_nome':  nome_sessao,
             'url_discurso': o.get('url_discurso', '') or '',
+            'observacao':   o.get('observacao', '') or '',
         })
     df_pronunc = pd.DataFrame(linhas_pronunc) if linhas_pronunc else pd.DataFrame(
-        columns=['orador_id','parlamentar','sessao_id','data','ano','sessao_nome','url_discurso'])
+        columns=['orador_id','parlamentar','sessao_id','data','ano','sessao_nome','url_discurso','observacao'])
 
     return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_rel, mapa_tipo_sapl_id, mapa_tipo_seq, df_pronunc
 
@@ -1440,9 +1441,13 @@ if vereador_selecionado != "Todos":
                 df_pron_v['Data'] = pd.to_datetime(df_pron_v['data']).dt.strftime('%d/%m/%Y')
                 df_pron_v['Sessão'] = df_pron_v['sessao_nome']
                 # LinkColumn precisa de URL pura (não markdown) — None para células vazias
-                df_pron_v['Link do discurso'] = df_pron_v['url_discurso'].apply(
-                    lambda u: u if u else None
-                )
+                def cel_discurso(row):
+                    if row['url_discurso']:
+                        return row['url_discurso']  # LinkColumn abre como link
+                    if row['observacao']:
+                        return row['observacao']    # texto simples na mesma coluna
+                    return None
+                df_pron_v['Link do discurso'] = df_pron_v.apply(cel_discurso, axis=1)
                 st.dataframe(
                     df_pron_v[['Data', 'Sessão', 'Link do discurso']],
                     use_container_width=True,
