@@ -102,3 +102,42 @@ except Exception as e:
 print("\n✓ Coleta inicial concluída!")
 print("  Revise dados/vereadores.json para garantir que só estão os 15 ativos.")
 print("  Em seguida, rode atualizar_dados.py para baixar matérias, normas e assuntos.")
+
+# ─── 4. COMISSÕES ─────────────────────────────────────────────────────────────
+# PERSONALIZAÇÃO: endpoint pode variar. Itabirito usa /api/comissoes/comissao/
+# Verifique em <BASE_URL>/api/ ou tente acessar /api/comissoes/comissao/1/ no navegador.
+# Se a API não existir, crie o arquivo comissoes.json manualmente (veja COMO_PUBLICAR.md).
+
+print("\n[4/5] Coletando comissões...")
+try:
+    endpoint_com = "/api/comissoes/comissao/?format=json"
+    resp = requests.get(f"{BASE_URL}{endpoint_com}", timeout=30)
+    if resp.status_code == 200:
+        dados = resp.json()
+        comissoes = dados.get("results", dados if isinstance(dados, list) else [])
+        salvar_json("comissoes.json", comissoes)
+    else:
+        print(f"  HTTP {resp.status_code} — crie o arquivo manualmente")
+except Exception as e:
+    print(f"  Erro: {e} — crie o arquivo manualmente")
+
+# ─── 5. TIPOS DE MATÉRIA ──────────────────────────────────────────────────────
+# PERSONALIZAÇÃO: Itabirito usa /api/materia/tipomaterialegislativa/
+# Verifique em <BASE_URL>/api/materia/ para encontrar o endpoint correto.
+
+print("\n[5/5] Coletando tipos de matéria...")
+try:
+    endpoint_tipo = "/api/materia/tipomaterialegislativa/?format=json"
+    resp = requests.get(f"{BASE_URL}{endpoint_tipo}", timeout=30)
+    if resp.status_code == 200:
+        dados = resp.json()
+        tipos = dados.get("results", dados if isinstance(dados, list) else [])
+        salvar_json("tipomaterias.json", tipos)
+    else:
+        print(f"  HTTP {resp.status_code} — tente outro endpoint")
+except Exception as e:
+    print(f"  Erro: {e}")
+
+print("\n✓ Coleta inicial concluída!")
+print("  Revise dados/vereadores.json para garantir que só estão os ativos.")
+print("  Em seguida, rode atualizar_dados.py para baixar matérias, normas e assuntos.")
