@@ -1481,9 +1481,9 @@ if vereador_selecionado != "Todos":
                         cel_sessao = row['sessao_nome']
                     linhas_html += (
                         f"<tr style='border-bottom:1px solid #eee'>"
-                        f"<td style='white-space:nowrap;padding:6px 12px'>{row['Data']}</td>"
-                        f"<td style='padding:6px 12px'>{cel_sessao}</td>"
-                        f"<td style='padding:6px 12px'>{cel_discurso_html(row)}</td>"
+                        f"<td style='white-space:nowrap;padding:6px 12px;vertical-align:top'>{row['Data']}</td>"
+                        f"<td style='white-space:nowrap;padding:6px 12px;vertical-align:top'>{cel_sessao}</td>"
+                        f"<td style='word-break:break-word;padding:6px 12px;vertical-align:top'>{cel_discurso_html(row)}</td>"
                         f"</tr>"
                     )
                 st.markdown(
