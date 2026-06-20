@@ -1436,18 +1436,21 @@ if vereador_selecionado != "Todos":
             if df_pron_v.empty:
                 st.info(f"Nenhum pronunciamento registrado para {vereador_selecionado} em 2026.")
             else:
-                df_pron_v = df_pron_v.sort_values('data')
+                df_pron_v = df_pron_v.sort_values('data', ascending=False)
                 df_pron_v['Data'] = pd.to_datetime(df_pron_v['data']).dt.strftime('%d/%m/%Y')
                 df_pron_v['Sessão'] = df_pron_v['sessao_nome']
+                # LinkColumn precisa de URL pura (não markdown) — None para células vazias
                 df_pron_v['Link do discurso'] = df_pron_v['url_discurso'].apply(
-                    lambda u: f'[🔗 Assistir]({u})' if u else '—'
+                    lambda u: u if u else None
                 )
                 st.dataframe(
                     df_pron_v[['Data', 'Sessão', 'Link do discurso']],
                     use_container_width=True,
                     hide_index=True,
                     column_config={
-                        'Link do discurso': st.column_config.LinkColumn(display_text="🔗 Assistir"),
+                        'Link do discurso': st.column_config.LinkColumn(
+                            display_text="🔗 Assistir"
+                        ),
                         'Data': st.column_config.TextColumn(width='small'),
                     }
                 )
