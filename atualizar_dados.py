@@ -242,6 +242,40 @@ tiposmaterias = coletar_paginado("/api/materia/tipomaterialegislativa/?format=js
 if tiposmaterias:
     salvar_json("tipomaterias.json", tiposmaterias)
 
+# ─── 7. ORADORES (pronunciamentos) — incremental por ID ─────────────────────
+
+print("\n[7/8] Coletando oradores (pronunciamentos)...")
+existentes_or = carregar_existente("oradores.json")
+max_id_or = max((r["id"] for r in existentes_or), default=0)
+print(f"  Oradores existentes: {len(existentes_or)}, maior ID={max_id_or}")
+ep_or = f"/api/sessao/oradorordemdia/?format=json&id__gt={max_id_or}" if max_id_or > 0 else "/api/sessao/oradorordemdia/?format=json"
+novos_or = coletar_paginado(ep_or)
+if novos_or:
+    merged_or = merge_por_id(existentes_or, novos_or)
+    salvar_json("oradores.json", merged_or)
+    print(f"  {len(novos_or)} novo(s) orador(es). Total: {len(merged_or)}")
+elif max_id_or > 0:
+    print("  Nenhum orador novo — dados anteriores mantidos")
+else:
+    alertar("Nenhum orador coletado — mantendo dados anteriores")
+
+# ─── 8. SESSÕES PLENÁRIAS (para cruzar data com oradores) ────────────────────
+
+print("\n[8/8] Coletando sessões plenárias...")
+existentes_sess = carregar_existente("sessoes.json")
+max_id_sess = max((r["id"] for r in existentes_sess), default=0)
+print(f"  Sessões existentes: {len(existentes_sess)}, maior ID={max_id_sess}")
+ep_sess = f"/api/sessao/sessaoplenaria/?format=json&id__gt={max_id_sess}" if max_id_sess > 0 else "/api/sessao/sessaoplenaria/?format=json"
+novas_sess = coletar_paginado(ep_sess)
+if novas_sess:
+    merged_sess = merge_por_id(existentes_sess, novas_sess)
+    salvar_json("sessoes.json", merged_sess)
+    print(f"  {len(novas_sess)} nova(s) sessão(ões). Total: {len(merged_sess)}")
+elif max_id_sess > 0:
+    print("  Nenhuma sessão nova — dados anteriores mantidos")
+else:
+    alertar("Nenhuma sessão coletada — mantendo dados anteriores")
+
 # ─── TIMESTAMP ────────────────────────────────────────────────────────────────
 # Só grava o timestamp se pelo menos as matérias foram coletadas com sucesso
 
