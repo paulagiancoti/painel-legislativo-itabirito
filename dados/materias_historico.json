@@ -64106,8 +64106,8 @@
     "tipo__sigla": "REQ",
     "tipo__descricao": "Requerimento",
     "autoria": "Dr. Edson",
-    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23349/requerimento_-_nota_de_pesar_-_sautino_evaristo_-_22.06.26_-_assinado.pdf",
-    "ementa": "Requer que seja consignada em ata dos trabalhos legislativos desta Casa uma Nota de Pesar pelo falecimento do Senhor Sautino Evaristo, ocorrido no dia 15 de junho de 2026 no município de Itabirito."
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23349/requerimento_-_nota_de_pesar_-_santino_evaristo_-_22.06.26_-_correto.pdf",
+    "ementa": "Requer que seja consignada em ata dos trabalhos legislativos desta Casa uma Nota de Pesar pelo falecimento do Senhor Santino Evaristo, ocorrido no dia 15 de junho de 2026 no município de Itabirito."
   },
   {
     "id": "23350",
@@ -64258,5 +64258,205 @@
     "autoria": "Ezio Pimenta",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23369/pl_04_22062026assass.pdf",
     "ementa": "Dispõe sobre diretrizes de interesse público para incentivo à arborização urbana participativa no Município de Itabirito e dá outras providências."
+  },
+  {
+    "id": "23373",
+    "ano": "2026",
+    "numero": "1208",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23373/indicacao_-_manutencao_calcamento_rua_daria_couto_centro.pdf",
+    "ementa": "Sugerindo a manutenção na Rua Daria Couto, ao lado do Supermercado Jequeri, Bairro Praia."
+  },
+  {
+    "id": "23375",
+    "ano": "2026",
+    "numero": "1209",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23375/indicacao_-_manutencao_em_tampa_de_bueiro_rua_hortencia_gutierrez.pdf",
+    "ementa": "Sugere manutenção na tampa do bueiro, bem como a recomposição do asfalto ao seu redor, localizado na Rua Hortência, 460, Bairro Gutierrez."
+  },
+  {
+    "id": "23379",
+    "ano": "2026",
+    "numero": "1210",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23379/indicacao_05_22062026ass.pdf",
+    "ementa": "Solicita o aumento do patrulhamento preventivo e ostensivo da Polícia Militar e da Guarda Civil Municipal no Bairro Santo Antônio."
+  },
+  {
+    "id": "23380",
+    "ano": "2026",
+    "numero": "1211",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23380/indicacao_04_22062026ass.pdf",
+    "ementa": "Solicita ao Poder Executivo a realização da limpeza do bueiro localizado na Rua Antônia Quites, próximo ao nº 408, no Bairro Santo Antônio."
+  },
+  {
+    "id": "23381",
+    "ano": "2026",
+    "numero": "1212",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23381/indicacao_03_22062026_assass.pdf",
+    "ementa": "Solicita ao Poder Executivo a realização da troca de lâmpadas da iluminação pública nas Ruas Augusto Brêtas, Bairro Matozinhos, José Clemente Filho, Bairro Santa Rita, e Manoel Felipe do Carmo, Bairro Tombadouro, no Município de Itabirito."
+  },
+  {
+    "id": "23382",
+    "ano": "2026",
+    "numero": "1213",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23382/indicacao_02_22062026ass.pdf",
+    "ementa": "Solicita ao Poder Executivo a realização de manutenção asfáltica na Rua Ester Ferreira Bastos, localizada no Bairro Vila Gonçalo."
+  },
+  {
+    "id": "23383",
+    "ano": "2026",
+    "numero": "1214",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23383/indicacao_01_22062026_2ass.pdf",
+    "ementa": "Solicita ao Poder Executivo o aumento do número de postos credenciados para recarga de créditos do transporte coletivo, mediante o credenciamento de novos estabelecimentos em diferentes regiões do município de Itabirito."
+  },
+  {
+    "id": "23384",
+    "ano": "2026",
+    "numero": "1215",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23384/2-indicacao_de_iluminacao_agostinho_rodrigues.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, que providencie a substituição da lâmpada queimada na Rua Cândido Portinari, ao lado do n° 76-A, bairro Agostinho Rodrigues, Itabirito/MG."
+  },
+  {
+    "id": "23385",
+    "ano": "2026",
+    "numero": "1216",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23385/3-_indicacao_tapa_buraco_no_pedra_azul.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, que providencie o serviço de tapa-buracos na Rua Guajajaras, bairro Pedra Azul, em frente ao n° 421, Itabirito/MG."
+  },
+  {
+    "id": "23386",
+    "ano": "2026",
+    "numero": "1217",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23386/5-indicacao_de_troca_de_extintores_de_incendio_na_escola_vo_dote.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, que providencie a verificação, inspeção e, se necessário, a troca dos extintores de incêndio na Escola Municipal Vô Dote, bairro Munu, Itabirito/MG."
+  },
+  {
+    "id": "23387",
+    "ano": "2026",
+    "numero": "1218",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23387/1-indicacao_de_iluminacao_em_frente_ao_parque_ecologico.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, que providencie a substituição das lâmpadas queimadas na Avenida Queiroz Junior, em frente ao n° 1.677, Santo Antônio, Itabirito/MG."
+  },
+  {
+    "id": "23388",
+    "ano": "2026",
+    "numero": "1219",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23388/4-indicacao_de_energia_eletrica_na_escola_vo_dote.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal para que, por meio da Secretaria competente, sejam realizadas providências visando à verificação, avaliação e conferência da rede elétrica na Escola Municipal “Vô Dote”, bairro Munu, Itabirito/MG."
+  },
+  {
+    "id": "23389",
+    "ano": "2026",
+    "numero": "1220",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Renê Butekus",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23389/indicacao-_ponte_rio_ribeirao_manso.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a reiteração da solicitação para realização de manutenção na ponte localizada na Estrada Real, que liga o Município de Itabirito a Rio Acima, sobre o Ribeirão Manso, no Distrito de Acuruí."
+  },
+  {
+    "id": "23376",
+    "ano": "2026",
+    "numero": "569",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23376/requerimento_03_22062026ass.pdf",
+    "ementa": "Informações sobre procedimentos de conferência, transmissão e regularização de dados previdenciários dos servidores municipais junto ao CNIS e sistemas federais."
+  },
+  {
+    "id": "23377",
+    "ano": "2026",
+    "numero": "570",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23377/requerimento_02_22062026ass.pdf",
+    "ementa": "Cumprimento do artigo 4º da Lei Municipal nº 4.289/2025 – Comissão de Promoção do BemEstar do Servidor."
+  },
+  {
+    "id": "23378",
+    "ano": "2026",
+    "numero": "571",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23378/requerimento_01_22062026assass.pdf",
+    "ementa": "Solicita informações detalhadas acerca da execução do Programa Minha Casa Minha Vida no Município de Itabirito e do cronograma de\r\nimplantação das unidades habitacionais anunciadas pela Administração Municipal."
+  },
+  {
+    "id": "23390",
+    "ano": "2026",
+    "numero": "572",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Renê Butekus",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23390/requerimento_-_imagens_upa.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, reiterando, com urgência, o pedido de disponibilização de gravações de imagens internas da UPA Celso Matos, referentes ao dia 20 de fevereiro de 2026, no período de 18h00 às 22h00."
+  },
+  {
+    "id": "23391",
+    "ano": "2026",
+    "numero": "573",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Renê Butekus",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23391/requerimento_sem_resposta.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, reiterando pedidos de informações e documentos anteriormente solicitados e ainda não respondidos ou respondidos de forma incompleta."
+  },
+  {
+    "id": "23372",
+    "ano": "2026",
+    "numero": "173",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23372/dispoe_sobre_a_autorizacao_para_a_instituicao_do_cadastro_municipal_de_interpretes_e_instrutores_da_lingua_brasileira_de_sinais__libras.pdf",
+    "ementa": "Dispõe sobre a autorização para a instituição do Cadastro Municipal de Intérpretes e Instrutores da Língua Brasileira de Sinais – Libras no âmbito do Município de Itabirito."
+  },
+  {
+    "id": "23374",
+    "ano": "2026",
+    "numero": "174",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23374/assegura_ao_paciente_surdo_o_direito_de_ser_assistido_por_interprete_e_tradutor_de_libras_nos_estabelecimentos_de_saude.pdf",
+    "ementa": "Assegura ao paciente surdo o direito de ser assistido por tradutor e intérprete de LIBRAS nos estabelecimentos de saúde do Município de Itabirito e dá outras providências."
   }
 ]
