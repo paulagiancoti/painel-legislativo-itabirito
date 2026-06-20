@@ -1439,25 +1439,35 @@ if vereador_selecionado != "Todos":
             else:
                 df_pron_v = df_pron_v.sort_values('data', ascending=False)
                 df_pron_v['Data'] = pd.to_datetime(df_pron_v['data']).dt.strftime('%d/%m/%Y')
-                df_pron_v['Sessão'] = df_pron_v['sessao_nome']
-                # LinkColumn precisa de URL pura (não markdown) — None para células vazias
-                def cel_discurso(row):
+
+                # Tabela HTML: link clicável quando há URL, texto simples quando há observação
+                def cel_discurso_html(row):
                     if row['url_discurso']:
-                        return row['url_discurso']  # LinkColumn abre como link
-                    if row['observacao']:
-                        return row['observacao']    # texto simples na mesma coluna
-                    return None
-                df_pron_v['Link do discurso'] = df_pron_v.apply(cel_discurso, axis=1)
-                st.dataframe(
-                    df_pron_v[['Data', 'Sessão', 'Link do discurso']],
-                    use_container_width=True,
-                    hide_index=True,
-                    column_config={
-                        'Link do discurso': st.column_config.LinkColumn(
-                            display_text="🔗 Assistir"
-                        ),
-                        'Data': st.column_config.TextColumn(width='small'),
-                    }
+                        return (f'<a href="{row["url_discurso"]}" target="_blank" '
+                                f'style="color:#4A90D9">🔗 Assistir no Instagram</a>')
+                    elif row['observacao']:
+                        return f'<span style="color:#888;font-size:0.9em">{row["observacao"]}</span>'
+                    return '—'
+
+                linhas_html = ""
+                for _, row in df_pron_v.iterrows():
+                    linhas_html += (
+                        f"<tr style='border-bottom:1px solid #eee'>"
+                        f"<td style='white-space:nowrap;padding:6px 12px'>{row['Data']}</td>"
+                        f"<td style='padding:6px 12px'>{row['sessao_nome']}</td>"
+                        f"<td style='padding:6px 12px'>{cel_discurso_html(row)}</td>"
+                        f"</tr>"
+                    )
+                st.markdown(
+                    f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
+                    <thead><tr style="border-bottom:2px solid #ddd">
+                      <th style="text-align:left;padding:6px 12px">Data</th>
+                      <th style="text-align:left;padding:6px 12px">Sessão</th>
+                      <th style="text-align:left;padding:6px 12px">Discurso</th>
+                    </tr></thead>
+                    <tbody>{linhas_html}</tbody>
+                    </table>""",
+                    unsafe_allow_html=True
                 )
 
 # ─── RODAPÉ INSTITUCIONAL ───────────────────────────────────────────────────────
