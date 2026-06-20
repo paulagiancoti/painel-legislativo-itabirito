@@ -45,6 +45,10 @@ def carregar_dados(ultima_atualizacao=""):
     if os.path.exists("dados/oradores.json"):
         with open("dados/oradores.json", encoding="utf-8") as f:
             oradores_raw = json.load(f)
+    pronunc_extras_raw = []
+    if os.path.exists("dados/pronunciamentos_extras.json"):
+        with open("dados/pronunciamentos_extras.json", encoding="utf-8") as f:
+            pronunc_extras_raw = json.load(f)
     comissoes_raw = []
     if os.path.exists("dados/comissoes.json"):
         with open("dados/comissoes.json", encoding="utf-8") as f:
@@ -391,13 +395,11 @@ def carregar_dados(ultima_atualizacao=""):
     mapa_sessao = {str(s['id']): s for s in sessoes_raw}
     linhas_pronunc = []
     for o in oradores_raw:
-        sess_id = str(o.get('sessao_plenaria', ''))
-        sess    = mapa_sessao.get(sess_id, {})
-        data    = sess.get('data_inicio', '')
-        numero  = sess.get('numero', '')
+        sess_id  = str(o.get('sessao_plenaria', ''))
+        sess     = mapa_sessao.get(sess_id, {})
+        data     = sess.get('data_inicio', '')
         str_sess = sess.get('__str__', f'Sessão {sess_id}')
-        # Abrevia: "18ª Sessão Ordinária da 2ª Sessão..." → "18ª Sessão Ordinária"
-        nome_sessao = ' '.join(str_sess.split()[:3]) if str_sess else f'Sessão {numero}'
+        nome_sessao = ' '.join(str_sess.split()[:3]) if str_sess else f'Sessão {sess_id}'
         linhas_pronunc.append({
             'orador_id':    o['id'],
             'parlamentar':  o.get('parlamentar'),
@@ -405,11 +407,31 @@ def carregar_dados(ultima_atualizacao=""):
             'data':         data,
             'ano':          str(data[:4]) if data else '',
             'sessao_nome':  nome_sessao,
+            'url_video':    sess.get('url_video', '') or '',
             'url_discurso': o.get('url_discurso', '') or '',
             'observacao':   o.get('observacao', '') or '',
         })
+
+    # Combina com pronunciamentos_extras (ex: considerações finais da Presidência)
+    for e in pronunc_extras_raw:
+        sess_id  = str(e.get('sessao_plenaria', ''))
+        sess     = mapa_sessao.get(sess_id, {})
+        data     = e.get('data') or sess.get('data_inicio', '')
+        linhas_pronunc.append({
+            'orador_id':    f"extra_{sess_id}",   # ID fictício, sem conflito
+            'parlamentar':  e.get('parlamentar'),
+            'sessao_id':    e.get('sessao_plenaria'),
+            'data':         data,
+            'ano':          str(data[:4]) if data else '',
+            'sessao_nome':  e.get('sessao_nome', f'Sessão {sess_id}'),
+            'url_video':    sess.get('url_video', '') or '',
+            'url_discurso': e.get('url_discurso', '') or '',
+            'observacao':   e.get('observacao', '') or '',
+        })
+
     df_pronunc = pd.DataFrame(linhas_pronunc) if linhas_pronunc else pd.DataFrame(
-        columns=['orador_id','parlamentar','sessao_id','data','ano','sessao_nome','url_discurso','observacao'])
+        columns=['orador_id','parlamentar','sessao_id','data','ano','sessao_nome',
+                 'url_video','url_discurso','observacao'])
 
     return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_rel, mapa_tipo_sapl_id, mapa_tipo_seq, df_pronunc
 
@@ -1451,10 +1473,16 @@ if vereador_selecionado != "Todos":
 
                 linhas_html = ""
                 for _, row in df_pron_v.iterrows():
+                    # Sessão: link para o YouTube se disponível
+                    if row.get('url_video'):
+                        cel_sessao = (f'<a href="{row["url_video"]}" target="_blank" '
+                                      f'style="color:#4A90D9">{row["sessao_nome"]} 📺</a>')
+                    else:
+                        cel_sessao = row['sessao_nome']
                     linhas_html += (
                         f"<tr style='border-bottom:1px solid #eee'>"
                         f"<td style='white-space:nowrap;padding:6px 12px'>{row['Data']}</td>"
-                        f"<td style='padding:6px 12px'>{row['sessao_nome']}</td>"
+                        f"<td style='padding:6px 12px'>{cel_sessao}</td>"
                         f"<td style='padding:6px 12px'>{cel_discurso_html(row)}</td>"
                         f"</tr>"
                     )
