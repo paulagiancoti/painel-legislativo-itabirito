@@ -1368,7 +1368,10 @@ if vereador_selecionado != "Todos":
                             f"?salvar=Pesquisar&ano=2026&relatoria__parlamentar_id={parl_id_v}"
                             + (f"&tipo={tid}" if tid else "")
                         )
-                        st.link_button(f"🔗 {desc}", url_t, key=f"rel_link_{desc}")
+                        st.link_button(
+                            f"🔗 Ver {desc} de relatoria de {vereador_selecionado} em 2026 no SAPL",
+                            url_t, key=f"rel_link_{desc}"
+                        )
 
                 # Tabela
                 df_exibir = df_rel_v[['tipo_sigla', 'numero', 'ementa', 'comissao']].copy()
