@@ -37,6 +37,14 @@ def carregar_dados(ultima_atualizacao=""):
     if os.path.exists("dados/relatorias.json"):
         with open("dados/relatorias.json", encoding="utf-8") as f:
             relatorias_raw = json.load(f)
+    sessoes_raw = []
+    if os.path.exists("dados/sessoes.json"):
+        with open("dados/sessoes.json", encoding="utf-8") as f:
+            sessoes_raw = json.load(f)
+    oradores_raw = []
+    if os.path.exists("dados/oradores.json"):
+        with open("dados/oradores.json", encoding="utf-8") as f:
+            oradores_raw = json.load(f)
     comissoes_raw = []
     if os.path.exists("dados/comissoes.json"):
         with open("dados/comissoes.json", encoding="utf-8") as f:
@@ -379,7 +387,30 @@ def carregar_dados(ultima_atualizacao=""):
         if sigla:
             mapa_tipo_seq[sigla] = seq
 
-    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_rel, mapa_tipo_sapl_id, mapa_tipo_seq
+    # Processa pronunciamentos (oradores)
+    mapa_sessao = {str(s['id']): s for s in sessoes_raw}
+    linhas_pronunc = []
+    for o in oradores_raw:
+        sess_id = str(o.get('sessao_plenaria', ''))
+        sess    = mapa_sessao.get(sess_id, {})
+        data    = sess.get('data_inicio', '')
+        numero  = sess.get('numero', '')
+        str_sess = sess.get('__str__', f'Sessão {sess_id}')
+        # Abrevia: "18ª Sessão Ordinária da 2ª Sessão..." → "18ª Sessão Ordinária"
+        nome_sessao = ' '.join(str_sess.split()[:3]) if str_sess else f'Sessão {numero}'
+        linhas_pronunc.append({
+            'orador_id':    o['id'],
+            'parlamentar':  o.get('parlamentar'),
+            'sessao_id':    o.get('sessao_plenaria'),
+            'data':         data,
+            'ano':          str(data[:4]) if data else '',
+            'sessao_nome':  nome_sessao,
+            'url_discurso': o.get('url_discurso', '') or '',
+        })
+    df_pronunc = pd.DataFrame(linhas_pronunc) if linhas_pronunc else pd.DataFrame(
+        columns=['orador_id','parlamentar','sessao_id','data','ano','sessao_nome','url_discurso'])
+
+    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_rel, mapa_tipo_sapl_id, mapa_tipo_seq, df_pronunc
 
 
 try:
@@ -387,7 +418,7 @@ try:
 except Exception:
     _ts = ""
 
-df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_relatorias, mapa_tipo_sapl_id, mapa_tipo_seq = carregar_dados(_ts)
+df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_relatorias, mapa_tipo_sapl_id, mapa_tipo_seq, df_pronunciamentos = carregar_dados(_ts)
 
 # ID do parlamentar no SAPL → para URL /parlamentar/<id>
 mapa_parlamentar_id = df_vereadores.set_index('nome_parlamentar')['id'].to_dict()
@@ -1032,8 +1063,8 @@ if vereador_selecionado != "Todos":
     foto       = mapa_foto.get(vereador_selecionado, '')
     cargo_v    = mapa_cargo.get(vereador_selecionado, '')
 
-    aba_pop2, aba_d1, aba_d2, aba_d3, aba_rel = st.tabs([
-        "📱 Em Destaque", "📂 Matérias", "✅ PLOs aprovados", "🏷️ Assuntos", "📋 Relatorias"
+    aba_pop2, aba_d1, aba_d2, aba_d3, aba_rel, aba_pron = st.tabs([
+        "📱 Em Destaque", "📂 Matérias", "✅ PLOs aprovados", "🏷️ Assuntos", "📋 Relatorias", "📢 Pronunciamentos"
     ])
 
     with aba_pop2:
@@ -1383,6 +1414,43 @@ if vereador_selecionado != "Todos":
                              })
                 if tipo_rel_sel != "Todos" or comissao_sel != "Todas":
                     st.caption(f"Mostrando {len(df_rel_v)} de {total_rel} relatoria(s).")
+
+# ─── ABA PRONUNCIAMENTOS ───────────────────────────────────────────────────────
+
+    with aba_pron:
+        st.markdown(f"### 🏷️ {vereador_selecionado}")
+        st.divider()
+
+        if df_pronunciamentos.empty:
+            st.info("📢 Os dados de pronunciamentos ainda não foram coletados. "
+                    "Execute o workflow 'Coletar dados pontuais' para incluí-los.")
+        else:
+            df_pron_v = df_pronunciamentos[
+                (df_pronunciamentos['parlamentar'] == parl_id_v) &
+                (df_pronunciamentos['ano'] == '2026')
+            ].copy()
+
+            total_pron = len(df_pron_v)
+            st.caption(f"📢 {total_pron} pronunciamento(s) registrado(s) para {vereador_selecionado} em 2026")
+
+            if df_pron_v.empty:
+                st.info(f"Nenhum pronunciamento registrado para {vereador_selecionado} em 2026.")
+            else:
+                df_pron_v = df_pron_v.sort_values('data')
+                df_pron_v['Data'] = pd.to_datetime(df_pron_v['data']).dt.strftime('%d/%m/%Y')
+                df_pron_v['Sessão'] = df_pron_v['sessao_nome']
+                df_pron_v['Link do discurso'] = df_pron_v['url_discurso'].apply(
+                    lambda u: f'[🔗 Assistir]({u})' if u else '—'
+                )
+                st.dataframe(
+                    df_pron_v[['Data', 'Sessão', 'Link do discurso']],
+                    use_container_width=True,
+                    hide_index=True,
+                    column_config={
+                        'Link do discurso': st.column_config.LinkColumn(display_text="🔗 Assistir"),
+                        'Data': st.column_config.TextColumn(width='small'),
+                    }
+                )
 
 # ─── RODAPÉ INSTITUCIONAL ───────────────────────────────────────────────────────
 
