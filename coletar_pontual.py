@@ -158,6 +158,34 @@ if not existentes:
 else:
     print(f"\n[3] Relatorias: {len(existentes)} já existentes — pulando.")
 
+# ─── ORADORES ─────────────────────────────────────────────────────────────────
+
+print("\n[4] Coletando oradores (pronunciamentos)...")
+existentes_or = carregar_existente("oradores.json")
+max_id_or = max((r["id"] for r in existentes_or), default=0)
+novos_or = coletar_paginado(
+    f"/api/sessao/oradorordemdia/?format=json&id__gt={max_id_or}" if max_id_or > 0
+    else "/api/sessao/oradorordemdia/?format=json"
+)
+if novos_or:
+    salvar_json("oradores.json", merge_por_id(existentes_or, novos_or))
+elif max_id_or > 0:
+    print(f"  {len(existentes_or)} já existentes — nenhum novo.")
+
+# ─── SESSÕES PLENÁRIAS ────────────────────────────────────────────────────────
+
+print("\n[5] Coletando sessões plenárias...")
+existentes_sess = carregar_existente("sessoes.json")
+max_id_sess = max((r["id"] for r in existentes_sess), default=0)
+novas_sess = coletar_paginado(
+    f"/api/sessao/sessaoplenaria/?format=json&id__gt={max_id_sess}" if max_id_sess > 0
+    else "/api/sessao/sessaoplenaria/?format=json"
+)
+if novas_sess:
+    salvar_json("sessoes.json", merge_por_id(existentes_sess, novas_sess))
+elif max_id_sess > 0:
+    print(f"  {len(existentes_sess)} já existentes — nenhuma nova.")
+
 # ─── RESUMO ───────────────────────────────────────────────────────────────────
 
 print("\n─── Resultado ───")
