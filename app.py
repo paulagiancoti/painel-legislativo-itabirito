@@ -349,12 +349,13 @@ def carregar_dados(ultima_atualizacao=""):
         mid  = str(r.get('materia', ''))
         mat  = mapa_materia.get(mid, {})
         linhas_rel.append({
-            'rel_id':       r['id'],
-            'parlamentar':  r.get('parlamentar'),
-            'materia_id':   r.get('materia'),
-            'comissao_id':  r.get('comissao'),
-            'comissao':     mapa_comissao.get(str(r.get('comissao', '')), '—'),
-            'tipo_sigla':   mat.get('tipo__sigla', ''),
+            'rel_id':         r['id'],
+            'parlamentar':    r.get('parlamentar'),
+            'materia_id':     r.get('materia'),
+            'comissao_id':    r.get('comissao'),
+            'comissao':       mapa_comissao.get(str(r.get('comissao', '')), '—'),
+            'tipo_sigla':     mat.get('tipo__sigla', ''),
+            'tipo_descricao': mat.get('tipo__descricao', ''),
             'numero':       mat.get('numero', ''),
             'ano':          mat.get('ano', ''),
             'ementa':       mat.get('ementa', ''),
@@ -1331,20 +1332,43 @@ if vereador_selecionado != "Todos":
                 if comissao_sel != "Todas":
                     df_rel_v = df_rel_v[df_rel_v['comissao'] == comissao_sel]
 
-                # Botão de link para o SAPL
-                tipo_id_rel = mapa_tipo_sapl_id.get(tipo_rel_sel) if tipo_rel_sel != "Todos" else None
-                url_rel = (
-                    f"{BASE_SAPL_URL}/materia/pesquisar-materia"
-                    f"?salvar=Pesquisar&ano=2026&relatoria__parlamentar_id={parl_id_v}"
+                # Botão(ões) de link para o SAPL
+                # Quando sigla tem múltiplas descrições (ex: MOC), gera um botão por tipo
+                tipos_desc_rel = (
+                    df_rel_v['tipo_descricao'].dropna().unique().tolist()
+                    if tipo_rel_sel != "Todos"
+                    else []
                 )
-                if tipo_id_rel:
-                    url_rel += f"&tipo={tipo_id_rel}"
-                label_rel = (
-                    f"🔗 Ver matérias de relatoria de {vereador_selecionado} em 2026 no SAPL"
-                    if tipo_rel_sel == "Todos"
-                    else f"🔗 Ver {tipo_rel_sel} de relatoria de {vereador_selecionado} em 2026 no SAPL"
-                )
-                st.link_button(label_rel, url_rel)
+                if not tipos_desc_rel:
+                    # Sem filtro de tipo: link geral por parlamentar
+                    st.link_button(
+                        f"🔗 Ver matérias de relatoria de {vereador_selecionado} em 2026 no SAPL",
+                        f"{BASE_SAPL_URL}/materia/pesquisar-materia"
+                        f"?salvar=Pesquisar&ano=2026&relatoria__parlamentar_id={parl_id_v}"
+                    )
+                elif len(tipos_desc_rel) == 1:
+                    # Uma descrição — botão único com nome completo do tipo
+                    tid = mapa_tipo_sapl_id.get(tipos_desc_rel[0])
+                    url_t = (
+                        f"{BASE_SAPL_URL}/materia/pesquisar-materia"
+                        f"?salvar=Pesquisar&ano=2026&relatoria__parlamentar_id={parl_id_v}"
+                        + (f"&tipo={tid}" if tid else "")
+                    )
+                    st.link_button(
+                        f"🔗 Ver {tipos_desc_rel[0]} de relatoria de {vereador_selecionado} no SAPL",
+                        url_t
+                    )
+                else:
+                    # Múltiplas descrições (ex: MOC) — um botão por tipo
+                    st.caption("Este tipo possui subtipagens — selecione o link desejado:")
+                    for desc in sorted(tipos_desc_rel):
+                        tid = mapa_tipo_sapl_id.get(desc)
+                        url_t = (
+                            f"{BASE_SAPL_URL}/materia/pesquisar-materia"
+                            f"?salvar=Pesquisar&ano=2026&relatoria__parlamentar_id={parl_id_v}"
+                            + (f"&tipo={tid}" if tid else "")
+                        )
+                        st.link_button(f"🔗 {desc}", url_t, key=f"rel_link_{desc}")
 
                 # Tabela
                 df_exibir = df_rel_v[['tipo_sigla', 'numero', 'ementa', 'comissao']].copy()
