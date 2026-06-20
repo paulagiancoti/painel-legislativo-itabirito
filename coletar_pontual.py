@@ -1,8 +1,7 @@
 """
 coletar_pontual.py
-Coleta arquivos específicos sem rodar o processo completo.
-Use este script para baixar comissões, tipos de matéria e relatorias
-sem precisar esperar a coleta de matérias, normas e assuntos.
+Coleta dados pontuais sem rodar o processo completo.
+Atualmente: sessões plenárias e oradores (pronunciamentos).
 """
 
 import requests
@@ -47,6 +46,7 @@ def coletar_paginado(endpoint):
         sep = "&" if "?" in endpoint else "?"
         dados = get_json(f"{BASE_URL}{endpoint}{sep}page={pagina}")
         if dados is None:
+            print(f"  Falhou na página {pagina} — abortando.")
             break
         if isinstance(dados, list):
             todos += dados
@@ -79,117 +79,54 @@ def salvar_json(nome, dados):
     caminho = os.path.join("dados", nome)
     with open(caminho, "w", encoding="utf-8") as f:
         json.dump(dados, f, ensure_ascii=False, indent=2)
-    print(f"  ✓ {caminho} ({len(dados)} registros)")
-
-# ─── COMISSÕES ────────────────────────────────────────────────────────────────
-# PERSONALIZAÇÃO: tente os endpoints abaixo em ordem até um funcionar
-
-print("\n[1] Tentando coletar comissões...")
-# PERSONALIZAÇÃO: endpoint confirmado para Itabirito é /api/comissoes/comissao/
-# Para outras instalações, tente as variações abaixo em ordem.
-ENDPOINTS_COMISSAO = [
-    "/api/comissoes/comissao/?format=json",   # ← correto para Itabirito
-    "/api/comissao/comissao/?format=json",
-    "/api/comissao/?format=json",
-]
-
-comissoes = []
-for ep in ENDPOINTS_COMISSAO:
-    print(f"  Tentando: {ep}")
-    dados = get_json(f"{BASE_URL}{ep}")
-    if dados:
-        if isinstance(dados, list):
-            comissoes = dados
-        elif isinstance(dados, dict):
-            comissoes = dados.get("results", [])
-            if comissoes:
-                # É paginado — coleta todas as páginas
-                comissoes = coletar_paginado(ep)
-        if comissoes:
-            print(f"  ✓ Endpoint encontrado: {ep}")
-            break
-
-if comissoes:
-    salvar_json("comissoes.json", comissoes)
-else:
-    print("  ✗ Nenhum endpoint funcionou para comissões.")
-    print("    Consulte os endpoints disponíveis em:")
-    print(f"    {BASE_URL}/api/schema/swagger-ui/")
-
-# ─── TIPOS DE MATÉRIA ─────────────────────────────────────────────────────────
-
-print("\n[2] Tentando coletar tipos de matéria...")
-# PERSONALIZAÇÃO: endpoint de tipo de matéria.
-# Itabirito usa tipomaterialegislativa — outras instalações podem variar.
-ENDPOINTS_TIPOMATERIA = [
-    "/api/materia/tipomaterialegislativa/?format=json",   # ← correto para Itabirito
-    "/api/materia/tipomateria/?format=json",
-    "/api/materia/tipo/?format=json",
-]
-
-tipomaterias = []
-for ep in ENDPOINTS_TIPOMATERIA:
-    print(f"  Tentando: {ep}")
-    dados = get_json(f"{BASE_URL}{ep}")
-    if dados:
-        if isinstance(dados, list):
-            tipomaterias = dados
-        elif isinstance(dados, dict):
-            tipomaterias = dados.get("results", [])
-            if tipomaterias:
-                tipomaterias = coletar_paginado(ep)
-        if tipomaterias:
-            print(f"  ✓ Endpoint encontrado: {ep}")
-            break
-
-if tipomaterias:
-    salvar_json("tipomaterias.json", tipomaterias)
-else:
-    print("  ✗ Nenhum endpoint funcionou para tipos de matéria.")
-
-# ─── RELATORIAS (se ainda não baixadas) ──────────────────────────────────────
-
-existentes = carregar_existente("relatorias.json")
-if not existentes:
-    print("\n[3] Coletando relatorias (primeira vez)...")
-    novas = coletar_paginado("/api/materia/relatoria/?format=json")
-    if novas:
-        salvar_json("relatorias.json", novas)
-else:
-    print(f"\n[3] Relatorias: {len(existentes)} já existentes — pulando.")
+    print(f"  ✓ {caminho} salvo ({len(dados)} registros)")
 
 # ─── ORADORES ─────────────────────────────────────────────────────────────────
 
-print("\n[4] Coletando oradores (pronunciamentos)...")
+print("\n[1] Coletando oradores (pronunciamentos)...")
 existentes_or = carregar_existente("oradores.json")
 max_id_or = max((r["id"] for r in existentes_or), default=0)
-novos_or = coletar_paginado(
-    f"/api/sessao/oradorordemdia/?format=json&id__gt={max_id_or}" if max_id_or > 0
-    else "/api/sessao/oradorordemdia/?format=json"
+print(f"  Oradores existentes: {len(existentes_or)}, maior ID={max_id_or}")
+ep_or = (
+    f"/api/sessao/oradorordemdia/?format=json&id__gt={max_id_or}"
+    if max_id_or > 0 else "/api/sessao/oradorordemdia/?format=json"
 )
+print(f"  Endpoint: {ep_or}")
+novos_or = coletar_paginado(ep_or)
+print(f"  Retornou: {len(novos_or)} registro(s)")
 if novos_or:
-    salvar_json("oradores.json", merge_por_id(existentes_or, novos_or))
+    merged_or = merge_por_id(existentes_or, novos_or)
+    salvar_json("oradores.json", merged_or)
 elif max_id_or > 0:
-    print(f"  {len(existentes_or)} já existentes — nenhum novo.")
+    print("  Nenhum orador novo — dados anteriores mantidos")
+else:
+    print("  ✗ Nenhum orador coletado e não havia arquivo anterior")
 
 # ─── SESSÕES PLENÁRIAS ────────────────────────────────────────────────────────
 
-print("\n[5] Coletando sessões plenárias...")
+print("\n[2] Coletando sessões plenárias...")
 existentes_sess = carregar_existente("sessoes.json")
 max_id_sess = max((r["id"] for r in existentes_sess), default=0)
-novas_sess = coletar_paginado(
-    f"/api/sessao/sessaoplenaria/?format=json&id__gt={max_id_sess}" if max_id_sess > 0
-    else "/api/sessao/sessaoplenaria/?format=json"
+print(f"  Sessões existentes: {len(existentes_sess)}, maior ID={max_id_sess}")
+ep_sess = (
+    f"/api/sessao/sessaoplenaria/?format=json&id__gt={max_id_sess}"
+    if max_id_sess > 0 else "/api/sessao/sessaoplenaria/?format=json"
 )
+print(f"  Endpoint: {ep_sess}")
+novas_sess = coletar_paginado(ep_sess)
+print(f"  Retornou: {len(novas_sess)} registro(s)")
 if novas_sess:
-    salvar_json("sessoes.json", merge_por_id(existentes_sess, novas_sess))
+    merged_sess = merge_por_id(existentes_sess, novas_sess)
+    salvar_json("sessoes.json", merged_sess)
 elif max_id_sess > 0:
-    print(f"  {len(existentes_sess)} já existentes — nenhuma nova.")
+    print("  Nenhuma sessão nova — dados anteriores mantidos")
+else:
+    print("  ✗ Nenhuma sessão coletada e não havia arquivo anterior")
 
 # ─── RESUMO ───────────────────────────────────────────────────────────────────
 
 print("\n─── Resultado ───")
-for arq in ["comissoes.json", "tipomaterias.json", "relatorias.json"]:
+for arq in ["oradores.json", "sessoes.json"]:
     caminho = os.path.join("dados", arq)
     if os.path.exists(caminho):
         d = json.load(open(caminho, encoding="utf-8"))
