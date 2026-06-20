@@ -227,24 +227,11 @@ elif max_id_rel > 0:
 else:
     alertar("Nenhuma relatoria coletada — mantendo dados anteriores")
 
-# ─── 6. COMISSÕES ─────────────────────────────────────────────────────────────
+# Comissões e tipos de matéria são fixos — coletados uma única vez via coletar_dados_iniciais.py
 
-print("\n[6/6] Coletando comissões...")
-comissoes = coletar_paginado("/api/comissoes/comissao/?format=json")  # PERSONALIZAÇÃO: verifique o endpoint
-if comissoes:
-    salvar_json("comissoes.json", comissoes)
-else:
-    alertar("Nenhuma comissão coletada — mantendo dados anteriores")
+# ─── 6. ORADORES (pronunciamentos) — incremental por ID ─────────────────────
 
-# Tipos de matéria (raramente mudam, mas precisamos do mapeamento descricao→id)
-print("\n[Extra] Coletando tipos de matéria...")
-tiposmaterias = coletar_paginado("/api/materia/tipomaterialegislativa/?format=json")  # PERSONALIZAÇÃO: verifique o endpoint
-if tiposmaterias:
-    salvar_json("tipomaterias.json", tiposmaterias)
-
-# ─── 7. ORADORES (pronunciamentos) — incremental por ID ─────────────────────
-
-print("\n[7/8] Coletando oradores (pronunciamentos)...")
+print("\n[6/7] Coletando oradores (pronunciamentos)...")
 existentes_or = carregar_existente("oradores.json")
 max_id_or = max((r["id"] for r in existentes_or), default=0)
 print(f"  Oradores existentes: {len(existentes_or)}, maior ID={max_id_or}")
@@ -261,7 +248,7 @@ else:
 
 # ─── 8. SESSÕES PLENÁRIAS (para cruzar data com oradores) ────────────────────
 
-print("\n[8/8] Coletando sessões plenárias...")
+print("\n[7/7] Coletando sessões plenárias...")
 existentes_sess = carregar_existente("sessoes.json")
 max_id_sess = max((r["id"] for r in existentes_sess), default=0)
 print(f"  Sessões existentes: {len(existentes_sess)}, maior ID={max_id_sess}")
