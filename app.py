@@ -1105,7 +1105,8 @@ if vereador_selecionado == "Todos":
                 sessoes_resumo['data']).dt.strftime('%d/%m/%Y')
             sessoes_resumo['Sessão'] = sessoes_resumo['sessao_nome']
 
-            df_tabela = sessoes_resumo[['Data','Sessão','Oradores']].reset_index(drop=True)
+            # ── CORREÇÃO: reordenar colunas para Oradores ficar no centro ──
+            df_tabela = sessoes_resumo[['Data','Oradores','Sessão']].reset_index(drop=True)
 
             st.caption("Clique em uma sessão para ver os oradores.")
             evento = st.dataframe(
@@ -1115,8 +1116,9 @@ if vereador_selecionado == "Todos":
                 on_select="rerun",
                 selection_mode="single-row",
                 column_config={
-                    'Oradores': st.column_config.NumberColumn(format='%d', width='small'),
                     'Data':     st.column_config.TextColumn(width='small'),
+                    'Oradores': st.column_config.NumberColumn(format='%d', width='small'),
+                    'Sessão':   st.column_config.TextColumn(width='large'),
                 }
             )
 
