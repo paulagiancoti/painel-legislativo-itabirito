@@ -221,8 +221,15 @@ def carregar_dados(ultima_atualizacao=""):
     df_materias_hist['numero_int'] = df_materias_hist['numero'].astype(int)
     mapa_tipo_mat   = df_materias_hist.set_index('id_str')['tipo__sigla'].to_dict()
     mapa_numero_mat = df_materias_hist.set_index('id_str')['numero_int'].to_dict()
+    mapa_ano_mat    = df_materias_hist.set_index('id_str')['ano'].to_dict()
+    # mapa_plo_num: só PLOs de 2026 — evita colisão de número entre anos
+    # (PLO nº 30 de 2025 e PLO nº 30 de 2026 têm o mesmo numero_int;
+    #  sem filtro de ano, um sobrescreveria o outro no dict)
     mapa_plo_num    = (
-        df_materias_hist[df_materias_hist['tipo__sigla'] == 'PLO']
+        df_materias_hist[
+            (df_materias_hist['tipo__sigla'] == 'PLO') &
+            (df_materias_hist['ano'].astype(str) == '2026')
+        ]
         .set_index('numero_int')['id_str'].to_dict()
     )
     # Mapa: plo_id → autoria (do histórico)
@@ -249,7 +256,12 @@ def carregar_dados(ultima_atualizacao=""):
         else:
             continue
 
-        # Autores do PLO original (pode ser de 2025 ou 2026)
+        # Só conta PLOs do ano de referência (2026) — PLOs de 2025 aprovados
+        # em 2026 não são creditados ao desempenho do ano corrente
+        if str(mapa_ano_mat.get(plo_id, '')).strip() != '2026':
+            continue
+
+        # Autores do PLO original (sempre de 2026 após o filtro acima)
         autoria_plo = mapa_plo_autoria.get(plo_id, '')
         autores_plo = [a.strip() for a in autoria_plo.split(',') if a.strip()] or ['']
 
