@@ -8,6 +8,22 @@
     "materia": 23158
   },
   {
+    "id": 701,
+    "__str__": "Projeto de Lei Ordinária nº 174 de 2026 - Acessibilidade",
+    "link_detail_backend": "/materia/materiaassunto/701",
+    "metadata": {},
+    "assunto": 40,
+    "materia": 23374
+  },
+  {
+    "id": 699,
+    "__str__": "Projeto de Lei Ordinária nº 173 de 2026 - Acessibilidade",
+    "link_detail_backend": "/materia/materiaassunto/699",
+    "metadata": {},
+    "assunto": 40,
+    "materia": 23372
+  },
+  {
     "id": 487,
     "__str__": "Projeto de Lei Ordinária nº 140 de 2026 - Acessibilidade",
     "link_detail_backend": "/materia/materiaassunto/487",
@@ -88,6 +104,14 @@
     "materia": 20589
   },
   {
+    "id": 704,
+    "__str__": "Projeto de Lei Substitutivo nº 155 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/704",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23298
+  },
+  {
     "id": 588,
     "__str__": "Projeto de Lei Substitutivo nº 78 de 2026 - Administração Pública",
     "link_detail_backend": "/materia/materiaassunto/588",
@@ -112,20 +136,20 @@
     "materia": 20832
   },
   {
+    "id": 700,
+    "__str__": "Projeto de Lei Ordinária nº 173 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/700",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23372
+  },
+  {
     "id": 679,
     "__str__": "Projeto de Lei Ordinária nº 160 de 2026 - Administração Pública",
     "link_detail_backend": "/materia/materiaassunto/679",
     "metadata": {},
     "assunto": 44,
     "materia": 23249
-  },
-  {
-    "id": 663,
-    "__str__": "Projeto de Lei Ordinária nº 155 de 2026 - Administração Pública",
-    "link_detail_backend": "/materia/materiaassunto/663",
-    "metadata": {},
-    "assunto": 44,
-    "materia": 23159
   },
   {
     "id": 539,
@@ -856,6 +880,14 @@
     "materia": 21508
   },
   {
+    "id": 694,
+    "__str__": "Projeto de Lei Ordinária nº 169 de 2026 - Comunicação",
+    "link_detail_backend": "/materia/materiaassunto/694",
+    "metadata": {},
+    "assunto": 3,
+    "materia": 23365
+  },
+  {
     "id": 678,
     "__str__": "Projeto de Lei Ordinária nº 160 de 2026 - Comunicação",
     "link_detail_backend": "/materia/materiaassunto/678",
@@ -1048,6 +1080,14 @@
     "materia": 22073
   },
   {
+    "id": 686,
+    "__str__": "Projeto de Lei Ordinária nº 164 de 2026 - Defesa e Segurança",
+    "link_detail_backend": "/materia/materiaassunto/686",
+    "metadata": {},
+    "assunto": 28,
+    "materia": 23329
+  },
+  {
     "id": 674,
     "__str__": "Projeto de Lei Ordinária nº 159 de 2026 - Defesa e Segurança",
     "link_detail_backend": "/materia/materiaassunto/674",
@@ -1150,6 +1190,22 @@
     "metadata": {},
     "assunto": 28,
     "materia": 20651
+  },
+  {
+    "id": 690,
+    "__str__": "Projeto de Lei Ordinária nº 167 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/690",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 23343
+  },
+  {
+    "id": 682,
+    "__str__": "Projeto de Lei Ordinária nº 162 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/682",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 23283
   },
   {
     "id": 541,
@@ -1416,6 +1472,30 @@
     "materia": 23158
   },
   {
+    "id": 693,
+    "__str__": "Projeto de Lei Ordinária nº 169 de 2026 - Desenvolvimento Urbano",
+    "link_detail_backend": "/materia/materiaassunto/693",
+    "metadata": {},
+    "assunto": 53,
+    "materia": 23365
+  },
+  {
+    "id": 689,
+    "__str__": "Projeto de Lei Ordinária nº 166 de 2026 - Desenvolvimento Urbano",
+    "link_detail_backend": "/materia/materiaassunto/689",
+    "metadata": {},
+    "assunto": 53,
+    "materia": 23333
+  },
+  {
+    "id": 688,
+    "__str__": "Projeto de Lei Ordinária nº 165 de 2026 - Desenvolvimento Urbano",
+    "link_detail_backend": "/materia/materiaassunto/688",
+    "metadata": {},
+    "assunto": 53,
+    "materia": 23332
+  },
+  {
     "id": 560,
     "__str__": "Projeto de Lei Ordinária nº 112 de 2026 - Desenvolvimento Urbano",
     "link_detail_backend": "/materia/materiaassunto/560",
@@ -1550,6 +1630,14 @@
     "metadata": {},
     "assunto": 9,
     "materia": 22073
+  },
+  {
+    "id": 683,
+    "__str__": "Projeto de Lei Ordinária nº 163 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/683",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 23326
   },
   {
     "id": 498,
@@ -1702,6 +1790,14 @@
     "metadata": {},
     "assunto": 11,
     "materia": 7793
+  },
+  {
+    "id": 691,
+    "__str__": "Projeto de Lei Ordinária nº 168 de 2026 - Esporte",
+    "link_detail_backend": "/materia/materiaassunto/691",
+    "metadata": {},
+    "assunto": 11,
+    "materia": 23362
   },
   {
     "id": 681,
@@ -3152,6 +3248,14 @@
     "materia": 8312
   },
   {
+    "id": 705,
+    "__str__": "Projeto de Lei Substitutivo nº 155 de 2026 - Indústria, Comércio e Serviços",
+    "link_detail_backend": "/materia/materiaassunto/705",
+    "metadata": {},
+    "assunto": 45,
+    "materia": 23298
+  },
+  {
     "id": 454,
     "__str__": "Projeto de Lei Substitutivo nº 69 de 2026 - Indústria, Comércio e Serviços",
     "link_detail_backend": "/materia/materiaassunto/454",
@@ -3166,14 +3270,6 @@
     "metadata": {},
     "assunto": 45,
     "materia": 20832
-  },
-  {
-    "id": 662,
-    "__str__": "Projeto de Lei Ordinária nº 155 de 2026 - Indústria, Comércio e Serviços",
-    "link_detail_backend": "/materia/materiaassunto/662",
-    "metadata": {},
-    "assunto": 45,
-    "materia": 23159
   },
   {
     "id": 531,
@@ -3496,6 +3592,30 @@
     "materia": 22337
   },
   {
+    "id": 698,
+    "__str__": "Projeto de Lei Ordinária nº 172 de 2026 - Meio Ambiente",
+    "link_detail_backend": "/materia/materiaassunto/698",
+    "metadata": {},
+    "assunto": 17,
+    "materia": 23369
+  },
+  {
+    "id": 695,
+    "__str__": "Projeto de Lei Ordinária nº 170 de 2026 - Meio Ambiente",
+    "link_detail_backend": "/materia/materiaassunto/695",
+    "metadata": {},
+    "assunto": 17,
+    "materia": 23366
+  },
+  {
+    "id": 692,
+    "__str__": "Projeto de Lei Ordinária nº 168 de 2026 - Meio Ambiente",
+    "link_detail_backend": "/materia/materiaassunto/692",
+    "metadata": {},
+    "assunto": 17,
+    "materia": 23362
+  },
+  {
     "id": 496,
     "__str__": "Projeto de Lei Ordinária nº 127 de 2026 - Meio Ambiente",
     "link_detail_backend": "/materia/materiaassunto/496",
@@ -3640,6 +3760,14 @@
     "materia": 7040
   },
   {
+    "id": 696,
+    "__str__": "Projeto de Lei Ordinária nº 171 de 2026 - Mobilidade Urbana",
+    "link_detail_backend": "/materia/materiaassunto/696",
+    "metadata": {},
+    "assunto": 18,
+    "materia": 23368
+  },
+  {
     "id": 555,
     "__str__": "Projeto de Lei Ordinária nº 120 de 2026 - Mobilidade Urbana",
     "link_detail_backend": "/materia/materiaassunto/555",
@@ -3734,6 +3862,14 @@
     "metadata": {},
     "assunto": 43,
     "materia": 22085
+  },
+  {
+    "id": 702,
+    "__str__": "Projeto de Lei Ordinária nº 174 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/702",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 23374
   },
   {
     "id": 669,
@@ -4080,6 +4216,22 @@
     "materia": 22073
   },
   {
+    "id": 685,
+    "__str__": "Projeto de Lei Ordinária nº 164 de 2026 - Programa",
+    "link_detail_backend": "/materia/materiaassunto/685",
+    "metadata": {},
+    "assunto": 27,
+    "materia": 23329
+  },
+  {
+    "id": 684,
+    "__str__": "Projeto de Lei Ordinária nº 163 de 2026 - Programa",
+    "link_detail_backend": "/materia/materiaassunto/684",
+    "metadata": {},
+    "assunto": 27,
+    "materia": 23326
+  },
+  {
     "id": 680,
     "__str__": "Projeto de Lei Ordinária nº 161 de 2026 - Programa",
     "link_detail_backend": "/materia/materiaassunto/680",
@@ -4414,6 +4566,22 @@
     "metadata": {},
     "assunto": 21,
     "materia": 21508
+  },
+  {
+    "id": 703,
+    "__str__": "Projeto de Lei Ordinária nº 174 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/703",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 23374
+  },
+  {
+    "id": 687,
+    "__str__": "Projeto de Lei Ordinária nº 164 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/687",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 23329
   },
   {
     "id": 655,
@@ -4774,6 +4942,14 @@
     "metadata": {},
     "assunto": 22,
     "materia": 20585
+  },
+  {
+    "id": 697,
+    "__str__": "Projeto de Lei Ordinária nº 171 de 2026 - Trânsito",
+    "link_detail_backend": "/materia/materiaassunto/697",
+    "metadata": {},
+    "assunto": 23,
+    "materia": 23368
   },
   {
     "id": 502,
