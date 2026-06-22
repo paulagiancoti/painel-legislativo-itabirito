@@ -1348,7 +1348,7 @@ if vereador_selecionado != "Todos":
     with aba_d2:
         st.subheader(f"✅ {vereador_selecionado}")
         st.divider()
-        # PLOs aprovados do vereador (inclui PLOs de 2025 via df_leis)
+        # PLOs aprovados do vereador (apenas 2026 — filtro aplicado em carregar_dados)
         df_leis_v = df_leis[df_leis['autor_nome'] == vereador_selecionado].drop_duplicates('plo_id')
         if df_leis_v.empty:
             st.info("Nenhum PLO aprovado como lei até o momento.")
