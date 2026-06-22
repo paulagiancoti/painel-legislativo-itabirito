@@ -1382,12 +1382,14 @@ if vereador_selecionado != "Todos":
                 ementa_rows = df_parl[(df_parl['numero'] == num) & (df_parl['tipo_sigla'] == 'PLO')]['ementa']
                 ementa = ementa_rows.iloc[0] if not ementa_rows.empty else ''
                 roles = []
-                if 'PLO' in versoes_vereador:
-                    roles.append('autor do PLO')
-                if 'PLS' in versoes_vereador:
-                    roles.append('co-autor do PLS')
-                if 'PLS2' in versoes_vereador:
-                    roles.append('co-autor do PLS2')
+                for tipo_v, sigla_v in [('PLO', 'PLO'), ('PLS', 'PLS'), ('PLS2', 'PLS2')]:
+                    if tipo_v in versoes_vereador:
+                        todos_autores_v = df_parl[
+                            (df_parl['tipo_sigla'] == tipo_v) &
+                            (df_parl['numero'] == num)
+                        ]['autor_nome'].unique().tolist()
+                        prefixo = 'co-autor' if len(todos_autores_v) > 1 else 'autor'
+                        roles.append(f'{prefixo} do {sigla_v}')
                 linhas_subst.append({
                     'Nº': num,
                     'Papel': ', '.join(roles),
