@@ -724,17 +724,34 @@ nomes_ativos_set     = set(df_vereadores['nome_parlamentar'])
 total_aprov_unicos   = df_leis[df_leis['autor_nome'].isin(nomes_ativos_set)]['plo_id'].nunique()
 taxa_geral           = round(total_aprov_unicos / total_plos_unicos * 100, 1) if total_plos_unicos else 0
 
+# Totais incluindo todos os autores — usados apenas nos rodapés dos cards
+total_plos_todos  = df_expandido[df_expandido['tipo_sigla'] == 'PLO']['materia_id'].nunique()
+total_aprov_todos = df_leis['plo_id'].nunique()
+total_mat_todos   = df_expandido[~df_expandido['tipo_sigla'].isin(['PLS', 'PLS2'])]['materia_id'].nunique()
+extra_plos        = total_plos_todos - total_plos_unicos
+extra_aprov       = total_aprov_todos - total_aprov_unicos
+extra_mat         = total_mat_todos - df_sem_pls['materia_id'].nunique()
+
+def _rodape_card(extra):
+    """Rodapé padrão dos cards: escopo + quantos há de outros autores no SAPL."""
+    base = "só vereadores ativos"
+    return f"{base} · +{extra} de outros autores no SAPL" if extra > 0 else base
+
 c1, c2, c3, c4, c5 = st.columns(5)
 with c1:
     st.metric("Vereadores ativos", len(df_vereadores))
 with c2:
     st.metric("Matérias apresentadas", df_sem_pls['materia_id'].nunique())
+    st.caption(_rodape_card(extra_mat))
 with c3:
     st.metric("Projetos de Lei", total_plos_unicos)
+    st.caption(_rodape_card(extra_plos))
 with c4:
     st.metric("PLOs aprovados", total_aprov_unicos)
+    st.caption(_rodape_card(extra_aprov))
 with c5:
     st.metric("Taxa geral de aprovação", f"{taxa_geral}%")
+    st.caption("dos vereadores ativos")
 
 st.divider()
 
