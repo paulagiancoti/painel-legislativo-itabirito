@@ -16159,7 +16159,22 @@
     "id": 575,
     "__str__": "18ª Sessão Ordinária da 2ª Sessão Legislativa da 22ª Legislatura",
     "link_detail_backend": "/sessao/575",
-    "metadata": {},
+    "metadata": {
+      "signs": {
+        "upload_anexo": {
+          "admin": [],
+          "autores": [
+            [
+              "Leandro Silva Marques",
+              [
+                "2026-06-22T21:18:56-03:00",
+                "ICP-Brasil - AC SyngularID Multipla"
+              ]
+            ]
+          ]
+        }
+      }
+    },
     "cod_andamento_sessao": null,
     "painel_aberto": false,
     "data_inicio": "2026-06-15",
@@ -16170,13 +16185,13 @@
     "url_audio": "",
     "url_video": "https://www.youtube.com/watch?v=RXnpAmp0OkM",
     "upload_pauta": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/575/pauta/reuniao_ordinaria_150626.pdf",
-    "upload_ata": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/575/ata/ata_150626_a_ser_discutida_e_votada.pdf",
-    "upload_anexo": null,
+    "upload_ata": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/575/ata/ata_150626.pdf",
+    "upload_anexo": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/575/anexo/ata_15.06.2026_1.pdf",
     "iniciada": true,
     "finalizada": true,
     "interativa": false,
     "tema_solene": "",
-    "data_ultima_atualizacao": "2026-06-22T14:57:18.826939-03:00",
+    "data_ultima_atualizacao": "2026-06-23T13:53:11.374886-03:00",
     "publicar_pauta": true,
     "tipo": 1,
     "sessao_legislativa": 72,
@@ -16198,13 +16213,13 @@
     "url_audio": "",
     "url_video": "https://www.youtube.com/watch?v=XTTnPXFMic4",
     "upload_pauta": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/576/pauta/reuniao_ordinaria_220626.pdf",
-    "upload_ata": null,
+    "upload_ata": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/576/ata/ata_220626_a_ser_discutida_e_votada.pdf",
     "upload_anexo": null,
     "iniciada": true,
-    "finalizada": false,
+    "finalizada": true,
     "interativa": false,
     "tema_solene": "",
-    "data_ultima_atualizacao": "2026-06-22T18:48:38.389149-03:00",
+    "data_ultima_atualizacao": "2026-06-23T16:28:54.874053-03:00",
     "publicar_pauta": true,
     "tipo": 1,
     "sessao_legislativa": 72,

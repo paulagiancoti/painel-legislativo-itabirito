@@ -144,12 +144,44 @@
     "materia": 23372
   },
   {
+    "id": 706,
+    "__str__": "Projeto de Lei Ordinária nº 166 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/706",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23333
+  },
+  {
+    "id": 707,
+    "__str__": "Projeto de Lei Ordinária nº 165 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/707",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23332
+  },
+  {
+    "id": 709,
+    "__str__": "Projeto de Lei Ordinária nº 162 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/709",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23283
+  },
+  {
     "id": 679,
     "__str__": "Projeto de Lei Ordinária nº 160 de 2026 - Administração Pública",
     "link_detail_backend": "/materia/materiaassunto/679",
     "metadata": {},
     "assunto": 44,
     "materia": 23249
+  },
+  {
+    "id": 710,
+    "__str__": "Projeto de Lei Ordinária nº 159 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/710",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23234
   },
   {
     "id": 539,
@@ -1470,14 +1502,6 @@
     "metadata": {},
     "assunto": 53,
     "materia": 23158
-  },
-  {
-    "id": 693,
-    "__str__": "Projeto de Lei Ordinária nº 169 de 2026 - Desenvolvimento Urbano",
-    "link_detail_backend": "/materia/materiaassunto/693",
-    "metadata": {},
-    "assunto": 53,
-    "materia": 23365
   },
   {
     "id": 689,
@@ -3872,6 +3896,14 @@
     "materia": 23374
   },
   {
+    "id": 693,
+    "__str__": "Projeto de Lei Ordinária nº 169 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/693",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 23365
+  },
+  {
     "id": 669,
     "__str__": "Projeto de Lei Ordinária nº 158 de 2026 - Política Pública Social",
     "link_detail_backend": "/materia/materiaassunto/669",
@@ -4830,6 +4862,14 @@
     "metadata": {},
     "assunto": 30,
     "materia": 21071
+  },
+  {
+    "id": 708,
+    "__str__": "Projeto de Lei Ordinária nº 164 de 2026 - Servidor Público",
+    "link_detail_backend": "/materia/materiaassunto/708",
+    "metadata": {},
+    "assunto": 30,
+    "materia": 23329
   },
   {
     "id": 380,
