@@ -3862,5 +3862,101 @@
     "upload_anexo": null,
     "sessao_plenaria": 575,
     "parlamentar": 27
+  },
+  {
+    "id": 325,
+    "__str__": "Dr. Edson (1º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/325",
+    "metadata": {},
+    "numero_ordem": 1,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 576,
+    "parlamentar": 27
+  },
+  {
+    "id": 326,
+    "__str__": "Renê Butekus (2º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/326",
+    "metadata": {},
+    "numero_ordem": 2,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 576,
+    "parlamentar": 28
+  },
+  {
+    "id": 327,
+    "__str__": "Fernando da Sheila (3º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/327",
+    "metadata": {},
+    "numero_ordem": 3,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 576,
+    "parlamentar": 186
+  },
+  {
+    "id": 328,
+    "__str__": "Ezio Pimenta (4º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/328",
+    "metadata": {},
+    "numero_ordem": 4,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 576,
+    "parlamentar": 185
+  },
+  {
+    "id": 329,
+    "__str__": "Manoel da Autoescola (5º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/329",
+    "metadata": {},
+    "numero_ordem": 5,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 576,
+    "parlamentar": 188
+  },
+  {
+    "id": 330,
+    "__str__": "Max Fortes (6º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/330",
+    "metadata": {},
+    "numero_ordem": 6,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 576,
+    "parlamentar": 19
+  },
+  {
+    "id": 331,
+    "__str__": "Márcio Juninho (7º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/331",
+    "metadata": {},
+    "numero_ordem": 7,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 576,
+    "parlamentar": 37
+  },
+  {
+    "id": 332,
+    "__str__": "Rose da Saúde (8º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/332",
+    "metadata": {},
+    "numero_ordem": 8,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 576,
+    "parlamentar": 23
   }
 ]
