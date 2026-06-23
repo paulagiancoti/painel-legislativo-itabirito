@@ -609,7 +609,7 @@ header[data-testid="stHeader"] { display: none !important; height: 0 !important;
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
     padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-right: 2rem !important;
     max-width: 100% !important;
 }
 [data-testid="stAppViewBlockContainer"] {
@@ -957,7 +957,8 @@ if vereador_selecionado == "Todos":
                              'projetos_virou_lei': 'Aprovados', 'taxa_aprovacao': 'Taxa (%)',
                              'projetos_com_substitutivo': 'Com substitutivo'})
             .sort_values('Taxa (%)', ascending=False),
-            width='stretch', hide_index=True
+            width='stretch', hide_index=True,
+            height=len(df_aprov) * 35 + 45,  # mostra todas as linhas sem scroll interno
         )
 
     with aba3:
@@ -1169,6 +1170,7 @@ if vereador_selecionado == "Todos":
                 hide_index=True,
                 on_select="rerun",
                 selection_mode="single-row",
+                height=280,  # ~7 sessões visíveis — permite scroll de página até os oradores
                 column_config={
                     'Data':     st.column_config.TextColumn(width='small'),
                     'Oradores': st.column_config.NumberColumn(format='%d', width='small'),
