@@ -506,32 +506,10 @@ with f2:
 with f4:
     tema = st.selectbox("🎨 Contraste", ["🌞 Claro", "🌙 Escuro", "🏛️ Institucional"])
 
-st.caption("ℹ️ PLS e PLS2 são substitutivos de PLOs e não contam como projetos separados.")
-
-# ─── DATA DA ÚLTIMA ATUALIZAÇÃO ─────────────────────────────────────────────────
-import datetime
-try:
-    try:
-        import json as _json
-        _ts = _json.load(open("dados/ultima_atualizacao.json", encoding="utf-8"))
-        data_fmt = _ts.get("data_hora", "desconhecida")
-        st.caption(f"🔄 Última atualização dos dados: {data_fmt}")
-    except Exception:
-        # fallback para getmtime se o arquivo não existir
-        try:
-            import datetime
-            ultima_atualizacao = max(
-                os.path.getmtime(f"dados/{arq}")
-                for arq in ["materias.json", "normas.json", "assuntos.json", "materiaassuntos.json", "vereadores.json"]
-                if os.path.exists(f"dados/{arq}")
-            )
-            fuso_brasilia = datetime.timezone(datetime.timedelta(hours=-3))
-            data_fmt = datetime.datetime.fromtimestamp(ultima_atualizacao, tz=fuso_brasilia).strftime("%d/%m/%Y às %H:%M")
-            st.caption(f"🔄 Última atualização dos dados: {data_fmt}")
-        except Exception:
-            pass
-except Exception:
-    pass
+# Nota informativa + data de atualização — numa única linha compacta
+# _ts já lido no topo do arquivo como string "DD/MM/YYYY às HH:MM"
+_atu = f"  ·  🔄 Última atualização dos dados: {_ts}" if _ts else ""
+st.caption(f"ℹ️ PLS e PLS2 são substitutivos de PLOs e não contam como projetos separados{_atu}")
 
 # ─── TEMAS ─────────────────────────────────────────────────────────────────────
 
@@ -628,7 +606,7 @@ header[data-testid="stHeader"] { display: none !important; height: 0 !important;
 .block-container {
     min-width: 0 !important;
     width: 100% !important;
-    padding-top: 1rem !important;
+    padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
@@ -638,6 +616,12 @@ header[data-testid="stHeader"] { display: none !important; height: 0 !important;
     padding-bottom: 0 !important;
     min-width: 0 !important;
 }
+
+/* Reduz o gap vertical padrão entre elementos — cabeçalho muito mais compacto */
+[data-testid="stVerticalBlock"] { gap: 0.4rem !important; }
+
+/* Divisor mais fino e compacto */
+hr { margin: 0.2rem 0 !important; }
 
 /* Colunas responsivas — quebram linha em vez de criar scroll */
 [data-testid="stHorizontalBlock"] {
@@ -794,9 +778,8 @@ with c5:
     st.metric("Taxa geral de aprovação", f"{taxa_geral}%")
     st.caption("dos vereadores ativos")
 
-st.divider()
 
-# ─── NOTA DE TRANSPARÊNCIA ─────────────────────────────────────────────────────
+# ─── NOTA DE TRANSPARÊNCIA (em expander para não ocupar espaço por padrão) ─────
 
 qtd_executivo = df_expandido[df_expandido['autor_tipo'] == 'Chefe do Executivo']['materia_id'].nunique()
 qtd_mesa_dir  = df_expandido[df_expandido['autor_nome'].str.contains('Mesa Diretora', na=False)]['materia_id'].nunique()
@@ -826,12 +809,13 @@ if partes:
             f" a partir de projetos do Executivo e da Mesa Diretora"
             f" — não contabilizadas nos {total_aprov_unicos} PLOs aprovados acima."
         )
-    st.caption(
-        "ℹ️ Em 2026 também foram apresentados: " +
-        ", ".join(partes) +
-        " — não incluídos nos comparativos entre vereadores." +
-        nota_leis
-    )
+    with st.expander("ℹ️ Sobre os dados exibidos"):
+        st.caption(
+            "Em 2026 também foram apresentados: " +
+            ", ".join(partes) +
+            " — não incluídos nos comparativos entre vereadores." +
+            nota_leis
+        )
 
 # ─── HELPERS ───────────────────────────────────────────────────────────────────
 
