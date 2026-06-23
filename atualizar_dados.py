@@ -96,11 +96,16 @@ def salvar_json(nome_arquivo, dados):
         json.dump(dados, f, ensure_ascii=False, indent=2)
     print(f"  ✓ Salvo: {caminho} ({len(dados)} registros)")
 
-ALERTAS = []
+ALERTAS_SAPL     = []   # SAPL indisponível — comportamento esperado, dados preservados
+ALERTAS_CRITICOS = []   # Integridade dos dados — requer atenção imediata
 
-def alertar(msg):
-    print(f"  ⚠️  ALERTA: {msg}")
-    ALERTAS.append(msg)
+def alertar(msg, critico=False):
+    nivel = "🔴 CRÍTICO" if critico else "⚠️  AVISO"
+    print(f"  {nivel}: {msg}")
+    if critico:
+        ALERTAS_CRITICOS.append(msg)
+    else:
+        ALERTAS_SAPL.append(msg)
 
 # ─── 1. MATÉRIAS ──────────────────────────────────────────────────────────────
 
@@ -138,12 +143,14 @@ if novos_hist:
     if total_merged < total_anterior:
         alertar(
             f"Total de matérias diminuiu: {total_anterior} → {total_merged}. "
-            f"Possível exclusão no SAPL ou falha parcial na coleta."
+            f"Possível exclusão no SAPL ou falha parcial na coleta.",
+            critico=True
         )
     if max_id_novo < max_id_anterior:
         alertar(
             f"Maior ID diminuiu: {max_id_anterior} → {max_id_novo}. "
-            f"Isso não deveria acontecer — verificar SAPL."
+            f"Isso não deveria acontecer — verificar SAPL.",
+            critico=True
         )
 
     salvar_json("materias_historico.json", merged_hist)
@@ -175,7 +182,8 @@ if novas_normas:
     if total_leis_novo < total_leis_anterior:
         alertar(
             f"Leis Ordinárias (tipo 1) diminuíram: {total_leis_anterior} → {total_leis_novo}. "
-            f"Verificar se houve exclusão indevida no SAPL."
+            f"Verificar se houve exclusão indevida no SAPL.",
+            critico=True
         )
     salvar_json("normas.json", merged_normas)
 else:
@@ -277,14 +285,23 @@ else:
 # ─── RESULTADO FINAL ──────────────────────────────────────────────────────────
 
 print("\n" + "="*60)
-if ALERTAS:
-    print("⚠️  ALERTAS DETECTADOS — verificar antes do próximo deploy:")
-    for a in ALERTAS:
+if ALERTAS_CRITICOS:
+    print("🔴 ALERTAS CRÍTICOS — verificar imediatamente:")
+    for a in ALERTAS_CRITICOS:
+        print(f"  • {a}")
+    if ALERTAS_SAPL:
+        print("⚠️  Também houve falhas de conexão com o SAPL:")
+        for a in ALERTAS_SAPL:
+            print(f"  • {a}")
+    print("="*60)
+    sys.exit(1)   # falha o workflow → GitHub envia e-mail de notificação
+elif ALERTAS_SAPL:
+    print("⚠️  SAPL indisponível — dados anteriores preservados:")
+    for a in ALERTAS_SAPL:
         print(f"  • {a}")
     print("="*60)
-    # Falha o workflow → GitHub envia e-mail de notificação
-    import sys
-    sys.exit(1)
+    sys.exit(1)   # falha o workflow → e-mail chega → lembrete para atualizar manualmente
 else:
     print("✓ Atualização concluída sem alertas.")
     print("="*60)
+    sys.exit(0)
