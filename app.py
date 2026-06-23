@@ -770,10 +770,17 @@ c4_mesa   = int(_df_leis_nao_v['autor_nome'].str.contains('Mesa Diretora', na=Fa
 c4_outros = max(0, int(extra_aprov) - c4_exec - c4_mesa)
 
 def _rod_orig(c_exec, c_mesa, c_outros):
-    """Renderiza '+N Origem' como captions compactos sob cada card."""
-    if c_exec   > 0: st.caption(f"+{c_exec} Executivo")
-    if c_mesa   > 0: st.caption(f"+{c_mesa} Mesa")
-    if c_outros > 0: st.caption(f"+{c_outros} Outros")
+    """Renderiza '+N Origem' como bloco HTML compacto sob cada card."""
+    linhas = []
+    if c_exec   > 0: linhas.append(f"+{c_exec} Executivo")
+    if c_mesa   > 0: linhas.append(f"+{c_mesa} Mesa")
+    if c_outros > 0: linhas.append(f"+{c_outros} Outros")
+    if linhas:
+        html = "".join(
+            f'<div style="font-size:0.75rem;color:grey;line-height:1.3;margin:0;padding:0">{l}</div>'
+            for l in linhas
+        )
+        st.markdown(html, unsafe_allow_html=True)
 
 c1, c2, c3, c4, c5 = st.columns(5)
 with c1:
