@@ -724,31 +724,69 @@ nomes_ativos_set     = set(df_vereadores['nome_parlamentar'])
 total_aprov_unicos   = df_leis[df_leis['autor_nome'].isin(nomes_ativos_set)]['plo_id'].nunique()
 taxa_geral           = round(total_aprov_unicos / total_plos_unicos * 100, 1) if total_plos_unicos else 0
 
-# Totais incluindo todos os autores — usados apenas nos rodapés dos cards
+# Totais para cálculo dos extras
 total_plos_todos  = df_expandido[df_expandido['tipo_sigla'] == 'PLO']['materia_id'].nunique()
 total_aprov_todos = df_leis['plo_id'].nunique()
 total_mat_todos   = df_expandido[~df_expandido['tipo_sigla'].isin(['PLS', 'PLS2'])]['materia_id'].nunique()
-extra_plos        = total_plos_todos - total_plos_unicos
-extra_aprov       = total_aprov_todos - total_aprov_unicos
-extra_mat         = total_mat_todos - df_sem_pls['materia_id'].nunique()
+extra_plos  = total_plos_todos - total_plos_unicos
+extra_aprov = total_aprov_todos - total_aprov_unicos
+extra_mat   = total_mat_todos - df_sem_pls['materia_id'].nunique()
 
-def _rodape_card(extra):
-    """Rodapé padrão dos cards: escopo + quantos há de outros autores no SAPL."""
-    base = "só vereadores ativos"
-    return f"{base} · +{extra} de outros autores no SAPL" if extra > 0 else base
+# Sets de IDs com vereador ativo — evita dupla contagem nos breakdowns
+_ids_mat_ver = set(df_parl[~df_parl['tipo_sigla'].isin(['PLS', 'PLS2'])]['materia_id'])
+_ids_plo_ver = set(df_parl[df_parl['tipo_sigla'] == 'PLO']['materia_id'])
+
+# Breakdown por origem — Matérias (card 2)
+_df = df_expandido[
+    (~df_expandido['tipo_sigla'].isin(['PLS', 'PLS2'])) &
+    (~df_expandido['materia_id'].isin(_ids_mat_ver))
+]
+c2_exec   = _df[_df['autor_tipo'] == 'Chefe do Executivo']['materia_id'].nunique()
+c2_mesa   = _df[_df['autor_nome'].str.contains('Mesa Diretora', na=False)]['materia_id'].nunique()
+c2_outros = max(0, int(extra_mat) - c2_exec - c2_mesa)
+
+# Breakdown por origem — PLOs (card 3)
+_df = df_expandido[
+    (df_expandido['tipo_sigla'] == 'PLO') &
+    (~df_expandido['materia_id'].isin(_ids_plo_ver))
+]
+c3_exec   = _df[_df['autor_tipo'] == 'Chefe do Executivo']['materia_id'].nunique()
+c3_mesa   = _df[_df['autor_nome'].str.contains('Mesa Diretora', na=False)]['materia_id'].nunique()
+c3_outros = max(0, int(extra_plos) - c3_exec - c3_mesa)
+
+# Breakdown por origem — PLOs aprovados (card 4)
+# Usa autor_nome de df_leis cruzado com autor_tipo de df_expandido
+_mapa_nome_tipo = (
+    df_expandido.drop_duplicates('autor_nome')
+    .set_index('autor_nome')['autor_tipo'].to_dict()
+)
+_df_leis_nao_v = (
+    df_leis[~df_leis['autor_nome'].isin(nomes_ativos_set)]
+    .drop_duplicates('plo_id').copy()
+)
+_df_leis_nao_v['at'] = _df_leis_nao_v['autor_nome'].map(_mapa_nome_tipo).fillna('')
+c4_exec   = int((_df_leis_nao_v['at'] == 'Chefe do Executivo').sum())
+c4_mesa   = int(_df_leis_nao_v['autor_nome'].str.contains('Mesa Diretora', na=False).sum())
+c4_outros = max(0, int(extra_aprov) - c4_exec - c4_mesa)
+
+def _rod_orig(c_exec, c_mesa, c_outros):
+    """Renderiza '+N Origem' como captions compactos sob cada card."""
+    if c_exec   > 0: st.caption(f"+{c_exec} Executivo")
+    if c_mesa   > 0: st.caption(f"+{c_mesa} Mesa")
+    if c_outros > 0: st.caption(f"+{c_outros} Outros")
 
 c1, c2, c3, c4, c5 = st.columns(5)
 with c1:
     st.metric("Vereadores ativos", len(df_vereadores))
 with c2:
     st.metric("Matérias apresentadas", df_sem_pls['materia_id'].nunique())
-    st.caption(_rodape_card(extra_mat))
+    _rod_orig(c2_exec, c2_mesa, c2_outros)
 with c3:
     st.metric("Projetos de Lei", total_plos_unicos)
-    st.caption(_rodape_card(extra_plos))
+    _rod_orig(c3_exec, c3_mesa, c3_outros)
 with c4:
     st.metric("PLOs aprovados", total_aprov_unicos)
-    st.caption(_rodape_card(extra_aprov))
+    _rod_orig(c4_exec, c4_mesa, c4_outros)
 with c5:
     st.metric("Taxa geral de aprovação", f"{taxa_geral}%")
     st.caption("dos vereadores ativos")
