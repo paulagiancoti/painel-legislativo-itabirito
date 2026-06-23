@@ -33,7 +33,7 @@ HEADERS = {
 
 # ─── HELPERS ──────────────────────────────────────────────────────────────────
 
-def get_json(url, tentativas=2, espera=3):
+def get_json(url, tentativas=3, espera=8):
     for i in range(tentativas):
         try:
             resp = requests.get(url, headers=HEADERS, timeout=(15, 60))
