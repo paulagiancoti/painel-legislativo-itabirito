@@ -1,17 +1,14 @@
 name: Atualizar dados SAPL
-
 on:
   schedule:
-    # Roda à 1h UTC = 22h Brasília (véspera) — mesmo com atraso de horas, fica de madrugada
-    - cron: '0 1 * * *'
+    # Dois horários diários — dobra a chance de pegar o SAPL disponível
+    - cron: '0 1 * * *'    # 22h Brasília (atual)
+    - cron: '0 14 * * *'   # 11h Brasília (horário comercial)
   workflow_dispatch:
-
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 permissions:
   contents: write
-
 jobs:
   atualizar:
     runs-on: ubuntu-latest
@@ -32,7 +29,7 @@ jobs:
 
       - name: Verificar se dados foram coletados
         run: |
-          python3 - << 'EOF'
+          python3 - << 'PYEOF'
           import json, sys, os
           arquivos = ['dados/materias.json', 'dados/normas.json', 'dados/assuntos.json']
           ok = True
@@ -47,7 +44,7 @@ jobs:
                   print(f'ERRO: {arq} esta vazio - commit cancelado')
                   ok = False
           sys.exit(0 if ok else 1)
-          EOF
+          PYEOF
 
       - name: Commitar mudanças (somente se dados válidos)
         run: |
