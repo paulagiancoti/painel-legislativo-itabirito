@@ -32722,5 +32722,77 @@
     "parlamentar": 32,
     "tipo_fim_relatoria": null,
     "comissao": 1
+  },
+  {
+    "id": 2745,
+    "__str__": "Projeto de Lei Ordinária nº 80 de 2023 - 02/01/2023",
+    "link_detail_backend": "/materia/relatoria/2745",
+    "metadata": {},
+    "data_designacao_relator": "2023-01-02",
+    "data_destituicao_relator": null,
+    "materia": 10834,
+    "parlamentar": 32,
+    "tipo_fim_relatoria": null,
+    "comissao": 1
+  },
+  {
+    "id": 2746,
+    "__str__": "Projeto de Lei Ordinária nº 78 de 2023 - 02/01/2023",
+    "link_detail_backend": "/materia/relatoria/2746",
+    "metadata": {},
+    "data_designacao_relator": "2023-01-02",
+    "data_destituicao_relator": null,
+    "materia": 10832,
+    "parlamentar": 32,
+    "tipo_fim_relatoria": null,
+    "comissao": 1
+  },
+  {
+    "id": 2747,
+    "__str__": "Projeto de Lei Ordinária nº 77 de 2023 - 02/01/2023",
+    "link_detail_backend": "/materia/relatoria/2747",
+    "metadata": {},
+    "data_designacao_relator": "2023-01-02",
+    "data_destituicao_relator": null,
+    "materia": 10831,
+    "parlamentar": 32,
+    "tipo_fim_relatoria": null,
+    "comissao": 1
+  },
+  {
+    "id": 2742,
+    "__str__": "Projeto de Lei Ordinária nº 85 de 2023 - 02/01/2023",
+    "link_detail_backend": "/materia/relatoria/2742",
+    "metadata": {},
+    "data_designacao_relator": "2023-01-02",
+    "data_destituicao_relator": null,
+    "materia": 10839,
+    "parlamentar": 32,
+    "tipo_fim_relatoria": null,
+    "comissao": 1
+  },
+  {
+    "id": 2743,
+    "__str__": "Projeto de Lei Ordinária nº 83 de 2023 - 02/01/2023",
+    "link_detail_backend": "/materia/relatoria/2743",
+    "metadata": {},
+    "data_designacao_relator": "2023-01-02",
+    "data_destituicao_relator": null,
+    "materia": 10837,
+    "parlamentar": 32,
+    "tipo_fim_relatoria": null,
+    "comissao": 1
+  },
+  {
+    "id": 2744,
+    "__str__": "Projeto de Lei Ordinária nº 81 de 2023 - 02/01/2023",
+    "link_detail_backend": "/materia/relatoria/2744",
+    "metadata": {},
+    "data_designacao_relator": "2023-01-02",
+    "data_destituicao_relator": null,
+    "materia": 10835,
+    "parlamentar": 32,
+    "tipo_fim_relatoria": null,
+    "comissao": 1
   }
 ]
