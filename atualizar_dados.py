@@ -173,7 +173,7 @@ def alertar(msg, critico=False):
 
 # ─── 1. MATÉRIAS ──────────────────────────────────────────────────────────────
 
-print("\n[1/7] Coletando matérias 2025 e 2026 (pesquisar-materia)...")
+print("\n[1/6] Coletando matérias 2025 e 2026 (pesquisar-materia)...")
 
 # Carrega estado anterior
 existentes_hist = carregar_existente("materias_historico.json")
@@ -226,7 +226,7 @@ else:
 
 # ─── 2. NORMAS ────────────────────────────────────────────────────────────────
 
-print("\n[2/7] Coletando normas 2026...")
+print("\n[2/6] Coletando normas 2026...")
 
 existentes_normas = carregar_existente("normas.json")
 max_id_normas = max((n["id"] for n in existentes_normas), default=0)
@@ -269,16 +269,7 @@ else:
 
 # ─── 3. ASSUNTOS ──────────────────────────────────────────────────────────────
 
-print("\n[3/7] Coletando assuntos...")
-novos_ass = coletar_paginado("/api/materia/assuntomateria/?format=json")
-if novos_ass:
-    salvar_json("assuntos.json", novos_ass)
-else:
-    alertar("Nenhum assunto coletado — mantendo dados anteriores")
-
-# ─── 4. VÍNCULOS MATÉRIA↔ASSUNTO ─────────────────────────────────────────────
-
-print("\n[4/7] Coletando vínculos matéria↔assunto...")
+print("\n[3/6] Coletando vínculos matéria↔assunto...")
 novos_ma = coletar_paginado("/api/materia/materiaassunto/?format=json")
 if novos_ma:
     salvar_json("materiaassuntos.json", novos_ma)
@@ -287,7 +278,7 @@ else:
 
 # ─── 5. RELATORIAS (merge por ID — retroativas são comuns) ───────────────────
 
-print("\n[5/7] Coletando relatorias...")
+print("\n[4/6] Coletando relatorias...")
 existentes_rel = carregar_existente("relatorias.json")
 max_id_rel = max((r["id"] for r in existentes_rel), default=0)
 print(f"  Relatorias existentes: {len(existentes_rel)}, maior ID={max_id_rel}")
@@ -309,7 +300,7 @@ else:
 
 # ─── 6. ORADORES (pronunciamentos) — incremental por ID ─────────────────────
 
-print("\n[6/7] Coletando oradores (pronunciamentos)...")
+print("\n[5/6] Coletando oradores (pronunciamentos)...")
 existentes_or = carregar_existente("oradores.json")
 print(f"  Oradores existentes: {len(existentes_or)}")
 
@@ -334,7 +325,7 @@ else:
 
 # ─── 8. SESSÕES PLENÁRIAS (para cruzar data com oradores) ────────────────────
 
-print("\n[7/7] Coletando sessões plenárias...")
+print("\n[6/6] Coletando sessões plenárias...")
 existentes_sess = carregar_existente("sessoes.json")
 max_id_sess = max((r["id"] for r in existentes_sess), default=0)
 print(f"  Sessões existentes: {len(existentes_sess)}, maior ID={max_id_sess}")
