@@ -623,6 +623,11 @@ header[data-testid="stHeader"] { display: none !important; height: 0 !important;
 /* Divisor mais fino e compacto */
 hr { margin: 0.2rem 0 !important; }
 
+/* Permite scroll vertical da página ao tocar nos gráficos — sem arrasto/pan */
+@media (max-width: 768px) {
+    .js-plotly-plot { touch-action: pan-y !important; }
+}
+
 /* Colunas responsivas — quebram linha em vez de criar scroll */
 [data-testid="stHorizontalBlock"] {
     flex-wrap: wrap !important;
@@ -674,7 +679,23 @@ def aplicar_tema_plot(fig):
             add=["zoomIn2d", "zoomOut2d", "resetAxes", "toImage"],
             orientation="v",
         ),
+        dragmode=False,  # sem pan, sem laço, sem arrasto no mobile
     )
+    # Estende o eixo X em 30% para que rótulos 'outside' não sejam cortados em telas estreitas.
+    # Aplica só em gráficos de barra horizontal. Usa float() para compatibilidade com numpy.
+    _x_max = 0
+    for _trace in fig.data:
+        if getattr(_trace, 'orientation', None) == 'h':
+            _x_attr = getattr(_trace, 'x', None)
+            if _x_attr is not None and len(_x_attr) > 0:
+                try:
+                    _vals = [float(v) for v in _x_attr if v is not None]
+                    if _vals:
+                        _x_max = max(_x_max, max(_vals))
+                except (TypeError, ValueError):
+                    pass
+    if _x_max > 0:
+        fig.update_xaxes(range=[0, _x_max * 1.30])
     return fig
 
 PLOT_CONFIG = {
