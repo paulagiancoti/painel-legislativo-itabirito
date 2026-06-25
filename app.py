@@ -678,13 +678,14 @@ def aplicar_tema_plot(fig):
                 "drawopenpath", "drawline", "drawrect",
                 "drawcircle", "eraseshape",
             ],
-            add=["zoomIn2d", "zoomOut2d", "resetAxes", "toImage"],
+            add=["resetAxes", "toImage"],
             orientation="v",
         ),
-        dragmode=False,  # sem pan, sem laço, sem arrasto no mobile
     )
-    # Estende o eixo X em 30% para que rótulos 'outside' não sejam cortados em telas estreitas.
-    # Aplica só em gráficos de barra horizontal. Usa float() para compatibilidade com numpy.
+    # Para gráficos de barra horizontal:
+    # - Estende o eixo X em 40% → números não são cortados em telas estreitas
+    # - fixedrange=True SOMENTE no eixo X → impede zoom/arrasto sem quebrar
+    #   a detecção de clique (o eixo Y categórico permanece livre)
     _x_max = 0
     for _trace in fig.data:
         if getattr(_trace, 'orientation', None) == 'h':
@@ -697,7 +698,7 @@ def aplicar_tema_plot(fig):
                 except (TypeError, ValueError):
                     pass
     if _x_max > 0:
-        fig.update_xaxes(range=[0, _x_max * 1.40])
+        fig.update_xaxes(range=[0, _x_max * 1.40], fixedrange=True)
     return fig
 
 PLOT_CONFIG = {
@@ -706,7 +707,7 @@ PLOT_CONFIG = {
         "autoScale2d", "hoverClosestCartesian", "hoverCompareCartesian",
         "toggleSpikelines",
     ],
-    "modeBarButtonsToAdd": ["zoomIn2d", "zoomOut2d", "resetAxes"],
+    "modeBarButtonsToAdd": ["resetAxes"],
     "displaylogo": False,
     "responsive": True,
 }
