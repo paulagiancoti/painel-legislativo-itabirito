@@ -625,7 +625,9 @@ hr { margin: 0.2rem 0 !important; }
 
 /* Permite scroll vertical da página ao tocar nos gráficos — sem arrasto/pan */
 @media (max-width: 768px) {
-    .js-plotly-plot { pointer-events: none !important; }
+    .js-plotly-plot,
+    .js-plotly-plot *,
+    [data-testid="stPlotlyChart"] * { pointer-events: none !important; }
 }
 
 /* Colunas responsivas — quebram linha em vez de criar scroll */
