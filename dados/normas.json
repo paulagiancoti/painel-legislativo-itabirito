@@ -3909,5 +3909,97 @@
       13
     ],
     "autores": []
+  },
+  {
+    "id": 4819,
+    "__str__": "Lei Ordinária Municipal nº 4.586, de 23 de junho de 2026",
+    "link_detail_backend": "/norma/4819",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-23T15:24:34-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4819/lei_no_4586_de_23_de_junho_de_2026_pl_142.2026.pdf",
+    "numero": "4586",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Comissão Permanente de Avaliação Imobiliária no âmbito do Município de Itabirito/MG e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-25T07:07:31.732077-03:00",
+    "data_ultima_atualizacao": "2026-06-25T07:07:31.920939-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-25T07:05:51.363148-03:00",
+    "tipo": 1,
+    "materia": 22786,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
+    "autores": []
+  },
+  {
+    "id": 4818,
+    "__str__": "Lei Ordinária Municipal nº 4.585, de 23 de junho de 2026",
+    "link_detail_backend": "/norma/4818",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-23T15:25:16-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4818/lei_no_4585_de_23_de_junho_de_2026_pl_130.2026.pdf",
+    "numero": "4585",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Autoriza a abertura de créditos adicionais suplementares por superávit financeiro apurado\r\nno Balanço Patrimonial do ano de 2025 do Município de Itabirito/MG durante o exercício\r\nfinanceiro de 2026 e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-25T07:05:12.760090-03:00",
+    "data_ultima_atualizacao": "2026-06-25T07:05:12.781769-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-25T07:05:12.507585-03:00",
+    "tipo": 1,
+    "materia": 22636,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      13
+    ],
+    "autores": []
   }
 ]
