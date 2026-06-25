@@ -664,8 +664,8 @@ st.markdown(f"""<style>
 def aplicar_tema_plot(fig):
     fig.update_layout(
         plot_bgcolor=plot_bg, paper_bgcolor=plot_paper, font_color=plot_font,
-        xaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid, fixedrange=True),
-        yaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid, fixedrange=True),
+        xaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid),
+        yaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid),
         dragmode=False,   # impede pan/zoom por arraste — toque passa para o scroll da página
         legend=dict(bgcolor=plot_paper, font=dict(color=plot_font),
                     bordercolor=plot_grid, borderwidth=1),
