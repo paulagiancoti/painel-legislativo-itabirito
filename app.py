@@ -668,39 +668,35 @@ def aplicar_tema_plot(fig):
         plot_bgcolor=plot_bg, paper_bgcolor=plot_paper, font_color=plot_font,
         xaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid),
         yaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid),
-        dragmode='select',  # dispara seleção no 1º clique; False causava atraso de um clique
         legend=dict(bgcolor=plot_paper, font=dict(color=plot_font),
                     bordercolor=plot_grid, borderwidth=1),
         modebar=dict(
             remove=[
-                "zoom", "pan", "select", "lasso2d",
-                "zoomIn2d", "zoomOut2d", "autoScale2d", "resetAxes",
-                "select2d", "lasso2d", "drawclosedpath",
-                "drawopenpath", "drawline", "drawrect",
-                "drawcircle", "eraseshape",
+                "zoom2d", "pan2d", "select2d", "lasso2d",
+                "zoomIn2d", "zoomOut2d", "autoScale2d",
                 "hoverClosestCartesian", "hoverCompareCartesian",
-                "toggleSpikelines",
+                "toggleSpikelines", "drawclosedpath", "drawopenpath",
+                "drawline", "drawrect", "drawcircle", "eraseshape",
             ],
-            add=["toImage"],   # só mantém o botão de salvar imagem
+            add=["resetAxes", "toImage"],
             orientation="v",
         ),
     )
-    # Estende o eixo de valores em 20% para que rótulos 'outside' não sejam cortados no mobile.
-    # Aplica apenas em gráficos de barra horizontal — não afeta outros tipos de gráfico.
+    # Estende o eixo de valores 30% além do máximo para que rótulos 'outside'
+    # não sejam cortados em telas estreitas. Aplica só em barras horizontais.
     x_max_global = 0
     for trace in fig.data:
         if getattr(trace, 'orientation', None) == 'h':
             x_attr = getattr(trace, 'x', None)
             if x_attr is not None and len(x_attr) > 0:
                 try:
-                    # float() converte tanto int/float nativos quanto numpy.int64/float64
                     x_vals = [float(v) for v in x_attr if v is not None]
                     if x_vals:
                         x_max_global = max(x_max_global, max(x_vals))
                 except (TypeError, ValueError):
                     pass
     if x_max_global > 0:
-        fig.update_xaxes(range=[0, x_max_global * 1.30])  # 30% de folga para rótulos outside
+        fig.update_xaxes(range=[0, x_max_global * 1.30])
     return fig
 
 PLOT_CONFIG = {
