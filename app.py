@@ -623,11 +623,10 @@ header[data-testid="stHeader"] { display: none !important; height: 0 !important;
 /* Divisor mais fino e compacto */
 hr { margin: 0.2rem 0 !important; }
 
-/* Permite scroll vertical da página ao tocar nos gráficos — sem arrasto/pan */
+/* Mobile: gráfico vira imagem — esconde modebar (botões que não funcionam) */
 @media (max-width: 768px) {
-    .js-plotly-plot,
-    .js-plotly-plot *,
-    [data-testid="stPlotlyChart"] * { pointer-events: none !important; }
+    .js-plotly-plot { pointer-events: none !important; }
+    .modebar-container { display: none !important; }
 }
 
 /* Colunas responsivas — quebram linha em vez de criar scroll */
@@ -678,14 +677,13 @@ def aplicar_tema_plot(fig):
                 "drawopenpath", "drawline", "drawrect",
                 "drawcircle", "eraseshape",
             ],
-            add=["resetAxes", "toImage"],
+            add=["zoomIn2d", "zoomOut2d", "resetAxes", "toImage"],
             orientation="v",
         ),
+        dragmode=False,
     )
-    # Para gráficos de barra horizontal:
-    # - Estende o eixo X em 40% → números não são cortados em telas estreitas
-    # - fixedrange=True SOMENTE no eixo X → impede zoom/arrasto sem quebrar
-    #   a detecção de clique (o eixo Y categórico permanece livre)
+    # Estende o eixo X em 40% para que rótulos 'outside' não sejam cortados.
+    # Aplica só em gráficos de barra horizontal. Sem fixedrange — preserva o clique.
     _x_max = 0
     for _trace in fig.data:
         if getattr(_trace, 'orientation', None) == 'h':
@@ -698,7 +696,7 @@ def aplicar_tema_plot(fig):
                 except (TypeError, ValueError):
                     pass
     if _x_max > 0:
-        fig.update_xaxes(range=[0, _x_max * 1.15], fixedrange=True)
+        fig.update_xaxes(range=[0, _x_max * 1.40])
     return fig
 
 PLOT_CONFIG = {
@@ -707,7 +705,7 @@ PLOT_CONFIG = {
         "autoScale2d", "hoverClosestCartesian", "hoverCompareCartesian",
         "toggleSpikelines",
     ],
-    "modeBarButtonsToAdd": ["resetAxes"],
+    "modeBarButtonsToAdd": ["zoomIn2d", "zoomOut2d", "resetAxes"],
     "displaylogo": False,
     "responsive": True,
 }
