@@ -617,13 +617,6 @@ header[data-testid="stHeader"] { display: none !important; height: 0 !important;
     min-width: 0 !important;
 }
 
-/* Oculta o modebar do Plotly em mobile — sem hover em touch, só obstrui os valores das barras */
-@media (max-width: 768px) {
-    .modebar-container { display: none !important; }
-    /* Permite scroll vertical da página ao tocar nos gráficos — browser assume o gesto antes do Plotly */
-    .js-plotly-plot { touch-action: pan-y !important; }
-}
-
 /* Reduz o gap vertical padrão entre elementos — cabeçalho muito mais compacto */
 [data-testid="stVerticalBlock"] { gap: 0.4rem !important; }
 
@@ -672,41 +665,25 @@ def aplicar_tema_plot(fig):
                     bordercolor=plot_grid, borderwidth=1),
         modebar=dict(
             remove=[
-                "zoom2d", "pan2d", "select2d", "lasso2d",
+                "zoom", "pan", "select", "lasso2d",
                 "zoomIn2d", "zoomOut2d", "autoScale2d",
-                "hoverClosestCartesian", "hoverCompareCartesian",
-                "toggleSpikelines", "drawclosedpath", "drawopenpath",
-                "drawline", "drawrect", "drawcircle", "eraseshape",
+                "select2d", "lasso2d", "drawclosedpath",
+                "drawopenpath", "drawline", "drawrect",
+                "drawcircle", "eraseshape",
             ],
-            add=["resetAxes", "toImage"],
+            add=["zoomIn2d", "zoomOut2d", "resetAxes", "toImage"],
             orientation="v",
         ),
     )
-    # Estende o eixo de valores 30% além do máximo para que rótulos 'outside'
-    # não sejam cortados em telas estreitas. Aplica só em barras horizontais.
-    x_max_global = 0
-    for trace in fig.data:
-        if getattr(trace, 'orientation', None) == 'h':
-            x_attr = getattr(trace, 'x', None)
-            if x_attr is not None and len(x_attr) > 0:
-                try:
-                    x_vals = [float(v) for v in x_attr if v is not None]
-                    if x_vals:
-                        x_max_global = max(x_max_global, max(x_vals))
-                except (TypeError, ValueError):
-                    pass
-    if x_max_global > 0:
-        fig.update_xaxes(range=[0, x_max_global * 1.30])
     return fig
 
 PLOT_CONFIG = {
     "modeBarButtonsToRemove": [
         "zoom2d", "pan2d", "select2d", "lasso2d",
-        "zoomIn2d", "zoomOut2d", "resetAxes", "autoScale2d",
-        "hoverClosestCartesian", "hoverCompareCartesian", "toggleSpikelines",
+        "autoScale2d", "hoverClosestCartesian", "hoverCompareCartesian",
+        "toggleSpikelines",
     ],
-    "modeBarButtonsToAdd": [],
-    "displayModeBar": "hover",   # desktop: aparece ao passar o mouse | mobile: nunca aparece
+    "modeBarButtonsToAdd": ["zoomIn2d", "zoomOut2d", "resetAxes"],
     "displaylogo": False,
     "responsive": True,
 }
