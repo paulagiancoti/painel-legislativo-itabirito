@@ -625,7 +625,7 @@ hr { margin: 0.2rem 0 !important; }
 
 /* Permite scroll vertical da página ao tocar nos gráficos — sem arrasto/pan */
 @media (max-width: 768px) {
-    .js-plotly-plot { touch-action: pan-y !important; }
+    .js-plotly-plot { pointer-events: none !important; }
 }
 
 /* Colunas responsivas — quebram linha em vez de criar scroll */
@@ -695,7 +695,7 @@ def aplicar_tema_plot(fig):
                 except (TypeError, ValueError):
                     pass
     if _x_max > 0:
-        fig.update_xaxes(range=[0, _x_max * 1.30])
+        fig.update_xaxes(range=[0, _x_max * 1.40])
     return fig
 
 PLOT_CONFIG = {
