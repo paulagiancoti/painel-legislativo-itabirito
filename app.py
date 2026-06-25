@@ -739,7 +739,6 @@ c3_mesa   = _df[_df['autor_nome'].str.contains('Mesa Diretora', na=False)]['mate
 c3_outros = max(0, int(extra_plos) - c3_exec - c3_mesa)
 
 # Breakdown por origem — PLOs aprovados (card 4)
-# Usa autor_nome de df_leis cruzado com autor_tipo de df_expandido
 _mapa_nome_tipo = (
     df_expandido.drop_duplicates('autor_nome')
     .set_index('autor_nome')['autor_tipo'].to_dict()
