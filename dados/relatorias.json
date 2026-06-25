@@ -31392,18 +31392,6 @@
     "comissao": 1
   },
   {
-    "id": 2631,
-    "__str__": "Projeto de Lei Ordinária nº 158 de 2024 - 16/01/2024",
-    "link_detail_backend": "/materia/relatoria/2631",
-    "metadata": {},
-    "data_designacao_relator": "2024-01-16",
-    "data_destituicao_relator": null,
-    "materia": 15310,
-    "parlamentar": 39,
-    "tipo_fim_relatoria": null,
-    "comissao": 1
-  },
-  {
     "id": 2632,
     "__str__": "Projeto de Lei Ordinária nº 151 de 2026 - 19/01/2026",
     "link_detail_backend": "/materia/relatoria/2632",
