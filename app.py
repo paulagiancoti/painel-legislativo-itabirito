@@ -659,19 +659,22 @@ st.markdown(f"""<style>
 def aplicar_tema_plot(fig):
     fig.update_layout(
         plot_bgcolor=plot_bg, paper_bgcolor=plot_paper, font_color=plot_font,
-        xaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid),
-        yaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid),
+        xaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid, fixedrange=True),
+        yaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid, fixedrange=True),
+        dragmode=False,   # impede pan/zoom por arraste — toque passa para o scroll da página
         legend=dict(bgcolor=plot_paper, font=dict(color=plot_font),
                     bordercolor=plot_grid, borderwidth=1),
         modebar=dict(
             remove=[
                 "zoom", "pan", "select", "lasso2d",
-                "zoomIn2d", "zoomOut2d", "autoScale2d",
+                "zoomIn2d", "zoomOut2d", "autoScale2d", "resetAxes",
                 "select2d", "lasso2d", "drawclosedpath",
                 "drawopenpath", "drawline", "drawrect",
                 "drawcircle", "eraseshape",
+                "hoverClosestCartesian", "hoverCompareCartesian",
+                "toggleSpikelines",
             ],
-            add=["zoomIn2d", "zoomOut2d", "resetAxes", "toImage"],
+            add=["toImage"],   # só mantém o botão de salvar imagem
             orientation="v",
         ),
     )
@@ -680,10 +683,10 @@ def aplicar_tema_plot(fig):
 PLOT_CONFIG = {
     "modeBarButtonsToRemove": [
         "zoom2d", "pan2d", "select2d", "lasso2d",
-        "autoScale2d", "hoverClosestCartesian", "hoverCompareCartesian",
-        "toggleSpikelines",
+        "zoomIn2d", "zoomOut2d", "resetAxes", "autoScale2d",
+        "hoverClosestCartesian", "hoverCompareCartesian", "toggleSpikelines",
     ],
-    "modeBarButtonsToAdd": ["zoomIn2d", "zoomOut2d", "resetAxes"],
+    "modeBarButtonsToAdd": [],
     "displaylogo": False,
     "responsive": True,
 }
