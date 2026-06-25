@@ -702,7 +702,7 @@ def aplicar_tema_plot(fig):
             if _y_attr is not None:
                 _n_bars = max(_n_bars, len(_y_attr))
     if _x_max > 0:
-        fig.update_xaxes(range=[0, _x_max * 1.26], fixedrange=True)
+        fig.update_xaxes(range=[0, _x_max * 1.30], fixedrange=True)
     if _n_bars > 0:
         # [-0.5, n-0.5] é exatamente o range que Plotly usaria — preserva o clique
         fig.update_yaxes(range=[-0.5, _n_bars - 0.5], fixedrange=True)
