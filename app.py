@@ -922,7 +922,7 @@ if vereador_selecionado == "Todos":
                              tipo_materia_id=tipo_id_sel)
                 )
         else:
-            st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
+            st.caption("💡 Clique em uma barra ou selecione abaixo para abrir as matérias do vereador no SAPL.")
 
         # Seletor direto — funciona com um toque no celular (sem delay do on_select)
         _nomes_r = df_ranking.sort_values('total', ascending=False)['autor_nome'].tolist()
@@ -965,7 +965,7 @@ if vereador_selecionado == "Todos":
                              tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
                 )
         else:
-            st.caption("💡 Clique em uma barra para abrir os Projetos de Lei do vereador no SAPL.")
+            st.caption("💡 Clique em uma barra ou selecione abaixo para abrir os Projetos de Lei do vereador no SAPL.")
 
         # Seletor direto — funciona com um toque no celular (sem delay do on_select)
         _nomes_a = df_aprov.sort_values('taxa_aprovacao', ascending=False)['autor_nome'].tolist()
@@ -1041,8 +1041,36 @@ if vereador_selecionado == "Todos":
                 st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
             df_comp['taxa'] = (df_comp['aprovados'] / df_comp['apresentados'] * 100).round(1)
             df_comp.columns = ['Assunto', 'Apresentados', 'Aprovados', 'Taxa (%)']
-            st.dataframe(df_comp.sort_values('Taxa (%)', ascending=False),
-                         width='stretch', hide_index=True)
+            df_comp_sorted = df_comp.sort_values('Taxa (%)', ascending=False)
+            # Tabela com Assunto como hyperlink direto (funciona com um toque no celular)
+            _autor_fil = mapa_autor_id.get(vereador_selecionado) if vereador_selecionado != "Todos" else None
+            _linhas_ass = ""
+            for _, _row in df_comp_sorted.iterrows():
+                _aid_t = mapa_assunto_id.get(_row['Assunto'])
+                if _aid_t:
+                    _url_t = url_sapl(ano=2026, autor_id=_autor_fil, assunto_id=_aid_t, so_parlamentar=True)
+                    _cel = f'<a href="{_url_t}" target="_blank" style="color:#4A90D9">{_row["Assunto"]} ↗</a>'
+                else:
+                    _cel = _row['Assunto']
+                _linhas_ass += (
+                    f"<tr style='border-bottom:1px solid #eee'>"
+                    f"<td style='padding:6px 12px'>{_cel}</td>"
+                    f"<td style='padding:6px 12px;text-align:center'>{int(_row['Apresentados'])}</td>"
+                    f"<td style='padding:6px 12px;text-align:center'>{int(_row['Aprovados'])}</td>"
+                    f"<td style='padding:6px 12px;text-align:center'>{_row['Taxa (%)']}%</td>"
+                    f"</tr>"
+                )
+            st.markdown(
+                f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
+                <thead><tr style="border-bottom:2px solid #ddd">
+                  <th style="text-align:left;padding:6px 12px">Assunto ↗ abre no SAPL</th>
+                  <th style="text-align:center;padding:6px 12px">Apresentados</th>
+                  <th style="text-align:center;padding:6px 12px">Aprovados</th>
+                  <th style="text-align:center;padding:6px 12px">Taxa (%)</th>
+                </tr></thead>
+                <tbody>{_linhas_ass}</tbody></table>""",
+                unsafe_allow_html=True
+            )
             st.divider()
             st.markdown("**Comparativo entre vereadores por assunto**")
             df_heat = (
@@ -1506,7 +1534,21 @@ if vereador_selecionado != "Todos":
                                  assunto_id=assunto_id5, so_parlamentar=True)
                     )
             else:
-                st.caption("💡 Clique em uma barra para abrir os PLOs deste assunto no SAPL.")
+                st.caption("💡 Clique em uma barra ou selecione abaixo para abrir os PLOs deste assunto no SAPL.")
+            # Seletor direto — funciona com um toque no celular
+            _assuntos_v_lista = sorted(df_ass_v['assunto'].unique().tolist())
+            _va, _vb = st.columns([5, 2])
+            with _va:
+                _pick_av = st.selectbox(
+                    "Ou selecione:", ["—"] + _assuntos_v_lista,
+                    key="pick_ass_v", label_visibility="collapsed"
+                )
+            with _vb:
+                _pick_av_id = mapa_assunto_id.get(_pick_av) if _pick_av != "—" else None
+                if _pick_av_id and autor_id_v:
+                    st.link_button("↗ SAPL", url_sapl(ano=2026, autor_id=autor_id_v,
+                                   assunto_id=_pick_av_id, so_parlamentar=True),
+                                   use_container_width=True)
             pct_cobertura = round(
                 len(df_ass_v['materia_id'].unique()) / int(dados_v['projetos_lei']) * 100, 1
             )
@@ -1547,7 +1589,7 @@ if vereador_selecionado != "Todos":
                                      assunto_id=assunto_id6, so_parlamentar=True)
                         )
                 else:
-                    st.caption("💡 Clique em uma barra para abrir os PLOs deste assunto no SAPL.")
+                    st.caption("💡 Clique em uma barra ou use o seletor acima para abrir os PLOs deste assunto no SAPL.")
 # ─── ABA RELATORIAS ────────────────────────────────────────────────────────────
 
     with aba_rel:
