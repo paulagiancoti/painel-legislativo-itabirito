@@ -690,11 +690,15 @@ def aplicar_tema_plot(fig):
         if getattr(trace, 'orientation', None) == 'h':
             x_attr = getattr(trace, 'x', None)
             if x_attr is not None and len(x_attr) > 0:
-                vals = [v for v in x_attr if isinstance(v, (int, float))]
-                if vals:
-                    x_max_global = max(x_max_global, max(vals))
+                try:
+                    # float() converte tanto int/float nativos quanto numpy.int64/float64
+                    x_vals = [float(v) for v in x_attr if v is not None]
+                    if x_vals:
+                        x_max_global = max(x_max_global, max(x_vals))
+                except (TypeError, ValueError):
+                    pass
     if x_max_global > 0:
-        fig.update_xaxes(range=[0, x_max_global * 1.20])
+        fig.update_xaxes(range=[0, x_max_global * 1.30])  # 30% de folga para rótulos outside
     return fig
 
 PLOT_CONFIG = {
