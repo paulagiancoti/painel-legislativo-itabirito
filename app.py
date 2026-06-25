@@ -680,14 +680,18 @@ def aplicar_tema_plot(fig):
             add=["zoomIn2d", "zoomOut2d", "resetAxes", "toImage"],
             orientation="v",
         ),
-        dragmode=False,
     )
-    # Estende o eixo X em 40% para que rótulos 'outside' não sejam cortados.
-    # Aplica só em gráficos de barra horizontal. Sem fixedrange — preserva o clique.
+    # Gráficos de barra horizontal: trava AMBOS os eixos — impede arrasto no desktop.
+    # X: range estendido + travado (números visíveis, sem zoom).
+    # Y: range CALCULADO EXPLICITAMENTE a partir dos dados + travado.
+    #    Isso é crítico: sem definir o range Y antes de travar, o Plotly
+    #    trava com range vazio e o mapeamento de clique fica errado (bug de offset).
     _x_max = 0
+    _n_bars = 0
     for _trace in fig.data:
         if getattr(_trace, 'orientation', None) == 'h':
             _x_attr = getattr(_trace, 'x', None)
+            _y_attr = getattr(_trace, 'y', None)
             if _x_attr is not None and len(_x_attr) > 0:
                 try:
                     _vals = [float(v) for v in _x_attr if v is not None]
@@ -695,8 +699,13 @@ def aplicar_tema_plot(fig):
                         _x_max = max(_x_max, max(_vals))
                 except (TypeError, ValueError):
                     pass
+            if _y_attr is not None:
+                _n_bars = max(_n_bars, len(_y_attr))
     if _x_max > 0:
-        fig.update_xaxes(range=[0, _x_max * 1.40])
+        fig.update_xaxes(range=[0, _x_max * 1.40], fixedrange=True)
+    if _n_bars > 0:
+        # [-0.5, n-0.5] é exatamente o range que Plotly usaria — preserva o clique
+        fig.update_yaxes(range=[-0.5, _n_bars - 0.5], fixedrange=True)
     return fig
 
 PLOT_CONFIG = {
