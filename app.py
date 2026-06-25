@@ -620,6 +620,8 @@ header[data-testid="stHeader"] { display: none !important; height: 0 !important;
 /* Oculta o modebar do Plotly em mobile — sem hover em touch, só obstrui os valores das barras */
 @media (max-width: 768px) {
     .modebar-container { display: none !important; }
+    /* Permite scroll vertical da página ao tocar nos gráficos — browser assume o gesto antes do Plotly */
+    .js-plotly-plot { touch-action: pan-y !important; }
 }
 
 /* Reduz o gap vertical padrão entre elementos — cabeçalho muito mais compacto */
@@ -666,7 +668,7 @@ def aplicar_tema_plot(fig):
         plot_bgcolor=plot_bg, paper_bgcolor=plot_paper, font_color=plot_font,
         xaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid),
         yaxis=dict(gridcolor=plot_grid, color=plot_font, zerolinecolor=plot_grid),
-        dragmode=False,   # impede pan/zoom por arraste — toque passa para o scroll da página
+        dragmode='select',  # dispara seleção no 1º clique; False causava atraso de um clique
         legend=dict(bgcolor=plot_paper, font=dict(color=plot_font),
                     bordercolor=plot_grid, borderwidth=1),
         modebar=dict(
