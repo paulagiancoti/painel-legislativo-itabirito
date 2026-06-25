@@ -687,6 +687,7 @@ PLOT_CONFIG = {
         "hoverClosestCartesian", "hoverCompareCartesian", "toggleSpikelines",
     ],
     "modeBarButtonsToAdd": [],
+    "displayModeBar": "hover",   # desktop: aparece ao passar o mouse | mobile: nunca aparece
     "displaylogo": False,
     "responsive": True,
 }
