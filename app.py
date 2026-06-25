@@ -617,6 +617,11 @@ header[data-testid="stHeader"] { display: none !important; height: 0 !important;
     min-width: 0 !important;
 }
 
+/* Oculta o modebar do Plotly em mobile — sem hover em touch, só obstrui os valores das barras */
+@media (max-width: 768px) {
+    .modebar-container { display: none !important; }
+}
+
 /* Reduz o gap vertical padrão entre elementos — cabeçalho muito mais compacto */
 [data-testid="stVerticalBlock"] { gap: 0.4rem !important; }
 
