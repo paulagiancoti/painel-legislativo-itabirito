@@ -924,6 +924,23 @@ if vereador_selecionado == "Todos":
         else:
             st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
 
+        # Seletor direto — funciona com um toque no celular (sem delay do on_select)
+        _nomes_r = df_ranking.sort_values('total', ascending=False)['autor_nome'].tolist()
+        _ca, _cb = st.columns([5, 2])
+        with _ca:
+            _pick_r = st.selectbox(
+                "Ou selecione:", ["—"] + _nomes_r,
+                key="pick_ranking", label_visibility="collapsed"
+            )
+        with _cb:
+            _aid_r = mapa_autor_id.get(_pick_r) if _pick_r != "—" else None
+            if _aid_r:
+                _ass_r  = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
+                _tip_r  = mapa_tipo_sapl_id.get(tipo_selecionado)  if tipo_selecionado  != "Todos" else None
+                st.link_button("↗ SAPL", url_sapl(ano=2026, autor_id=_aid_r,
+                               assunto_id=_ass_r, tipo_materia_id=_tip_r),
+                               use_container_width=True)
+
     with aba2:
         df_aprov = df_resumo[df_resumo['projetos_lei'] > 0].sort_values('taxa_aprovacao', ascending=True)
         fig2 = px.bar(df_aprov, x='taxa_aprovacao', y='autor_nome', orientation='h',
@@ -949,6 +966,21 @@ if vereador_selecionado == "Todos":
                 )
         else:
             st.caption("💡 Clique em uma barra para abrir os Projetos de Lei do vereador no SAPL.")
+
+        # Seletor direto — funciona com um toque no celular (sem delay do on_select)
+        _nomes_a = df_aprov.sort_values('taxa_aprovacao', ascending=False)['autor_nome'].tolist()
+        _da, _db = st.columns([5, 2])
+        with _da:
+            _pick_a = st.selectbox(
+                "Ou selecione:", ["—"] + _nomes_a,
+                key="pick_aprov", label_visibility="collapsed"
+            )
+        with _db:
+            _aid_a = mapa_autor_id.get(_pick_a) if _pick_a != "—" else None
+            if _aid_a:
+                st.link_button("↗ SAPL", url_sapl(ano=2026, autor_id=_aid_a,
+                               so_parlamentar=True, tipo_materia_id=TIPO_MATERIA_SAPL['PLO']),
+                               use_container_width=True)
         st.dataframe(
             df_aprov[['autor_nome', 'projetos_lei', 'projetos_virou_lei',
                       'taxa_aprovacao', 'projetos_com_substitutivo']]
