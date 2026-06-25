@@ -698,7 +698,7 @@ def aplicar_tema_plot(fig):
                 except (TypeError, ValueError):
                     pass
     if _x_max > 0:
-        fig.update_xaxes(range=[0, _x_max * 1.40], fixedrange=True)
+        fig.update_xaxes(range=[0, _x_max * 1.15], fixedrange=True)
     return fig
 
 PLOT_CONFIG = {
@@ -1005,15 +1005,41 @@ if vereador_selecionado == "Todos":
                 st.link_button("↗ SAPL", url_sapl(ano=2026, autor_id=_aid_a,
                                so_parlamentar=True, tipo_materia_id=TIPO_MATERIA_SAPL['PLO']),
                                use_container_width=True)
-        st.dataframe(
+        # Tabela com nome do vereador como hyperlink (funciona com um toque no celular)
+        _df_tab = (
             df_aprov[['autor_nome', 'projetos_lei', 'projetos_virou_lei',
                       'taxa_aprovacao', 'projetos_com_substitutivo']]
-            .rename(columns={'autor_nome': 'Vereador', 'projetos_lei': 'PLOs',
-                             'projetos_virou_lei': 'Aprovados', 'taxa_aprovacao': 'Taxa (%)',
-                             'projetos_com_substitutivo': 'Com substitutivo'})
-            .sort_values('Taxa (%)', ascending=False),
-            width='stretch', hide_index=True,
-            height=len(df_aprov) * 35 + 45,  # mostra todas as linhas sem scroll interno
+            .sort_values('taxa_aprovacao', ascending=False)
+        )
+        _linhas_aprov = ""
+        for _, _row in _df_tab.iterrows():
+            _aid_tab = mapa_autor_id.get(_row['autor_nome'])
+            if _aid_tab:
+                _url_tab = url_sapl(ano=2026, autor_id=_aid_tab,
+                                    so_parlamentar=True, tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
+                _cel_ver = f'<a href="{_url_tab}" target="_blank" style="color:#4A90D9">{_row["autor_nome"]} ↗</a>'
+            else:
+                _cel_ver = _row['autor_nome']
+            _linhas_aprov += (
+                f"<tr style='border-bottom:1px solid #eee'>"
+                f"<td style='padding:6px 12px'>{_cel_ver}</td>"
+                f"<td style='padding:6px 12px;text-align:center'>{int(_row['projetos_lei'])}</td>"
+                f"<td style='padding:6px 12px;text-align:center'>{int(_row['projetos_virou_lei'])}</td>"
+                f"<td style='padding:6px 12px;text-align:center'>{_row['taxa_aprovacao']}%</td>"
+                f"<td style='padding:6px 12px;text-align:center'>{int(_row['projetos_com_substitutivo'])}</td>"
+                f"</tr>"
+            )
+        st.markdown(
+            f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
+            <thead><tr style="border-bottom:2px solid #ddd">
+              <th style="text-align:left;padding:6px 12px">Vereador ↗ abre no SAPL</th>
+              <th style="text-align:center;padding:6px 12px">PLOs</th>
+              <th style="text-align:center;padding:6px 12px">Aprovados</th>
+              <th style="text-align:center;padding:6px 12px">Taxa (%)</th>
+              <th style="text-align:center;padding:6px 12px">Com substitutivo</th>
+            </tr></thead>
+            <tbody>{_linhas_aprov}</tbody></table>""",
+            unsafe_allow_html=True
         )
 
     with aba3:
