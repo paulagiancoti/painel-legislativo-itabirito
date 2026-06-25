@@ -688,9 +688,11 @@ def aplicar_tema_plot(fig):
     x_max_global = 0
     for trace in fig.data:
         if getattr(trace, 'orientation', None) == 'h':
-            vals = [v for v in (getattr(trace, 'x', None) or []) if isinstance(v, (int, float))]
-            if vals:
-                x_max_global = max(x_max_global, max(vals))
+            x_attr = getattr(trace, 'x', None)
+            if x_attr is not None and len(x_attr) > 0:
+                vals = [v for v in x_attr if isinstance(v, (int, float))]
+                if vals:
+                    x_max_global = max(x_max_global, max(vals))
     if x_max_global > 0:
         fig.update_xaxes(range=[0, x_max_global * 1.20])
     return fig
