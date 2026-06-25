@@ -683,6 +683,16 @@ def aplicar_tema_plot(fig):
             orientation="v",
         ),
     )
+    # Estende o eixo de valores em 20% para que rótulos 'outside' não sejam cortados no mobile.
+    # Aplica apenas em gráficos de barra horizontal — não afeta outros tipos de gráfico.
+    x_max_global = 0
+    for trace in fig.data:
+        if getattr(trace, 'orientation', None) == 'h':
+            vals = [v for v in (getattr(trace, 'x', None) or []) if isinstance(v, (int, float))]
+            if vals:
+                x_max_global = max(x_max_global, max(vals))
+    if x_max_global > 0:
+        fig.update_xaxes(range=[0, x_max_global * 1.20])
     return fig
 
 PLOT_CONFIG = {
