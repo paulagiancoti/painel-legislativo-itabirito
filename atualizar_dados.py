@@ -276,7 +276,7 @@ if novos_ma:
 else:
     alertar("Nenhum vínculo de assunto coletado — mantendo dados anteriores")
 
-# ─── 5. RELATORIAS (merge por ID — retroativas são comuns) ───────────────────
+# ─── 4. RELATORIAS (merge por ID — retroativas são comuns) ───────────────────
 
 print("\n[4/6] Coletando relatorias...")
 existentes_rel = carregar_existente("relatorias.json")
@@ -298,7 +298,7 @@ else:
 
 # Comissões e tipos de matéria são fixos — coletados uma única vez via coletar_dados_iniciais.py
 
-# ─── 6. ORADORES (pronunciamentos) — incremental por ID ─────────────────────
+# ─── 5. ORADORES (pronunciamentos) — incremental por ID ─────────────────────
 
 print("\n[5/6] Coletando oradores (pronunciamentos)...")
 existentes_or = carregar_existente("oradores.json")
@@ -323,7 +323,7 @@ elif existentes_or:
 else:
     alertar("Nenhum orador coletado — mantendo dados anteriores")
 
-# ─── 8. SESSÕES PLENÁRIAS (para cruzar data com oradores) ────────────────────
+# ─── 6. SESSÕES PLENÁRIAS (para cruzar data com oradores) ────────────────────
 
 print("\n[6/6] Coletando sessões plenárias...")
 existentes_sess = carregar_existente("sessoes.json")
