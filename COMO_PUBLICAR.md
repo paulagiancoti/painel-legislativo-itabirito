@@ -10,9 +10,9 @@ usando apenas o navegador.
 ```
 painel-legislativo-itabirito/
 ├── app.py                        # Painel principal (Streamlit)
-├── atualizar_dados.py            # Coleta diária: matérias, normas, assuntos
+├── atualizar_dados.py            # Coleta diária: matérias, normas, vínculos, relatorias, oradores, sessões
 ├── atualizar_fotos.py            # Coleta de fotos dos vereadores (manual, sob demanda)
-├── coletar_dados_iniciais.py     # Coleta única: vereadores, autores, mesa diretora
+├── coletar_dados_iniciais.py     # Coleta única: vereadores, autores, mesa, assuntos, comissões, tipos
 ├── requirements.txt              # Dependências Python
 ├── README.md                     # Descrição do projeto para o GitHub
 ├── COMO_PUBLICAR.md              # Este guia
@@ -31,8 +31,14 @@ painel-legislativo-itabirito/
     ├── materias.json
     ├── materias_historico.json
     ├── normas.json
-    ├── assuntos.json
-    ├── materiaassuntos.json
+    ├── assuntos.json             # Tipos de assunto (quase estático — coletar_dados_iniciais)
+    ├── materiaassuntos.json      # Vínculos matéria↔assunto (atualizado diariamente)
+    ├── relatorias.json
+    ├── oradores.json
+    ├── sessoes.json
+    ├── comissoes.json            # Criado manualmente (ver seção abaixo)
+    ├── tipomaterias.json
+    ├── pronunciamentos_extras.json  # Considerações finais do Presidente (manual)
     └── ultima_atualizacao.json   # Timestamp da última coleta
 ```
 
@@ -89,6 +95,10 @@ git push
 ```
 
 Confira se `dados/vereadores.json` tem só os 15 vereadores ativos.
+
+> **Atenção:** o `coletar_dados_iniciais.py` tentará baixar comissões automaticamente,
+> mas a API pode retornar erro. Se isso acontecer, crie o arquivo `comissoes.json`
+> manualmente — veja a seção **"Criar comissoes.json manualmente"** abaixo.
 
 ---
 
@@ -261,6 +271,50 @@ git commit -m "Atualização de vereadores/mesa diretora"
 git push
 ```
 
+### Novo assunto criado no SAPL
+
+Os assuntos (temas das matérias) são dados quase estáticos — raramente mudam.
+Mas se um novo assunto for criado no SAPL, rode:
+
+1. Repositório → botão **"Code"** → **"Codespaces"** → **"Create codespace on main"**
+2. No terminal:
+```
+pip install requests
+python coletar_dados_iniciais.py
+git add dados/assuntos.json
+git commit -m "Atualização de assuntos"
+git push
+```
+
+### Criar ou atualizar comissoes.json manualmente
+
+A API de comissões do SAPL de Itabirito não responde corretamente nos servidores
+do GitHub, por isso o arquivo `comissoes.json` é criado e mantido manualmente.
+
+**Para criar ou atualizar:**
+
+1. Acesse as comissões uma a uma pelo navegador, trocando o número no final da URL:
+```
+https://sapl.itabirito.mg.leg.br/api/comissoes/comissao/1/
+https://sapl.itabirito.mg.leg.br/api/comissoes/comissao/2/
+https://sapl.itabirito.mg.leg.br/api/comissoes/comissao/3/
+...
+```
+2. Se a URL retornar dados (JSON com `"id"`, `"nome"`, etc.), a comissão existe.
+   Se retornar `{"detail": "Not found."}`, pule para o próximo número.
+3. Copie os dados de cada comissão existente para o arquivo `comissoes.json`,
+   no formato de array JSON:
+```json
+[
+  {"id": 1, "nome": "Nome da Comissão", ...},
+  {"id": 2, "nome": "Outra Comissão", ...}
+]
+```
+4. Edite o arquivo diretamente no GitHub (ícone de lápis) ou via GitHub Desktop.
+
+> **Itabirito:** IDs existentes: 1, 2, 4, 6, 7, 8, 10, 11, 21, 22, 23, 24.
+> IDs 3, 5, 9 e 12–20 não existem (retornam "Not found").
+
 ### Editar o código do painel
 
 **Edições simples** (uma linha, um parâmetro):
@@ -296,6 +350,10 @@ Fotos dos vereadores
    |  hospedadas em static/fotos/ no repositório
    |  não dependem do SAPL para carregar
    |  atualizadas manualmente via workflow quando necessário
+
+Dados quase estáticos (comissões, tipos de matéria, assuntos)
+   |  coletados uma vez via coletar_dados_iniciais.py
+   |  atualizados manualmente apenas quando algo muda no SAPL
 ```
 
 ---
@@ -311,6 +369,7 @@ Fotos dos vereadores
 | Cache desatualizado | Não deve ocorrer | O timestamp invalida o cache automaticamente |
 | E-mail de falha | Coleta falhou no SAPL | Dados anteriores preservados; rodar manual |
 | Streamlit dormindo | Pouco tráfego | Aceitar ou configurar Playwright (avançado) |
+| Comissão não aparece | comissoes.json desatualizado | Atualizar manualmente (ver seção acima) |
 
 ---
 
@@ -374,7 +433,7 @@ sua Casa usa essas siglas para Projeto de Lei Ordinária e seus substitutivos.
 
 Verifique as siglas da sua Casa em:
 ```
-<URL do SAPL>/api/materia/tipomateria/?format=json
+<URL do SAPL>/api/materia/tipomaterialegislativa/?format=json
 ```
 
 Substitua as siglas em todos os trechos marcados com `# PERSONALIZAÇÃO: siglas`.
@@ -392,7 +451,7 @@ TIPO_MATERIA_SAPL = {'PLO': 1}
 
 Confirme o ID em:
 ```
-<URL do SAPL>/api/materia/tipomateria/?format=json
+<URL do SAPL>/api/materia/tipomaterialegislativa/?format=json
 ```
 
 ---
@@ -444,7 +503,24 @@ Verifique o ID correto em:
 
 ---
 
-### 8. Nome e links do painel
+### 8. Comissões
+
+A API de comissões pode não funcionar em todos os SAPLs. Se não funcionar,
+crie o arquivo `comissoes.json` manualmente acessando cada comissão pelo navegador:
+
+```
+<URL do SAPL>/api/comissoes/comissao/1/
+<URL do SAPL>/api/comissoes/comissao/2/
+...
+```
+
+Acesse os números em sequência até esgotar as comissões existentes
+(quando retornar `{"detail": "Not found."}`, não existe). Monte o JSON
+com um array de todos os objetos encontrados.
+
+---
+
+### 9. Nome e links do painel
 
 Em `app.py`, troque o nome da Casa e os links:
 
@@ -458,7 +534,7 @@ Em `app.py`, troque o nome da Casa e os links:
 
 ---
 
-### 9. Conceito PLO → PLS → PLS2
+### 10. Conceito PLO → PLS → PLS2
 
 A lógica de "projeto de lei que virou substitutivo" é específica de como
 Itabirito registra suas matérias: quando um PLO recebe emenda substitutiva,
