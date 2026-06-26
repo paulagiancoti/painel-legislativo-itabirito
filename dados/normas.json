@@ -4039,8 +4039,23 @@
     "id": 4841,
     "__str__": "Lei Ordinária Municipal nº 4.592, de 24 de junho de 2026",
     "link_detail_backend": "/norma/4841",
-    "metadata": {},
-    "texto_integral": null,
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-24T14:13:18-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4841/lei_no_4592_de_24_de_junho_de_2026_pl_99.2026.pdf",
     "numero": "4592",
     "ano": 2026,
     "esfera_federacao": "M",
@@ -4054,10 +4069,10 @@
     "observacao": "",
     "complemento": false,
     "data_vigencia": null,
-    "timestamp": "2026-06-26T07:12:33.495159-03:00",
-    "data_ultima_atualizacao": "2026-06-26T07:12:33.496611-03:00",
+    "timestamp": "2026-06-26T11:52:50.902403-03:00",
+    "data_ultima_atualizacao": "2026-06-26T11:52:50.921487-03:00",
     "ip": "189.90.249.57",
-    "ultima_edicao": "2026-06-26T07:10:42.743000-03:00",
+    "ultima_edicao": "2026-06-26T11:52:50.716067-03:00",
     "tipo": 1,
     "materia": 22341,
     "orgao": null,
@@ -4072,8 +4087,23 @@
     "id": 4840,
     "__str__": "Lei Ordinária Municipal nº 4.591, de 24 de junho de 2026",
     "link_detail_backend": "/norma/4840",
-    "metadata": {},
-    "texto_integral": null,
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-24T14:12:28-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4840/lei_no_4591_de_24_de_junho_de_2026_pl_105.2026.pdf",
     "numero": "4591",
     "ano": 2026,
     "esfera_federacao": "M",
@@ -4087,10 +4117,10 @@
     "observacao": "",
     "complemento": false,
     "data_vigencia": null,
-    "timestamp": "2026-06-26T07:10:07.364459-03:00",
-    "data_ultima_atualizacao": "2026-06-26T07:10:07.365773-03:00",
+    "timestamp": "2026-06-26T11:52:29.086632-03:00",
+    "data_ultima_atualizacao": "2026-06-26T11:52:29.105613-03:00",
     "ip": "189.90.249.57",
-    "ultima_edicao": "2026-06-26T07:08:13.761542-03:00",
+    "ultima_edicao": "2026-06-26T11:52:28.815868-03:00",
     "tipo": 1,
     "materia": 22315,
     "orgao": null,
