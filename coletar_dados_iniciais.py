@@ -99,16 +99,12 @@ except Exception as e:
     print(f"  Erro: {e}")
     print("  Verifique o ID correto em /api/parlamentares/cargomesa/?format=json")
 
-print("\n✓ Coleta inicial concluída!")
-print("  Revise dados/vereadores.json para garantir que só estão os 15 ativos.")
-print("  Em seguida, rode atualizar_dados.py para baixar matérias, normas e assuntos.")
-
 # ─── 4. COMISSÕES ─────────────────────────────────────────────────────────────
 # PERSONALIZAÇÃO: endpoint pode variar. Itabirito usa /api/comissoes/comissao/
 # Verifique em <BASE_URL>/api/ ou tente acessar /api/comissoes/comissao/1/ no navegador.
 # Se a API não existir, crie o arquivo comissoes.json manualmente (veja COMO_PUBLICAR.md).
 
-print("\n[4/5] Coletando comissões...")
+print("\n[4/6] Coletando comissões...")
 try:
     endpoint_com = "/api/comissoes/comissao/?format=json"
     resp = requests.get(f"{BASE_URL}{endpoint_com}", timeout=30)
@@ -125,7 +121,7 @@ except Exception as e:
 # PERSONALIZAÇÃO: Itabirito usa /api/materia/tipomaterialegislativa/
 # Verifique em <BASE_URL>/api/materia/ para encontrar o endpoint correto.
 
-print("\n[5/5] Coletando tipos de matéria...")
+print("\n[5/6] Coletando tipos de matéria...")
 try:
     endpoint_tipo = "/api/materia/tipomaterialegislativa/?format=json"
     resp = requests.get(f"{BASE_URL}{endpoint_tipo}", timeout=30)
@@ -140,4 +136,40 @@ except Exception as e:
 
 print("\n✓ Coleta inicial concluída!")
 print("  Revise dados/vereadores.json para garantir que só estão os ativos.")
-print("  Em seguida, rode atualizar_dados.py para baixar matérias, normas e assuntos.")
+print("  Em seguida, rode atualizar_dados.py para baixar matérias, normas e vínculos.")
+
+# ─── 6. ASSUNTOS/TEMAS ────────────────────────────────────────────────────────
+# Tipos de assunto são dados quase estáticos — raramente mudam.
+# Se um novo assunto for criado no SAPL, rode este script novamente (ou pontualmente).
+
+print("\n[6/6] Coletando assuntos/temas...")
+try:
+    endpoint_ass = "/api/materia/assuntomateria/?format=json"
+    todos_ass = []
+    pagina = 1
+    while True:
+        resp = requests.get(f"{BASE_URL}{endpoint_ass}&page={pagina}", timeout=30)
+        if resp.status_code != 200:
+            print(f"  HTTP {resp.status_code} — verifique o endpoint")
+            break
+        dados = resp.json()
+        if isinstance(dados, list):
+            todos_ass += dados
+            break
+        todos_ass += dados.get("results", [])
+        total = dados.get("pagination", {}).get("total_pages", 1)
+        print(f"  Página {pagina}/{total}...")
+        if pagina >= total:
+            break
+        pagina += 1
+        time.sleep(0.3)
+    if todos_ass:
+        salvar_json("assuntos.json", todos_ass)
+    else:
+        print("  Nenhum assunto encontrado — verifique o endpoint")
+except Exception as e:
+    print(f"  Erro: {e}")
+
+print("\n✓ Coleta inicial concluída!")
+print("  Revise dados/vereadores.json para garantir que só estão os ativos.")
+print("  Em seguida, rode atualizar_dados.py para baixar matérias, normas e vínculos.")
