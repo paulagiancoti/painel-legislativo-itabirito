@@ -4001,5 +4001,290 @@
       13
     ],
     "autores": []
+  },
+  {
+    "id": 4842,
+    "__str__": "Portaria nº 143, de 25 de junho de 2026",
+    "link_detail_backend": "/norma/4842",
+    "metadata": {},
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4842/portaria_n_143_-_horario_excepcional_de_expediente.pdf",
+    "numero": "143",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre o horário excepcional de funcionamento e expediente administrativo no âmbito da Câmara Municipal de Itabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-26T07:15:38.319229-03:00",
+    "data_ultima_atualizacao": "2026-06-26T07:15:38.530523-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-26T07:13:19.007169-03:00",
+    "tipo": 12,
+    "materia": null,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      40,
+      31
+    ],
+    "autores": []
+  },
+  {
+    "id": 4841,
+    "__str__": "Lei Ordinária Municipal nº 4.592, de 24 de junho de 2026",
+    "link_detail_backend": "/norma/4841",
+    "metadata": {},
+    "texto_integral": null,
+    "numero": "4592",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre requisitos mínimos de segurança para o licenciamento e funcionamento de\r\nparques de diversões, circos, brinquedos mecânicos, estruturas de entretenimento\r\nitinerantes e eventos congêneres no âmbito do Município de Itabirito/MG, e dá outras\r\nprovidências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-26T07:12:33.495159-03:00",
+    "data_ultima_atualizacao": "2026-06-26T07:12:33.496611-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-26T07:10:42.743000-03:00",
+    "tipo": 1,
+    "materia": 22341,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      14,
+      29
+    ],
+    "autores": []
+  },
+  {
+    "id": 4840,
+    "__str__": "Lei Ordinária Municipal nº 4.591, de 24 de junho de 2026",
+    "link_detail_backend": "/norma/4840",
+    "metadata": {},
+    "texto_integral": null,
+    "numero": "4591",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui as Políticas Públicas de Mitigação e enfrentamentos dos Efeitos das Mudanças\r\nClimáticas de Itabirito/MG e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-26T07:10:07.364459-03:00",
+    "data_ultima_atualizacao": "2026-06-26T07:10:07.365773-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-26T07:08:13.761542-03:00",
+    "tipo": 1,
+    "materia": 22315,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4
+    ],
+    "autores": []
+  },
+  {
+    "id": 4839,
+    "__str__": "Lei Ordinária Municipal nº 4.590, de 24 de junho de 2026",
+    "link_detail_backend": "/norma/4839",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-24T14:11:44-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4839/lei_no_4590_de_24_de_junho_de_2026_pl_111.2026.pdf",
+    "numero": "4590",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Política Municipal de Valorização de Resíduos Orgânicos, com diretrizes para\r\ncompostagem, biodigestão e aproveitamento energético, no Município de Itabirito/MG, e dá\r\noutras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-26T07:07:53.347647-03:00",
+    "data_ultima_atualizacao": "2026-06-26T07:07:53.534983-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-26T07:05:43.254057-03:00",
+    "tipo": 1,
+    "materia": 22337,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4
+    ],
+    "autores": []
+  },
+  {
+    "id": 4838,
+    "__str__": "Lei Ordinária Municipal nº 4.589, de 24 de junho de 2026",
+    "link_detail_backend": "/norma/4838",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-24T14:11:04-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4838/lei_no_4589_de_24_de_junho_de_2026_pl_115.2026.pdf",
+    "numero": "4589",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Campanha “Pedestre Seguro” no Município de Itabirito e dá outras providências",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-26T07:05:33.651515-03:00",
+    "data_ultima_atualizacao": "2026-06-26T07:05:33.835779-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-26T07:03:45.399723-03:00",
+    "tipo": 1,
+    "materia": 22276,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      29,
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 4837,
+    "__str__": "Lei Ordinária Municipal nº 4.588, de 24 de junho de 2026",
+    "link_detail_backend": "/norma/4837",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-24T14:10:25-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4837/lei_no_4588_de_24_de_junho_de_2026_pl_116.2026.pdf",
+    "numero": "4588",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Semana Municipal de Imunização no âmbito do Município de Itabirito e dá outras\r\nprovidências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-26T07:03:30.830401-03:00",
+    "data_ultima_atualizacao": "2026-06-26T07:03:31.010758-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-26T07:01:34.728206-03:00",
+    "tipo": 1,
+    "materia": 22314,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 4836,
+    "__str__": "Lei Ordinária Municipal nº 4.587, de 24 de junho de 2026",
+    "link_detail_backend": "/norma/4836",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-24T14:09:50-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4836/lei_no_4587_de_24_de_junho_de_2026_pl_118.2026.pdf",
+    "numero": "4587",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Política Municipal de Fortalecimento da Cadeia Produtiva do Leite no Município de\r\nItabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-26T07:01:30.727265-03:00",
+    "data_ultima_atualizacao": "2026-06-26T07:01:30.963892-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-26T06:58:18.386721-03:00",
+    "tipo": 1,
+    "materia": 22323,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
+    "autores": []
   }
 ]
