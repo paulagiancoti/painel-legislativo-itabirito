@@ -827,15 +827,11 @@ def html_barchart_grouped_h(df_bar, col_label, url_fn, series, colors,
         url   = url_fn(label)
 
         serie_rows = []
-        for (col, serie_label), color in zip(series, colors):
+        for (col, _), color in zip(series, colors):
             val = int(row[col])
             pct = round(val / max_val * 82, 1)
             serie_rows.append(
                 f'<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">'
-                f'<div style="min-width:90px;max-width:90px;text-align:right;'
-                f'font-size:{fsize - 1}px;color:{color};opacity:0.9;'
-                f'white-space:nowrap;padding-right:4px">{serie_label}</div>'
-                f'<div style="flex:1;display:flex;align-items:center;gap:5px">'
                 f'<div style="flex:1;background:rgba(128,128,128,0.12);'
                 f'border-radius:3px;height:{bar_height}px">'
                 f'<div style="width:{pct}%;height:100%;background:{color};'
@@ -843,7 +839,6 @@ def html_barchart_grouped_h(df_bar, col_label, url_fn, series, colors,
                 f'</div>'
                 f'<span style="min-width:22px;font-size:{fsize}px;font-weight:700;'
                 f'color:{color};white-space:nowrap">{val}</span>'
-                f'</div>'
                 f'</div>'
             )
 
@@ -1167,11 +1162,6 @@ if vereador_selecionado == "Todos":
                 )
                 .reset_index().sort_values('apresentados', ascending=False)
             )
-            df_comp_long = df_comp.melt(
-                id_vars='assunto', value_vars=['apresentados', 'aprovados'],
-                var_name='situação', value_name='projetos'
-            )
-            df_comp_long  # mantido para eventual reuso
 
             def _url_ass3(assunto):
                 aid = mapa_assunto_id.get(assunto)
