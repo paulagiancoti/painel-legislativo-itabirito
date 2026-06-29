@@ -528,6 +528,8 @@ if tema == "🌞 Claro":
     plot_colorscale = 'Blues'
     aprov_bg = "#f0faf0"; aprov_color = "#2d8a2d"; card_border = "rgba(0,99,169,0.2)"
     bar_fill = "#5b9bd5"; bar_text = "#1A1A1A"; bar_val = "#033983"
+    bar_grad_lo = "#D0E4F5"; bar_grad_hi = "#1A5FA8"       # Blues claro → escuro
+    aprov_grad_lo = "#C8E6C1"; aprov_grad_hi = "#1E7B34"   # Greens claro → escuro
 
 elif tema == "🌙 Escuro":
     st.markdown("""<style>
@@ -556,6 +558,8 @@ elif tema == "🌙 Escuro":
     plot_colorscale = 'Blues'
     aprov_bg = "rgba(112,173,71,0.25)"; aprov_color = "#90d470"; card_border = "rgba(255,255,255,0.25)"
     bar_fill = "#5b9bd5"; bar_text = "#FAFAFA"; bar_val = "#8DC4E8"
+    bar_grad_lo = "#1A3B5C"; bar_grad_hi = "#5B9BD5"       # Blues escuro → brilhante
+    aprov_grad_lo = "#183D23"; aprov_grad_hi = "#90D470"   # Greens escuro → brilhante
 
 elif tema == "🏛️ Institucional":
     st.markdown("""<style>
@@ -590,6 +594,8 @@ elif tema == "🏛️ Institucional":
     #plot_colorscale = 'Greys'
     aprov_bg = "rgba(255,205,0,0.2)"; aprov_color = "#FFCD00"; card_border = "rgba(255,205,0,0.5)"
     bar_fill = "#FFCD00"; bar_text = "#FFFFFF"; bar_val = "#FFCD00"
+    bar_grad_lo = "#5B7EAF"; bar_grad_hi = "#FFCD00"       # azul-acinzentado → amarelo (espelha colorscale original)
+    aprov_grad_lo = "#886600"; aprov_grad_hi = "#FFCD00"   # ouro escuro → amarelo brilhante
 
 st.markdown("""<style>
 /* Remove toolbar, rodapé, header e espaços extras do Streamlit */
@@ -726,9 +732,18 @@ PLOT_CONFIG = {
     "responsive": True,
 }
 
+def _lerp_color(hex1, hex2, t):
+    """Interpola linearmente entre duas cores hex. t=0 → hex1, t=1 → hex2."""
+    t = max(0.0, min(1.0, t))
+    r1, g1, b1 = int(hex1[1:3], 16), int(hex1[3:5], 16), int(hex1[5:7], 16)
+    r2, g2, b2 = int(hex2[1:3], 16), int(hex2[3:5], 16), int(hex2[5:7], 16)
+    return f"#{int(r1+(r2-r1)*t):02x}{int(g1+(g2-g1)*t):02x}{int(b1+(b2-b1)*t):02x}"
+
+
 def html_barchart_h(df_bar, col_label, col_value, url_fn,
                     bar_height=28, fsize=13, label_w=150,
-                    val_fmt=None, fill_color=None, val_color=None):
+                    val_fmt=None, fill_color=None, val_color=None,
+                    grad_lo=None, grad_hi=None):
     """
     Gera gráfico de barras horizontais clicáveis como HTML puro.
     Um único toque no mobile abre o link — sem o delay de dois toques do on_select.
@@ -741,8 +756,10 @@ def html_barchart_h(df_bar, col_label, col_value, url_fn,
     fsize:       tamanho da fonte em px
     label_w:     largura fixa da coluna de rótulos em px
     val_fmt:     formato do valor exibido, ex: "{:.1f}%" (None → inteiro)
-    fill_color:  cor da barra (None → usa bar_fill do tema)
+    fill_color:  cor da barra quando sem degradê (None → usa bar_fill do tema)
     val_color:   cor do número (None → usa bar_val do tema)
+    grad_lo:     cor hex do menor valor — ativa modo degradê quando definido junto com grad_hi
+    grad_hi:     cor hex do maior valor
     """
     if df_bar.empty:
         return "<p>Sem dados</p>"
@@ -750,16 +767,18 @@ def html_barchart_h(df_bar, col_label, col_value, url_fn,
     if max_val == 0:
         return "<p>Sem dados</p>"
 
-    _fill  = fill_color  if fill_color  else bar_fill
-    _val_c = val_color   if val_color   else bar_val
+    _fill_base = fill_color if fill_color else bar_fill
+    _val_c     = val_color  if val_color  else bar_val
 
     rows = []
     for _, row in df_bar.iterrows():
         label   = str(row[col_label])
         val_num = float(row[col_value])
         val_str = val_fmt.format(val_num) if val_fmt else str(int(val_num))
-        pct     = round(val_num / max_val * 82, 1)   # 82% → deixa espaço para o número
+        t       = val_num / max_val                        # 0 → 1 (posição no gradiente)
+        pct     = round(t * 82, 1)                         # 82% → deixa espaço para o número
         url     = url_fn(label)
+        _fill   = _lerp_color(grad_lo, grad_hi, t) if (grad_lo and grad_hi) else _fill_base
 
         inner = (
             f'<div style="display:flex;align-items:center;gap:8px;'
@@ -1086,7 +1105,8 @@ if vereador_selecionado == "Todos":
             return url_sapl(ano=2026, autor_id=aid, assunto_id=ass_id, tipo_materia_id=tip_id)
 
         st.markdown(
-            html_barchart_h(df_ranking, 'autor_nome', 'total', _url_ranking),
+            html_barchart_h(df_ranking, 'autor_nome', 'total', _url_ranking,
+                            grad_lo=bar_grad_lo, grad_hi=bar_grad_hi),
             unsafe_allow_html=True
         )
         st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
@@ -1103,7 +1123,8 @@ if vereador_selecionado == "Todos":
 
         st.markdown(
             html_barchart_h(df_aprov, 'autor_nome', 'taxa_aprovacao', _url_aprov,
-                            val_fmt="{:.1f}%", fill_color=aprov_color, val_color=aprov_color),
+                            val_fmt="{:.1f}%", val_color=aprov_color,
+                            grad_lo=aprov_grad_lo, grad_hi=aprov_grad_hi),
             unsafe_allow_html=True
         )
         st.caption("💡 Clique em uma barra para abrir os Projetos de Lei do vereador no SAPL.")
