@@ -3431,7 +3431,7 @@
     "complemento": false,
     "data_vigencia": null,
     "timestamp": "2026-01-16T09:32:49.121110-03:00",
-    "data_ultima_atualizacao": "2026-01-16T09:32:49.137376-03:00",
+    "data_ultima_atualizacao": "2026-06-29T09:46:17.194426-03:00",
     "ip": "189.90.249.57",
     "ultima_edicao": "2026-01-16T09:32:48.974057-03:00",
     "tipo": 1,
@@ -4315,6 +4315,194 @@
     "orgao": null,
     "user": 89,
     "assuntos": [],
+    "autores": []
+  },
+  {
+    "id": 4858,
+    "__str__": "Lei Ordinária Municipal nº 4.596, de 25 de junho de 2026",
+    "link_detail_backend": "/norma/4858",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-25T15:34:24-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4858/lei_no_4596_de_25_de_junho_de_2026_pl_122.2026.pdf",
+    "numero": "4596",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Estabelece diretrizes para a Rede Municipal de Proteção à Mulher e institui o Protocolo de Cooperação contra o Feminicídio no Município de Itabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-29T08:12:46.958056-03:00",
+    "data_ultima_atualizacao": "2026-06-29T08:12:47.209377-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-29T08:10:20.043296-03:00",
+    "tipo": 1,
+    "materia": 22429,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      29
+    ],
+    "autores": []
+  },
+  {
+    "id": 4857,
+    "__str__": "Lei Ordinária Municipal nº 4.595, de 25 de junho de 2026",
+    "link_detail_backend": "/norma/4857",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-25T15:33:38-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4857/lei_no_4595_de_25_de_junho_de_2026_pl_121.2026.pdf",
+    "numero": "4595",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina Ruas: Rua Rio Manso; Rua Saturno; Rua Júpiter; Rua Bom Jesus da Penha; Rua dos Pandas; Rua Serra do Cipó; Rua Escócia; Rua Bom Jesus do Galho; Rua Groenlândia, no Bairro Água Limpa, neste Município.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-29T08:09:45.166133-03:00",
+    "data_ultima_atualizacao": "2026-06-29T08:09:45.338387-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-29T08:04:37.215085-03:00",
+    "tipo": 1,
+    "materia": 22428,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 4856,
+    "__str__": "Lei Ordinária Municipal nº 4.594, de 25 de junho de 2026",
+    "link_detail_backend": "/norma/4856",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-25T15:32:47-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4856/lei_no_4594_de_25_de_junho_de_2026_pl_120.2026.pdf",
+    "numero": "4594",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Semana Municipal de Conscientização e Orientação sobre as Regras de Circulação de Ciclomotores, Bicicletas Elétricas e Equipamentos de Mobilidade Individual Auto propelidos no Município de Itabirito/MG e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-29T07:54:50.373533-03:00",
+    "data_ultima_atualizacao": "2026-06-29T07:54:50.585584-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-29T07:53:15.858280-03:00",
+    "tipo": 1,
+    "materia": 22392,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      35
+    ],
+    "autores": []
+  },
+  {
+    "id": 4855,
+    "__str__": "Lei Ordinária Municipal nº 4.593, de 25 de junho de 2026",
+    "link_detail_backend": "/norma/4855",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-25T15:34:24-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4855/lei_no_4596_de_25_de_junho_de_2026_pl_122.2026.pdf",
+    "numero": "4593",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Autoriza o Poder Executivo a regulamentar a circulação, o cadastro administrativo e a fiscalização de ciclomotores, bicicletas elétricas e equipamentos de mobilidade individual auto propelidos no âmbito do Município de Itabirito/MG e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-06-29T07:42:04.096825-03:00",
+    "data_ultima_atualizacao": "2026-06-29T07:42:04.284758-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-06-29T07:39:57.540861-03:00",
+    "tipo": 1,
+    "materia": 22391,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      35
+    ],
     "autores": []
   }
 ]

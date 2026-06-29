@@ -16225,5 +16225,33 @@
     "sessao_legislativa": 72,
     "legislatura": 41,
     "correspondencias": []
+  },
+  {
+    "id": 577,
+    "__str__": "9ª Sessão Extraordinária da 2ª Sessão Legislativa da 22ª Legislatura",
+    "link_detail_backend": "/sessao/577",
+    "metadata": {},
+    "cod_andamento_sessao": null,
+    "painel_aberto": false,
+    "data_inicio": "2026-06-29",
+    "hora_inicio": "10:15",
+    "hora_fim": "11:10",
+    "numero": 9,
+    "data_fim": "2026-06-29",
+    "url_audio": "",
+    "url_video": "https://www.youtube.com/watch?v=vShgjr_-rZM",
+    "upload_pauta": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/577/pauta/reuniao_extraordinaria_290626.pdf",
+    "upload_ata": null,
+    "upload_anexo": null,
+    "iniciada": true,
+    "finalizada": false,
+    "interativa": false,
+    "tema_solene": "",
+    "data_ultima_atualizacao": "2026-06-29T11:08:21.993330-03:00",
+    "publicar_pauta": true,
+    "tipo": 2,
+    "sessao_legislativa": 72,
+    "legislatura": 41,
+    "correspondencias": []
   }
 ]
