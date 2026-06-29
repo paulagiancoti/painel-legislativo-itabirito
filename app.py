@@ -595,7 +595,7 @@ elif tema == "🏛️ Institucional":
     aprov_bg = "rgba(255,205,0,0.2)"; aprov_color = "#FFCD00"; card_border = "rgba(255,205,0,0.5)"
     bar_fill = "#FFCD00"; bar_text = "#FFFFFF"; bar_val = "#FFCD00"
     bar_grad_lo = "#5B7EAF"; bar_grad_hi = "#FFCD00"       # azul-acinzentado → amarelo (espelha colorscale original)
-    aprov_grad_lo = "#886600"; aprov_grad_hi = "#FFCD00"   # ouro escuro → amarelo brilhante
+    aprov_grad_lo = "#183D23"; aprov_grad_hi = "#90D470"   # verde (aprovação é verde em qualquer tema)
 
 st.markdown("""<style>
 /* Remove toolbar, rodapé, header e espaços extras do Streamlit */
