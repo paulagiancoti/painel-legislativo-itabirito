@@ -727,31 +727,39 @@ PLOT_CONFIG = {
 }
 
 def html_barchart_h(df_bar, col_label, col_value, url_fn,
-                    bar_height=28, fsize=13, label_w=150):
+                    bar_height=28, fsize=13, label_w=150,
+                    val_fmt=None, fill_color=None, val_color=None):
     """
     Gera gráfico de barras horizontais clicáveis como HTML puro.
     Um único toque no mobile abre o link — sem o delay de dois toques do on_select.
 
     df_bar:      DataFrame já ordenado como desejado para exibição
     col_label:   coluna com o rótulo (nome do vereador / assunto)
-    col_value:   coluna com o valor numérico inteiro
+    col_value:   coluna com o valor numérico (int ou float)
     url_fn:      função (label: str) → str | None — retorna a URL de destino
     bar_height:  altura de cada barra em px
     fsize:       tamanho da fonte em px
     label_w:     largura fixa da coluna de rótulos em px
+    val_fmt:     formato do valor exibido, ex: "{:.1f}%" (None → inteiro)
+    fill_color:  cor da barra (None → usa bar_fill do tema)
+    val_color:   cor do número (None → usa bar_val do tema)
     """
     if df_bar.empty:
         return "<p>Sem dados</p>"
-    max_val = df_bar[col_value].max()
+    max_val = float(df_bar[col_value].max())
     if max_val == 0:
         return "<p>Sem dados</p>"
 
+    _fill  = fill_color  if fill_color  else bar_fill
+    _val_c = val_color   if val_color   else bar_val
+
     rows = []
     for _, row in df_bar.iterrows():
-        label = str(row[col_label])
-        val   = int(row[col_value])
-        pct   = round(val / max_val * 82, 1)   # 82% → deixa espaço para o número
-        url   = url_fn(label)
+        label   = str(row[col_label])
+        val_num = float(row[col_value])
+        val_str = val_fmt.format(val_num) if val_fmt else str(int(val_num))
+        pct     = round(val_num / max_val * 82, 1)   # 82% → deixa espaço para o número
+        url     = url_fn(label)
 
         inner = (
             f'<div style="display:flex;align-items:center;gap:8px;'
@@ -765,13 +773,88 @@ def html_barchart_h(df_bar, col_label, col_value, url_fn,
             f'<div style="flex:1;display:flex;align-items:center;gap:6px">'
             f'<div style="flex:1;background:rgba(128,128,128,0.12);'
             f'border-radius:4px;height:{bar_height}px">'
-            f'<div style="width:{pct}%;height:100%;background:{bar_fill};'
+            f'<div style="width:{pct}%;height:100%;background:{_fill};'
             f'border-radius:4px;min-width:3px"></div>'
             f'</div>'
             # Número
-            f'<span style="min-width:26px;font-size:{fsize}px;font-weight:700;'
-            f'color:{bar_val};text-align:left;white-space:nowrap">{val}</span>'
+            f'<span style="min-width:36px;font-size:{fsize}px;font-weight:700;'
+            f'color:{_val_c};text-align:left;white-space:nowrap">{val_str}</span>'
             f'</div>'
+            f'</div>'
+        )
+
+        if url:
+            rows.append(
+                f'<a href="{url}" target="_blank" class="bar-link" '
+                f'title="{label} — Ver no SAPL" '
+                f'style="text-decoration:none;display:block;color:inherit">'
+                f'{inner}</a>'
+            )
+        else:
+            rows.append(f'<div>{inner}</div>')
+
+    return f'<div style="padding:4px 0">{"".join(rows)}</div>'
+
+
+def html_barchart_grouped_h(df_bar, col_label, url_fn, series, colors,
+                             bar_height=18, fsize=12, label_w=160):
+    """
+    Gera gráfico de barras horizontais agrupadas como HTML puro.
+    Cada grupo (linha) contém uma barra por série — todo o grupo é clicável.
+
+    df_bar:      DataFrame com col_label e as colunas de cada série
+    col_label:   coluna com o rótulo do grupo (ex: 'assunto')
+    url_fn:      função (label: str) → str | None — URL para o grupo inteiro
+    series:      lista de tuplas (nome_coluna, rótulo_exibido)
+    colors:      lista de cores hex, na mesma ordem de series
+    bar_height:  altura de cada barra de série em px
+    fsize:       tamanho da fonte em px
+    label_w:     largura fixa da coluna de rótulos em px
+    """
+    if df_bar.empty:
+        return "<p>Sem dados</p>"
+
+    # max_val unificado entre todas as séries — mantém proporção comparável
+    max_val = 0.0
+    for col, _ in series:
+        max_val = max(max_val, float(df_bar[col].max()))
+    if max_val == 0:
+        return "<p>Sem dados</p>"
+
+    rows = []
+    for _, row in df_bar.iterrows():
+        label = str(row[col_label])
+        url   = url_fn(label)
+
+        serie_rows = []
+        for (col, serie_label), color in zip(series, colors):
+            val = int(row[col])
+            pct = round(val / max_val * 82, 1)
+            serie_rows.append(
+                f'<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">'
+                f'<div style="min-width:90px;max-width:90px;text-align:right;'
+                f'font-size:{fsize - 1}px;color:{color};opacity:0.9;'
+                f'white-space:nowrap;padding-right:4px">{serie_label}</div>'
+                f'<div style="flex:1;display:flex;align-items:center;gap:5px">'
+                f'<div style="flex:1;background:rgba(128,128,128,0.12);'
+                f'border-radius:3px;height:{bar_height}px">'
+                f'<div style="width:{pct}%;height:100%;background:{color};'
+                f'border-radius:3px;min-width:2px"></div>'
+                f'</div>'
+                f'<span style="min-width:22px;font-size:{fsize}px;font-weight:700;'
+                f'color:{color};white-space:nowrap">{val}</span>'
+                f'</div>'
+                f'</div>'
+            )
+
+        inner = (
+            f'<div style="display:flex;align-items:flex-start;gap:8px;'
+            f'padding:5px 8px;border-radius:6px;margin-bottom:4px">'
+            f'<div style="min-width:{label_w}px;max-width:{label_w}px;'
+            f'text-align:right;font-size:{fsize}px;color:{bar_text};'
+            f'overflow:hidden;text-overflow:ellipsis;white-space:nowrap;'
+            f'padding-right:6px;font-weight:600;padding-top:2px">{label}</div>'
+            f'<div style="flex:1">{"".join(serie_rows)}</div>'
             f'</div>'
         )
 
@@ -1014,45 +1097,21 @@ if vereador_selecionado == "Todos":
         st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
 
     with aba2:
-        df_aprov = df_resumo[df_resumo['projetos_lei'] > 0].sort_values('taxa_aprovacao', ascending=True)
-        fig2 = px.bar(df_aprov, x='taxa_aprovacao', y='autor_nome', orientation='h',
-                      labels={'taxa_aprovacao': 'Taxa de aprovação (%)', 'autor_nome': ''},
-                      color='taxa_aprovacao', color_continuous_scale='Greens', text='taxa_aprovacao',
-                      custom_data=['autor_nome'])
-        fig2.update_traces(texttemplate='%{text}%', textposition='outside')
-        fig2.update_layout(coloraxis_showscale=False, height=500, margin=dict(l=10, r=40, t=10, b=10))
-        fig2 = aplicar_tema_plot(fig2)
-        evento2 = st.plotly_chart(fig2, width='stretch', on_select="rerun", key="chart_aprovacao", config=PLOT_CONFIG)
-        pontos2 = evento2.get("selection", {}).get("points", []) if evento2 else []
-        if pontos2:
-            ponto2   = pontos2[0]
-            # customdata é mais confiável que y em gráficos com colorscale
-            cd2      = ponto2.get("customdata") or []
-            nome_sel2 = cd2[0] if cd2 else ponto2.get("y")
-            autor_id2 = mapa_autor_id.get(nome_sel2)
-            if autor_id2:
-                st.link_button(
-                    f"🔗 Ver Projetos de Lei de {nome_sel2} em 2026 no SAPL",
-                    url_sapl(ano=2026, autor_id=autor_id2, so_parlamentar=True,
-                             tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
-                )
-        else:
-            st.caption("💡 Clique em uma barra ou selecione abaixo para abrir os Projetos de Lei do vereador no SAPL.")
+        df_aprov = df_resumo[df_resumo['projetos_lei'] > 0].sort_values('taxa_aprovacao', ascending=False)
 
-        # Seletor direto — funciona com um toque no celular (sem delay do on_select)
-        _nomes_a = df_aprov.sort_values('taxa_aprovacao', ascending=False)['autor_nome'].tolist()
-        _da, _db = st.columns([5, 2])
-        with _da:
-            _pick_a = st.selectbox(
-                "Ou selecione:", ["—"] + _nomes_a,
-                key="pick_aprov", label_visibility="collapsed"
-            )
-        with _db:
-            _aid_a = mapa_autor_id.get(_pick_a) if _pick_a != "—" else None
-            if _aid_a:
-                st.link_button("↗ SAPL", url_sapl(ano=2026, autor_id=_aid_a,
-                               so_parlamentar=True, tipo_materia_id=TIPO_MATERIA_SAPL['PLO']),
-                               use_container_width=True)
+        def _url_aprov(nome):
+            aid = mapa_autor_id.get(nome)
+            if not aid:
+                return None
+            return url_sapl(ano=2026, autor_id=aid, so_parlamentar=True,
+                            tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
+
+        st.markdown(
+            html_barchart_h(df_aprov, 'autor_nome', 'taxa_aprovacao', _url_aprov,
+                            val_fmt="{:.1f}%", fill_color=aprov_color, val_color=aprov_color),
+            unsafe_allow_html=True
+        )
+        st.caption("💡 Clique em uma barra para abrir os Projetos de Lei do vereador no SAPL.")
         # Tabela com nome do vereador como hyperlink (funciona com um toque no celular)
         _df_tab = (
             df_aprov[['autor_nome', 'projetos_lei', 'projetos_virou_lei',
@@ -1112,31 +1171,23 @@ if vereador_selecionado == "Todos":
                 id_vars='assunto', value_vars=['apresentados', 'aprovados'],
                 var_name='situação', value_name='projetos'
             )
-            fig_comp = px.bar(
-                df_comp_long, x='assunto', y='projetos', color='situação', barmode='group',
-                labels={'assunto': '', 'projetos': 'Projetos de Lei', 'situação': ''},
-                color_discrete_map={'apresentados': '#5b9bd5', 'aprovados': '#70ad47'},
-                title="Projetos de Lei por assunto — apresentados vs aprovados"
+            df_comp_long  # mantido para eventual reuso
+
+            def _url_ass3(assunto):
+                aid = mapa_assunto_id.get(assunto)
+                if not aid:
+                    return None
+                return url_sapl(ano=2026, assunto_id=aid, so_parlamentar=True)
+
+            st.markdown(
+                html_barchart_grouped_h(
+                    df_comp, 'assunto', _url_ass3,
+                    series=[('apresentados', 'apresentados'), ('aprovados', 'aprovados')],
+                    colors=['#5b9bd5', '#70ad47'],
+                ),
+                unsafe_allow_html=True
             )
-            fig_comp.update_layout(height=480, xaxis_tickangle=-40,
-                                   margin=dict(l=10, r=10, t=40, b=140),
-                                   legend=dict(orientation='h', y=1.05))
-            fig_comp = aplicar_tema_plot(fig_comp)
-            evento_ass = st.plotly_chart(fig_comp, width='stretch', on_select="rerun", key="chart_assunto", config=PLOT_CONFIG)
-            pontos_ass = evento_ass.get("selection", {}).get("points", []) if evento_ass else []
-            autor_id_fil = mapa_autor_id.get(vereador_selecionado) if vereador_selecionado != "Todos" else None
-            if pontos_ass:
-                assunto_clicado = pontos_ass[0].get("x")
-                assunto_id_clicado = mapa_assunto_id.get(assunto_clicado)
-                if assunto_id_clicado:
-                    label = f"🔗 Ver PLOs sobre '{assunto_clicado}' em 2026 no SAPL"
-                    if autor_id_fil:
-                        label += f" ({vereador_selecionado})"
-                    st.link_button(label, url_sapl(ano=2026, autor_id=autor_id_fil,
-                                                   assunto_id=assunto_id_clicado,
-                                                   so_parlamentar=True))
-            else:
-                st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
+            st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
             df_comp['taxa'] = (df_comp['aprovados'] / df_comp['apresentados'] * 100).round(1)
             df_comp.columns = ['Assunto', 'Apresentados', 'Aprovados', 'Taxa (%)']
             df_comp_sorted = df_comp.sort_values('Taxa (%)', ascending=False)
