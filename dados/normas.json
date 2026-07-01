@@ -4984,5 +4984,240 @@
       37
     ],
     "autores": []
+  },
+  {
+    "id": 4910,
+    "__str__": "Lei Ordinária Municipal nº 4.601, de 29 de junho de 2026",
+    "link_detail_backend": "/norma/4910",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-29T09:29:13-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4910/lei_no_4601_de_29_de_junho_de_2026_pl_136.2026.pdf",
+    "numero": "4601",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-29",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua José Cupertino dos Santos”, a via pública atualmente identificada como Rua 02, localizada no Loteamento Encanto das Águas, Bairro Portões, neste Município.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-01T07:24:23.205062-03:00",
+    "data_ultima_atualizacao": "2026-07-01T07:24:23.389038-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-01T07:22:42.593541-03:00",
+    "tipo": 1,
+    "materia": 22663,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 4909,
+    "__str__": "Lei Ordinária Municipal nº 4.600, de 29 de junho de 2026",
+    "link_detail_backend": "/norma/4909",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-29T09:29:54-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4909/lei_no_4600_de_29_de_junho_de_2026_pl_134.2026.pdf",
+    "numero": "4600",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-29",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua João Ferreira de Aguiar – João Olímpico”, a via pública atualmente identificada como Rua 01, localizada no Loteamento Encanto das Águas, Bairro Portões, neste Município.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-01T07:22:23.425074-03:00",
+    "data_ultima_atualizacao": "2026-07-01T07:22:23.603078-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-01T07:19:59.293149-03:00",
+    "tipo": 1,
+    "materia": 22661,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 4908,
+    "__str__": "Lei Ordinária Municipal nº 4.599, de 29 de junho de 2026",
+    "link_detail_backend": "/norma/4908",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-29T09:30:34-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4908/lei_no_4599_de_29_de_junho_de_2026_pl_133.2026.pdf",
+    "numero": "4599",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-29",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua Antônio Inácio de Lima – Papa Capim”, a via pública atualmente identificada\r\ncomo Rua 03, localizada no Loteamento Encanto das Águas, Bairro Portões, neste Município",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-01T07:16:41.683480-03:00",
+    "data_ultima_atualizacao": "2026-07-01T07:16:42.020452-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-01T07:09:04.353952-03:00",
+    "tipo": 1,
+    "materia": 22660,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 4907,
+    "__str__": "Lei Ordinária Municipal nº 4.598, de 29 de junho de 2026",
+    "link_detail_backend": "/norma/4907",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-29T09:31:13-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4907/lei_no_4598_de_29_de_junho_de_2026_pl_132.2026.pdf",
+    "numero": "4598",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-29",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua Albertino Peixoto”, a via pública localizada no Loteamento Encanto das Águas, Bairro Portões, neste Município.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-01T07:18:10.431050-03:00",
+    "data_ultima_atualizacao": "2026-07-01T07:18:10.450558-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-01T07:18:10.233457-03:00",
+    "tipo": 1,
+    "materia": 22658,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 4906,
+    "__str__": "Lei Ordinária Municipal nº 4.597, de 29 de junho de 2026",
+    "link_detail_backend": "/norma/4906",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-29T09:31:56-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4906/lei_no_4597_de_29_de_junho_de_2026_pl_123.2026.pdf",
+    "numero": "4597",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-29",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Julho Amarelo, a ser realizado a cada ano, no mês de julho, quando serão efetivadas\r\nações relacionadas à luta contra as hepatites virais no âmbito do Município de Itabirito e dá\r\noutras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-01T07:17:26.890833-03:00",
+    "data_ultima_atualizacao": "2026-07-01T07:17:26.912597-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-01T07:17:26.688619-03:00",
+    "tipo": 1,
+    "materia": 22550,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
   }
 ]
