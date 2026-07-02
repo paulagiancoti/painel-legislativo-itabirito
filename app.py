@@ -1087,18 +1087,136 @@ def foto_html(nome, foto_url, size=80):
         f'font-weight:700;color:white;border:3px solid rgba(128,128,128,0.3);margin:0 auto">{iniciais}</div>'
     )
 
+def renderizar_pronunciamentos_geral():
+    """Conteúdo da aba geral de pronunciamentos — reaproveitado no painel padrão
+    e no modo período eleitoral (busca por sessão, sem depender de filtro de vereador)."""
+    st.markdown("##### Selecione uma sessão para ver quais vereadores fizeram uso da palavra livre")
+
+    if df_pronunciamentos.empty:
+        st.info("📢 Os dados de pronunciamentos ainda não foram coletados. "
+                "Execute o workflow 'Coletar dados pontuais' para incluí-los.")
+    else:
+        mapa_id_parl = df_vereadores.set_index('id')['nome_parlamentar'].to_dict()
+
+        # Apenas oradores reais (não extras) de 2026
+        df_pron_2026 = df_pronunciamentos[
+            (df_pronunciamentos['ano'] == '2026') &
+            (df_pronunciamentos['orador_id'].apply(lambda x: str(x).isdigit()))
+        ].copy()
+
+        # Tabela de sessões com contagem de oradores
+        sessoes_resumo = (
+            df_pron_2026.groupby(['sessao_id','data','sessao_nome'])
+            .size().reset_index(name='Oradores')
+            .sort_values('data', ascending=False)
+        )
+        sessoes_resumo['Data'] = pd.to_datetime(
+            sessoes_resumo['data']).dt.strftime('%d/%m/%Y')
+        sessoes_resumo['Sessão'] = sessoes_resumo['sessao_nome']
+
+        # ── CORREÇÃO: reordenar colunas para Oradores ficar no centro ──
+        df_tabela = sessoes_resumo[['Data','Oradores','Sessão']].reset_index(drop=True)
+
+        st.caption("Clique em uma sessão para ver os oradores.")
+        evento = st.dataframe(
+            df_tabela,
+            use_container_width=True,
+            hide_index=True,
+            on_select="rerun",
+            selection_mode="single-row",
+            height=280,  # ~7 sessões visíveis — permite scroll de página até os oradores
+            column_config={
+                'Data':     st.column_config.TextColumn(width='small'),
+                'Oradores': st.column_config.NumberColumn(format='%d', width='small'),
+                'Sessão':   st.column_config.TextColumn(width='large'),
+            }
+        )
+
+        linhas_sel = evento.selection.rows if evento.selection else []
+        if linhas_sel:
+            idx        = linhas_sel[0]
+            sessao_row = sessoes_resumo.iloc[idx]
+            sessao_id  = sessao_row['sessao_id']
+            url_video_sess = df_pron_2026[
+                df_pron_2026['sessao_id'] == sessao_id]['url_video'].iloc[0]
+            url_sapl_sess = f"{BASE_SAPL_URL}/sessao/{int(sessao_id)}"
+
+            st.markdown(f"**{sessao_row['Data']} — {sessao_row['Sessão']}**")
+
+            # Oradores regulares ordenados por numero_ordem
+            df_sess = df_pron_2026[
+                df_pron_2026['sessao_id'] == sessao_id
+            ].sort_values('numero_ordem')
+
+            # Extras (ex: Presidente) para esta sessão — sempre por último
+            df_extras_sess = df_pronunciamentos[
+                (df_pronunciamentos['sessao_id'] == sessao_id) &
+                (~df_pronunciamentos['orador_id'].apply(lambda x: str(x).isdigit()))
+            ]
+
+            def cel_orador_geral(row, label):
+                nome = mapa_id_parl.get(row['parlamentar'],
+                                        f"Parlamentar {row['parlamentar']}")
+                obs  = row.get('observacao', '') or ''
+                url  = row.get('url_discurso', '') or ''
+                if url:
+                    return (f"{label} — "
+                            f'<a href="{url}" target="_blank" '
+                            f'style="color:#4A90D9">{nome} 🎥</a>')
+                elif obs:
+                    return f"{label} — {nome} <span style='color:#888;font-size:0.9em'>({obs})</span>"
+                return f"{label} — {nome}"
+
+            linhas_o = ""
+            for _, row in df_sess.iterrows():
+                ordem = int(row['numero_ordem'])
+                label = f"{ordem}°"
+                linhas_o += (
+                    f"<tr style='border-bottom:1px solid #eee'>"
+                    f"<td style='padding:6px 12px'>{cel_orador_geral(row, label)}</td>"
+                    f"</tr>"
+                )
+            for _, row in df_extras_sess.iterrows():
+                linhas_o += (
+                    f"<tr style='border-bottom:1px solid #eee'>"
+                    f"<td style='padding:6px 12px'>{cel_orador_geral(row, 'Presidente')}</td>"
+                    f"</tr>"
+                )
+
+            st.markdown(
+                f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
+                <thead><tr style="border-bottom:2px solid #ddd">
+                  <th style="text-align:left;padding:6px 12px">Orador</th>
+                </tr></thead>
+                <tbody>{linhas_o}</tbody></table>""",
+                unsafe_allow_html=True
+            )
+            st.markdown("")
+            col_b1, col_b2 = st.columns(2)
+            with col_b1:
+                st.link_button("🏛️ Ver dados desta sessão no SAPL", url_sapl_sess)
+            with col_b2:
+                if url_video_sess:
+                    st.link_button("▶️ Assistir à sessão na íntegra no YouTube",
+                                   url_video_sess)
+                else:
+                    st.caption("Vídeo não disponível para esta sessão.")
+
 # ─── FLAG: MODO PERÍODO ELEITORAL ──────────────────────────────────────────────
 # Roda só depois dos HELPERS acima (fotos, url_sapl, foto_html já existem).
-# Se ativo, renderiza o bloco abaixo e para com st.stop() — o painel padrão
-# (tudo que vem depois deste bloco) nunca chega a executar. Isso garante que
-# os dois modos fiquem completamente isolados um do outro.
-if modo_selecionado == "🚧 Período Eleitoral":
+# Se ativo E nenhum vereador específico estiver selecionado, renderiza o bloco
+# abaixo e para com st.stop(). Quando um vereador ESTÁ selecionado, este bloco
+# nem entra — o script segue direto para "DETALHE DO VEREADOR" mais abaixo,
+# que já é compartilhado entre os dois modos (mesmas abas: Em Destaque, Matérias,
+# PLOs aprovados, Assuntos, Relatorias, Pronunciamentos — sem duplicar código).
+if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "Todos":
     st.caption("🗳️ Visualização adaptada para o período eleitoral — em construção, mais itens a caminho.")
 
+    _titulos_pe = ["🏷️ Projetos por assunto", "📢 Pronunciamentos"]
     if assunto_selecionado == "Todos":
-        _titulos_pe = ["🏷️ Projetos por assunto", "📱 Em Destaque"]
+        _titulos_pe.append("📋 Vereadores")
     else:
-        _titulos_pe = ["🏷️ Projetos por assunto"]
+        _titulos_pe.append("📊 Matérias por vereador")
     _abas_pe = st.tabs(_titulos_pe)
 
     # ── ABA: PROJETOS POR ASSUNTO — igual à versão padrão, sem o heatmap ───────
@@ -1168,9 +1286,13 @@ if modo_selecionado == "🚧 Período Eleitoral":
                 unsafe_allow_html=True
             )
 
-    # ── ABA: EM DESTAQUE — só aparece sem filtro de assunto ativo ──────────────
-    if assunto_selecionado == "Todos":
-        with _abas_pe[1]:
+    # ── ABA: PRONUNCIAMENTOS — sem filtro de vereador, atende à cartilha ATRICON ─
+    with _abas_pe[1]:
+        renderizar_pronunciamentos_geral()
+
+    # ── ABA: VEREADORES (sem assunto) OU MATÉRIAS POR VEREADOR (com assunto) ───
+    with _abas_pe[2]:
+        if assunto_selecionado == "Todos":
             st.markdown("### Vereadores de Itabirito — 2026")
 
             def _num_html(valor, cor, href):
@@ -1249,6 +1371,26 @@ if modo_selecionado == "🚧 Período Eleitoral":
                             f'</div>',
                             unsafe_allow_html=True
                         )
+        else:
+            # Assunto filtrado: mostra Matérias por vereador (ordem alfabética, sem degradê)
+            df_ranking_pe = (
+                df_filtrado.groupby('autor_nome').size()
+                .reset_index(name='total').sort_values('autor_nome', ascending=True)
+            )
+
+            def _url_ranking_pe(nome):
+                aid = mapa_autor_id.get(nome)
+                if not aid:
+                    return None
+                ass_id = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
+                tip_id = mapa_tipo_sapl_id.get(tipo_selecionado) if tipo_selecionado != "Todos" else None
+                return url_sapl(ano=2026, autor_id=aid, assunto_id=ass_id, tipo_materia_id=tip_id)
+
+            st.markdown(
+                html_barchart_h(df_ranking_pe, 'autor_nome', 'total', _url_ranking_pe),
+                unsafe_allow_html=True
+            )
+            st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
     st.stop()
 
 # ─── VISÃO GERAL ───────────────────────────────────────────────────────────────
@@ -1525,117 +1667,7 @@ if vereador_selecionado == "Todos":
 
     # ─── ABA PRONUNCIAMENTOS (visão geral) ────────────────────────────────────
     with aba_pron_geral:
-        st.markdown("##### Selecione uma sessão para ver quais vereadores fizeram uso da palavra livre")
-
-        if df_pronunciamentos.empty:
-            st.info("📢 Os dados de pronunciamentos ainda não foram coletados. "
-                    "Execute o workflow 'Coletar dados pontuais' para incluí-los.")
-        else:
-            mapa_id_parl = df_vereadores.set_index('id')['nome_parlamentar'].to_dict()
-
-            # Apenas oradores reais (não extras) de 2026
-            df_pron_2026 = df_pronunciamentos[
-                (df_pronunciamentos['ano'] == '2026') &
-                (df_pronunciamentos['orador_id'].apply(lambda x: str(x).isdigit()))
-            ].copy()
-
-            # Tabela de sessões com contagem de oradores
-            sessoes_resumo = (
-                df_pron_2026.groupby(['sessao_id','data','sessao_nome'])
-                .size().reset_index(name='Oradores')
-                .sort_values('data', ascending=False)
-            )
-            sessoes_resumo['Data'] = pd.to_datetime(
-                sessoes_resumo['data']).dt.strftime('%d/%m/%Y')
-            sessoes_resumo['Sessão'] = sessoes_resumo['sessao_nome']
-
-            # ── CORREÇÃO: reordenar colunas para Oradores ficar no centro ──
-            df_tabela = sessoes_resumo[['Data','Oradores','Sessão']].reset_index(drop=True)
-
-            st.caption("Clique em uma sessão para ver os oradores.")
-            evento = st.dataframe(
-                df_tabela,
-                use_container_width=True,
-                hide_index=True,
-                on_select="rerun",
-                selection_mode="single-row",
-                height=280,  # ~7 sessões visíveis — permite scroll de página até os oradores
-                column_config={
-                    'Data':     st.column_config.TextColumn(width='small'),
-                    'Oradores': st.column_config.NumberColumn(format='%d', width='small'),
-                    'Sessão':   st.column_config.TextColumn(width='large'),
-                }
-            )
-
-            linhas_sel = evento.selection.rows if evento.selection else []
-            if linhas_sel:
-                idx        = linhas_sel[0]
-                sessao_row = sessoes_resumo.iloc[idx]
-                sessao_id  = sessao_row['sessao_id']
-                url_video_sess = df_pron_2026[
-                    df_pron_2026['sessao_id'] == sessao_id]['url_video'].iloc[0]
-                url_sapl_sess = f"{BASE_SAPL_URL}/sessao/{int(sessao_id)}"
-
-                st.markdown(f"**{sessao_row['Data']} — {sessao_row['Sessão']}**")
-
-                # Oradores regulares ordenados por numero_ordem
-                df_sess = df_pron_2026[
-                    df_pron_2026['sessao_id'] == sessao_id
-                ].sort_values('numero_ordem')
-
-                # Extras (ex: Presidente) para esta sessão — sempre por último
-                df_extras_sess = df_pronunciamentos[
-                    (df_pronunciamentos['sessao_id'] == sessao_id) &
-                    (~df_pronunciamentos['orador_id'].apply(lambda x: str(x).isdigit()))
-                ]
-
-                def cel_orador_geral(row, label):
-                    nome = mapa_id_parl.get(row['parlamentar'],
-                                            f"Parlamentar {row['parlamentar']}")
-                    obs  = row.get('observacao', '') or ''
-                    url  = row.get('url_discurso', '') or ''
-                    if url:
-                        return (f"{label} — "
-                                f'<a href="{url}" target="_blank" '
-                                f'style="color:#4A90D9">{nome} 🎥</a>')
-                    elif obs:
-                        return f"{label} — {nome} <span style='color:#888;font-size:0.9em'>({obs})</span>"
-                    return f"{label} — {nome}"
-
-                linhas_o = ""
-                for _, row in df_sess.iterrows():
-                    ordem = int(row['numero_ordem'])
-                    label = f"{ordem}°"
-                    linhas_o += (
-                        f"<tr style='border-bottom:1px solid #eee'>"
-                        f"<td style='padding:6px 12px'>{cel_orador_geral(row, label)}</td>"
-                        f"</tr>"
-                    )
-                for _, row in df_extras_sess.iterrows():
-                    linhas_o += (
-                        f"<tr style='border-bottom:1px solid #eee'>"
-                        f"<td style='padding:6px 12px'>{cel_orador_geral(row, 'Presidente')}</td>"
-                        f"</tr>"
-                    )
-
-                st.markdown(
-                    f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
-                    <thead><tr style="border-bottom:2px solid #ddd">
-                      <th style="text-align:left;padding:6px 12px">Orador</th>
-                    </tr></thead>
-                    <tbody>{linhas_o}</tbody></table>""",
-                    unsafe_allow_html=True
-                )
-                st.markdown("")
-                col_b1, col_b2 = st.columns(2)
-                with col_b1:
-                    st.link_button("🏛️ Ver dados desta sessão no SAPL", url_sapl_sess)
-                with col_b2:
-                    if url_video_sess:
-                        st.link_button("▶️ Assistir à sessão na íntegra no YouTube",
-                                       url_video_sess)
-                    else:
-                        st.caption("Vídeo não disponível para esta sessão.")
+        renderizar_pronunciamentos_geral()
 
 
 # ─── DETALHE DO VEREADOR ───────────────────────────────────────────────────────
