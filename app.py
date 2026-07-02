@@ -482,9 +482,23 @@ tipo_opcoes = ["Todos"] + sorted([
     if t not in ['Projeto de Lei Substitutivo', 'Projeto de Lei Substitutivo (2)']
 ])
 
-# Tipo precisa ser lido antes do assunto (mas exibido depois) — calcula primeiro
-with f3:
-    tipo_selecionado = st.selectbox("📁 Tipo de matéria", tipo_opcoes)
+# Modo precisa ser lido antes do tipo (mas exibido na 5ª coluna) — calcula primeiro
+with f5:
+    modo_selecionado = st.selectbox(
+        "🗳️ Visualização", ["📊 Painel padrão", "🚧 Período Eleitoral"],
+        help="Versão em preparação para o período eleitoral — ainda não afeta o painel padrão."
+    )
+
+# Tipo de matéria não tem uso no período eleitoral (não há mais comparativos entre
+# vereadores que dependam desse filtro) — oculta o seletor e força "Todos".
+if modo_selecionado == "🚧 Período Eleitoral":
+    tipo_selecionado = "Todos"
+    with f3:
+        st.write("")
+else:
+    # Tipo precisa ser lido antes do assunto (mas exibido depois) — calcula primeiro
+    with f3:
+        tipo_selecionado = st.selectbox("📁 Tipo de matéria", tipo_opcoes)
 
 with f1:
     if tipo_selecionado in ["Todos", "Projeto de Lei Ordinária"]:
@@ -505,12 +519,6 @@ with f2:
 
 with f4:
     tema = st.selectbox("🎨 Contraste", ["🌞 Claro", "🌙 Escuro", "🏛️ Institucional"])
-
-with f5:
-    modo_selecionado = st.selectbox(
-        "🗳️ Visualização", ["📊 Painel padrão", "🚧 Período Eleitoral"],
-        help="Versão em preparação para o período eleitoral — ainda não afeta o painel padrão."
-    )
 
 # Nota informativa + data de atualização — numa única linha compacta
 # _ts já lido no topo do arquivo como string "DD/MM/YYYY às HH:MM"
@@ -1202,6 +1210,19 @@ def renderizar_pronunciamentos_geral():
                 else:
                     st.caption("Vídeo não disponível para esta sessão.")
 
+def renderizar_rodape():
+    """Nota institucional de rodapé — reaproveitada no painel padrão e no
+    período eleitoral (que termina cedo via st.stop(), sem chegar ao rodapé original)."""
+    st.divider()
+    st.caption(
+        "ℹ️ O Painel Legislativo tem caráter informativo e educativo, e constitui uma das "
+        "formas de publicação eletrônica da Câmara Municipal de Itabirito, dada sua "
+        "capacidade de alcance e transparência. Os dados são extraídos automaticamente "
+        "do Sistema de Apoio ao Processo Legislativo (SAPL). Em caso de divergência, "
+        "ou para consulta aos textos integrais das matérias, recomenda-se sempre a "
+        "verificação direta no SAPL."
+    )
+
 # ─── FLAG: MODO PERÍODO ELEITORAL ──────────────────────────────────────────────
 # Roda só depois dos HELPERS acima (fotos, url_sapl, foto_html já existem).
 # Se ativo E nenhum vereador específico estiver selecionado, renderiza o bloco
@@ -1213,9 +1234,9 @@ if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "To
     st.caption("🗳️ Visualização adaptada para o período eleitoral — em construção, mais itens a caminho.")
 
     if assunto_selecionado == "Todos":
-        _titulos_pe = ["🏷️ Projetos por assunto", "📢 Pronunciamentos", "📋 Vereadores"]
+        _titulos_pe = ["🏷️ Projetos por assunto", "📄 Matérias", "📢 Pronunciamentos", "📋 Vereadores"]
     else:
-        _titulos_pe = ["📊 Matérias por vereador", "🏷️ Projetos por assunto",
+        _titulos_pe = ["📊 Matérias por vereador", "🏷️ Projetos por assunto", "📄 Matérias",
                         "📢 Pronunciamentos", "📋 Vereadores"]
     _abas_pe = st.tabs(_titulos_pe)
     _idx_pe = {nome: i for i, nome in enumerate(_titulos_pe)}   # indexação por nome — evita erro de posição
@@ -1309,6 +1330,62 @@ if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "To
                 unsafe_allow_html=True
             )
 
+    # ── ABA: MATÉRIAS — total geral por tipo + filtro interno por vereador ─────
+    # Sem comparativo entre vereadores: o gráfico por vereador só aparece depois
+    # de uma escolha explícita, e mostra apenas os dados da própria pessoa.
+    with _abas_pe[_idx_pe["📄 Matérias"]]:
+        st.markdown("##### Matérias apresentadas por tipo — 2026")
+        _tipos_pe = [t for t in tipo_opcoes if t != "Todos"]
+        _linhas_tipo_pe = []
+        for _t in _tipos_pe:
+            _qtd = df_expandido[
+                (~df_expandido['tipo_sigla'].isin(['PLS', 'PLS2'])) &
+                (df_expandido['tipo_descricao'] == _t)
+            ]['materia_id'].nunique()
+            if _qtd > 0:
+                _linhas_tipo_pe.append({'tipo': _t, 'total': _qtd})
+        df_tipo_geral_pe = pd.DataFrame(_linhas_tipo_pe).sort_values('total', ascending=False)
+
+        def _url_tipo_geral_pe(tipo_desc):
+            tid = mapa_tipo_sapl_id.get(tipo_desc)
+            if not tid:
+                return None
+            return url_sapl(ano=2026, tipo_materia_id=tid)
+
+        st.markdown(
+            html_barchart_h(df_tipo_geral_pe, 'tipo', 'total', _url_tipo_geral_pe),
+            unsafe_allow_html=True
+        )
+        st.caption("💡 Clique em uma barra para abrir as matérias desse tipo no SAPL.")
+
+        st.divider()
+        st.markdown("##### Ver por vereador (opcional)")
+        _vereadores_pe_lista = ["—"] + sorted(df_parl['autor_nome'].unique().tolist())
+        _vereador_pe = st.selectbox(
+            "Escolha um vereador para ver a distribuição de matérias dele por tipo:",
+            _vereadores_pe_lista, key="pick_vereador_materias_pe"
+        )
+        if _vereador_pe != "—":
+            df_v_tipo_pe = (
+                df_sem_pls[df_sem_pls['autor_nome'] == _vereador_pe]
+                .groupby('tipo_descricao')['materia_id'].nunique()
+                .reset_index(name='total').sort_values('total', ascending=False)
+            )
+            _autor_id_pe = mapa_autor_id.get(_vereador_pe)
+
+            def _url_tipo_vereador_pe(tipo_desc):
+                tid = mapa_tipo_sapl_id.get(tipo_desc)
+                if not tid or not _autor_id_pe:
+                    return None
+                return url_sapl(ano=2026, autor_id=_autor_id_pe, so_parlamentar=True, tipo_materia_id=tid)
+
+            st.markdown(f"**Matérias de {_vereador_pe} por tipo — 2026**")
+            st.markdown(
+                html_barchart_h(df_v_tipo_pe, 'tipo_descricao', 'total', _url_tipo_vereador_pe),
+                unsafe_allow_html=True
+            )
+            st.caption(f"💡 Clique em uma barra para abrir as matérias de {_vereador_pe} desse tipo no SAPL.")
+
     # ── ABA: PRONUNCIAMENTOS — sem filtro de vereador, atende à cartilha ATRICON ─
     with _abas_pe[_idx_pe["📢 Pronunciamentos"]]:
         renderizar_pronunciamentos_geral()
@@ -1393,6 +1470,8 @@ if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "To
                         f'</div>',
                         unsafe_allow_html=True
                     )
+
+    renderizar_rodape()
     st.stop()
 
 # ─── VISÃO GERAL ───────────────────────────────────────────────────────────────
@@ -2107,12 +2186,4 @@ if vereador_selecionado != "Todos":
 
 # ─── RODAPÉ INSTITUCIONAL ───────────────────────────────────────────────────────
 
-st.divider()
-st.caption(
-    "ℹ️ O Painel Legislativo tem caráter informativo e educativo, e constitui uma das "
-    "formas de publicação eletrônica da Câmara Municipal de Itabirito, dada sua "
-    "capacidade de alcance e transparência. Os dados são extraídos automaticamente "
-    "do Sistema de Apoio ao Processo Legislativo (SAPL). Em caso de divergência, "
-    "ou para consulta aos textos integrais das matérias, recomenda-se sempre a "
-    "verificação direta no SAPL."
-)
+renderizar_rodape()
