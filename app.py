@@ -1335,12 +1335,13 @@ if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "To
     # de uma escolha explícita, e mostra apenas os dados da própria pessoa.
     with _abas_pe[_idx_pe["📄 Matérias"]]:
         st.markdown("##### Matérias apresentadas por tipo — 2026")
+        st.caption("Somente vereadores em exercício — não inclui Executivo, Mesa Diretora ou autores externos.")
         _tipos_pe = [t for t in tipo_opcoes if t != "Todos"]
         _linhas_tipo_pe = []
         for _t in _tipos_pe:
-            _qtd = df_expandido[
-                (~df_expandido['tipo_sigla'].isin(['PLS', 'PLS2'])) &
-                (df_expandido['tipo_descricao'] == _t)
+            _qtd = df_parl[
+                (~df_parl['tipo_sigla'].isin(['PLS', 'PLS2'])) &
+                (df_parl['tipo_descricao'] == _t)
             ]['materia_id'].nunique()
             if _qtd > 0:
                 _linhas_tipo_pe.append({'tipo': _t, 'total': _qtd})
@@ -1350,7 +1351,7 @@ if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "To
             tid = mapa_tipo_sapl_id.get(tipo_desc)
             if not tid:
                 return None
-            return url_sapl(ano=2026, tipo_materia_id=tid)
+            return url_sapl(ano=2026, tipo_materia_id=tid, so_parlamentar=True)
 
         st.markdown(
             html_barchart_h(df_tipo_geral_pe, 'tipo', 'total', _url_tipo_geral_pe),
