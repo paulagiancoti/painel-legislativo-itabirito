@@ -681,29 +681,6 @@ st.markdown(f"""<style>
              padding:5px 14px;font-size:13px;font-weight:500;margin:3px;display:inline-block; }}
 </style>""", unsafe_allow_html=True)
 
-# ─── FLAG: MODO PERÍODO ELEITORAL ──────────────────────────────────────────────
-# Enquanto "modo_selecionado" for o padrão, este bloco não executa e o painel
-# funciona exatamente como sempre funcionou — zero impacto para quem já usa o site.
-# Quando alguém escolhe "🚧 Período Eleitoral" no seletor, o script para aqui
-# (st.stop()) e mostra só o placeholder abaixo. Nada do conteúdo normal é
-# carregado nesse modo — é como se fosse uma aba isolada, segura para construir
-# aos poucos sem qualquer risco de afetar a visualização pública atual.
-if modo_selecionado == "🚧 Período Eleitoral":
-    st.markdown(
-        f"""<div style="text-align:center;padding:100px 20px">
-        <div style="font-size:52px;margin-bottom:18px">🚧</div>
-        <div style="font-size:22px;font-weight:700;color:{plot_font};margin-bottom:10px">
-            Em construção... ⏳
-        </div>
-        <div style="font-size:14px;color:{plot_font};opacity:0.7;max-width:420px;margin:0 auto">
-            A visualização adaptada para o período eleitoral está sendo preparada.
-            Volte em breve ou selecione "📊 Painel padrão" acima.
-        </div>
-        </div>""",
-        unsafe_allow_html=True
-    )
-    st.stop()
-
 def aplicar_tema_plot(fig):
     fig.update_layout(
         plot_bgcolor=plot_bg, paper_bgcolor=plot_paper, font_color=plot_font,
@@ -1109,6 +1086,170 @@ def foto_html(nome, foto_url, size=80):
         f'display:flex;align-items:center;justify-content:center;font-size:{size//3}px;'
         f'font-weight:700;color:white;border:3px solid rgba(128,128,128,0.3);margin:0 auto">{iniciais}</div>'
     )
+
+# ─── FLAG: MODO PERÍODO ELEITORAL ──────────────────────────────────────────────
+# Roda só depois dos HELPERS acima (fotos, url_sapl, foto_html já existem).
+# Se ativo, renderiza o bloco abaixo e para com st.stop() — o painel padrão
+# (tudo que vem depois deste bloco) nunca chega a executar. Isso garante que
+# os dois modos fiquem completamente isolados um do outro.
+if modo_selecionado == "🚧 Período Eleitoral":
+    st.caption("🗳️ Visualização adaptada para o período eleitoral — em construção, mais itens a caminho.")
+
+    if assunto_selecionado == "Todos":
+        _titulos_pe = ["🏷️ Projetos por assunto", "📱 Em Destaque"]
+    else:
+        _titulos_pe = ["🏷️ Projetos por assunto"]
+    _abas_pe = st.tabs(_titulos_pe)
+
+    # ── ABA: PROJETOS POR ASSUNTO — igual à versão padrão, sem o heatmap ───────
+    with _abas_pe[0]:
+        if df_ass.empty:
+            st.info("Nenhum assunto cadastrado nos dados carregados.")
+        else:
+            top_assuntos_pe = (
+                df_ass.groupby('assunto')['materia_id'].nunique()
+                .sort_values(ascending=False).head(15).index.tolist()
+            )
+            df_ass_top_pe = df_ass[df_ass['assunto'].isin(top_assuntos_pe)]
+            df_comp_pe = (
+                df_ass_top_pe.groupby('assunto')
+                .agg(
+                    apresentados=('materia_id', 'nunique'),
+                    aprovados=('virou_lei', lambda x: df_ass_top_pe.loc[x.index]
+                               .drop_duplicates('materia_id')['virou_lei'].sum()),
+                )
+                .reset_index().sort_values('apresentados', ascending=False)
+            )
+
+            def _url_ass_pe(assunto):
+                aid = mapa_assunto_id.get(assunto)
+                if not aid:
+                    return None
+                return url_sapl(ano=2026, assunto_id=aid, so_parlamentar=True)
+
+            st.markdown(
+                html_barchart_grouped_h(
+                    df_comp_pe, 'assunto', _url_ass_pe,
+                    series=[('apresentados', 'apresentados'), ('aprovados', 'aprovados')],
+                    colors=['#5b9bd5', '#70ad47'],
+                ),
+                unsafe_allow_html=True
+            )
+            st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
+            df_comp_pe['taxa'] = (df_comp_pe['aprovados'] / df_comp_pe['apresentados'] * 100).round(1)
+            df_comp_pe.columns = ['Assunto', 'Apresentados', 'Aprovados', 'Taxa (%)']
+            df_comp_pe_sorted = df_comp_pe.sort_values('Taxa (%)', ascending=False)
+            _autor_fil_pe = mapa_autor_id.get(vereador_selecionado) if vereador_selecionado != "Todos" else None
+            _linhas_ass_pe = ""
+            for _, _row in df_comp_pe_sorted.iterrows():
+                _aid_t = mapa_assunto_id.get(_row['Assunto'])
+                if _aid_t:
+                    _url_t = url_sapl(ano=2026, autor_id=_autor_fil_pe, assunto_id=_aid_t, so_parlamentar=True)
+                    _cel = f'<a href="{_url_t}" target="_blank" style="color:#4A90D9">{_row["Assunto"]} ↗</a>'
+                else:
+                    _cel = _row['Assunto']
+                _linhas_ass_pe += (
+                    f"<tr style='border-bottom:1px solid #eee'>"
+                    f"<td style='padding:6px 12px'>{_cel}</td>"
+                    f"<td style='padding:6px 12px;text-align:center'>{int(_row['Apresentados'])}</td>"
+                    f"<td style='padding:6px 12px;text-align:center'>{int(_row['Aprovados'])}</td>"
+                    f"<td style='padding:6px 12px;text-align:center'>{_row['Taxa (%)']}%</td>"
+                    f"</tr>"
+                )
+            st.markdown(
+                f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
+                <thead><tr style="border-bottom:2px solid #ddd">
+                  <th style="text-align:left;padding:6px 12px">Assunto ↗ abre no SAPL</th>
+                  <th style="text-align:center;padding:6px 12px">Apresentados</th>
+                  <th style="text-align:center;padding:6px 12px">Aprovados</th>
+                  <th style="text-align:center;padding:6px 12px">Taxa (%)</th>
+                </tr></thead>
+                <tbody>{_linhas_ass_pe}</tbody></table>""",
+                unsafe_allow_html=True
+            )
+
+    # ── ABA: EM DESTAQUE — só aparece sem filtro de assunto ativo ──────────────
+    if assunto_selecionado == "Todos":
+        with _abas_pe[1]:
+            st.markdown("### Vereadores de Itabirito — 2026")
+
+            def _num_html(valor, cor, href):
+                _num = (f'<div style="font-size:26px;font-weight:700;color:{cor};'
+                        f'line-height:1">{valor}</div>')
+                return (f'<a href="{href}" target="_blank" style="text-decoration:none">{_num}</a>'
+                        if href else _num)
+
+            # Ordem alfabética — sem ranqueamento por valor
+            df_destaque_pe = df_resumo.sort_values('autor_nome', ascending=True)
+            _lista_pe = list(df_destaque_pe.iterrows())
+            for row_start in range(0, len(_lista_pe), 3):
+                cols_pe = st.columns(3)
+                for j, (_, row) in enumerate(_lista_pe[row_start:row_start + 3]):
+                    nome       = row['autor_nome']
+                    foto       = mapa_foto.get(nome, '')
+                    cargo_mesa = mapa_cargo.get(nome, '')
+                    cargo_badge = (
+                        f'<div style="font-size:10px;font-weight:600;color:#ed7d31;'
+                        f'margin-bottom:8px;letter-spacing:0.5px">⭐ {cargo_mesa}</div>'
+                    ) if cargo_mesa else '<div style="height:22px"></div>'
+
+                    # Foto → página do parlamentar no SAPL (sem filtros)
+                    parl_id   = mapa_parlamentar_id.get(nome)
+                    foto_href = f"{BASE_SAPL_URL}/parlamentar/{parl_id}" if parl_id else None
+                    foto_tag = (
+                        f'<a href="{foto_href}" target="_blank" style="display:block;cursor:pointer" '
+                        f'title="Ver parlamentar no SAPL">{foto_html(nome, foto, 80)}</a>'
+                    ) if foto_href else foto_html(nome, foto, 80)
+
+                    autor_id_c = mapa_autor_id.get(nome)
+                    _tid_ind   = mapa_tipo_sapl_id.get('IND')
+                    _tid_req   = mapa_tipo_sapl_id.get('REQ')
+
+                    _url_pl = (
+                        url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True,
+                                tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
+                        if autor_id_c else None
+                    )
+                    _url_ind = (
+                        url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True, tipo_materia_id=_tid_ind)
+                        if autor_id_c and _tid_ind else None
+                    )
+                    _url_req = (
+                        url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True, tipo_materia_id=_tid_req)
+                        if autor_id_c and _tid_req else None
+                    )
+                    # Tarja de matérias — apenas vereador + ano, sem outros filtros
+                    _url_mat = url_sapl(ano=2026, autor_id=autor_id_c) if autor_id_c else None
+                    _tarja = f'{int(row["total_geral"])} matérias apresentadas'
+                    _tarja_html = (
+                        f'<a href="{_url_mat}" target="_blank" style="text-decoration:none">'
+                        f'<div class="card-secondary">{_tarja}</div></a>'
+                        if _url_mat else f'<div class="card-secondary">{_tarja}</div>'
+                    )
+
+                    with cols_pe[j]:
+                        st.markdown(
+                            f'<div class="card-pop" style="border:1px solid {card_border}">'
+                            f'<div style="margin-bottom:12px">{foto_tag}</div>'
+                            f'<div class="card-nome">{nome}</div>{cargo_badge}'
+                            f'<div style="display:flex;justify-content:space-around;margin-bottom:10px">'
+                            f'<div>{_num_html(int(row["projetos_lei"]), "#5b9bd5", _url_pl)}'
+                            f'<div class="card-muted">Projetos de Lei</div></div>'
+                            f'<div><div style="font-size:26px;font-weight:700;color:#70ad47;line-height:1">'
+                            f'{int(row["projetos_virou_lei"])}</div>'
+                            f'<div class="card-muted">PLOs aprovados</div></div>'
+                            f'</div>'
+                            f'<div style="display:flex;justify-content:space-around;margin-bottom:12px">'
+                            f'<div>{_num_html(int(row["indicacoes"]), "#a855f7", _url_ind)}'
+                            f'<div class="card-muted">Indicações</div></div>'
+                            f'<div>{_num_html(int(row["requerimentos"]), "#ed7d31", _url_req)}'
+                            f'<div class="card-muted">Requerimentos</div></div>'
+                            f'</div>'
+                            f'{_tarja_html}'
+                            f'</div>',
+                            unsafe_allow_html=True
+                        )
+    st.stop()
 
 # ─── VISÃO GERAL ───────────────────────────────────────────────────────────────
 
@@ -1896,27 +2037,4 @@ if vereador_selecionado != "Todos":
                         f"<td style='white-space:nowrap;padding:6px 12px;vertical-align:top'>{cel_sessao}</td>"
                         f"<td style='word-break:break-word;padding:6px 12px;vertical-align:top'>{cel_discurso_html(row)}</td>"
                         f"</tr>"
-                    )
-                st.markdown(
-                    f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
-                    <thead><tr style="border-bottom:2px solid #ddd">
-                      <th style="text-align:left;padding:6px 12px">Data</th>
-                      <th style="text-align:left;padding:6px 12px">Sessão</th>
-                      <th style="text-align:left;padding:6px 12px">Discurso</th>
-                    </tr></thead>
-                    <tbody>{linhas_html}</tbody>
-                    </table>""",
-                    unsafe_allow_html=True
-                )
-
-# ─── RODAPÉ INSTITUCIONAL ───────────────────────────────────────────────────────
-
-st.divider()
-st.caption(
-    "ℹ️ O Painel Legislativo tem caráter informativo e educativo, e constitui uma das "
-    "formas de publicação eletrônica da Câmara Municipal de Itabirito, dada sua "
-    "capacidade de alcance e transparência. Os dados são extraídos automaticamente "
-    "do Sistema de Apoio ao Processo Legislativo (SAPL). Em caso de divergência, "
-    "ou para consulta aos textos integrais das matérias, recomenda-se sempre a "
-    "verificação direta no SAPL."
-)
+                    
