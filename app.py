@@ -474,7 +474,7 @@ st.caption("Dados: SAPL · Câmara Municipal de Itabirito (MG) · 2026")
 
 # ─── FILTROS (barra horizontal no topo) ────────────────────────────────────────
 
-f1, f2, f3, f4 = st.columns([1.6, 1.4, 1.4, 1])
+f1, f2, f3, f4, f5 = st.columns([1.4, 1.2, 1.2, 0.9, 1.3])
 
 assunto_selecionado = "Todos"
 tipo_opcoes = ["Todos"] + sorted([
@@ -505,6 +505,12 @@ with f2:
 
 with f4:
     tema = st.selectbox("🎨 Contraste", ["🌞 Claro", "🌙 Escuro", "🏛️ Institucional"])
+
+with f5:
+    modo_selecionado = st.selectbox(
+        "🗳️ Visualização", ["📊 Painel padrão", "🚧 Período Eleitoral"],
+        help="Versão em preparação para o período eleitoral — ainda não afeta o painel padrão."
+    )
 
 # Nota informativa + data de atualização — numa única linha compacta
 # _ts já lido no topo do arquivo como string "DD/MM/YYYY às HH:MM"
@@ -674,6 +680,29 @@ st.markdown(f"""<style>
 .pill-ass {{ background:rgba(91,155,213,0.2);color:var(--text-color);border-radius:20px;
              padding:5px 14px;font-size:13px;font-weight:500;margin:3px;display:inline-block; }}
 </style>""", unsafe_allow_html=True)
+
+# ─── FLAG: MODO PERÍODO ELEITORAL ──────────────────────────────────────────────
+# Enquanto "modo_selecionado" for o padrão, este bloco não executa e o painel
+# funciona exatamente como sempre funcionou — zero impacto para quem já usa o site.
+# Quando alguém escolhe "🚧 Período Eleitoral" no seletor, o script para aqui
+# (st.stop()) e mostra só o placeholder abaixo. Nada do conteúdo normal é
+# carregado nesse modo — é como se fosse uma aba isolada, segura para construir
+# aos poucos sem qualquer risco de afetar a visualização pública atual.
+if modo_selecionado == "🚧 Período Eleitoral":
+    st.markdown(
+        f"""<div style="text-align:center;padding:100px 20px">
+        <div style="font-size:52px;margin-bottom:18px">🚧</div>
+        <div style="font-size:22px;font-weight:700;color:{plot_font};margin-bottom:10px">
+            Em construção... ⏳
+        </div>
+        <div style="font-size:14px;color:{plot_font};opacity:0.7;max-width:420px;margin:0 auto">
+            A visualização adaptada para o período eleitoral está sendo preparada.
+            Volte em breve ou selecione "📊 Painel padrão" acima.
+        </div>
+        </div>""",
+        unsafe_allow_html=True
+    )
+    st.stop()
 
 def aplicar_tema_plot(fig):
     fig.update_layout(
@@ -1086,7 +1115,7 @@ def foto_html(nome, foto_url, size=80):
 if vereador_selecionado == "Todos":
 
     aba1, aba2, aba3, aba_pop, aba_pron_geral = st.tabs([
-        "📊 Ranking por matérias", "⚖️ Aprovação de PLOs",
+        "📊 Matérias por vereador", "⚖️ Aprovação de PLOs",
         "🏷️ Projetos por assunto", "📱 Em Destaque", "📢 Pronunciamentos",
     ])
 
