@@ -1212,15 +1212,38 @@ def renderizar_pronunciamentos_geral():
 if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "Todos":
     st.caption("🗳️ Visualização adaptada para o período eleitoral — em construção, mais itens a caminho.")
 
-    _titulos_pe = ["🏷️ Projetos por assunto", "📢 Pronunciamentos"]
     if assunto_selecionado == "Todos":
-        _titulos_pe.append("📋 Vereadores")
+        _titulos_pe = ["🏷️ Projetos por assunto", "📢 Pronunciamentos", "📋 Vereadores"]
     else:
-        _titulos_pe.append("📊 Matérias por vereador")
+        _titulos_pe = ["📊 Matérias por vereador", "🏷️ Projetos por assunto",
+                        "📢 Pronunciamentos", "📋 Vereadores"]
     _abas_pe = st.tabs(_titulos_pe)
+    _idx_pe = {nome: i for i, nome in enumerate(_titulos_pe)}   # indexação por nome — evita erro de posição
+
+    # ── ABA: MATÉRIAS POR VEREADOR — só quando assunto filtrado, alfabética, sem degradê ─
+    if assunto_selecionado != "Todos":
+        with _abas_pe[_idx_pe["📊 Matérias por vereador"]]:
+            df_ranking_pe = (
+                df_filtrado.groupby('autor_nome').size()
+                .reset_index(name='total').sort_values('autor_nome', ascending=True)
+            )
+
+            def _url_ranking_pe(nome):
+                aid = mapa_autor_id.get(nome)
+                if not aid:
+                    return None
+                ass_id = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
+                tip_id = mapa_tipo_sapl_id.get(tipo_selecionado) if tipo_selecionado != "Todos" else None
+                return url_sapl(ano=2026, autor_id=aid, assunto_id=ass_id, tipo_materia_id=tip_id)
+
+            st.markdown(
+                html_barchart_h(df_ranking_pe, 'autor_nome', 'total', _url_ranking_pe),
+                unsafe_allow_html=True
+            )
+            st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
 
     # ── ABA: PROJETOS POR ASSUNTO — igual à versão padrão, sem o heatmap ───────
-    with _abas_pe[0]:
+    with _abas_pe[_idx_pe["🏷️ Projetos por assunto"]]:
         if df_ass.empty:
             st.info("Nenhum assunto cadastrado nos dados carregados.")
         else:
@@ -1287,110 +1310,89 @@ if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "To
             )
 
     # ── ABA: PRONUNCIAMENTOS — sem filtro de vereador, atende à cartilha ATRICON ─
-    with _abas_pe[1]:
+    with _abas_pe[_idx_pe["📢 Pronunciamentos"]]:
         renderizar_pronunciamentos_geral()
 
-    # ── ABA: VEREADORES (sem assunto) OU MATÉRIAS POR VEREADOR (com assunto) ───
-    with _abas_pe[2]:
-        if assunto_selecionado == "Todos":
-            st.markdown("### Vereadores de Itabirito — 2026")
+    # ── ABA: VEREADORES — sempre visível, ordem alfabética, sem taxa ───────────
+    with _abas_pe[_idx_pe["📋 Vereadores"]]:
+        st.markdown("### Vereadores de Itabirito — 2026")
 
-            def _num_html(valor, cor, href):
-                _num = (f'<div style="font-size:26px;font-weight:700;color:{cor};'
-                        f'line-height:1">{valor}</div>')
-                return (f'<a href="{href}" target="_blank" style="text-decoration:none">{_num}</a>'
-                        if href else _num)
+        def _num_html(valor, cor, href):
+            _num = (f'<div style="font-size:26px;font-weight:700;color:{cor};'
+                    f'line-height:1">{valor}</div>')
+            return (f'<a href="{href}" target="_blank" style="text-decoration:none">{_num}</a>'
+                    if href else _num)
 
-            # Ordem alfabética — sem ranqueamento por valor
-            df_destaque_pe = df_resumo.sort_values('autor_nome', ascending=True)
-            _lista_pe = list(df_destaque_pe.iterrows())
-            for row_start in range(0, len(_lista_pe), 3):
-                cols_pe = st.columns(3)
-                for j, (_, row) in enumerate(_lista_pe[row_start:row_start + 3]):
-                    nome       = row['autor_nome']
-                    foto       = mapa_foto.get(nome, '')
-                    cargo_mesa = mapa_cargo.get(nome, '')
-                    cargo_badge = (
-                        f'<div style="font-size:10px;font-weight:600;color:#ed7d31;'
-                        f'margin-bottom:8px;letter-spacing:0.5px">⭐ {cargo_mesa}</div>'
-                    ) if cargo_mesa else '<div style="height:22px"></div>'
+        # Ordem alfabética — sem ranqueamento por valor
+        df_destaque_pe = df_resumo.sort_values('autor_nome', ascending=True)
+        _lista_pe = list(df_destaque_pe.iterrows())
+        for row_start in range(0, len(_lista_pe), 3):
+            cols_pe = st.columns(3)
+            for j, (_, row) in enumerate(_lista_pe[row_start:row_start + 3]):
+                nome       = row['autor_nome']
+                foto       = mapa_foto.get(nome, '')
+                cargo_mesa = mapa_cargo.get(nome, '')
+                cargo_badge = (
+                    f'<div style="font-size:10px;font-weight:600;color:#ed7d31;'
+                    f'margin-bottom:8px;letter-spacing:0.5px">⭐ {cargo_mesa}</div>'
+                ) if cargo_mesa else '<div style="height:22px"></div>'
 
-                    # Foto → página do parlamentar no SAPL (sem filtros)
-                    parl_id   = mapa_parlamentar_id.get(nome)
-                    foto_href = f"{BASE_SAPL_URL}/parlamentar/{parl_id}" if parl_id else None
-                    foto_tag = (
-                        f'<a href="{foto_href}" target="_blank" style="display:block;cursor:pointer" '
-                        f'title="Ver parlamentar no SAPL">{foto_html(nome, foto, 80)}</a>'
-                    ) if foto_href else foto_html(nome, foto, 80)
+                # Foto → página do parlamentar no SAPL (sem filtros)
+                parl_id   = mapa_parlamentar_id.get(nome)
+                foto_href = f"{BASE_SAPL_URL}/parlamentar/{parl_id}" if parl_id else None
+                foto_tag = (
+                    f'<a href="{foto_href}" target="_blank" style="display:block;cursor:pointer" '
+                    f'title="Ver parlamentar no SAPL">{foto_html(nome, foto, 80)}</a>'
+                ) if foto_href else foto_html(nome, foto, 80)
 
-                    autor_id_c = mapa_autor_id.get(nome)
-                    _tid_ind   = mapa_tipo_sapl_id.get('IND')
-                    _tid_req   = mapa_tipo_sapl_id.get('REQ')
+                autor_id_c = mapa_autor_id.get(nome)
+                _tid_ind   = mapa_tipo_sapl_id.get('IND')
+                _tid_req   = mapa_tipo_sapl_id.get('REQ')
 
-                    _url_pl = (
-                        url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True,
-                                tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
-                        if autor_id_c else None
+                _url_pl = (
+                    url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True,
+                            tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
+                    if autor_id_c else None
+                )
+                _url_ind = (
+                    url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True, tipo_materia_id=_tid_ind)
+                    if autor_id_c and _tid_ind else None
+                )
+                _url_req = (
+                    url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True, tipo_materia_id=_tid_req)
+                    if autor_id_c and _tid_req else None
+                )
+                # Tarja de matérias — apenas vereador + ano, sem outros filtros
+                _url_mat = url_sapl(ano=2026, autor_id=autor_id_c) if autor_id_c else None
+                _tarja = f'{int(row["total_geral"])} matérias apresentadas'
+                _tarja_html = (
+                    f'<a href="{_url_mat}" target="_blank" style="text-decoration:none">'
+                    f'<div class="card-secondary">{_tarja}</div></a>'
+                    if _url_mat else f'<div class="card-secondary">{_tarja}</div>'
+                )
+
+                with cols_pe[j]:
+                    st.markdown(
+                        f'<div class="card-pop" style="border:1px solid {card_border}">'
+                        f'<div style="margin-bottom:12px">{foto_tag}</div>'
+                        f'<div class="card-nome">{nome}</div>{cargo_badge}'
+                        f'<div style="display:flex;justify-content:space-around;margin-bottom:10px">'
+                        f'<div>{_num_html(int(row["projetos_lei"]), "#5b9bd5", _url_pl)}'
+                        f'<div class="card-muted">Projetos de Lei</div></div>'
+                        f'<div><div style="font-size:26px;font-weight:700;color:#70ad47;line-height:1">'
+                        f'{int(row["projetos_virou_lei"])}</div>'
+                        f'<div class="card-muted">PLOs aprovados</div></div>'
+                        f'</div>'
+                        f'<div style="display:flex;justify-content:space-around;margin-bottom:12px">'
+                        f'<div>{_num_html(int(row["indicacoes"]), "#a855f7", _url_ind)}'
+                        f'<div class="card-muted">Indicações</div></div>'
+                        f'<div>{_num_html(int(row["requerimentos"]), "#ed7d31", _url_req)}'
+                        f'<div class="card-muted">Requerimentos</div></div>'
+                        f'</div>'
+                        f'{_tarja_html}'
+                        f'</div>',
+                        unsafe_allow_html=True
                     )
-                    _url_ind = (
-                        url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True, tipo_materia_id=_tid_ind)
-                        if autor_id_c and _tid_ind else None
-                    )
-                    _url_req = (
-                        url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True, tipo_materia_id=_tid_req)
-                        if autor_id_c and _tid_req else None
-                    )
-                    # Tarja de matérias — apenas vereador + ano, sem outros filtros
-                    _url_mat = url_sapl(ano=2026, autor_id=autor_id_c) if autor_id_c else None
-                    _tarja = f'{int(row["total_geral"])} matérias apresentadas'
-                    _tarja_html = (
-                        f'<a href="{_url_mat}" target="_blank" style="text-decoration:none">'
-                        f'<div class="card-secondary">{_tarja}</div></a>'
-                        if _url_mat else f'<div class="card-secondary">{_tarja}</div>'
-                    )
-
-                    with cols_pe[j]:
-                        st.markdown(
-                            f'<div class="card-pop" style="border:1px solid {card_border}">'
-                            f'<div style="margin-bottom:12px">{foto_tag}</div>'
-                            f'<div class="card-nome">{nome}</div>{cargo_badge}'
-                            f'<div style="display:flex;justify-content:space-around;margin-bottom:10px">'
-                            f'<div>{_num_html(int(row["projetos_lei"]), "#5b9bd5", _url_pl)}'
-                            f'<div class="card-muted">Projetos de Lei</div></div>'
-                            f'<div><div style="font-size:26px;font-weight:700;color:#70ad47;line-height:1">'
-                            f'{int(row["projetos_virou_lei"])}</div>'
-                            f'<div class="card-muted">PLOs aprovados</div></div>'
-                            f'</div>'
-                            f'<div style="display:flex;justify-content:space-around;margin-bottom:12px">'
-                            f'<div>{_num_html(int(row["indicacoes"]), "#a855f7", _url_ind)}'
-                            f'<div class="card-muted">Indicações</div></div>'
-                            f'<div>{_num_html(int(row["requerimentos"]), "#ed7d31", _url_req)}'
-                            f'<div class="card-muted">Requerimentos</div></div>'
-                            f'</div>'
-                            f'{_tarja_html}'
-                            f'</div>',
-                            unsafe_allow_html=True
-                        )
-        else:
-            # Assunto filtrado: mostra Matérias por vereador (ordem alfabética, sem degradê)
-            df_ranking_pe = (
-                df_filtrado.groupby('autor_nome').size()
-                .reset_index(name='total').sort_values('autor_nome', ascending=True)
-            )
-
-            def _url_ranking_pe(nome):
-                aid = mapa_autor_id.get(nome)
-                if not aid:
-                    return None
-                ass_id = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
-                tip_id = mapa_tipo_sapl_id.get(tipo_selecionado) if tipo_selecionado != "Todos" else None
-                return url_sapl(ano=2026, autor_id=aid, assunto_id=ass_id, tipo_materia_id=tip_id)
-
-            st.markdown(
-                html_barchart_h(df_ranking_pe, 'autor_nome', 'total', _url_ranking_pe),
-                unsafe_allow_html=True
-            )
-            st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
     st.stop()
 
 # ─── VISÃO GERAL ───────────────────────────────────────────────────────────────
@@ -1678,8 +1680,9 @@ if vereador_selecionado != "Todos":
     foto       = mapa_foto.get(vereador_selecionado, '')
     cargo_v    = mapa_cargo.get(vereador_selecionado, '')
 
+    _titulo_pop2 = "📋 Resumo Geral" if modo_selecionado == "🚧 Período Eleitoral" else "📱 Em Destaque"
     aba_pop2, aba_d1, aba_d2, aba_d3, aba_rel, aba_pron = st.tabs([
-        "📱 Em Destaque", "📂 Matérias", "✅ PLOs aprovados", "🏷️ Assuntos", "📋 Relatorias", "📢 Pronunciamentos"
+        _titulo_pop2, "📂 Matérias", "✅ PLOs aprovados", "🏷️ Assuntos", "📋 Relatorias", "📢 Pronunciamentos"
     ])
 
     with aba_pop2:
@@ -1732,21 +1735,28 @@ if vereador_selecionado != "Todos":
                 st.metric("📜 Projetos de Lei", int(dados_v['projetos_lei']))
             with r3:
                 st.metric("✅ PLOs aprovados", int(dados_v['projetos_virou_lei']))
-            r4, r5, r6 = st.columns(3)
-            with r4:
-                st.metric("📊 Taxa de aprovação", f"{taxa}%")
-            with r5:
-                st.metric("📨 Indicações", int(dados_v['indicacoes']))
-            with r6:
-                st.metric("📝 Requerimentos", int(dados_v['requerimentos']))
-            st.markdown(f"""
-            <div style="margin-top:8px">
-                <div style="font-size:12px;color:{plot_font};opacity:0.7;margin-bottom:4px">Taxa de aprovação de PLOs</div>
-                <div style="background:rgba(128,128,128,0.2);border-radius:8px;height:12px;overflow:hidden">
-                    <div style="background:{taxa_cor};width:{taxa_bar}%;height:100%;border-radius:8px"></div>
+            if modo_selecionado == "🚧 Período Eleitoral":
+                r4, r5 = st.columns(2)
+                with r4:
+                    st.metric("📨 Indicações", int(dados_v['indicacoes']))
+                with r5:
+                    st.metric("📝 Requerimentos", int(dados_v['requerimentos']))
+            else:
+                r4, r5, r6 = st.columns(3)
+                with r4:
+                    st.metric("📊 Taxa de aprovação", f"{taxa}%")
+                with r5:
+                    st.metric("📨 Indicações", int(dados_v['indicacoes']))
+                with r6:
+                    st.metric("📝 Requerimentos", int(dados_v['requerimentos']))
+                st.markdown(f"""
+                <div style="margin-top:8px">
+                    <div style="font-size:12px;color:{plot_font};opacity:0.7;margin-bottom:4px">Taxa de aprovação de PLOs</div>
+                    <div style="background:rgba(128,128,128,0.2);border-radius:8px;height:12px;overflow:hidden">
+                        <div style="background:{taxa_cor};width:{taxa_bar}%;height:100%;border-radius:8px"></div>
+                    </div>
                 </div>
-            </div>
-            """, unsafe_allow_html=True)
+                """, unsafe_allow_html=True)
         st.divider()
         st.markdown("**🏷️ Principais assuntos de atuação**")
         st.markdown(f'<div style="padding:6px 0 16px 0">{pills}</div>', unsafe_allow_html=True)
@@ -1761,19 +1771,32 @@ if vereador_selecionado != "Todos":
 
     with aba_d1:
         st.subheader(f"📋 {vereador_selecionado}")
-        c1, c2, c3, c4, c5, c6 = st.columns(6)
-        with c1:
-            st.metric("Total de matérias", int(dados_v['total_geral']))
-        with c2:
-            st.metric("Projetos de Lei", int(dados_v['projetos_lei']))
-        with c3:
-            st.metric("PLOs aprovados", int(dados_v['projetos_virou_lei']))
-        with c4:
-            st.metric("Taxa de aprovação", f"{dados_v['taxa_aprovacao']}%")
-        with c5:
-            st.metric("Requerimentos", int(dados_v['requerimentos']))
-        with c6:
-            st.metric("Indicações", int(dados_v['indicacoes']))
+        if modo_selecionado == "🚧 Período Eleitoral":
+            c1, c2, c3, c4, c5 = st.columns(5)
+            with c1:
+                st.metric("Total de matérias", int(dados_v['total_geral']))
+            with c2:
+                st.metric("Projetos de Lei", int(dados_v['projetos_lei']))
+            with c3:
+                st.metric("PLOs aprovados", int(dados_v['projetos_virou_lei']))
+            with c4:
+                st.metric("Requerimentos", int(dados_v['requerimentos']))
+            with c5:
+                st.metric("Indicações", int(dados_v['indicacoes']))
+        else:
+            c1, c2, c3, c4, c5, c6 = st.columns(6)
+            with c1:
+                st.metric("Total de matérias", int(dados_v['total_geral']))
+            with c2:
+                st.metric("Projetos de Lei", int(dados_v['projetos_lei']))
+            with c3:
+                st.metric("PLOs aprovados", int(dados_v['projetos_virou_lei']))
+            with c4:
+                st.metric("Taxa de aprovação", f"{dados_v['taxa_aprovacao']}%")
+            with c5:
+                st.metric("Requerimentos", int(dados_v['requerimentos']))
+            with c6:
+                st.metric("Indicações", int(dados_v['indicacoes']))
         st.divider()
         materias_mesa = int(dados_v.get('materias_mesa', 0))
         if materias_mesa > 0:
