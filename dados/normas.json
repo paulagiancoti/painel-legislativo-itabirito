@@ -5219,5 +5219,194 @@
       2
     ],
     "autores": []
+  },
+  {
+    "id": 4937,
+    "__str__": "Lei Ordinária Municipal nº 4.605, de 30 de junho de 2026",
+    "link_detail_backend": "/norma/4937",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-30T13:44:01-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4937/lei_4605.pdf",
+    "numero": "4605",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-30",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para o incentivo à cooperação entre o Poder Público, entidades da sociedade civil e estabelecimentos veterinários voltadas à proteção e ao atendimento emergencial de animais em situação de risco no Município de Itabirito/MG e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-02T08:36:15.723528-03:00",
+    "data_ultima_atualizacao": "2026-07-02T08:36:15.866993-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-02T08:34:20.945577-03:00",
+    "tipo": 1,
+    "materia": 22853,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      41
+    ],
+    "autores": []
+  },
+  {
+    "id": 4936,
+    "__str__": "Lei Ordinária Municipal nº 4.604, de 30 de junho de 2026",
+    "link_detail_backend": "/norma/4936",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-30T13:45:46-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4936/lei_4604.pdf",
+    "numero": "4604",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-30",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Estabelece diretrizes para ações relacionadas ao manejo populacional ético de cães e gatos no Município de Itabirito/MG e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-02T08:34:01.869071-03:00",
+    "data_ultima_atualizacao": "2026-07-02T08:34:02.032450-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-02T08:31:54.240571-03:00",
+    "tipo": 1,
+    "materia": 22850,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      41
+    ],
+    "autores": []
+  },
+  {
+    "id": 4935,
+    "__str__": "Lei Ordinária Municipal nº 4.603, de 30 de junho de 2026",
+    "link_detail_backend": "/norma/4935",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-30T13:46:42-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4935/lei_4603.pdf",
+    "numero": "4603",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-30",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Maio Roxo, a ser realizado a cada ano, no mês de maio, quando serão efetivadas ações relacionadas à luta contra as doenças inflamatórias intestinais – DII, Doença de Crohn e Retocolite Ulcerativa no âmbito do Município de Itabirito e dá outras providências",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-02T08:31:40.158206-03:00",
+    "data_ultima_atualizacao": "2026-07-02T08:31:40.325245-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-02T08:28:30.927281-03:00",
+    "tipo": 1,
+    "materia": 22811,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 4934,
+    "__str__": "Lei Ordinária Municipal nº 4.602, de 30 de junho de 2026",
+    "link_detail_backend": "/norma/4934",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-06-30T13:47:43-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4934/lei_4602.pdf",
+    "numero": "4602",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-06-30",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre a obrigatoriedade de divulgação, em local visível, de fácil acesso e na entrada\r\nprincipal, da escala de plantão e de trabalho de todos os profissionais de saúde nas Unidades\r\nBásicas de Saúde (UBS), Unidade de Pronto Atendimento (UPA) e em todos os demais órgãos\r\ne estabelecimentos integrantes da rede pública de saúde do Município de Itabirito, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-02T08:28:20.187717-03:00",
+    "data_ultima_atualizacao": "2026-07-02T08:28:20.371493-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-02T08:25:53.176802-03:00",
+    "tipo": 1,
+    "materia": 22666,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2,
+      31
+    ],
+    "autores": []
   }
 ]
