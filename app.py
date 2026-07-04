@@ -487,8 +487,20 @@ tipo_opcoes = ["Todos"] + sorted([
 # ║  Ficam expostas aqui só até dar tempo de configurar os secrets   ║
 # ║  no Streamlit Cloud e no Render. TROCAR ASSIM QUE POSSÍVEL.      ║
 # ╚══════════════════════════════════════════════════════════════════╝
-SENHA_PADRAO    = "itabirito2026padrao"
-SENHA_ELEITORAL = "itabirito2026eleitoral"
+# ╔══════════════════════════════════════════════════════════════════╗
+# ║  SENHAS — lidas de st.secrets (Streamlit Cloud) ou variável de   ║
+# ║  ambiente (Render). Nunca ficam escritas no código.              ║
+# ║  Cadastrar em: Streamlit Cloud → Settings → Secrets              ║
+# ║                Render → Environment                              ║
+# ╚══════════════════════════════════════════════════════════════════╝
+def _ler_senha(nome):
+    try:
+        return st.secrets[nome]
+    except Exception:
+        return os.environ.get(nome, "")
+
+SENHA_PADRAO    = _ler_senha("SENHA_PADRAO")
+SENHA_ELEITORAL = _ler_senha("SENHA_ELEITORAL")
 
 # Modo precisa ser lido antes dos demais filtros (mas exibido na 5ª coluna)
 with f5:
@@ -1571,7 +1583,8 @@ if modo_selecionado == "⏳ Em Adaptação":
             f'<div style="font-size:1.15rem;color:{plot_font};opacity:0.85;margin-top:18px;'
             f'max-width:620px;margin-left:auto;margin-right:auto;line-height:1.5">'
             f'Este painel está temporariamente simplificado em razão do período eleitoral. '
-            f'Algumas visualizações foram retiradas enquanto adaptamos. '
+            f'Algumas visualizações foram retiradas enquanto aguardamos validação interna '
+            f'sobre o formato definitivo a ser usado neste período.'
             f'</div></div>',
             unsafe_allow_html=True
         )
