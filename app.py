@@ -482,40 +482,108 @@ tipo_opcoes = ["Todos"] + sorted([
     if t not in ['Projeto de Lei Substitutivo', 'Projeto de Lei Substitutivo (2)']
 ])
 
-# Modo precisa ser lido antes do tipo (mas exibido na 5ª coluna) — calcula primeiro
+# ╔══════════════════════════════════════════════════════════════════╗
+# ║  SENHAS TEMPORÁRIAS — SUBSTITUIR POR st.secrets QUANDO POSSÍVEL  ║
+# ║  Ficam expostas aqui só até dar tempo de configurar os secrets   ║
+# ║  no Streamlit Cloud e no Render. TROCAR ASSIM QUE POSSÍVEL.      ║
+# ╚══════════════════════════════════════════════════════════════════╝
+SENHA_PADRAO    = "itabirito2026padrao"
+SENHA_ELEITORAL = "itabirito2026eleitoral"
+
+# Modo precisa ser lido antes dos demais filtros (mas exibido na 5ª coluna)
 with f5:
     modo_selecionado = st.selectbox(
-        "🗳️ Visualização", ["📊 Painel padrão", "🚧 Período Eleitoral"],
-        help="Versão em preparação para o período eleitoral — ainda não afeta o painel padrão."
+        "🗳️ Visualização", ["⏳ Em Adaptação", "📊 Painel padrão", "🚧 Período Eleitoral"],
+        help="Painel temporariamente simplificado em razão do período eleitoral."
     )
 
-# Tipo de matéria não tem uso no período eleitoral (não há mais comparativos entre
-# vereadores que dependam desse filtro) — oculta o seletor e força "Todos".
-if modo_selecionado == "🚧 Período Eleitoral":
+# ─── CONTROLE DE ACESSO — Painel padrão e Período Eleitoral exigem senha ───────
+# Sem a senha certa, o modo é rebaixado para "Em Adaptação" — que é público e seguro.
+_f3_usada_para_senha = False
+if modo_selecionado == "📊 Painel padrão":
+    if not st.session_state.get("auth_padrao", False):
+        _f3_usada_para_senha = True
+        with f3:
+            _senha_padrao_in = st.text_input(
+                "🔒 Senha do Painel padrão", type="password", key="senha_padrao_input"
+            )
+        if _senha_padrao_in and _senha_padrao_in == SENHA_PADRAO:
+            st.session_state["auth_padrao"] = True
+            st.rerun()
+        else:
+            if _senha_padrao_in:
+                st.error("Senha incorreta.")
+            modo_selecionado = "⏳ Em Adaptação"
+
+elif modo_selecionado == "🚧 Período Eleitoral":
+    if not st.session_state.get("auth_eleitoral", False):
+        _f3_usada_para_senha = True
+        with f3:
+            _senha_eleitoral_in = st.text_input(
+                "🔒 Senha do Período Eleitoral", type="password", key="senha_eleitoral_input"
+            )
+        if _senha_eleitoral_in and _senha_eleitoral_in == SENHA_ELEITORAL:
+            st.session_state["auth_eleitoral"] = True
+            st.rerun()
+        else:
+            if _senha_eleitoral_in:
+                st.error("Senha incorreta.")
+            modo_selecionado = "⏳ Em Adaptação"
+
+# ─── FILTROS POR MODO ───────────────────────────────────────────────────────────
+# "Em Adaptação": sem filtro de tipo, assunto ou vereador (evita listar vereadores
+# e evita a busca por autor, que depende de autorização da chefia).
+# "Período Eleitoral": sem filtro de tipo (não há mais comparativo que dependa dele).
+# "Painel padrão": todos os filtros normalmente.
+if modo_selecionado == "⏳ Em Adaptação":
+    tipo_selecionado     = "Todos"
+    assunto_selecionado  = "Todos"
+    vereador_selecionado = "Todos"
+    with f1:
+        st.write("")
+    with f2:
+        st.write("")
+    if not _f3_usada_para_senha:
+        with f3:
+            st.write("")
+elif modo_selecionado == "🚧 Período Eleitoral":
     tipo_selecionado = "Todos"
     with f3:
         st.write("")
+    with f1:
+        if tipo_selecionado in ["Todos", "Projeto de Lei Ordinária"]:
+            assuntos_lista = ["Todos"] + sorted(df_ass['assunto'].unique().tolist())
+            total_plos     = df_parl[df_parl['tipo_sigla'] == 'PLO']['materia_id'].nunique()
+            plos_c_assunto = df_ass['materia_id'].nunique()
+            pct            = round(plos_c_assunto / total_plos * 100, 1) if total_plos > 0 else 0
+            assunto_selecionado = st.selectbox(
+                "🏷️ Assunto (Projetos de Lei)", assuntos_lista,
+                help=f"Assuntos disponíveis para {pct}% dos PLOs cadastrados"
+            )
+        else:
+            st.write("")
+    with f2:
+        vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
+        vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
 else:
-    # Tipo precisa ser lido antes do assunto (mas exibido depois) — calcula primeiro
+    # Painel padrão — só chega aqui autenticado (senão foi rebaixado acima)
     with f3:
         tipo_selecionado = st.selectbox("📁 Tipo de matéria", tipo_opcoes)
-
-with f1:
-    if tipo_selecionado in ["Todos", "Projeto de Lei Ordinária"]:
-        assuntos_lista = ["Todos"] + sorted(df_ass['assunto'].unique().tolist())
-        total_plos     = df_parl[df_parl['tipo_sigla'] == 'PLO']['materia_id'].nunique()
-        plos_c_assunto = df_ass['materia_id'].nunique()
-        pct            = round(plos_c_assunto / total_plos * 100, 1) if total_plos > 0 else 0
-        assunto_selecionado = st.selectbox(
-            "🏷️ Assunto (Projetos de Lei)", assuntos_lista,
-            help=f"Assuntos disponíveis para {pct}% dos PLOs cadastrados"
-        )
-    else:
-        st.write("")
-
-with f2:
-    vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
-    vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
+    with f1:
+        if tipo_selecionado in ["Todos", "Projeto de Lei Ordinária"]:
+            assuntos_lista = ["Todos"] + sorted(df_ass['assunto'].unique().tolist())
+            total_plos     = df_parl[df_parl['tipo_sigla'] == 'PLO']['materia_id'].nunique()
+            plos_c_assunto = df_ass['materia_id'].nunique()
+            pct            = round(plos_c_assunto / total_plos * 100, 1) if total_plos > 0 else 0
+            assunto_selecionado = st.selectbox(
+                "🏷️ Assunto (Projetos de Lei)", assuntos_lista,
+                help=f"Assuntos disponíveis para {pct}% dos PLOs cadastrados"
+            )
+        else:
+            st.write("")
+    with f2:
+        vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
+        vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
 
 with f4:
     tema = st.selectbox("🎨 Contraste", ["🌞 Claro", "🌙 Escuro", "🏛️ Institucional"])
@@ -1223,6 +1291,131 @@ def renderizar_rodape():
         "verificação direta no SAPL."
     )
 
+def renderizar_projetos_por_assunto_sem_heatmap():
+    """Aba 'Projetos por assunto' sem o heatmap comparativo entre vereadores —
+    reaproveitada no período eleitoral e no modo 'Em Adaptação'."""
+    if df_ass.empty:
+        st.info("Nenhum assunto cadastrado nos dados carregados.")
+    else:
+        top_assuntos_pe = (
+            df_ass.groupby('assunto')['materia_id'].nunique()
+            .sort_values(ascending=False).head(15).index.tolist()
+        )
+        df_ass_top_pe = df_ass[df_ass['assunto'].isin(top_assuntos_pe)]
+        df_comp_pe = (
+            df_ass_top_pe.groupby('assunto')
+            .agg(
+                apresentados=('materia_id', 'nunique'),
+                aprovados=('virou_lei', lambda x: df_ass_top_pe.loc[x.index]
+                           .drop_duplicates('materia_id')['virou_lei'].sum()),
+            )
+            .reset_index().sort_values('apresentados', ascending=False)
+        )
+
+        def _url_ass_pe(assunto):
+            aid = mapa_assunto_id.get(assunto)
+            if not aid:
+                return None
+            return url_sapl(ano=2026, assunto_id=aid, so_parlamentar=True)
+
+        st.markdown(
+            html_barchart_grouped_h(
+                df_comp_pe, 'assunto', _url_ass_pe,
+                series=[('apresentados', 'apresentados'), ('aprovados', 'aprovados')],
+                colors=['#5b9bd5', '#70ad47'],
+            ),
+            unsafe_allow_html=True
+        )
+        st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
+        df_comp_pe['taxa'] = (df_comp_pe['aprovados'] / df_comp_pe['apresentados'] * 100).round(1)
+        df_comp_pe.columns = ['Assunto', 'Apresentados', 'Aprovados', 'Taxa (%)']
+        df_comp_pe_sorted = df_comp_pe.sort_values('Taxa (%)', ascending=False)
+        _autor_fil_pe = mapa_autor_id.get(vereador_selecionado) if vereador_selecionado != "Todos" else None
+        _linhas_ass_pe = ""
+        for _, _row in df_comp_pe_sorted.iterrows():
+            _aid_t = mapa_assunto_id.get(_row['Assunto'])
+            if _aid_t:
+                _url_t = url_sapl(ano=2026, autor_id=_autor_fil_pe, assunto_id=_aid_t, so_parlamentar=True)
+                _cel = f'<a href="{_url_t}" target="_blank" style="color:#4A90D9">{_row["Assunto"]} ↗</a>'
+            else:
+                _cel = _row['Assunto']
+            _linhas_ass_pe += (
+                f"<tr style='border-bottom:1px solid #eee'>"
+                f"<td style='padding:6px 12px'>{_cel}</td>"
+                f"<td style='padding:6px 12px;text-align:center'>{int(_row['Apresentados'])}</td>"
+                f"<td style='padding:6px 12px;text-align:center'>{int(_row['Aprovados'])}</td>"
+                f"<td style='padding:6px 12px;text-align:center'>{_row['Taxa (%)']}%</td>"
+                f"</tr>"
+            )
+        st.markdown(
+            f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
+            <thead><tr style="border-bottom:2px solid #ddd">
+              <th style="text-align:left;padding:6px 12px">Assunto ↗ abre no SAPL</th>
+              <th style="text-align:center;padding:6px 12px">Apresentados</th>
+              <th style="text-align:center;padding:6px 12px">Aprovados</th>
+              <th style="text-align:center;padding:6px 12px">Taxa (%)</th>
+            </tr></thead>
+            <tbody>{_linhas_ass_pe}</tbody></table>""",
+            unsafe_allow_html=True
+        )
+
+def renderizar_aba_materias():
+    """Aba 'Matérias': total geral por tipo + filtro interno opcional por vereador —
+    reaproveitada no período eleitoral e no modo 'Em Adaptação'. Sem comparativo
+    entre vereadores: o gráfico por vereador só aparece após escolha explícita."""
+    st.markdown("##### Matérias apresentadas por tipo — 2026")
+    st.caption("Somente vereadores em exercício — não inclui Executivo, Mesa Diretora ou autores externos.")
+    _tipos_pe = [t for t in tipo_opcoes if t != "Todos"]
+    _linhas_tipo_pe = []
+    for _t in _tipos_pe:
+        _qtd = df_parl[
+            (~df_parl['tipo_sigla'].isin(['PLS', 'PLS2'])) &
+            (df_parl['tipo_descricao'] == _t)
+        ]['materia_id'].nunique()
+        if _qtd > 0:
+            _linhas_tipo_pe.append({'tipo': _t, 'total': _qtd})
+    df_tipo_geral_pe = pd.DataFrame(_linhas_tipo_pe).sort_values('total', ascending=False)
+
+    def _url_tipo_geral_pe(tipo_desc):
+        tid = mapa_tipo_sapl_id.get(tipo_desc)
+        if not tid:
+            return None
+        return url_sapl(ano=2026, tipo_materia_id=tid, so_parlamentar=True)
+
+    st.markdown(
+        html_barchart_h(df_tipo_geral_pe, 'tipo', 'total', _url_tipo_geral_pe),
+        unsafe_allow_html=True
+    )
+    st.caption("💡 Clique em uma barra para abrir as matérias desse tipo no SAPL.")
+
+    st.divider()
+    st.markdown("##### Ver por vereador (opcional)")
+    _vereadores_pe_lista = ["—"] + sorted(df_parl['autor_nome'].unique().tolist())
+    _vereador_pe = st.selectbox(
+        "Escolha um vereador para ver a distribuição de matérias dele por tipo:",
+        _vereadores_pe_lista, key="pick_vereador_materias_pe"
+    )
+    if _vereador_pe != "—":
+        df_v_tipo_pe = (
+            df_sem_pls[df_sem_pls['autor_nome'] == _vereador_pe]
+            .groupby('tipo_descricao')['materia_id'].nunique()
+            .reset_index(name='total').sort_values('total', ascending=False)
+        )
+        _autor_id_pe = mapa_autor_id.get(_vereador_pe)
+
+        def _url_tipo_vereador_pe(tipo_desc):
+            tid = mapa_tipo_sapl_id.get(tipo_desc)
+            if not tid or not _autor_id_pe:
+                return None
+            return url_sapl(ano=2026, autor_id=_autor_id_pe, so_parlamentar=True, tipo_materia_id=tid)
+
+        st.markdown(f"**Matérias de {_vereador_pe} por tipo — 2026**")
+        st.markdown(
+            html_barchart_h(df_v_tipo_pe, 'tipo_descricao', 'total', _url_tipo_vereador_pe),
+            unsafe_allow_html=True
+        )
+        st.caption(f"💡 Clique em uma barra para abrir as matérias de {_vereador_pe} desse tipo no SAPL.")
+
 # ─── FLAG: MODO PERÍODO ELEITORAL ──────────────────────────────────────────────
 # Roda só depois dos HELPERS acima (fotos, url_sapl, foto_html já existem).
 # Se ativo E nenhum vereador específico estiver selecionado, renderiza o bloco
@@ -1265,127 +1458,11 @@ if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "To
 
     # ── ABA: PROJETOS POR ASSUNTO — igual à versão padrão, sem o heatmap ───────
     with _abas_pe[_idx_pe["🏷️ Projetos por assunto"]]:
-        if df_ass.empty:
-            st.info("Nenhum assunto cadastrado nos dados carregados.")
-        else:
-            top_assuntos_pe = (
-                df_ass.groupby('assunto')['materia_id'].nunique()
-                .sort_values(ascending=False).head(15).index.tolist()
-            )
-            df_ass_top_pe = df_ass[df_ass['assunto'].isin(top_assuntos_pe)]
-            df_comp_pe = (
-                df_ass_top_pe.groupby('assunto')
-                .agg(
-                    apresentados=('materia_id', 'nunique'),
-                    aprovados=('virou_lei', lambda x: df_ass_top_pe.loc[x.index]
-                               .drop_duplicates('materia_id')['virou_lei'].sum()),
-                )
-                .reset_index().sort_values('apresentados', ascending=False)
-            )
-
-            def _url_ass_pe(assunto):
-                aid = mapa_assunto_id.get(assunto)
-                if not aid:
-                    return None
-                return url_sapl(ano=2026, assunto_id=aid, so_parlamentar=True)
-
-            st.markdown(
-                html_barchart_grouped_h(
-                    df_comp_pe, 'assunto', _url_ass_pe,
-                    series=[('apresentados', 'apresentados'), ('aprovados', 'aprovados')],
-                    colors=['#5b9bd5', '#70ad47'],
-                ),
-                unsafe_allow_html=True
-            )
-            st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
-            df_comp_pe['taxa'] = (df_comp_pe['aprovados'] / df_comp_pe['apresentados'] * 100).round(1)
-            df_comp_pe.columns = ['Assunto', 'Apresentados', 'Aprovados', 'Taxa (%)']
-            df_comp_pe_sorted = df_comp_pe.sort_values('Taxa (%)', ascending=False)
-            _autor_fil_pe = mapa_autor_id.get(vereador_selecionado) if vereador_selecionado != "Todos" else None
-            _linhas_ass_pe = ""
-            for _, _row in df_comp_pe_sorted.iterrows():
-                _aid_t = mapa_assunto_id.get(_row['Assunto'])
-                if _aid_t:
-                    _url_t = url_sapl(ano=2026, autor_id=_autor_fil_pe, assunto_id=_aid_t, so_parlamentar=True)
-                    _cel = f'<a href="{_url_t}" target="_blank" style="color:#4A90D9">{_row["Assunto"]} ↗</a>'
-                else:
-                    _cel = _row['Assunto']
-                _linhas_ass_pe += (
-                    f"<tr style='border-bottom:1px solid #eee'>"
-                    f"<td style='padding:6px 12px'>{_cel}</td>"
-                    f"<td style='padding:6px 12px;text-align:center'>{int(_row['Apresentados'])}</td>"
-                    f"<td style='padding:6px 12px;text-align:center'>{int(_row['Aprovados'])}</td>"
-                    f"<td style='padding:6px 12px;text-align:center'>{_row['Taxa (%)']}%</td>"
-                    f"</tr>"
-                )
-            st.markdown(
-                f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
-                <thead><tr style="border-bottom:2px solid #ddd">
-                  <th style="text-align:left;padding:6px 12px">Assunto ↗ abre no SAPL</th>
-                  <th style="text-align:center;padding:6px 12px">Apresentados</th>
-                  <th style="text-align:center;padding:6px 12px">Aprovados</th>
-                  <th style="text-align:center;padding:6px 12px">Taxa (%)</th>
-                </tr></thead>
-                <tbody>{_linhas_ass_pe}</tbody></table>""",
-                unsafe_allow_html=True
-            )
+        renderizar_projetos_por_assunto_sem_heatmap()
 
     # ── ABA: MATÉRIAS — total geral por tipo + filtro interno por vereador ─────
-    # Sem comparativo entre vereadores: o gráfico por vereador só aparece depois
-    # de uma escolha explícita, e mostra apenas os dados da própria pessoa.
     with _abas_pe[_idx_pe["📄 Matérias"]]:
-        st.markdown("##### Matérias apresentadas por tipo — 2026")
-        st.caption("Somente vereadores em exercício — não inclui Executivo, Mesa Diretora ou autores externos.")
-        _tipos_pe = [t for t in tipo_opcoes if t != "Todos"]
-        _linhas_tipo_pe = []
-        for _t in _tipos_pe:
-            _qtd = df_parl[
-                (~df_parl['tipo_sigla'].isin(['PLS', 'PLS2'])) &
-                (df_parl['tipo_descricao'] == _t)
-            ]['materia_id'].nunique()
-            if _qtd > 0:
-                _linhas_tipo_pe.append({'tipo': _t, 'total': _qtd})
-        df_tipo_geral_pe = pd.DataFrame(_linhas_tipo_pe).sort_values('total', ascending=False)
-
-        def _url_tipo_geral_pe(tipo_desc):
-            tid = mapa_tipo_sapl_id.get(tipo_desc)
-            if not tid:
-                return None
-            return url_sapl(ano=2026, tipo_materia_id=tid, so_parlamentar=True)
-
-        st.markdown(
-            html_barchart_h(df_tipo_geral_pe, 'tipo', 'total', _url_tipo_geral_pe),
-            unsafe_allow_html=True
-        )
-        st.caption("💡 Clique em uma barra para abrir as matérias desse tipo no SAPL.")
-
-        st.divider()
-        st.markdown("##### Ver por vereador (opcional)")
-        _vereadores_pe_lista = ["—"] + sorted(df_parl['autor_nome'].unique().tolist())
-        _vereador_pe = st.selectbox(
-            "Escolha um vereador para ver a distribuição de matérias dele por tipo:",
-            _vereadores_pe_lista, key="pick_vereador_materias_pe"
-        )
-        if _vereador_pe != "—":
-            df_v_tipo_pe = (
-                df_sem_pls[df_sem_pls['autor_nome'] == _vereador_pe]
-                .groupby('tipo_descricao')['materia_id'].nunique()
-                .reset_index(name='total').sort_values('total', ascending=False)
-            )
-            _autor_id_pe = mapa_autor_id.get(_vereador_pe)
-
-            def _url_tipo_vereador_pe(tipo_desc):
-                tid = mapa_tipo_sapl_id.get(tipo_desc)
-                if not tid or not _autor_id_pe:
-                    return None
-                return url_sapl(ano=2026, autor_id=_autor_id_pe, so_parlamentar=True, tipo_materia_id=tid)
-
-            st.markdown(f"**Matérias de {_vereador_pe} por tipo — 2026**")
-            st.markdown(
-                html_barchart_h(df_v_tipo_pe, 'tipo_descricao', 'total', _url_tipo_vereador_pe),
-                unsafe_allow_html=True
-            )
-            st.caption(f"💡 Clique em uma barra para abrir as matérias de {_vereador_pe} desse tipo no SAPL.")
+        renderizar_aba_materias()
 
     # ── ABA: PRONUNCIAMENTOS — sem filtro de vereador, atende à cartilha ATRICON ─
     with _abas_pe[_idx_pe["📢 Pronunciamentos"]]:
@@ -1471,6 +1548,43 @@ if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "To
                         f'</div>',
                         unsafe_allow_html=True
                     )
+
+    renderizar_rodape()
+    st.stop()
+
+# ─── MODO: EM ADAPTAÇÃO ─────────────────────────────────────────────────────────
+# Modo público e sem senha — é o padrão do seletor. Só entra aqui quando ninguém
+# autenticou para os outros dois modos (ou quando "Em Adaptação" é escolhido
+# diretamente). Sem filtro de assunto, tipo ou vereador — sem busca por autor,
+# que depende de autorização da chefia.
+if modo_selecionado == "⏳ Em Adaptação":
+    _titulos_adapt = ["⚠️ Aviso", "🏷️ Projetos por assunto", "📄 Matérias", "📢 Pronunciamentos"]
+    _abas_adapt = st.tabs(_titulos_adapt)
+    _idx_adapt = {nome: i for i, nome in enumerate(_titulos_adapt)}
+
+    # ── ABA: AVISO — primeira coisa a ser lida, em destaque ────────────────────
+    with _abas_adapt[_idx_adapt["⚠️ Aviso"]]:
+        st.markdown(
+            f'<div style="text-align:center;padding:48px 16px">'
+            f'<div style="font-size:2.4rem;font-weight:800;color:{plot_font};line-height:1.3">'
+            f'⏳ Painel em adaptação</div>'
+            f'<div style="font-size:1.15rem;color:{plot_font};opacity:0.85;margin-top:18px;'
+            f'max-width:620px;margin-left:auto;margin-right:auto;line-height:1.5">'
+            f'Este painel está temporariamente simplificado em razão do período eleitoral. '
+            f'Algumas visualizações foram retiradas enquanto aguardamos validação interna '
+            f'sobre o formato definitivo a ser usado neste período.'
+            f'</div></div>',
+            unsafe_allow_html=True
+        )
+
+    with _abas_adapt[_idx_adapt["🏷️ Projetos por assunto"]]:
+        renderizar_projetos_por_assunto_sem_heatmap()
+
+    with _abas_adapt[_idx_adapt["📄 Matérias"]]:
+        renderizar_aba_materias()
+
+    with _abas_adapt[_idx_adapt["📢 Pronunciamentos"]]:
+        renderizar_pronunciamentos_geral()
 
     renderizar_rodape()
     st.stop()
