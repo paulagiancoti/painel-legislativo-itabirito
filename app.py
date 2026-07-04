@@ -1583,7 +1583,7 @@ if modo_selecionado == "⏳ Em Adaptação":
             f'<div style="font-size:1.15rem;color:{plot_font};opacity:0.85;margin-top:18px;'
             f'max-width:620px;margin-left:auto;margin-right:auto;line-height:1.5">'
             f'Este painel está temporariamente simplificado em razão do período eleitoral. '
-            f'Algumas visualizações foram retiradas enquanto adaptamos. ' 
+            f'Algumas visualizações foram retiradas.'
             f'</div></div>',
             unsafe_allow_html=True
         )
