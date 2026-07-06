@@ -37906,5 +37906,77 @@
     "parlamentar": 34,
     "tipo_fim_relatoria": null,
     "comissao": 2
+  },
+  {
+    "id": 3177,
+    "__str__": "Projeto de Lei Ordinária nº 152 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/3177",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 23070,
+    "parlamentar": 34,
+    "tipo_fim_relatoria": null,
+    "comissao": 4
+  },
+  {
+    "id": 3178,
+    "__str__": "Projeto de Lei Ordinária nº 153 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/3178",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 23071,
+    "parlamentar": 34,
+    "tipo_fim_relatoria": null,
+    "comissao": 4
+  },
+  {
+    "id": 3179,
+    "__str__": "Projeto de Lei Ordinária nº 156 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/3179",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 23165,
+    "parlamentar": 34,
+    "tipo_fim_relatoria": null,
+    "comissao": 4
+  },
+  {
+    "id": 3180,
+    "__str__": "Projeto de Lei Ordinária nº 157 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/3180",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 23166,
+    "parlamentar": 34,
+    "tipo_fim_relatoria": null,
+    "comissao": 4
+  },
+  {
+    "id": 3181,
+    "__str__": "Projeto de Lei Ordinária nº 158 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/3181",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 23179,
+    "parlamentar": 34,
+    "tipo_fim_relatoria": null,
+    "comissao": 4
+  },
+  {
+    "id": 3176,
+    "__str__": "Projeto de Lei Ordinária nº 151 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/3176",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 23069,
+    "parlamentar": 34,
+    "tipo_fim_relatoria": null,
+    "comissao": 4
   }
 ]

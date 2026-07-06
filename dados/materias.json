@@ -21957,7 +21957,7 @@
     "tipo__descricao": "Requerimento",
     "autoria": "Fernando da Sheila",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23638/dia_06_req_-_oficio_voto_de_pesar_pator_joao_paulo_e_pastora_fernanda.pdf",
-    "ementa": "Requeiro ao Poder Executivo Municipal que, por meio da Secretaria Competente, seja enviado um Ofício ao Pastor João Paulo Silva e à Pastora Fernanda Damázio, com os Votos de Pesar pelo falecimento de sua filha, Maria Fernanda Damázio Pereira, acontecido no dia 23 de junho de 2026."
+    "ementa": "Requeiro à V. Exa., nos termos regimentais, que seja enviado um Ofício ao Pastor João\r\nPaulo Silva e à Pastora Fernanda Damázio, com os Votos de Pesar pelo falecimento\r\nprecoce de sua filha, Maria Fernanda Damázio Pereira, acontecido no dia 23 de junho de\r\n2026."
   },
   {
     "id": "23639",
@@ -21978,5 +21978,135 @@
     "autoria": "Fernando da Sheila",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23640/dia_06_req_-_estudo_de_viabilidade_tecnica_para_capina_e_limpeza_do_corrego.pdf",
     "ementa": "Requeiro ao Poder Executivo Municipal que, por meio da Secretaria Competente, seja realizado um estudo de viabilidade técnica, para a capina e limpeza do córrego da Carioca, nas dependências do Centro Administrativo da PMI, no Município de Itabirito/MG."
+  },
+  {
+    "id": "23676",
+    "ano": "2026",
+    "numero": "1288",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23676/limpeza_e_rocada_na_rua_dos_sanhacos_bairro_agua_limpa.doc.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de limpeza e roçada em toda a extensão da Rua dos Sanhaços, no Bairro Água Limpa."
+  },
+  {
+    "id": "23677",
+    "ano": "2026",
+    "numero": "1289",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23677/limpeza_varricao_nas_ruas_do_bairro_vila_jose_lopes.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de limpeza (varrição) nas Ruas Inácio Gomes de Oliveira, Matilde Leroy e Pedro Góis, todas localizadas no Bairro Vila José Lopes."
+  },
+  {
+    "id": "23678",
+    "ano": "2026",
+    "numero": "1290",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23678/recapeamento_asfaltico_operacao_tapa-buracos_na_rua_francisco_zacarias_bairro_santa_efigenia.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de recapeamento asfáltico (operação tapa-buracos) na Rua Francisco Zacarias, Bairro Santa Efigênia."
+  },
+  {
+    "id": "23679",
+    "ano": "2026",
+    "numero": "1291",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23679/limpeza_e_rocada_na_quadra_localizada_na_rua_belo_vale_bairro_monte_sinai.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de limpeza e roçada na quadra localizada na Rua Belo Vale, Bairro Monte Sinai."
+  },
+  {
+    "id": "23680",
+    "ano": "2026",
+    "numero": "1292",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23680/manutencao_na_rua_dos_sanhacos_bairro_agua_limpa.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de serviços de manutenção na Rua dos Sanhaços, Bairro Água Limpa."
+  },
+  {
+    "id": "23681",
+    "ano": "2026",
+    "numero": "1293",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Fabinho Fonseca",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23681/cmi-indicacao_060726-4.pdf",
+    "ementa": "Indico ao Poder Executivo Municipal, através da Secretaria Municipal de Meio Ambiente através do Departamento de Limpeza Urbana, que providencie a limpeza no bairro São José."
+  },
+  {
+    "id": "23682",
+    "ano": "2026",
+    "numero": "1294",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Fabinho Fonseca",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23682/cmi-indicacao_060726-5.pdf",
+    "ementa": "Indico ao Poder Executivo Municipal, através da Secretaria Municipal de Obras, que viabilize a execução de operação tapa-buracos e recapeamento asfáltico em todas vias do bairro Meu Sítio."
+  },
+  {
+    "id": "23683",
+    "ano": "2026",
+    "numero": "1295",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Fabinho Fonseca",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23683/cmi-indicacao_060726-2.pdf",
+    "ementa": "Indico ao Poder Executivo Municipal, através da Secretaria Municipal de Meio Ambiente através do departamento de limpeza urbana, providencie os serviços de capina e limpeza no bairro Pedra Azul."
+  },
+  {
+    "id": "23684",
+    "ano": "2026",
+    "numero": "1296",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Fabinho Fonseca",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23684/cmi-indicacao_060726-1.pdf",
+    "ementa": "Indico ao Poder Executivo Municipal, através da Secretaria Municipal de Meio Ambiente através do departamento de limpeza urbana, que providencie os serviços de limpeza e capina no bairro Monte Sinai."
+  },
+  {
+    "id": "23685",
+    "ano": "2026",
+    "numero": "611",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Fabinho Fonseca",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23685/cmi-requerimento_060726-1.pdf",
+    "ementa": "Requeiro ao Poder Executivo Municipal, através da Secretaria Municipal de de Saúde, informações atendimentos acerca dos atendimentos de neuropediatria no município"
+  },
+  {
+    "id": "23673",
+    "ano": "2026",
+    "numero": "180",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Elio da Mata",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/",
+    "ementa": "Institui a Política Municipal de Alfabetização no âmbito da Rede Municipal de Ensino de Itabirito e estabelece diretrizes para a garantia da alfabetização das crianças na idade adequada, e dá outras providências."
+  },
+  {
+    "id": "23674",
+    "ano": "2026",
+    "numero": "181",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23674/pl_inteligencia_estrategica_1.pdf",
+    "ementa": "Institui a Política Municipal de Inteligência Estratégica, Desenvolvimento Econômico e Sustentabilidade de Itabirito, estabelece seus princípios, diretrizes, objetivos e instrumentos, e dá outras providências."
+  },
+  {
+    "id": "23675",
+    "ano": "2026",
+    "numero": "182",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/23675/projeto_de_lei_que_institui_a_semana_da_mulher_rural_no_municipio_de_itabirito_assinado.pdf",
+    "ementa": "Institui a Semana e o Dia da Mulher Rural no Município de Itabirito e dá outras providências."
   }
 ]
