@@ -1306,6 +1306,18 @@ def renderizar_rodape():
 def renderizar_projetos_por_assunto_sem_heatmap():
     """Aba 'Projetos por assunto' sem o heatmap comparativo entre vereadores —
     reaproveitada no período eleitoral e no modo 'Em Adaptação'."""
+    if modo_selecionado == "⏳ Em Adaptação":
+        # "Em Adaptação" não tem o filtro de Assunto (e portanto perdeu o "?" com o
+        # percentual de PLOs com assunto cadastrado, que no Período Eleitoral e no
+        # Painel padrão aparece no help= do selectbox). Repõe a mesma informação
+        # aqui, como um "?" ao lado do título da aba.
+        _total_plos_adapt = df_parl[df_parl['tipo_sigla'] == 'PLO']['materia_id'].nunique()
+        _plos_c_assunto_adapt = df_ass['materia_id'].nunique()
+        _pct_adapt = round(_plos_c_assunto_adapt / _total_plos_adapt * 100, 1) if _total_plos_adapt > 0 else 0
+        st.subheader(
+            "🏷️ Projetos por assunto",
+            help=f"Assuntos disponíveis para {_pct_adapt}% dos PLOs cadastrados"
+        )
     if df_ass.empty:
         st.info("Nenhum assunto cadastrado nos dados carregados.")
     else:
