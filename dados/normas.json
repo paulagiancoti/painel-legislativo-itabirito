@@ -5408,5 +5408,37 @@
       31
     ],
     "autores": []
+  },
+  {
+    "id": 5012,
+    "__str__": "Resolução nº 20, de 06 de julho de 2026",
+    "link_detail_backend": "/norma/5012",
+    "metadata": {},
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5012/resolucao_20.2026.pdf",
+    "numero": "20",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-06",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Concede Diploma de Homenagem Especial a Paulo Leão Andrade",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-08T10:25:29.599820-03:00",
+    "data_ultima_atualizacao": "2026-07-08T10:25:29.601045-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-08T10:25:29.472536-03:00",
+    "tipo": 3,
+    "materia": 23233,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      37
+    ],
+    "autores": []
   }
 ]
