@@ -5440,5 +5440,52 @@
       37
     ],
     "autores": []
+  },
+  {
+    "id": 5065,
+    "__str__": "Lei Ordinária Municipal nº 4.606, de 10 de julho de 2026",
+    "link_detail_backend": "/norma/5065",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-10T17:42:33-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5065/lei_no_4606_de_10_de_julho_de_2026_pl_100.2026.pdf",
+    "numero": "4606",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-10",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre as diretrizes para a elaboração da Lei Orçamentária Anual de 2027 e dá outras\r\nprovidências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-14T08:09:13.730218-03:00",
+    "data_ultima_atualizacao": "2026-07-14T08:09:13.983516-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-14T08:05:13.610393-03:00",
+    "tipo": 1,
+    "materia": 22685,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      13
+    ],
+    "autores": []
   }
 ]
