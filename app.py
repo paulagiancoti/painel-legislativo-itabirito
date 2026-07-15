@@ -615,7 +615,7 @@ elif tema == "🌙 Escuro":
     [data-testid="stMetricValue"] { color: #5B9BD5 !important; }
     .stTabs [aria-selected="true"] { color: #5B9BD5 !important; border-bottom-color: #5B9BD5 !important; }
     .stSelectbox > div > div { background-color: #1A1F2E !important; color: #FAFAFA !important; }
-    [data-testid="stSelectbox"] [data-baseweb="select"] * { color: #FAFAFA !important; }
+    [data-testid="stSelectbox"] * { color: #FAFAFA !important; -webkit-text-fill-color: #FAFAFA !important; opacity: 1 !important; }
     [data-testid="stDataFrame"] iframe { filter: invert(0.85) hue-rotate(180deg); }
     .card-pop { border: 1px solid rgba(255,255,255,0.25) !important; }
     /* Botão de link — tema escuro */
@@ -652,7 +652,7 @@ elif tema == "🏛️ Institucional":
     .stTabs [data-baseweb="tab"] { color: rgba(255,255,255,0.7) !important; }
     .stTabs [aria-selected="true"] { color: #FFCD00 !important; border-bottom-color: #FFCD00 !important; }
     .stSelectbox > div > div { background-color: #022B6B !important; color: #FFFFFF !important; border-color: rgba(255,255,255,0.3) !important; }
-    [data-testid="stSelectbox"] [data-baseweb="select"] * { color: #FFFFFF !important; }
+    [data-testid="stSelectbox"] * { color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important; opacity: 1 !important; }
     hr { border-color: rgba(255,255,255,0.2) !important; }
     .stAlert { background-color: #022B6B !important; color: #FFFFFF !important; }
     .stCaption { color: rgba(255,255,255,0.65) !important; }
@@ -718,7 +718,7 @@ elif tema == "⚫ P&B - Escuro":
     [data-testid="stMetricValue"] { color: #FAFAFA !important; }
     .stTabs [aria-selected="true"] { color: #FAFAFA !important; border-bottom-color: #FAFAFA !important; }
     .stSelectbox > div > div { background-color: #262626 !important; color: #FAFAFA !important; }
-    [data-testid="stSelectbox"] [data-baseweb="select"] * { color: #FAFAFA !important; }
+    [data-testid="stSelectbox"] * { color: #FAFAFA !important; -webkit-text-fill-color: #FAFAFA !important; opacity: 1 !important; }
     [data-testid="stDataFrame"] iframe { filter: invert(0.85) grayscale(1); }
     .card-pop { border: 1px solid rgba(255,255,255,0.25) !important; }
     a { text-decoration: underline !important; }
