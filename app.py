@@ -567,7 +567,7 @@ else:
 with f4:
     tema = st.selectbox(
         "🎨 Contraste",
-        ["🌞 Claro", "🌙 Escuro", "🏛️ Institucional", "⚪ P&B - Claro", "⚫ P&B - Escuro"]
+        ["🌞 Claro", "🌙 Escuro", "🏛️ Institucional"]
     )
 
 # Nota informativa + data de atualização — numa única linha compacta
@@ -578,10 +578,9 @@ st.caption(f"ℹ️ PLS e PLS2 são substitutivos de PLOs e não contam como pro
 # ─── TEMAS ─────────────────────────────────────────────────────────────────────
 # cor_azul/verde/roxo/laranja/vermelho, cor_link, cor_ouro/prata/bronze e
 # cores_avatar existem para os cards, links e pódio que antes tinham cor fixa no
-# código (ex: "#5b9bd5") — nos 3 temas coloridos elas repetem exatamente os
-# valores que já estavam hardcoded (nenhuma mudança visual). Só os temas P&B
-# (para avaliação da chefia, ver preocupação com cores partidárias) usam tons de
-# cinza nessas variáveis, tirando qualquer matiz de azul/verde/amarelo do painel.
+# código (ex: "#5b9bd5") — viraram variáveis de tema para facilitar customização,
+# mas hoje repetem exatamente os mesmos valores nos 3 temas (nenhuma mudança
+# visual). Nunca hardcodar cor de novo fora deste bloco — sempre usar a variável.
 
 if tema == "🌞 Claro":
     st.markdown("""<style>
@@ -680,72 +679,6 @@ elif tema == "🏛️ Institucional":
     cor_laranja = "#ed7d31"; cor_vermelho = "#dc3545"; cor_link = "#4A90D9"
     cor_ouro = "#ffd700"; cor_prata = "#adb5bd"; cor_bronze = "#cd7f32"
     cores_avatar = ['#5b9bd5', '#70ad47', '#ed7d31', '#a855f7', '#ec4899', '#14b8a6']
-
-elif tema == "⚪ P&B - Claro":
-    st.markdown("""<style>
-    header[data-testid="stHeader"] { background-color: #FFFFFF !important; }
-    [data-testid="stHeader"]::before { background-color: #FFFFFF !important; }
-    .stApp { background-color: #FFFFFF !important; }
-    .stApp, .stApp p, .stApp span, .stApp div, .stApp label { color: #1A1A1A !important; }
-    h1, h2, h3 { color: #1A1A1A !important; }
-    [data-testid="stMetricValue"] { color: #1A1A1A !important; }
-    .stTabs [aria-selected="true"] { color: #1A1A1A !important; border-bottom-color: #1A1A1A !important; }
-    .card-pop { border: 1px solid rgba(0,0,0,0.2) !important; }
-    [data-testid="stDataFrame"] iframe { filter: grayscale(1); }
-    a { text-decoration: underline !important; }
-    [data-testid="stLinkButton"] a { text-decoration: none !important; }
-    </style>""", unsafe_allow_html=True)
-    plot_bg = "#FFFFFF"; plot_paper = "#FFFFFF"; plot_font = "#1A1A1A"; plot_grid = "#E5E5E5"
-    plot_colorscale = 'Greys'
-    aprov_bg = "#F0F0F0"; aprov_color = "#1A1A1A"; card_border = "rgba(0,0,0,0.2)"
-    bar_fill = "#4D4D4D"; bar_text = "#1A1A1A"; bar_val = "#000000"
-    bar_grad_lo = "#D9D9D9"; bar_grad_hi = "#262626"       # cinza claro → quase preto
-    aprov_grad_lo = "#D9D9D9"; aprov_grad_hi = "#1A1A1A"   # cinza claro → quase preto
-    # Preto puro no extremo escuro e um cinza médio no outro, em vez de tons
-    # próximos — o gráfico "apresentados vs aprovados" precisa de contraste real.
-    cor_azul = "#000000"; cor_verde = "#808080"; cor_roxo = "#4D4D4D"
-    cor_laranja = "#B3B3B3"; cor_vermelho = "#CCCCCC"; cor_link = "#333333"
-    cor_ouro = "#1A1A1A"; cor_prata = "#666666"; cor_bronze = "#A6A6A6"
-    cores_avatar = ["#1A1A1A", "#404040", "#595959", "#737373", "#8C8C8C", "#A6A6A6"]
-
-elif tema == "⚫ P&B - Escuro":
-    st.markdown("""<style>
-    header[data-testid="stHeader"] { background-color: #0E1117 !important; }
-    [data-testid="stHeader"]::before { background-color: #0E1117 !important; }
-    .stApp { background-color: #0E1117 !important; }
-    .stApp, .stApp p, .stApp span, .stApp div, .stApp label { color: #FAFAFA !important; }
-    h1, h2, h3 { color: #FAFAFA !important; }
-    [data-testid="stMetricValue"] { color: #FAFAFA !important; }
-    .stTabs [aria-selected="true"] { color: #FAFAFA !important; border-bottom-color: #FAFAFA !important; }
-    .stSelectbox > div > div { background-color: #262626 !important; color: #FAFAFA !important; }
-    [data-testid="stSelectbox"] * { color: #FAFAFA !important; -webkit-text-fill-color: #FAFAFA !important; opacity: 1 !important; }
-    [data-testid="stDataFrame"] iframe { filter: invert(0.85) grayscale(1); }
-    .card-pop { border: 1px solid rgba(255,255,255,0.25) !important; }
-    a { text-decoration: underline !important; }
-    /* Botão de link — tema P&B escuro */
-    [data-testid="stLinkButton"] a {
-        background-color: #262626 !important;
-        color: #FAFAFA !important;
-        border: 1px solid rgba(255,255,255,0.35) !important;
-        text-decoration: none !important;
-    }
-    [data-testid="stLinkButton"] a:hover {
-        background-color: #404040 !important;
-        color: #FFFFFF !important;
-    }
-    </style>""", unsafe_allow_html=True)
-    plot_bg = "#0E1117"; plot_paper = "#0E1117"; plot_font = "#FAFAFA"; plot_grid = "#2D3748"
-    plot_colorscale = 'Greys_r'
-    aprov_bg = "rgba(255,255,255,0.12)"; aprov_color = "#F2F2F2"; card_border = "rgba(255,255,255,0.25)"
-    bar_fill = "#B3B3B3"; bar_text = "#FAFAFA"; bar_val = "#E0E0E0"
-    bar_grad_lo = "#3D3D3D"; bar_grad_hi = "#F2F2F2"       # cinza escuro → quase branco
-    aprov_grad_lo = "#404040"; aprov_grad_hi = "#FFFFFF"   # cinza escuro → branco
-    # Branco + "cinzinha" claro — no fundo escuro, tons escuros ficam invisíveis,
-    # então o contraste vem de variar do branco puro até um cinza ainda claro.
-    cor_azul = "#FFFFFF"; cor_verde = "#B3B3B3"; cor_roxo = "#E0E0E0"
-    cor_laranja = "#808080"; cor_vermelho = "#4D4D4D"; cor_link = "#CCCCCC"
-    cor_ouro = "#F2F2F2"; cor_prata = "#B3B3B3"; cor_bronze = "#737373"
-    cores_avatar = ["#F2F2F2", "#CCCCCC", "#B3B3B3", "#999999", "#808080", "#666666"]
 
 st.markdown("""<style>
 /* Remove toolbar, rodapé, header e espaços extras do Streamlit */
