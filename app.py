@@ -499,18 +499,18 @@ def _ler_senha(nome):
     except Exception:
         return os.environ.get(nome, "")
 
-SENHA_PADRAO    = _ler_senha("SENHA_PADRAO")
-SENHA_ELEITORAL = _ler_senha("SENHA_ELEITORAL")
+SENHA_PADRAO = _ler_senha("SENHA_PADRAO")
 
 # Modo precisa ser lido antes dos demais filtros (mas exibido na 5ª coluna)
 with f5:
     modo_selecionado = st.selectbox(
-        "🗳️ Visualização", ["⏳ Em Adaptação", "📊 Painel padrão", "🚧 Período Eleitoral"],
+        "🗳️ Visualização", ["🚧 Período Eleitoral", "📊 Painel padrão"],
         help="Painel temporariamente simplificado em razão do período eleitoral."
     )
 
-# ─── CONTROLE DE ACESSO — Painel padrão e Período Eleitoral exigem senha ───────
-# Sem a senha certa, o modo é rebaixado para "Em Adaptação" — que é público e seguro.
+# ─── CONTROLE DE ACESSO — só o Painel padrão exige senha ───────────────────────
+# Sem a senha certa, o modo é rebaixado para "Período Eleitoral" — que agora é
+# o modo público e seguro (substitui o antigo "Em Adaptação", aposentado).
 _f3_usada_para_senha = False
 if modo_selecionado == "📊 Painel padrão":
     if not st.session_state.get("auth_padrao", False):
@@ -525,55 +525,22 @@ if modo_selecionado == "📊 Painel padrão":
         else:
             if _senha_padrao_in:
                 st.error("Senha incorreta.")
-            modo_selecionado = "⏳ Em Adaptação"
-
-elif modo_selecionado == "🚧 Período Eleitoral":
-    if not st.session_state.get("auth_eleitoral", False):
-        _f3_usada_para_senha = True
-        with f3:
-            _senha_eleitoral_in = st.text_input(
-                "🔒 Senha do Período Eleitoral", type="password", key="senha_eleitoral_input"
-            )
-        if _senha_eleitoral_in and _senha_eleitoral_in == SENHA_ELEITORAL:
-            st.session_state["auth_eleitoral"] = True
-            st.rerun()
-        else:
-            if _senha_eleitoral_in:
-                st.error("Senha incorreta.")
-            modo_selecionado = "⏳ Em Adaptação"
+            modo_selecionado = "🚧 Período Eleitoral"
 
 # ─── FILTROS POR MODO ───────────────────────────────────────────────────────────
-# "Em Adaptação": sem filtro de tipo, assunto ou vereador (evita listar vereadores
-# e evita a busca por autor, que depende de autorização da chefia).
-# "Período Eleitoral": sem filtro de tipo (não há mais comparativo que dependa dele).
+# "Período Eleitoral": sem filtro de tipo nem assunto (o filtro de Assunto foi
+# retirado a pedido da chefia — combinado com Vereador, ele produzia uma espécie
+# de comparativo/ranking entre vereadores, o que este modo existe para evitar).
+# Só o filtro de Vereador fica ativo.
 # "Painel padrão": todos os filtros normalmente.
-if modo_selecionado == "⏳ Em Adaptação":
+if modo_selecionado == "🚧 Período Eleitoral":
     tipo_selecionado     = "Todos"
     assunto_selecionado  = "Todos"
-    vereador_selecionado = "Todos"
-    with f1:
-        st.write("")
-    with f2:
-        st.write("")
     if not _f3_usada_para_senha:
         with f3:
             st.write("")
-elif modo_selecionado == "🚧 Período Eleitoral":
-    tipo_selecionado = "Todos"
-    with f3:
-        st.write("")
     with f1:
-        if tipo_selecionado in ["Todos", "Projeto de Lei Ordinária"]:
-            assuntos_lista = ["Todos"] + sorted(df_ass['assunto'].unique().tolist())
-            total_plos     = df_parl[df_parl['tipo_sigla'] == 'PLO']['materia_id'].nunique()
-            plos_c_assunto = df_ass['materia_id'].nunique()
-            pct            = round(plos_c_assunto / total_plos * 100, 1) if total_plos > 0 else 0
-            assunto_selecionado = st.selectbox(
-                "🏷️ Assunto (Projetos de Lei)", assuntos_lista,
-                help=f"Assuntos disponíveis para {pct}% dos PLOs cadastrados"
-            )
-        else:
-            st.write("")
+        st.write("")
     with f2:
         vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
         vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
@@ -741,6 +708,21 @@ hr { margin: 0.2rem 0 !important; }
 [data-testid="stHorizontalBlock"] > [data-testid="column"] {
     min-width: 120px !important;
     flex: 1 1 120px !important;
+}
+
+/* Rótulo do st.metric pode quebrar linha em vez de truncar com "..." — evita
+   rótulos mais longos (ex: "Taxa geral de aprovação das matérias legislativas")
+   cortados em colunas estreitas, inclusive no modo "site para computador" no celular */
+[data-testid="stMetricLabel"] {
+    overflow: visible !important;
+}
+[data-testid="stMetricLabel"] p {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    -webkit-line-clamp: unset !important;
+    display: block !important;
+    line-height: 1.25 !important;
 }
 
 /* h2/h3 menores em telas estreitas */
@@ -1305,12 +1287,12 @@ def renderizar_rodape():
 
 def renderizar_projetos_por_assunto_sem_heatmap():
     """Aba 'Projetos por assunto' sem o heatmap comparativo entre vereadores —
-    reaproveitada no período eleitoral e no modo 'Em Adaptação'."""
-    if modo_selecionado == "⏳ Em Adaptação":
-        # "Em Adaptação" não tem o filtro de Assunto (e portanto perdeu o "?" com o
-        # percentual de PLOs com assunto cadastrado, que no Período Eleitoral e no
-        # Painel padrão aparece no help= do selectbox). Repõe a mesma informação
-        # aqui, como um "?" ao lado do título da aba.
+    reaproveitada no período eleitoral (único modo que a chama)."""
+    if modo_selecionado == "🚧 Período Eleitoral":
+        # Período Eleitoral não tem mais o filtro de Assunto (retirado a pedido da
+        # chefia) e por isso perdeu o "?" com o percentual de PLOs com assunto
+        # cadastrado, que no Painel padrão aparece no help= do selectbox. Repõe a
+        # mesma informação aqui, como um "?" ao lado do título da aba.
         _total_plos_adapt = df_parl[df_parl['tipo_sigla'] == 'PLO']['materia_id'].nunique()
         _plos_c_assunto_adapt = df_ass['materia_id'].nunique()
         _pct_adapt = round(_plos_c_assunto_adapt / _total_plos_adapt * 100, 1) if _total_plos_adapt > 0 else 0
@@ -1385,7 +1367,7 @@ def renderizar_projetos_por_assunto_sem_heatmap():
 
 def renderizar_aba_materias():
     """Aba 'Matérias': total geral por tipo + filtro interno opcional por vereador —
-    reaproveitada no período eleitoral e no modo 'Em Adaptação'. Sem comparativo
+    reaproveitada no período eleitoral (único modo que a chama). Sem comparativo
     entre vereadores: o gráfico por vereador só aparece após escolha explícita."""
     st.markdown("##### Matérias apresentadas por tipo — 2026")
     st.caption("Somente vereadores em exercício — não inclui Executivo, Mesa Diretora ou autores externos.")
@@ -1450,35 +1432,9 @@ def renderizar_aba_materias():
 if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "Todos":
     st.caption("🗳️ Visualização adaptada para o período eleitoral — em construção, mais itens a caminho.")
 
-    if assunto_selecionado == "Todos":
-        _titulos_pe = ["🏷️ Projetos por assunto", "📄 Matérias", "📢 Pronunciamentos", "📋 Vereadores"]
-    else:
-        _titulos_pe = ["📊 Matérias por vereador", "🏷️ Projetos por assunto", "📄 Matérias",
-                        "📢 Pronunciamentos", "📋 Vereadores"]
+    _titulos_pe = ["🏷️ Projetos por assunto", "📄 Matérias", "📢 Pronunciamentos", "📋 Vereadores"]
     _abas_pe = st.tabs(_titulos_pe)
     _idx_pe = {nome: i for i, nome in enumerate(_titulos_pe)}   # indexação por nome — evita erro de posição
-
-    # ── ABA: MATÉRIAS POR VEREADOR — só quando assunto filtrado, alfabética, sem degradê ─
-    if assunto_selecionado != "Todos":
-        with _abas_pe[_idx_pe["📊 Matérias por vereador"]]:
-            df_ranking_pe = (
-                df_filtrado.groupby('autor_nome').size()
-                .reset_index(name='total').sort_values('autor_nome', ascending=True)
-            )
-
-            def _url_ranking_pe(nome):
-                aid = mapa_autor_id.get(nome)
-                if not aid:
-                    return None
-                ass_id = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
-                tip_id = mapa_tipo_sapl_id.get(tipo_selecionado) if tipo_selecionado != "Todos" else None
-                return url_sapl(ano=2026, autor_id=aid, assunto_id=ass_id, tipo_materia_id=tip_id)
-
-            st.markdown(
-                html_barchart_h(df_ranking_pe, 'autor_nome', 'total', _url_ranking_pe),
-                unsafe_allow_html=True
-            )
-            st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
 
     # ── ABA: PROJETOS POR ASSUNTO — igual à versão padrão, sem o heatmap ───────
     with _abas_pe[_idx_pe["🏷️ Projetos por assunto"]]:
@@ -1572,42 +1528,6 @@ if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "To
                         f'</div>',
                         unsafe_allow_html=True
                     )
-
-    renderizar_rodape()
-    st.stop()
-
-# ─── MODO: EM ADAPTAÇÃO ─────────────────────────────────────────────────────────
-# Modo público e sem senha — é o padrão do seletor. Só entra aqui quando ninguém
-# autenticou para os outros dois modos (ou quando "Em Adaptação" é escolhido
-# diretamente). Sem filtro de assunto, tipo ou vereador — sem busca por autor,
-# que depende de autorização da chefia.
-if modo_selecionado == "⏳ Em Adaptação":
-    _titulos_adapt = ["⚠️ Aviso", "🏷️ Projetos por assunto", "📄 Matérias", "📢 Pronunciamentos"]
-    _abas_adapt = st.tabs(_titulos_adapt)
-    _idx_adapt = {nome: i for i, nome in enumerate(_titulos_adapt)}
-
-    # ── ABA: AVISO — primeira coisa a ser lida, em destaque ────────────────────
-    with _abas_adapt[_idx_adapt["⚠️ Aviso"]]:
-        st.markdown(
-            f'<div style="text-align:center;padding:48px 16px">'
-            f'<div style="font-size:2.4rem;font-weight:800;color:{plot_font};line-height:1.3">'
-            f'⏳ Painel em adaptação</div>'
-            f'<div style="font-size:1.15rem;color:{plot_font};opacity:0.85;margin-top:18px;'
-            f'max-width:620px;margin-left:auto;margin-right:auto;line-height:1.5">'
-            f'Este painel está temporariamente simplificado em razão do período eleitoral. '
-            f'Algumas visualizações foram retiradas.'
-            f'</div></div>',
-            unsafe_allow_html=True
-        )
-
-    with _abas_adapt[_idx_adapt["🏷️ Projetos por assunto"]]:
-        renderizar_projetos_por_assunto_sem_heatmap()
-
-    with _abas_adapt[_idx_adapt["📄 Matérias"]]:
-        renderizar_aba_materias()
-
-    with _abas_adapt[_idx_adapt["📢 Pronunciamentos"]]:
-        renderizar_pronunciamentos_geral()
 
     renderizar_rodape()
     st.stop()
@@ -1975,7 +1895,7 @@ if vereador_selecionado != "Todos":
                 </div>
                 """, unsafe_allow_html=True)
         st.divider()
-        st.markdown("**🏷️ Principais assuntos de atuação**")
+        st.markdown("**🏷️ Principais assuntos de projetos de leis aprovados/autoria de projetos**")
         st.markdown(f'<div style="padding:6px 0 16px 0">{pills}</div>', unsafe_allow_html=True)
         materias_mesa = int(dados_v.get('materias_mesa', 0))
         if materias_mesa > 0:
