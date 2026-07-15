@@ -41,7 +41,7 @@ A senha do modo padrão é lida via `st.secrets` (Streamlit Cloud) ou variável 
 - **Filtros combinados** — Assunto, Vereador, Tipo de matéria, Tema visual e Modo de visualização
 - **Links clicáveis** nos gráficos e tabelas — abrem a pesquisa no SAPL já filtrada
 - **Seletores dropdown** abaixo dos gráficos para navegação direta no celular
-- **Temas visuais** — Claro, Escuro, Institucional (cores da identidade visual da Câmara) e duas variações em escala de cinza (preto e branco), úteis em contextos que pedem neutralidade visual
+- **Temas visuais** — Claro, Escuro e Institucional (cores da identidade visual da Câmara)
 - **Atualização automática** diária via GitHub Actions
 
 ---
