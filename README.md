@@ -16,6 +16,13 @@ Em caso de divergência, ou para consulta aos textos integrais das matérias, re
 
 ## Funcionalidades
 
+### Modos de visualização
+O painel possui dois modos, selecionáveis no filtro "🗳️ Visualização":
+- **Modo público** (hoje rotulado "🗳️ Período Eleitoral", sem senha) — versão simplificada, sem rankings, pódios ou comparativos individuais entre parlamentares. Pensado para períodos que exigem maior neutralidade (ex. proximidade de eleições), mas o rótulo e o gatilho podem ser adaptados livremente para o contexto de cada Casa.
+- **Modo padrão** ("📊 Painel padrão", protegido por senha) — versão completa, com rankings, pódios e comparativos entre vereadores, pensada para uso interno.
+
+A senha do modo padrão é lida via `st.secrets` (Streamlit Cloud) ou variável de ambiente (outros serviços de hospedagem) — ver "Como rodar localmente" abaixo e `COMO_PUBLICAR.md`. Sem essa senha configurada, o modo padrão fica permanentemente inacessível e o painel roda sempre no modo público — útil para hospedar uma cópia pública (ex. embed no site) separada da versão de revisão interna.
+
 ### Visão geral (todos os vereadores)
 - **Ranking de matérias** por vereador com link direto ao SAPL
 - **Taxa de aprovação de PLOs** (Projetos de Lei Ordinária) com tabela clicável por parlamentar
@@ -31,10 +38,10 @@ Em caso de divergência, ou para consulta aos textos integrais das matérias, re
 - **Pronunciamentos** — histórico de sessões com links para vídeo e discurso
 
 ### Recursos gerais
-- **Filtros combinados** — Assunto, Vereador, Tipo de matéria e Tema visual
+- **Filtros combinados** — Assunto, Vereador, Tipo de matéria, Tema visual e Modo de visualização
 - **Links clicáveis** nos gráficos e tabelas — abrem a pesquisa no SAPL já filtrada
 - **Seletores dropdown** abaixo dos gráficos para navegação direta no celular
-- **Temas visuais** — Claro, Escuro e Institucional (azul da identidade visual da Câmara)
+- **Temas visuais** — Claro, Escuro, Institucional (cores da identidade visual da Câmara) e duas variações em escala de cinza (preto e branco), úteis em contextos que pedem neutralidade visual
 - **Atualização automática** diária via GitHub Actions
 
 ---
@@ -51,6 +58,8 @@ Em caso de divergência, ou para consulta aos textos integrais das matérias, re
 | GitHub Actions | Atualização automática diária |
 | Render | Hospedagem (embed no site da Câmara) |
 | Streamlit Cloud | Hospedagem (versão pública direta) |
+
+> **Nota:** o `requirements.txt` fixa `pyarrow<25.0.0` para evitar uma instabilidade conhecida (segmentation fault na inicialização) em alguns ambientes de hospedagem gerenciada.
 
 ---
 
@@ -130,7 +139,11 @@ pip install -r requirements.txt
 python coletar_dados_iniciais.py
 python atualizar_dados.py
 
-# 5. Rode o painel
+# 5. (Opcional) configure a senha do modo padrão em .streamlit/secrets.toml:
+# SENHA_PADRAO = "sua_senha_aqui"
+# Sem isso, o painel roda sempre no modo público.
+
+# 6. Rode o painel
 python -m streamlit run app.py
 ```
 
