@@ -615,6 +615,7 @@ elif tema == "🌙 Escuro":
     [data-testid="stMetricValue"] { color: #5B9BD5 !important; }
     .stTabs [aria-selected="true"] { color: #5B9BD5 !important; border-bottom-color: #5B9BD5 !important; }
     .stSelectbox > div > div { background-color: #1A1F2E !important; color: #FAFAFA !important; }
+    [data-testid="stSelectbox"] div[data-baseweb="select"] div { color: #FAFAFA !important; }
     [data-testid="stDataFrame"] iframe { filter: invert(0.85) hue-rotate(180deg); }
     .card-pop { border: 1px solid rgba(255,255,255,0.25) !important; }
     /* Botão de link — tema escuro */
@@ -651,6 +652,7 @@ elif tema == "🏛️ Institucional":
     .stTabs [data-baseweb="tab"] { color: rgba(255,255,255,0.7) !important; }
     .stTabs [aria-selected="true"] { color: #FFCD00 !important; border-bottom-color: #FFCD00 !important; }
     .stSelectbox > div > div { background-color: #022B6B !important; color: #FFFFFF !important; border-color: rgba(255,255,255,0.3) !important; }
+    [data-testid="stSelectbox"] div[data-baseweb="select"] div { color: #FFFFFF !important; }
     hr { border-color: rgba(255,255,255,0.2) !important; }
     .stAlert { background-color: #022B6B !important; color: #FFFFFF !important; }
     .stCaption { color: rgba(255,255,255,0.65) !important; }
@@ -699,8 +701,10 @@ elif tema == "⚪ P&B - Claro":
     bar_fill = "#4D4D4D"; bar_text = "#1A1A1A"; bar_val = "#000000"
     bar_grad_lo = "#D9D9D9"; bar_grad_hi = "#262626"       # cinza claro → quase preto
     aprov_grad_lo = "#D9D9D9"; aprov_grad_hi = "#1A1A1A"   # cinza claro → quase preto
-    cor_azul = "#1A1A1A"; cor_verde = "#404040"; cor_roxo = "#666666"
-    cor_laranja = "#8C8C8C"; cor_vermelho = "#999999"; cor_link = "#333333"
+    # Preto puro no extremo escuro e um cinza médio no outro, em vez de tons
+    # próximos — o gráfico "apresentados vs aprovados" precisa de contraste real.
+    cor_azul = "#000000"; cor_verde = "#808080"; cor_roxo = "#4D4D4D"
+    cor_laranja = "#B3B3B3"; cor_vermelho = "#CCCCCC"; cor_link = "#333333"
     cor_ouro = "#1A1A1A"; cor_prata = "#666666"; cor_bronze = "#A6A6A6"
     cores_avatar = ["#1A1A1A", "#404040", "#595959", "#737373", "#8C8C8C", "#A6A6A6"]
 
@@ -714,6 +718,7 @@ elif tema == "⚫ P&B - Escuro":
     [data-testid="stMetricValue"] { color: #FAFAFA !important; }
     .stTabs [aria-selected="true"] { color: #FAFAFA !important; border-bottom-color: #FAFAFA !important; }
     .stSelectbox > div > div { background-color: #262626 !important; color: #FAFAFA !important; }
+    [data-testid="stSelectbox"] div[data-baseweb="select"] div { color: #FAFAFA !important; }
     [data-testid="stDataFrame"] iframe { filter: invert(0.85) grayscale(1); }
     .card-pop { border: 1px solid rgba(255,255,255,0.25) !important; }
     a { text-decoration: underline !important; }
@@ -735,8 +740,10 @@ elif tema == "⚫ P&B - Escuro":
     bar_fill = "#B3B3B3"; bar_text = "#FAFAFA"; bar_val = "#E0E0E0"
     bar_grad_lo = "#3D3D3D"; bar_grad_hi = "#F2F2F2"       # cinza escuro → quase branco
     aprov_grad_lo = "#404040"; aprov_grad_hi = "#FFFFFF"   # cinza escuro → branco
-    cor_azul = "#F2F2F2"; cor_verde = "#CCCCCC"; cor_roxo = "#999999"
-    cor_laranja = "#737373"; cor_vermelho = "#666666"; cor_link = "#CCCCCC"
+    # Branco + "cinzinha" claro — no fundo escuro, tons escuros ficam invisíveis,
+    # então o contraste vem de variar do branco puro até um cinza ainda claro.
+    cor_azul = "#FFFFFF"; cor_verde = "#B3B3B3"; cor_roxo = "#E0E0E0"
+    cor_laranja = "#808080"; cor_vermelho = "#4D4D4D"; cor_link = "#CCCCCC"
     cor_ouro = "#F2F2F2"; cor_prata = "#B3B3B3"; cor_bronze = "#737373"
     cores_avatar = ["#F2F2F2", "#CCCCCC", "#B3B3B3", "#999999", "#808080", "#666666"]
 
