@@ -565,7 +565,10 @@ else:
         vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
 
 with f4:
-    tema = st.selectbox("🎨 Contraste", ["🌞 Claro", "🌙 Escuro", "🏛️ Institucional"])
+    tema = st.selectbox(
+        "🎨 Contraste",
+        ["🌞 Claro", "🌙 Escuro", "🏛️ Institucional", "⚪ P&B - Claro", "⚫ P&B - Escuro"]
+    )
 
 # Nota informativa + data de atualização — numa única linha compacta
 # _ts já lido no topo do arquivo como string "DD/MM/YYYY às HH:MM"
@@ -573,6 +576,12 @@ _atu = f"  ·  🔄 Última atualização dos dados: {_ts}" if _ts else ""
 st.caption(f"ℹ️ PLS e PLS2 são substitutivos de PLOs e não contam como projetos separados{_atu}")
 
 # ─── TEMAS ─────────────────────────────────────────────────────────────────────
+# cor_azul/verde/roxo/laranja/vermelho, cor_link, cor_ouro/prata/bronze e
+# cores_avatar existem para os cards, links e pódio que antes tinham cor fixa no
+# código (ex: "#5b9bd5") — nos 3 temas coloridos elas repetem exatamente os
+# valores que já estavam hardcoded (nenhuma mudança visual). Só os temas P&B
+# (para avaliação da chefia, ver preocupação com cores partidárias) usam tons de
+# cinza nessas variáveis, tirando qualquer matiz de azul/verde/amarelo do painel.
 
 if tema == "🌞 Claro":
     st.markdown("""<style>
@@ -591,6 +600,10 @@ if tema == "🌞 Claro":
     bar_fill = "#5b9bd5"; bar_text = "#1A1A1A"; bar_val = "#033983"
     bar_grad_lo = "#D0E4F5"; bar_grad_hi = "#1A5FA8"       # Blues claro → escuro
     aprov_grad_lo = "#C8E6C1"; aprov_grad_hi = "#1E7B34"   # Greens claro → escuro
+    cor_azul = "#5b9bd5"; cor_verde = "#70ad47"; cor_roxo = "#a855f7"
+    cor_laranja = "#ed7d31"; cor_vermelho = "#dc3545"; cor_link = "#4A90D9"
+    cor_ouro = "#ffd700"; cor_prata = "#adb5bd"; cor_bronze = "#cd7f32"
+    cores_avatar = ['#5b9bd5', '#70ad47', '#ed7d31', '#a855f7', '#ec4899', '#14b8a6']
 
 elif tema == "🌙 Escuro":
     st.markdown("""<style>
@@ -621,6 +634,10 @@ elif tema == "🌙 Escuro":
     bar_fill = "#5b9bd5"; bar_text = "#FAFAFA"; bar_val = "#8DC4E8"
     bar_grad_lo = "#1A3B5C"; bar_grad_hi = "#5B9BD5"       # Blues escuro → brilhante
     aprov_grad_lo = "#183D23"; aprov_grad_hi = "#90D470"   # Greens escuro → brilhante
+    cor_azul = "#5b9bd5"; cor_verde = "#70ad47"; cor_roxo = "#a855f7"
+    cor_laranja = "#ed7d31"; cor_vermelho = "#dc3545"; cor_link = "#4A90D9"
+    cor_ouro = "#ffd700"; cor_prata = "#adb5bd"; cor_bronze = "#cd7f32"
+    cores_avatar = ['#5b9bd5', '#70ad47', '#ed7d31', '#a855f7', '#ec4899', '#14b8a6']
 
 elif tema == "🏛️ Institucional":
     st.markdown("""<style>
@@ -657,6 +674,71 @@ elif tema == "🏛️ Institucional":
     bar_fill = "#FFCD00"; bar_text = "#FFFFFF"; bar_val = "#FFCD00"
     bar_grad_lo = "#5B7EAF"; bar_grad_hi = "#FFCD00"       # azul-acinzentado → amarelo (espelha colorscale original)
     aprov_grad_lo = "#183D23"; aprov_grad_hi = "#90D470"   # verde (aprovação é verde em qualquer tema)
+    cor_azul = "#5b9bd5"; cor_verde = "#70ad47"; cor_roxo = "#a855f7"
+    cor_laranja = "#ed7d31"; cor_vermelho = "#dc3545"; cor_link = "#4A90D9"
+    cor_ouro = "#ffd700"; cor_prata = "#adb5bd"; cor_bronze = "#cd7f32"
+    cores_avatar = ['#5b9bd5', '#70ad47', '#ed7d31', '#a855f7', '#ec4899', '#14b8a6']
+
+elif tema == "⚪ P&B - Claro":
+    st.markdown("""<style>
+    header[data-testid="stHeader"] { background-color: #FFFFFF !important; }
+    [data-testid="stHeader"]::before { background-color: #FFFFFF !important; }
+    .stApp { background-color: #FFFFFF !important; }
+    .stApp, .stApp p, .stApp span, .stApp div, .stApp label { color: #1A1A1A !important; }
+    h1, h2, h3 { color: #1A1A1A !important; }
+    [data-testid="stMetricValue"] { color: #1A1A1A !important; }
+    .stTabs [aria-selected="true"] { color: #1A1A1A !important; border-bottom-color: #1A1A1A !important; }
+    .card-pop { border: 1px solid rgba(0,0,0,0.2) !important; }
+    [data-testid="stDataFrame"] iframe { filter: grayscale(1); }
+    a { text-decoration: underline !important; }
+    [data-testid="stLinkButton"] a { text-decoration: none !important; }
+    </style>""", unsafe_allow_html=True)
+    plot_bg = "#FFFFFF"; plot_paper = "#FFFFFF"; plot_font = "#1A1A1A"; plot_grid = "#E5E5E5"
+    plot_colorscale = 'Greys'
+    aprov_bg = "#F0F0F0"; aprov_color = "#1A1A1A"; card_border = "rgba(0,0,0,0.2)"
+    bar_fill = "#4D4D4D"; bar_text = "#1A1A1A"; bar_val = "#000000"
+    bar_grad_lo = "#D9D9D9"; bar_grad_hi = "#262626"       # cinza claro → quase preto
+    aprov_grad_lo = "#D9D9D9"; aprov_grad_hi = "#1A1A1A"   # cinza claro → quase preto
+    cor_azul = "#1A1A1A"; cor_verde = "#404040"; cor_roxo = "#666666"
+    cor_laranja = "#8C8C8C"; cor_vermelho = "#999999"; cor_link = "#333333"
+    cor_ouro = "#1A1A1A"; cor_prata = "#666666"; cor_bronze = "#A6A6A6"
+    cores_avatar = ["#1A1A1A", "#404040", "#595959", "#737373", "#8C8C8C", "#A6A6A6"]
+
+elif tema == "⚫ P&B - Escuro":
+    st.markdown("""<style>
+    header[data-testid="stHeader"] { background-color: #0E1117 !important; }
+    [data-testid="stHeader"]::before { background-color: #0E1117 !important; }
+    .stApp { background-color: #0E1117 !important; }
+    .stApp, .stApp p, .stApp span, .stApp div, .stApp label { color: #FAFAFA !important; }
+    h1, h2, h3 { color: #FAFAFA !important; }
+    [data-testid="stMetricValue"] { color: #FAFAFA !important; }
+    .stTabs [aria-selected="true"] { color: #FAFAFA !important; border-bottom-color: #FAFAFA !important; }
+    .stSelectbox > div > div { background-color: #262626 !important; color: #FAFAFA !important; }
+    [data-testid="stDataFrame"] iframe { filter: invert(0.85) grayscale(1); }
+    .card-pop { border: 1px solid rgba(255,255,255,0.25) !important; }
+    a { text-decoration: underline !important; }
+    /* Botão de link — tema P&B escuro */
+    [data-testid="stLinkButton"] a {
+        background-color: #262626 !important;
+        color: #FAFAFA !important;
+        border: 1px solid rgba(255,255,255,0.35) !important;
+        text-decoration: none !important;
+    }
+    [data-testid="stLinkButton"] a:hover {
+        background-color: #404040 !important;
+        color: #FFFFFF !important;
+    }
+    </style>""", unsafe_allow_html=True)
+    plot_bg = "#0E1117"; plot_paper = "#0E1117"; plot_font = "#FAFAFA"; plot_grid = "#2D3748"
+    plot_colorscale = 'Greys_r'
+    aprov_bg = "rgba(255,255,255,0.12)"; aprov_color = "#F2F2F2"; card_border = "rgba(255,255,255,0.25)"
+    bar_fill = "#B3B3B3"; bar_text = "#FAFAFA"; bar_val = "#E0E0E0"
+    bar_grad_lo = "#3D3D3D"; bar_grad_hi = "#F2F2F2"       # cinza escuro → quase branco
+    aprov_grad_lo = "#404040"; aprov_grad_hi = "#FFFFFF"   # cinza escuro → branco
+    cor_azul = "#F2F2F2"; cor_verde = "#CCCCCC"; cor_roxo = "#999999"
+    cor_laranja = "#737373"; cor_vermelho = "#666666"; cor_link = "#CCCCCC"
+    cor_ouro = "#F2F2F2"; cor_prata = "#B3B3B3"; cor_bronze = "#737373"
+    cores_avatar = ["#F2F2F2", "#CCCCCC", "#B3B3B3", "#999999", "#808080", "#666666"]
 
 st.markdown("""<style>
 /* Remove toolbar, rodapé, header e espaços extras do Streamlit */
@@ -1149,7 +1231,7 @@ def foto_html(nome, foto_url, size=80):
             f'object-fit:cover;border:3px solid rgba(128,128,128,0.3);display:block;margin:0 auto">'
         )
     iniciais = ''.join(p[0].upper() for p in nome.split()[:2])
-    cores = ['#5b9bd5', '#70ad47', '#ed7d31', '#a855f7', '#ec4899', '#14b8a6']
+    cores = cores_avatar
     cor = cores[hash(nome) % len(cores)]
     return (
         f'<div style="width:{size}px;height:{size}px;border-radius:50%;background:{cor};'
@@ -1232,7 +1314,7 @@ def renderizar_pronunciamentos_geral():
                 if url:
                     return (f"{label} — "
                             f'<a href="{url}" target="_blank" '
-                            f'style="color:#4A90D9">{nome} 🎥</a>')
+                            f'style="color:{cor_link}">{nome} 🎥</a>')
                 elif obs:
                     return f"{label} — {nome} <span style='color:#888;font-size:0.9em'>({obs})</span>"
                 return f"{label} — {nome}"
@@ -1328,7 +1410,7 @@ def renderizar_projetos_por_assunto_sem_heatmap():
             html_barchart_grouped_h(
                 df_comp_pe, 'assunto', _url_ass_pe,
                 series=[('apresentados', 'apresentados'), ('aprovados', 'aprovados')],
-                colors=['#5b9bd5', '#70ad47'],
+                colors=[cor_azul, cor_verde],
             ),
             unsafe_allow_html=True
         )
@@ -1342,7 +1424,7 @@ def renderizar_projetos_por_assunto_sem_heatmap():
             _aid_t = mapa_assunto_id.get(_row['Assunto'])
             if _aid_t:
                 _url_t = url_sapl(ano=2026, autor_id=_autor_fil_pe, assunto_id=_aid_t, so_parlamentar=True)
-                _cel = f'<a href="{_url_t}" target="_blank" style="color:#4A90D9">{_row["Assunto"]} ↗</a>'
+                _cel = f'<a href="{_url_t}" target="_blank" style="color:{cor_link}">{_row["Assunto"]} ↗</a>'
             else:
                 _cel = _row['Assunto']
             _linhas_ass_pe += (
@@ -1468,7 +1550,7 @@ if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "To
                 foto       = mapa_foto.get(nome, '')
                 cargo_mesa = mapa_cargo.get(nome, '')
                 cargo_badge = (
-                    f'<div style="font-size:10px;font-weight:600;color:#ed7d31;'
+                    f'<div style="font-size:10px;font-weight:600;color:{cor_laranja};'
                     f'margin-bottom:8px;letter-spacing:0.5px">⭐ {cargo_mesa}</div>'
                 ) if cargo_mesa else '<div style="height:22px"></div>'
 
@@ -1512,16 +1594,16 @@ if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "To
                         f'<div style="margin-bottom:12px">{foto_tag}</div>'
                         f'<div class="card-nome">{nome}</div>{cargo_badge}'
                         f'<div style="display:flex;justify-content:space-around;margin-bottom:10px">'
-                        f'<div>{_num_html(int(row["projetos_lei"]), "#5b9bd5", _url_pl)}'
+                        f'<div>{_num_html(int(row["projetos_lei"]), cor_azul, _url_pl)}'
                         f'<div class="card-muted">Projetos de Lei</div></div>'
-                        f'<div><div style="font-size:26px;font-weight:700;color:#70ad47;line-height:1">'
+                        f'<div><div style="font-size:26px;font-weight:700;color:{cor_verde};line-height:1">'
                         f'{int(row["projetos_virou_lei"])}</div>'
                         f'<div class="card-muted">PLOs aprovados</div></div>'
                         f'</div>'
                         f'<div style="display:flex;justify-content:space-around;margin-bottom:12px">'
-                        f'<div>{_num_html(int(row["indicacoes"]), "#a855f7", _url_ind)}'
+                        f'<div>{_num_html(int(row["indicacoes"]), cor_roxo, _url_ind)}'
                         f'<div class="card-muted">Indicações</div></div>'
-                        f'<div>{_num_html(int(row["requerimentos"]), "#ed7d31", _url_req)}'
+                        f'<div>{_num_html(int(row["requerimentos"]), cor_laranja, _url_req)}'
                         f'<div class="card-muted">Requerimentos</div></div>'
                         f'</div>'
                         f'{_tarja_html}'
@@ -1591,7 +1673,7 @@ if vereador_selecionado == "Todos":
             if _aid_tab:
                 _url_tab = url_sapl(ano=2026, autor_id=_aid_tab,
                                     so_parlamentar=True, tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
-                _cel_ver = f'<a href="{_url_tab}" target="_blank" style="color:#4A90D9">{_row["autor_nome"]} ↗</a>'
+                _cel_ver = f'<a href="{_url_tab}" target="_blank" style="color:{cor_link}">{_row["autor_nome"]} ↗</a>'
             else:
                 _cel_ver = _row['autor_nome']
             _linhas_aprov += (
@@ -1645,7 +1727,7 @@ if vereador_selecionado == "Todos":
                 html_barchart_grouped_h(
                     df_comp, 'assunto', _url_ass3,
                     series=[('apresentados', 'apresentados'), ('aprovados', 'aprovados')],
-                    colors=['#5b9bd5', '#70ad47'],
+                    colors=[cor_azul, cor_verde],
                 ),
                 unsafe_allow_html=True
             )
@@ -1660,7 +1742,7 @@ if vereador_selecionado == "Todos":
                 _aid_t = mapa_assunto_id.get(_row['Assunto'])
                 if _aid_t:
                     _url_t = url_sapl(ano=2026, autor_id=_autor_fil, assunto_id=_aid_t, so_parlamentar=True)
-                    _cel = f'<a href="{_url_t}" target="_blank" style="color:#4A90D9">{_row["Assunto"]} ↗</a>'
+                    _cel = f'<a href="{_url_t}" target="_blank" style="color:{cor_link}">{_row["Assunto"]} ↗</a>'
                 else:
                     _cel = _row['Assunto']
                 _linhas_ass += (
@@ -1719,7 +1801,7 @@ if vereador_selecionado == "Todos":
                     foto       = mapa_foto.get(nome, '')
                     cargo_mesa = mapa_cargo.get(nome, '')
                     cargo_badge = (
-                        f'<div style="font-size:10px;font-weight:600;color:#ed7d31;'
+                        f'<div style="font-size:10px;font-weight:600;color:{cor_laranja};'
                         f'margin-bottom:8px;letter-spacing:0.5px">⭐ {cargo_mesa}</div>'
                     ) if cargo_mesa else '<div style="height:22px"></div>'
 
@@ -1747,11 +1829,11 @@ if vereador_selecionado == "Todos":
                             f'<div style="margin-bottom:12px">{foto_tag}</div>'
                             f'<div class="card-nome">{nome}</div>{cargo_badge}'
                             f'<div style="display:flex;justify-content:space-around;margin-bottom:12px">'
-                            f'<div><div style="font-size:26px;font-weight:700;color:#5b9bd5;line-height:1">{int(row["projetos_lei"])}</div>'
+                            f'<div><div style="font-size:26px;font-weight:700;color:{cor_azul};line-height:1">{int(row["projetos_lei"])}</div>'
                             f'<div class="card-muted">Projetos</div></div>'
-                            f'<div><div style="font-size:26px;font-weight:700;color:#70ad47;line-height:1">{int(row["projetos_virou_lei"])}</div>'
+                            f'<div><div style="font-size:26px;font-weight:700;color:{cor_verde};line-height:1">{int(row["projetos_virou_lei"])}</div>'
                             f'<div class="card-muted">Aprovados</div></div>'
-                            f'<div><div style="font-size:26px;font-weight:700;color:#ed7d31;line-height:1">{row["taxa_aprovacao"]}%</div>'
+                            f'<div><div style="font-size:26px;font-weight:700;color:{cor_laranja};line-height:1">{row["taxa_aprovacao"]}%</div>'
                             f'<div class="card-muted">Taxa</div></div></div>'
                             f'<div class="card-secondary">{int(row["total_geral"])} matérias apresentadas</div>'
                             f'</div>',
@@ -1766,7 +1848,7 @@ if vereador_selecionado == "Todos":
                 .sort_values(ascending=False).head(3)
             )
             cols     = st.columns(len(top3))
-            bordas   = ['#ffd700', '#adb5bd', '#cd7f32']
+            bordas   = [cor_ouro, cor_prata, cor_bronze]
             medalhas = ['🥇', '🥈', '🥉']
             for i, (nome, qtd) in enumerate(top3.items()):
                 foto       = mapa_foto.get(nome, '')
@@ -1794,7 +1876,7 @@ if vereador_selecionado == "Todos":
                         f'<div style="font-size:32px;margin-bottom:10px">{medalhas[i]}</div>'
                         f'<div style="margin-bottom:14px">{foto_tag_p}</div>'
                         f'<div style="font-size:15px;font-weight:600;color:{plot_font};margin-bottom:18px">{nome}</div>'
-                        f'<div style="font-size:42px;font-weight:700;color:#5b9bd5;line-height:1">{qtd}</div>'
+                        f'<div style="font-size:42px;font-weight:700;color:{cor_azul};line-height:1">{qtd}</div>'
                         f'<div style="font-size:12px;color:{plot_font};opacity:0.7;margin-bottom:14px">'
                         f'projeto{"s" if qtd > 1 else ""} sobre {assunto_selecionado}</div>'
                         f'<div style="background:{aprov_bg};border-radius:8px;padding:8px;'
@@ -1824,10 +1906,10 @@ if vereador_selecionado != "Todos":
 
     with aba_pop2:
         taxa     = float(dados_v['taxa_aprovacao'])
-        taxa_cor = '#70ad47' if taxa >= 50 else '#ed7d31' if taxa >= 25 else '#dc3545'
+        taxa_cor = cor_verde if taxa >= 50 else cor_laranja if taxa >= 25 else cor_vermelho
         taxa_bar = min(int(taxa), 100)
         cargo_str = (
-            f' <span style="font-size:14px;font-weight:500;color:#ed7d31">⭐ {cargo_v}</span>'
+            f' <span style="font-size:14px;font-weight:500;color:{cor_laranja}">⭐ {cargo_v}</span>'
         ) if cargo_v else ''
         # Assuntos apenas dos PLOs aprovados
         plos_aprov_v = set(df_leis[df_leis['autor_nome'] == vereador_selecionado]['plo_id'])
@@ -1895,7 +1977,7 @@ if vereador_selecionado != "Todos":
                 </div>
                 """, unsafe_allow_html=True)
         st.divider()
-        st.markdown("**🏷️ Principais assuntos de projetos de leis aprovados/autoria de projetos**")
+        st.markdown("**🏷️ Principais assuntos dos projetos de lei aprovados**")
         st.markdown(f'<div style="padding:6px 0 16px 0">{pills}</div>', unsafe_allow_html=True)
         materias_mesa = int(dados_v.get('materias_mesa', 0))
         if materias_mesa > 0:
@@ -2068,7 +2150,7 @@ if vereador_selecionado != "Todos":
                     df_aprov_long, x='assunto', y='projetos',
                     color='situação', barmode='group',
                     labels={'assunto': '', 'projetos': 'PLOs', 'situação': ''},
-                    color_discrete_map={'apresentados': '#5b9bd5', 'aprovados': '#70ad47'},
+                    color_discrete_map={'apresentados': cor_azul, 'aprovados': cor_verde},
                     title="Apresentados vs aprovados por assunto"
                 )
                 fig6.update_layout(height=350, xaxis_tickangle=-35,
@@ -2210,7 +2292,7 @@ if vereador_selecionado != "Todos":
                 def cel_discurso_html(row):
                     if row['url_discurso']:
                         return (f'<a href="{row["url_discurso"]}" target="_blank" '
-                                f'style="color:#4A90D9">🎥 Assistir no Instagram</a>')
+                                f'style="color:{cor_link}">🎥 Assistir no Instagram</a>')
                     elif row['observacao']:
                         return f'<span style="color:#888;font-size:0.9em">({row["observacao"]})</span>'
                     return '—'
@@ -2220,7 +2302,7 @@ if vereador_selecionado != "Todos":
                     # Sessão: link para o YouTube se disponível
                     if row.get('url_video'):
                         cel_sessao = (f'<a href="{row["url_video"]}" target="_blank" '
-                                      f'style="color:#4A90D9">{row["sessao_nome"]} 📺</a>')
+                                      f'style="color:{cor_link}">{row["sessao_nome"]} 📺</a>')
                     else:
                         cel_sessao = row['sessao_nome']
                     linhas_html += (
