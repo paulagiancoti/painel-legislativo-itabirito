@@ -525,7 +525,7 @@ if modo_selecionado == "📊 Painel padrão":
         else:
             if _senha_padrao_in:
                 st.error("Senha incorreta.")
-            modo_selecionado = "🚧 Período Eleitoral"
+            modo_selecionado = "🗳️ Período Eleitoral"
 
 # ─── FILTROS POR MODO ───────────────────────────────────────────────────────────
 # "Período Eleitoral": sem filtro de tipo nem assunto (o filtro de Assunto foi
@@ -533,7 +533,7 @@ if modo_selecionado == "📊 Painel padrão":
 # de comparativo/ranking entre vereadores, o que este modo existe para evitar).
 # Só o filtro de Vereador fica ativo.
 # "Painel padrão": todos os filtros normalmente.
-if modo_selecionado == "🚧 Período Eleitoral":
+if modo_selecionado == "🗳️ Período Eleitoral":
     tipo_selecionado     = "Todos"
     assunto_selecionado  = "Todos"
     if not _f3_usada_para_senha:
@@ -1377,7 +1377,7 @@ def renderizar_rodape():
 def renderizar_projetos_por_assunto_sem_heatmap():
     """Aba 'Projetos por assunto' sem o heatmap comparativo entre vereadores —
     reaproveitada no período eleitoral (único modo que a chama)."""
-    if modo_selecionado == "🚧 Período Eleitoral":
+    if modo_selecionado == "🗳️ Período Eleitoral":
         # Período Eleitoral não tem mais o filtro de Assunto (retirado a pedido da
         # chefia) e por isso perdeu o "?" com o percentual de PLOs com assunto
         # cadastrado, que no Painel padrão aparece no help= do selectbox. Repõe a
@@ -1518,7 +1518,7 @@ def renderizar_aba_materias():
 # nem entra — o script segue direto para "DETALHE DO VEREADOR" mais abaixo,
 # que já é compartilhado entre os dois modos (mesmas abas: Em Destaque, Matérias,
 # PLOs aprovados, Assuntos, Relatorias, Pronunciamentos — sem duplicar código).
-if modo_selecionado == "🚧 Período Eleitoral" and vereador_selecionado == "Todos":
+if modo_selecionado == "🗳️ Período Eleitoral" and vereador_selecionado == "Todos":
     st.caption("🗳️ Visualização adaptada para o período eleitoral — em construção, mais itens a caminho.")
 
     _titulos_pe = ["🏷️ Projetos por assunto", "📄 Matérias", "📢 Pronunciamentos", "📋 Vereadores"]
@@ -1906,7 +1906,7 @@ if vereador_selecionado != "Todos":
     foto       = mapa_foto.get(vereador_selecionado, '')
     cargo_v    = mapa_cargo.get(vereador_selecionado, '')
 
-    _titulo_pop2 = "📋 Resumo Geral" if modo_selecionado == "🚧 Período Eleitoral" else "📱 Em Destaque"
+    _titulo_pop2 = "📋 Resumo Geral" if modo_selecionado == "🗳️ Período Eleitoral" else "📱 Em Destaque"
     aba_pop2, aba_d1, aba_d2, aba_d3, aba_rel, aba_pron = st.tabs([
         _titulo_pop2, "📂 Matérias", "✅ PLOs aprovados", "🏷️ Assuntos", "📋 Relatorias", "📢 Pronunciamentos"
     ])
@@ -1961,7 +1961,7 @@ if vereador_selecionado != "Todos":
                 st.metric("📜 Projetos de Lei", int(dados_v['projetos_lei']))
             with r3:
                 st.metric("✅ PLOs aprovados", int(dados_v['projetos_virou_lei']))
-            if modo_selecionado == "🚧 Período Eleitoral":
+            if modo_selecionado == "🗳️ Período Eleitoral":
                 r4, r5 = st.columns(2)
                 with r4:
                     st.metric("📨 Indicações", int(dados_v['indicacoes']))
@@ -1997,7 +1997,7 @@ if vereador_selecionado != "Todos":
 
     with aba_d1:
         st.subheader(f"📋 {vereador_selecionado}")
-        if modo_selecionado == "🚧 Período Eleitoral":
+        if modo_selecionado == "🗳️ Período Eleitoral":
             c1, c2, c3, c4, c5 = st.columns(5)
             with c1:
                 st.metric("Total de matérias", int(dados_v['total_geral']))
