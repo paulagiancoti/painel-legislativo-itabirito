@@ -1064,7 +1064,7 @@ with c4:
     st.metric("PLOs aprovados", total_aprov_unicos)
     _rod_orig(c4_exec, c4_mesa, c4_outros)
 with c5:
-    st.metric("Taxa geral de aprovação", f"{taxa_geral}%")
+    st.metric("Taxa geral de aprovação das matérias legislativas", f"{taxa_geral}%")
     st.caption("dos vereadores ativos")
 
 
