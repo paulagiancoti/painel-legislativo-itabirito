@@ -504,7 +504,7 @@ SENHA_PADRAO = _ler_senha("SENHA_PADRAO")
 # Modo precisa ser lido antes dos demais filtros (mas exibido na 5ª coluna)
 with f5:
     modo_selecionado = st.selectbox(
-        "🗳️ Visualização", ["🚧 Período Eleitoral", "📊 Painel padrão"],
+        "🗳️ Visualização", ["🗳️ Período Eleitoral", "📊 Painel padrão"],
         help="Painel temporariamente simplificado em razão do período eleitoral."
     )
 
