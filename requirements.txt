@@ -3,3 +3,4 @@ pandas
 plotly
 openpyxl
 requests
+pyarrow<25.0.0
