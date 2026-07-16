@@ -5487,5 +5487,99 @@
       13
     ],
     "autores": []
+  },
+  {
+    "id": 5094,
+    "__str__": "Lei Ordinária Municipal nº 4.608, de 14 de julho de 2026",
+    "link_detail_backend": "/norma/5094",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-14T16:19:29-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5094/lei_no_4608_de_14_de_julho_de_2026_pl_166.2026.pdf",
+    "numero": "4608",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-14",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Altera a Lei Municipal nº 3.423, de 27 de julho de 2020, que dispõe sobre o Programa Municipal de Regularização de Obras em Andamento e de Obras Prontas e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-16T12:25:22.763303-03:00",
+    "data_ultima_atualizacao": "2026-07-16T12:25:22.939665-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-16T12:21:47.644375-03:00",
+    "tipo": 1,
+    "materia": 23333,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      6
+    ],
+    "autores": []
+  },
+  {
+    "id": 5093,
+    "__str__": "Lei Ordinária Municipal nº 4.607, de 14 de julho de 2026",
+    "link_detail_backend": "/norma/5093",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-14T16:26:32-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5093/lei_no_4607_de_14_de_julho_de_2026_pl_180.2026.pdf",
+    "numero": "4607",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-14",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Política Municipal de Alfabetização no âmbito da Rede Municipal de Ensino de Itabirito e estabelece diretrizes para a \r\ngarantia da alfabetização das crianças na idade adequada, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-16T12:21:02.568720-03:00",
+    "data_ultima_atualizacao": "2026-07-16T12:21:02.753647-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-16T12:16:14.302041-03:00",
+    "tipo": 1,
+    "materia": 23673,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      8
+    ],
+    "autores": []
   }
 ]
