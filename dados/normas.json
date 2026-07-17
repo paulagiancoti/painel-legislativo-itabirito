@@ -5626,5 +5626,37 @@
     "user": 89,
     "assuntos": [],
     "autores": []
+  },
+  {
+    "id": 5096,
+    "__str__": "Lei Ordinária Municipal nº 4.610, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5096",
+    "metadata": {},
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5096/lei_no_4610_de_16_de_julho_de_2026_pl_140.2026.pdf",
+    "numero": "4610",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre diretrizes para implementação do serviço de entrega domiciliar de medicamentos às pessoas com dificuldade de locomoção no âmbito do Município de Itabirito/MG, observadas a regulamentação, a conveniência administrativa e a disponibilidade orçamentária e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-17T07:09:34.697386-03:00",
+    "data_ultima_atualizacao": "2026-07-17T07:09:34.930673-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-17T06:55:47.389799-03:00",
+    "tipo": 1,
+    "materia": 22701,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
   }
 ]
