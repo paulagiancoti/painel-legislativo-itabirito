@@ -4470,7 +4470,7 @@
             [
               "Elio da Mata Santos",
               [
-                "2026-06-25T15:34:24-03:00",
+                "2026-06-25T15:53:47-03:00",
                 "ICP-Brasil"
               ]
             ]
@@ -4478,7 +4478,7 @@
         }
       }
     },
-    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4855/lei_no_4596_de_25_de_junho_de_2026_pl_122.2026.pdf",
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/4855/lei_4593.pdf",
     "numero": "4593",
     "ano": 2026,
     "esfera_federacao": "M",
@@ -4492,14 +4492,14 @@
     "observacao": "",
     "complemento": false,
     "data_vigencia": null,
-    "timestamp": "2026-06-29T07:42:04.096825-03:00",
-    "data_ultima_atualizacao": "2026-06-29T07:42:04.284758-03:00",
+    "timestamp": "2026-07-17T16:26:33.938464-03:00",
+    "data_ultima_atualizacao": "2026-07-17T16:26:33.958153-03:00",
     "ip": "189.90.249.57",
-    "ultima_edicao": "2026-06-29T07:39:57.540861-03:00",
+    "ultima_edicao": "2026-07-17T16:26:32.942272-03:00",
     "tipo": 1,
     "materia": 22391,
     "orgao": null,
-    "user": 89,
+    "user": 60,
     "assuntos": [
       35
     ],
