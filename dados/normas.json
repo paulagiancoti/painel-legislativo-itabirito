@@ -2140,7 +2140,7 @@
     "complemento": false,
     "data_vigencia": null,
     "timestamp": "2026-04-16T07:15:38.088710-03:00",
-    "data_ultima_atualizacao": "2026-04-16T07:15:38.274521-03:00",
+    "data_ultima_atualizacao": "2026-07-20T08:12:05.139341-03:00",
     "ip": "189.90.249.57",
     "ultima_edicao": "2026-04-16T07:13:02.841569-03:00",
     "tipo": 1,
@@ -2188,7 +2188,7 @@
     "complemento": false,
     "data_vigencia": null,
     "timestamp": "2026-04-16T07:12:37.612622-03:00",
-    "data_ultima_atualizacao": "2026-04-16T07:25:11.311612-03:00",
+    "data_ultima_atualizacao": "2026-07-20T08:11:24.084957-03:00",
     "ip": "189.90.249.57",
     "ultima_edicao": "2026-04-16T07:12:36.455267-03:00",
     "tipo": 1,
@@ -4070,7 +4070,7 @@
     "complemento": false,
     "data_vigencia": null,
     "timestamp": "2026-06-26T11:52:50.902403-03:00",
-    "data_ultima_atualizacao": "2026-06-26T11:52:50.921487-03:00",
+    "data_ultima_atualizacao": "2026-07-20T08:03:59.455811-03:00",
     "ip": "189.90.249.57",
     "ultima_edicao": "2026-06-26T11:52:50.716067-03:00",
     "tipo": 1,
@@ -4212,7 +4212,7 @@
     "complemento": false,
     "data_vigencia": null,
     "timestamp": "2026-06-26T07:05:33.651515-03:00",
-    "data_ultima_atualizacao": "2026-06-26T07:05:33.835779-03:00",
+    "data_ultima_atualizacao": "2026-07-20T08:09:29.801945-03:00",
     "ip": "189.90.249.57",
     "ultima_edicao": "2026-06-26T07:03:45.399723-03:00",
     "tipo": 1,
@@ -5656,6 +5656,618 @@
     "user": 89,
     "assuntos": [
       2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5116,
+    "__str__": "Lei Ordinária Municipal nº 4.623, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5116",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:42:43-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5116/lei_no_4623_de_16_de_julho_de_2026_pl_157.2026.pdf",
+    "numero": "4623",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Declara de Utilidade Pública a Associação de Mulheres da Economia Solidária – As Marias Sabores e Saberes.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:53:31.848814-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:53:32.012252-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:51:35.924946-03:00",
+    "tipo": 1,
+    "materia": 23166,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      26,
+      27
+    ],
+    "autores": []
+  },
+  {
+    "id": 5115,
+    "__str__": "Lei Ordinária Municipal nº 4.622, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5115",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:38:50-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5115/lei_no_4622_de_16_de_julho_de_2026_pl_152.2026.pdf",
+    "numero": "4622",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Praça Izaltino Alves de Oliveira”, a Praça localizada na interseção da Rua José Amaro Cordeiro, com a Rua Jarbas Nazareth de Souza e Rua Alfazema, no Loteamento Recanto das Colinas, Bairro Gutierrez, no Município de Itabirito/ MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:51:33.748653-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:51:33.917621-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:49:38.604461-03:00",
+    "tipo": 1,
+    "materia": 23070,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5114,
+    "__str__": "Lei Ordinária Municipal nº 4.621, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5114",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:37:23-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5114/lei_no_4621_de_16_de_julho_de_2026_pl_151.2026.pdf",
+    "numero": "4621",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Semana Municipal da Solidariedade e Cidadania no âmbito do Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:49:27.145489-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:49:27.307202-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:47:08.132300-03:00",
+    "tipo": 1,
+    "materia": 23069,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
+    "autores": []
+  },
+  {
+    "id": 5113,
+    "__str__": "Lei Ordinária Municipal nº 4.620, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5113",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:16:02-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5113/lei_no_4620_de_16_de_julho_de_2026_pl_153.2026.pdf",
+    "numero": "4620",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Praça Cleusa Baeta Alves”, a Praça localizada na interseção da Rua Girassol, com a Rua Alecrim e a Rua Cactos, no Loteamento Recanto das Colinas II, Bairro Gutierrez, no Município de Itabirito/ MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:46:56.369596-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:46:56.556111-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:45:20.699548-03:00",
+    "tipo": 1,
+    "materia": 23071,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5112,
+    "__str__": "Lei Ordinária Municipal nº 4.619, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5112",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:14:54-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5112/lei_no_4619_de_16_de_julho_de_2026_pl_148.2026.pdf",
+    "numero": "4619",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Avenida Simone de Jesus Chaves”, a Avenida “1 (um)”, localizada no loteamento denominado Retiro do Bação, situado no Distrito do Bação, no Município de Itabirito/ MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:45:07.569657-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:45:07.741165-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:43:41.350734-03:00",
+    "tipo": 1,
+    "materia": 22875,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5111,
+    "__str__": "Lei Ordinária Municipal nº 4.618, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5111",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:14:11-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5111/lei_no_4618_de_16_de_julho_de_2026_pl_149.2026.pdf",
+    "numero": "4618",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua Éder Marciano Zeferino”, a Rua “B”, localizada no loteamento denominado\r\nRetiro do Bação, situado no Distrito do Bação, no Município de Itabirito/ MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:43:25.870789-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:43:25.903850-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:43:25.672541-03:00",
+    "tipo": 1,
+    "materia": 22876,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5110,
+    "__str__": "Lei Ordinária Municipal nº 4.617, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5110",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:10:49-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5110/lei_no_4617_de_16_de_julho_de_2026_pl_150.2026.pdf",
+    "numero": "4617",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua Milton Pedrosa de Oliveira”, a Rua “C”, localizada no loteamento denominado Retiro do Bação, situado no Distrito do Bação, no Município de Itabirito/MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:41:22.606936-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:41:22.781270-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:39:34.822412-03:00",
+    "tipo": 1,
+    "materia": 22881,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5109,
+    "__str__": "Lei Ordinária Municipal nº 4.616, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5109",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:10:07-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5109/lei_no_4616_de_16_de_julho_de_2026_pl_147.2026.pdf",
+    "numero": "4616",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua Maria do Carmo Lopes Pimenta Faria”, a Avenida Principal, localizada no loteamento denominado Retiro do Bação, situado no Distrito do Bação, no Município de Itabirito/ MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:39:26.163393-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:39:26.185992-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:39:25.979727-03:00",
+    "tipo": 1,
+    "materia": 22874,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5108,
+    "__str__": "Lei Ordinária Municipal nº 4.615, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5108",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:09:17-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5108/lei_no_4615_de_16_de_julho_de_2026_pl_146.2026.pdf",
+    "numero": "4615",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua Adelino Ramiro Cardoso”, a Rua “A”, localizada no loteamento denominado Retiro do Bação, situado no Distrito do Bação, no Município de Itabirito/MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:37:00.738457-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:37:00.927818-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:34:28.660440-03:00",
+    "tipo": 1,
+    "materia": 22873,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5107,
+    "__str__": "Lei Ordinária Municipal nº 4.614, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5107",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:07:13-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5107/lei_no_4614_de_16_de_julho_de_2026_pl_159.2026.pdf",
+    "numero": "4614",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Política Municipal de Segurança em Eventos Temporários e Espaços de Diversão no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:34:17.520575-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:34:17.760038-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:31:06.857827-03:00",
+    "tipo": 1,
+    "materia": 23234,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      14,
+      29
+    ],
+    "autores": []
+  },
+  {
+    "id": 5106,
+    "__str__": "Lei Ordinária Municipal nº 4.613, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5106",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:06:03-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5106/lei_no_4613_de_16_de_julho_de_2026_pl_171.2026.pdf",
+    "numero": "4613",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre diretrizes de interesse público para incentivo à adoção de boas práticas de segurança viária e mobilidade segura no ambiente corporativo no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:30:58.863233-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:30:59.051095-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:03:41.254074-03:00",
+    "tipo": 1,
+    "materia": 23368,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      9,
+      29
+    ],
+    "autores": []
+  },
+  {
+    "id": 5105,
+    "__str__": "Lei Ordinária Municipal nº 4.612, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5105",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:04:11-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5105/lei_no_4612_de_16_de_julho_de_2026_pl_174.2026.pdf",
+    "numero": "4612",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Assegura ao paciente surdo o direito de ser assistido por tradutor e intérprete de LIBRAS nos estabelecimentos de saúde do Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:03:22.905890-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:03:23.099740-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T07:01:22.779236-03:00",
+    "tipo": 1,
+    "materia": 23374,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5104,
+    "__str__": "Lei Ordinária Municipal nº 4.611, de 16 de julho de 2026",
+    "link_detail_backend": "/norma/5104",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-16T17:07:58-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5104/lei_no_4611_de_16_de_julho_de_2026_pl_158.2026.pdf",
+    "numero": "4611",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dá nova redação ao artigo 2º, da Lei nº 4.414, de 22 de setembro de 2025, que “Institui o\r\nDIA MUNICIPAL DA MULHER NEGRA no âmbito da Câmara Municipal de Itabirito e dá\r\noutras providências”.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-20T07:01:12.530882-03:00",
+    "data_ultima_atualizacao": "2026-07-20T07:01:12.841205-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-20T06:57:36.999323-03:00",
+    "tipo": 1,
+    "materia": 23179,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      40
     ],
     "autores": []
   }
