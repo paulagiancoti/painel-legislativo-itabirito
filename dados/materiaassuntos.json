@@ -8,6 +8,22 @@
     "materia": 23158
   },
   {
+    "id": 738,
+    "__str__": "Projeto de Lei Ordinária nº 188 de 2026 - Acessibilidade",
+    "link_detail_backend": "/materia/materiaassunto/738",
+    "metadata": {},
+    "assunto": 40,
+    "materia": 23945
+  },
+  {
+    "id": 733,
+    "__str__": "Projeto de Lei Ordinária nº 185 de 2026 - Acessibilidade",
+    "link_detail_backend": "/materia/materiaassunto/733",
+    "metadata": {},
+    "assunto": 40,
+    "materia": 23862
+  },
+  {
     "id": 701,
     "__str__": "Projeto de Lei Ordinária nº 174 de 2026 - Acessibilidade",
     "link_detail_backend": "/materia/materiaassunto/701",
@@ -134,6 +150,54 @@
     "metadata": {},
     "assunto": 44,
     "materia": 20832
+  },
+  {
+    "id": 727,
+    "__str__": "Projeto de Lei Ordinária nº 183 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/727",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23768
+  },
+  {
+    "id": 724,
+    "__str__": "Projeto de Lei Ordinária nº 181 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/724",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23674
+  },
+  {
+    "id": 722,
+    "__str__": "Projeto de Lei Ordinária nº 180 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/722",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23673
+  },
+  {
+    "id": 720,
+    "__str__": "Projeto de Lei Ordinária nº 179 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/720",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23557
+  },
+  {
+    "id": 714,
+    "__str__": "Projeto de Lei Ordinária nº 176 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/714",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23498
+  },
+  {
+    "id": 711,
+    "__str__": "Projeto de Lei Ordinária nº 175 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/711",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 23497
   },
   {
     "id": 700,
@@ -416,6 +480,22 @@
     "materia": 21528
   },
   {
+    "id": 729,
+    "__str__": "Projeto de Lei Ordinária nº 184 de 2026 - Associação",
+    "link_detail_backend": "/materia/materiaassunto/729",
+    "metadata": {},
+    "assunto": 25,
+    "materia": 23789
+  },
+  {
+    "id": 717,
+    "__str__": "Projeto de Lei Ordinária nº 177 de 2026 - Associação",
+    "link_detail_backend": "/materia/materiaassunto/717",
+    "metadata": {},
+    "assunto": 25,
+    "materia": 23503
+  },
+  {
     "id": 666,
     "__str__": "Projeto de Lei Ordinária nº 157 de 2026 - Associação",
     "link_detail_backend": "/materia/materiaassunto/666",
@@ -574,6 +654,22 @@
     "metadata": {},
     "assunto": 1,
     "materia": 22085
+  },
+  {
+    "id": 734,
+    "__str__": "Projeto de Lei Ordinária nº 186 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/734",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 23863
+  },
+  {
+    "id": 726,
+    "__str__": "Projeto de Lei Ordinária nº 182 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/726",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 23675
   },
   {
     "id": 668,
@@ -910,6 +1006,14 @@
     "metadata": {},
     "assunto": 3,
     "materia": 21508
+  },
+  {
+    "id": 731,
+    "__str__": "Projeto de Lei Ordinária nº 185 de 2026 - Comunicação",
+    "link_detail_backend": "/materia/materiaassunto/731",
+    "metadata": {},
+    "assunto": 3,
+    "materia": 23862
   },
   {
     "id": 694,
@@ -1504,6 +1608,14 @@
     "materia": 23158
   },
   {
+    "id": 725,
+    "__str__": "Projeto de Lei Ordinária nº 181 de 2026 - Desenvolvimento Urbano",
+    "link_detail_backend": "/materia/materiaassunto/725",
+    "metadata": {},
+    "assunto": 53,
+    "materia": 23674
+  },
+  {
     "id": 689,
     "__str__": "Projeto de Lei Ordinária nº 166 de 2026 - Desenvolvimento Urbano",
     "link_detail_backend": "/materia/materiaassunto/689",
@@ -1654,6 +1766,30 @@
     "metadata": {},
     "assunto": 9,
     "materia": 22073
+  },
+  {
+    "id": 723,
+    "__str__": "Projeto de Lei Ordinária nº 180 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/723",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 23673
+  },
+  {
+    "id": 715,
+    "__str__": "Projeto de Lei Ordinária nº 176 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/715",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 23498
+  },
+  {
+    "id": 712,
+    "__str__": "Projeto de Lei Ordinária nº 175 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/712",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 23497
   },
   {
     "id": 683,
@@ -3296,6 +3432,14 @@
     "materia": 20832
   },
   {
+    "id": 716,
+    "__str__": "Projeto de Lei Ordinária nº 176 de 2026 - Indústria, Comércio e Serviços",
+    "link_detail_backend": "/materia/materiaassunto/716",
+    "metadata": {},
+    "assunto": 45,
+    "materia": 23498
+  },
+  {
     "id": 531,
     "__str__": "Projeto de Lei Ordinária nº 118 de 2026 - Indústria, Comércio e Serviços",
     "link_detail_backend": "/materia/materiaassunto/531",
@@ -3390,6 +3534,14 @@
     "metadata": {},
     "assunto": 14,
     "materia": 20596
+  },
+  {
+    "id": 735,
+    "__str__": "Projeto de Lei Ordinária nº 187 de 2026 - Matéria Tributária",
+    "link_detail_backend": "/materia/materiaassunto/735",
+    "metadata": {},
+    "assunto": 51,
+    "materia": 23883
   },
   {
     "id": 550,
@@ -3886,6 +4038,38 @@
     "metadata": {},
     "assunto": 43,
     "materia": 22085
+  },
+  {
+    "id": 737,
+    "__str__": "Projeto de Lei Ordinária nº 188 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/737",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 23945
+  },
+  {
+    "id": 732,
+    "__str__": "Projeto de Lei Ordinária nº 185 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/732",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 23862
+  },
+  {
+    "id": 728,
+    "__str__": "Projeto de Lei Ordinária nº 183 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/728",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 23768
+  },
+  {
+    "id": 713,
+    "__str__": "Projeto de Lei Ordinária nº 175 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/713",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 23497
   },
   {
     "id": 702,
@@ -4864,6 +5048,14 @@
     "materia": 21071
   },
   {
+    "id": 721,
+    "__str__": "Projeto de Lei Ordinária nº 179 de 2026 - Servidor Público",
+    "link_detail_backend": "/materia/materiaassunto/721",
+    "metadata": {},
+    "assunto": 30,
+    "materia": 23557
+  },
+  {
     "id": 708,
     "__str__": "Projeto de Lei Ordinária nº 164 de 2026 - Servidor Público",
     "link_detail_backend": "/materia/materiaassunto/708",
@@ -4982,6 +5174,14 @@
     "metadata": {},
     "assunto": 22,
     "materia": 20585
+  },
+  {
+    "id": 719,
+    "__str__": "Projeto de Lei Ordinária nº 178 de 2026 - Trânsito",
+    "link_detail_backend": "/materia/materiaassunto/719",
+    "metadata": {},
+    "assunto": 23,
+    "materia": 23536
   },
   {
     "id": 697,
@@ -5152,6 +5352,14 @@
     "materia": 6519
   },
   {
+    "id": 736,
+    "__str__": "Projeto de Lei Ordinária nº 188 de 2026 - Transporte",
+    "link_detail_backend": "/materia/materiaassunto/736",
+    "metadata": {},
+    "assunto": 34,
+    "materia": 23945
+  },
+  {
     "id": 561,
     "__str__": "Projeto de Lei Ordinária nº 110 de 2026 - Transporte",
     "link_detail_backend": "/materia/materiaassunto/561",
@@ -5198,6 +5406,22 @@
     "metadata": {},
     "assunto": 26,
     "materia": 21528
+  },
+  {
+    "id": 730,
+    "__str__": "Projeto de Lei Ordinária nº 184 de 2026 - Utilidade Pública",
+    "link_detail_backend": "/materia/materiaassunto/730",
+    "metadata": {},
+    "assunto": 26,
+    "materia": 23789
+  },
+  {
+    "id": 718,
+    "__str__": "Projeto de Lei Ordinária nº 177 de 2026 - Utilidade Pública",
+    "link_detail_backend": "/materia/materiaassunto/718",
+    "metadata": {},
+    "assunto": 26,
+    "materia": 23503
   },
   {
     "id": 667,
