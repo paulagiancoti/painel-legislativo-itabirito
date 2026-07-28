@@ -1898,15 +1898,15 @@
     "veiculo_publicacao": "",
     "pagina_inicio_publicacao": null,
     "pagina_fim_publicacao": null,
-    "ementa": "Dispõe sobre a criação da Semana da Biodiversidade no Município de Itabirito/MG, com\r\nfoco na proteção de mananciais e espécies ameaçadas, e dá outras providências.",
+    "ementa": "Dispõe sobre a criação da Semana da Biodiversidade no Município de Itabirito/MG, com foco na proteção de mananciais e espécies ameaçadas, e dá outras providências.",
     "indexacao": "",
     "observacao": "",
     "complemento": false,
     "data_vigencia": null,
-    "timestamp": "2026-04-23T08:13:55.091738-03:00",
-    "data_ultima_atualizacao": "2026-04-23T08:13:55.109990-03:00",
+    "timestamp": "2026-07-28T12:32:30.283524-03:00",
+    "data_ultima_atualizacao": "2026-07-28T12:32:30.307540-03:00",
     "ip": "189.90.249.57",
-    "ultima_edicao": "2026-04-23T08:13:54.924679-03:00",
+    "ultima_edicao": "2026-07-28T12:32:30.102520-03:00",
     "tipo": 1,
     "materia": 21132,
     "orgao": null,
@@ -2140,7 +2140,7 @@
     "complemento": false,
     "data_vigencia": null,
     "timestamp": "2026-04-16T07:15:38.088710-03:00",
-    "data_ultima_atualizacao": "2026-07-20T08:12:05.139341-03:00",
+    "data_ultima_atualizacao": "2026-07-28T11:51:33.368903-03:00",
     "ip": "189.90.249.57",
     "ultima_edicao": "2026-04-16T07:13:02.841569-03:00",
     "tipo": 1,
@@ -2188,7 +2188,7 @@
     "complemento": false,
     "data_vigencia": null,
     "timestamp": "2026-04-16T07:12:37.612622-03:00",
-    "data_ultima_atualizacao": "2026-07-20T08:11:24.084957-03:00",
+    "data_ultima_atualizacao": "2026-07-28T11:52:07.359468-03:00",
     "ip": "189.90.249.57",
     "ultima_edicao": "2026-04-16T07:12:36.455267-03:00",
     "tipo": 1,
@@ -6212,7 +6212,7 @@
     "complemento": false,
     "data_vigencia": null,
     "timestamp": "2026-07-20T07:03:22.905890-03:00",
-    "data_ultima_atualizacao": "2026-07-20T07:03:23.099740-03:00",
+    "data_ultima_atualizacao": "2026-07-28T11:52:59.328545-03:00",
     "ip": "189.90.249.57",
     "ultima_edicao": "2026-07-20T07:01:22.779236-03:00",
     "tipo": 1,
@@ -6269,6 +6269,287 @@
     "assuntos": [
       40
     ],
+    "autores": []
+  },
+  {
+    "id": 5201,
+    "__str__": "Lei Ordinária Municipal nº 4.629, de 24 de julho de 2026",
+    "link_detail_backend": "/norma/5201",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-24T16:47:33-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5201/lei_no_4629_de_24_de_julho_de_2026_pl_173.2026.pdf",
+    "numero": "4629",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre a autorização para a instituição do Cadastro Municipal de Intérpretes e Instrutores da Língua Brasileira de Sinais – Libras no âmbito do Município de Itabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-28T07:26:44.949686-03:00",
+    "data_ultima_atualizacao": "2026-07-28T07:26:45.111256-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-28T07:24:28.446445-03:00",
+    "tipo": 1,
+    "materia": 23372,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      34,
+      24
+    ],
+    "autores": []
+  },
+  {
+    "id": 5200,
+    "__str__": "Lei Ordinária Municipal nº 4.628, de 24 de julho de 2026",
+    "link_detail_backend": "/norma/5200",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-24T16:47:19-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5200/lei_no_4628_de_24_de_julho_de_2026_pl_172.2026.pdf",
+    "numero": "4628",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre diretrizes de interesse público para incentivo à arborização urbana participativa\r\nno Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-28T07:24:17.815119-03:00",
+    "data_ultima_atualizacao": "2026-07-28T07:24:17.992579-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-28T07:22:44.613469-03:00",
+    "tipo": 1,
+    "materia": 23369,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4
+    ],
+    "autores": []
+  },
+  {
+    "id": 5199,
+    "__str__": "Lei Ordinária Municipal nº 4.627, de 24 de julho de 2026",
+    "link_detail_backend": "/norma/5199",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-24T16:46:57-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5199/lei_no_4627_de_24_de_julho_de_2026_pl_170.2026.pdf",
+    "numero": "4627",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre diretrizes de interesse público para proteção e valorização das nascentes urbanas no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-28T07:22:38.178569-03:00",
+    "data_ultima_atualizacao": "2026-07-28T07:22:38.349060-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-28T07:20:46.638090-03:00",
+    "tipo": 1,
+    "materia": 23366,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4
+    ],
+    "autores": []
+  },
+  {
+    "id": 5198,
+    "__str__": "Lei Ordinária Municipal nº 4.626, de 24 de julho de 2026",
+    "link_detail_backend": "/norma/5198",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-24T16:46:36-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5198/lei_no_4626_de_24_de_julho_de_2026_pl_168.2026.pdf",
+    "numero": "4626",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre diretrizes de interesse público para incentivo ao cicloturismo, ao ecoturismo e à valorização das trilhas de uso sustentável no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-28T07:20:32.417626-03:00",
+    "data_ultima_atualizacao": "2026-07-28T07:20:32.609026-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-28T07:14:48.225558-03:00",
+    "tipo": 1,
+    "materia": 23362,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4
+    ],
+    "autores": []
+  },
+  {
+    "id": 5197,
+    "__str__": "Lei Ordinária Municipal nº 4.625, de 24 de julho de 2026",
+    "link_detail_backend": "/norma/5197",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-24T16:46:15-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5197/lei_no_4625_de_24_de_julho_de_2026_pl_156.2026.pdf",
+    "numero": "4625",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a campanha “Junho Violeta”, em alusão ao Dia Mundial de Conscientização da Violência contra a Pessoa Idosa, no âmbito do Município de Itabirito e dá outras\r\nprovidências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-28T07:14:44.950239-03:00",
+    "data_ultima_atualizacao": "2026-07-28T07:14:44.972745-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-28T07:14:44.691768-03:00",
+    "tipo": 1,
+    "materia": 23165,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      25
+    ],
+    "autores": []
+  },
+  {
+    "id": 5196,
+    "__str__": "Lei Ordinária Municipal nº 4.624, de 24 de julho de 2026",
+    "link_detail_backend": "/norma/5196",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-24T16:45:32-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5196/lei_no_4624_de_24_de_julho_de_2026_pl_155.2026.pdf",
+    "numero": "4624",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Política Municipal de Incentivo à Participação de Fornecedores Locais na Plataforma Contrata + Brasil e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-28T12:36:09.773165-03:00",
+    "data_ultima_atualizacao": "2026-07-28T12:36:09.795056-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-28T12:36:09.552123-03:00",
+    "tipo": 1,
+    "materia": 23298,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
     "autores": []
   }
 ]
