@@ -6551,5 +6551,99 @@
     "user": 89,
     "assuntos": [],
     "autores": []
+  },
+  {
+    "id": 5237,
+    "__str__": "Lei Ordinária Municipal nº 4.631, de 29 de julho de 2026",
+    "link_detail_backend": "/norma/5237",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-29T16:29:26-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5237/lei_4631.pdf",
+    "numero": "4631",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-29",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Semana e o Dia da Mulher Rural no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-31T07:56:33.634850-03:00",
+    "data_ultima_atualizacao": "2026-07-31T07:56:33.848556-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-31T07:54:06.117413-03:00",
+    "tipo": 1,
+    "materia": 23675,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      25
+    ],
+    "autores": []
+  },
+  {
+    "id": 5236,
+    "__str__": "Lei Ordinária Municipal nº 4.630, de 29 de julho de 2026",
+    "link_detail_backend": "/norma/5236",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-07-29T16:29:08-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5236/lei_4630.pdf",
+    "numero": "4630",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-07-29",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre diretrizes de interesse público para promoção da educação e da cultura de paz no trânsito no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-07-31T07:53:47.674619-03:00",
+    "data_ultima_atualizacao": "2026-07-31T07:53:47.899714-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-07-31T07:50:43.357040-03:00",
+    "tipo": 1,
+    "materia": 23536,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
   }
 ]
