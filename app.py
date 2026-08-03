@@ -1452,7 +1452,7 @@ def renderizar_aba_materias():
 # que já é compartilhado entre os dois modos (mesmas abas: Em Destaque, Matérias,
 # PLOs aprovados, Assuntos, Relatorias, Pronunciamentos — sem duplicar código).
 if modo_selecionado == "🗳️ Período Eleitoral" and vereador_selecionado == "Todos":
-    st.caption("🗳️ Visualização adaptada para o período eleitoral — em construção, mais itens a caminho.")
+    st.caption("🗳️ Visualização adaptada para o período eleitoral.")
 
     _titulos_pe = ["🏷️ Projetos por assunto", "📄 Matérias", "📢 Pronunciamentos", "📋 Vereadores"]
     _abas_pe = st.tabs(_titulos_pe)
