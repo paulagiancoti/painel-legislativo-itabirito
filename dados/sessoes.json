@@ -16393,5 +16393,33 @@
     "sessao_legislativa": 72,
     "legislatura": 41,
     "correspondencias": []
+  },
+  {
+    "id": 583,
+    "__str__": "22ª Sessão Ordinária da 2ª Sessão Legislativa da 22ª Legislatura",
+    "link_detail_backend": "/sessao/583",
+    "metadata": {},
+    "cod_andamento_sessao": null,
+    "painel_aberto": false,
+    "data_inicio": "2026-08-03",
+    "hora_inicio": "17:15",
+    "hora_fim": "19:22",
+    "numero": 22,
+    "data_fim": "2026-08-03",
+    "url_audio": "",
+    "url_video": "https://www.youtube.com/watch?v=WPiyENUebFA",
+    "upload_pauta": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/583/pauta/reuniao_ordinaria_030826.pdf",
+    "upload_ata": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/583/ata/ata_030826_a_ser_discutida_e_votada.pdf",
+    "upload_anexo": null,
+    "iniciada": true,
+    "finalizada": false,
+    "interativa": false,
+    "tema_solene": "",
+    "data_ultima_atualizacao": "2026-08-04T13:00:03.770019-03:00",
+    "publicar_pauta": true,
+    "tipo": 1,
+    "sessao_legislativa": 72,
+    "legislatura": 41,
+    "correspondencias": []
   }
 ]
