@@ -6693,5 +6693,37 @@
       27
     ],
     "autores": []
+  },
+  {
+    "id": 5240,
+    "__str__": "Emenda a Lei Orgânica nº 1, de 03 de agosto de 2026",
+    "link_detail_backend": "/norma/5240",
+    "metadata": {},
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5240/emenda_a_lei_organica_no_01.2026_-_promulga_em_03_de_agosto_de_2026.pdf",
+    "numero": "1",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-08-03",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Insere o Art. 108-B na Lei Orgânica do Município de Itabirito para instituir as Emendas de Bancada ao orçamento municipal conforme emenda constitucional nº 100, de 26 de junho de 2019.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-08-06T07:01:05.861874-03:00",
+    "data_ultima_atualizacao": "2026-08-06T07:01:06.175651-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-08-06T06:56:16.771149-03:00",
+    "tipo": 4,
+    "materia": null,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      36
+    ],
+    "autores": []
   }
 ]
