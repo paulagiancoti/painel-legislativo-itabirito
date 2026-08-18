@@ -16449,5 +16449,33 @@
     "sessao_legislativa": 72,
     "legislatura": 41,
     "correspondencias": []
+  },
+  {
+    "id": 585,
+    "__str__": "24ª Sessão Ordinária da 2ª Sessão Legislativa da 22ª Legislatura",
+    "link_detail_backend": "/sessao/585",
+    "metadata": {},
+    "cod_andamento_sessao": null,
+    "painel_aberto": false,
+    "data_inicio": "2026-08-17",
+    "hora_inicio": "17:12",
+    "hora_fim": "19:05",
+    "numero": 24,
+    "data_fim": "2026-08-17",
+    "url_audio": "",
+    "url_video": "https://www.youtube.com/watch?v=L_qczb_AzRE",
+    "upload_pauta": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/585/pauta/reuniao_ordinaria_170826.pdf",
+    "upload_ata": null,
+    "upload_anexo": null,
+    "iniciada": true,
+    "finalizada": true,
+    "interativa": false,
+    "tema_solene": "",
+    "data_ultima_atualizacao": "2026-08-17T19:00:46.461816-03:00",
+    "publicar_pauta": true,
+    "tipo": 1,
+    "sessao_legislativa": 72,
+    "legislatura": 41,
+    "correspondencias": []
   }
 ]
