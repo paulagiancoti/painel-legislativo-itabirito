@@ -25726,7 +25726,7 @@
     "tipo__sigla": "PLS",
     "tipo__descricao": "Projeto de Lei Substitutivo",
     "autoria": "Elio da Mata",
-    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24427/projeto_de_lei_no_192.2026_-_fernado_substitutivo.pdf",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24427/projeto_de_lei_no_196.2026_-_executivo_substitutivo_recebido_120826_as_17.41h.pdf",
     "ementa": "Dispõe sobre a proteção e a gestão do patrimônio cultural do Município de Itabirito, institui o Sistema Municipal de Proteção e Gestão do Patrimônio Cultural, disciplina os instrumentos de proteção, organiza o processo administrativo correspondente, dispõe sobre o Conselho Municipal do Patrimônio Cultural e dá outras providências."
   },
   {
@@ -26738,5 +26738,65 @@
     "autoria": "Fernando da Sheila",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24571/dia_24_req_-_solicitacao_de_informacoes_referentes_a_execucao_das_obras_do_anexo_a_upa_24h.pdf",
     "ementa": "Requeiro ao Poder Executivo Municipal que, por meio da Secretaria Competente, sejam solicitadas informações referentes às obras de construção do anexo à UPA 24h, no Bairro Santa Efigênia, no Município de Itabirito/MG."
+  },
+  {
+    "id": "24584",
+    "ano": "2026",
+    "numero": "1578",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Lucas do Zé Maria",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24584/indicacao_1.pdf",
+    "ementa": "Indico o envio de solicitação ao Poder Executivo Municipal, por meio da Secretaria competente, para que sejam adotadas as providências necessárias visando à retirada de entulhos, lixo e demais resíduos acumulados na Alameda Domingos de Abreu, no bairro Quinta dos Inconfidentes, bem como a realização de serviços de limpeza, manutenção e conservação do local."
+  },
+  {
+    "id": "24585",
+    "ano": "2026",
+    "numero": "1579",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Lucas do Zé Maria",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24585/indicacao_2.pdf",
+    "ementa": "Indico o envio de solicitação ao Poder Executivo Municipal, por meio da Secretaria competente, para que sejam adotadas as providências necessárias visando à substituição das lâmpadas queimadas ou danificadas na praça do bairro Padre Adelmo, bem como à verificação das demais estruturas do sistema de iluminação, a fim de garantir condições adequadas de luminosidade, segurança e utilização do espaço público pela população."
+  },
+  {
+    "id": "24586",
+    "ano": "2026",
+    "numero": "1580",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Lucas do Zé Maria",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24586/indicacao_3.pdf",
+    "ementa": "Indico o envio de solicitação ao Poder Executivo Municipal, por meio da Secretaria competente, para que sejam adotadas as providências necessárias visando à instalação de gradil de proteção na praça localizada no bairro Padre Adelmo, com o objetivo de proporcionar maior segurança aos usuários, especialmente crianças, idosos e demais frequentadores do espaço público, bem como contribuir para a adequada organização e preservação da área."
+  },
+  {
+    "id": "24587",
+    "ano": "2026",
+    "numero": "1581",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Lucas do Zé Maria",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24587/indicacao_4.pdf",
+    "ementa": "Indico o envio de solicitação ao Poder Executivo Municipal, por meio da Secretaria competente, para que sejam adotadas as providências necessárias visando à realização de operação tapa-buracos em toda a extensão da Rua Góis, localizada no bairro Bela Vista, com a devida recuperação do pavimento e correção dos pontos que apresentam deterioração, a fim de garantir melhores condições de trafegabilidade, segurança e mobilidade para motoristas, motociclistas, ciclistas e pedestres que utilizam a via."
+  },
+  {
+    "id": "24588",
+    "ano": "2026",
+    "numero": "1582",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Lucas do Zé Maria",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24588/indicacao_5.pdf",
+    "ementa": "Indico o envio de solicitação ao Poder Executivo Municipal, por meio da Secretaria competente, para que sejam adotadas as providências necessárias visando à realização de melhorias e ao nivelamento do calçamento da Rua Emídio Quites, especialmente nos trechos que apresentam desníveis e irregularidades, a fim de proporcionar melhores condições de circulação, segurança e mobilidade aos pedestres e demais usuários da via."
+  },
+  {
+    "id": "24583",
+    "ano": "2026",
+    "numero": "214",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24583/projeto_de_lei_para_acamados.pdf",
+    "ementa": "Institui diretrizes para a atenção integral à pessoa acamada no Município de Itabirito."
   }
 ]
