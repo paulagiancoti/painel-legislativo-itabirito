@@ -627,6 +627,22 @@ elif tema == "🌙 Escuro":
         background-color: #2D3748 !important;
         color: #FFFFFF !important;
     }
+    /* Botão padrão (ex: Marcar/Desmarcar todos) — tema escuro */
+    [data-testid="stButton"] button[kind="secondary"] {
+        background-color: #1A1F2E !important;
+        color: #FAFAFA !important;
+        border: 1px solid rgba(255,255,255,0.35) !important;
+    }
+    [data-testid="stButton"] button[kind="secondary"]:hover {
+        background-color: #2D3748 !important;
+        color: #FFFFFF !important;
+    }
+    /* Cabeçalho do expander (ex: filtro de assuntos) — tema escuro */
+    [data-testid="stExpander"] summary {
+        background-color: #1A1F2E !important;
+        color: #FAFAFA !important;
+        border: 1px solid rgba(255,255,255,0.35) !important;
+    }
     </style>""", unsafe_allow_html=True)
     plot_bg = "#0E1117"; plot_paper = "#0E1117"; plot_font = "#FAFAFA"; plot_grid = "#2D3748"
     plot_colorscale = 'Blues'
@@ -666,6 +682,22 @@ elif tema == "🏛️ Institucional":
     [data-testid="stLinkButton"] a:hover {
         background-color: #022B6B !important;
         color: #FFCD00 !important;
+    }
+    /* Botão padrão (ex: Marcar/Desmarcar todos) — tema institucional */
+    [data-testid="stButton"] button[kind="secondary"] {
+        background-color: #033983 !important;
+        color: #FFFFFF !important;
+        border: 1px solid #FFCD00 !important;
+    }
+    [data-testid="stButton"] button[kind="secondary"]:hover {
+        background-color: #022B6B !important;
+        color: #FFCD00 !important;
+    }
+    /* Cabeçalho do expander (ex: filtro de assuntos) — tema institucional */
+    [data-testid="stExpander"] summary {
+        background-color: #033983 !important;
+        color: #FFFFFF !important;
+        border: 1px solid #FFCD00 !important;
     }
     </style>""", unsafe_allow_html=True)
     plot_bg = "#033983"; plot_paper = "#033983"; plot_font = "#FFFFFF"; plot_grid = "rgba(255,255,255,0.2)"
