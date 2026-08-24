@@ -1746,23 +1746,48 @@ if vereador_selecionado == "Todos":
             def _marcar_todos_aa():
                 for _a in lista_assuntos_aa:
                     st.session_state[f"chk_aa_{_a}"] = True
+                st.session_state['aa_expander_open'] = True
 
             def _desmarcar_todos_aa():
                 for _a in lista_assuntos_aa:
                     st.session_state[f"chk_aa_{_a}"] = False
+                st.session_state['aa_expander_open'] = True
+
+            def _aplicar_filtro_aa():
+                # Só agora a seleção dos checkboxes "trava" no gráfico —
+                # marcar/desmarcar individualmente não recalcula nada sozinho.
+                st.session_state['aa_assuntos_aplicados'] = [
+                    _a for _a in lista_assuntos_aa
+                    if st.session_state.get(f"chk_aa_{_a}", True)
+                ]
+                st.session_state['aa_expander_open'] = False
 
             _qtd_marcados_aa = sum(
                 st.session_state.get(f"chk_aa_{_a}", True) for _a in lista_assuntos_aa
             )
             with st.expander(
-                f"🔧 Selecionar assuntos ({_qtd_marcados_aa} de {len(lista_assuntos_aa)} selecionados)",
-                expanded=False
+                f"🔧 Selecionar assuntos ({_qtd_marcados_aa} de {len(lista_assuntos_aa)} marcados)",
+                expanded=st.session_state.get('aa_expander_open', True)
             ):
-                col_m_aa, col_d_aa = st.columns(2)
+                col_m_aa, col_d_aa, col_ok_aa = st.columns(3)
                 with col_m_aa:
                     st.button("✅ Marcar todos", on_click=_marcar_todos_aa, key="btn_marcar_aa")
                 with col_d_aa:
                     st.button("⬜ Desmarcar todos", on_click=_desmarcar_todos_aa, key="btn_desmarcar_aa")
+                with col_ok_aa:
+                    st.button("👍 OK, aplicar", on_click=_aplicar_filtro_aa,
+                              key="btn_aplicar_aa", type="primary")
+
+                _selecao_atual_aa = [
+                    _a for _a in lista_assuntos_aa
+                    if st.session_state.get(f"chk_aa_{_a}", True)
+                ]
+                _aplicado_atual_aa = [
+                    _a for _a in st.session_state.get('aa_assuntos_aplicados', lista_assuntos_aa)
+                    if _a in lista_assuntos_aa
+                ]
+                if set(_selecao_atual_aa) != set(_aplicado_atual_aa):
+                    st.caption("⚠️ Seleção alterada — clique em **OK, aplicar** para atualizar o gráfico.")
 
                 n_cols_aa = 3
                 cols_aa = st.columns(n_cols_aa)
@@ -1770,13 +1795,15 @@ if vereador_selecionado == "Todos":
                     with cols_aa[i % n_cols_aa]:
                         st.checkbox(_assunto_aa, value=True, key=f"chk_aa_{_assunto_aa}")
 
+            # O gráfico usa a seleção APLICADA (último clique em "OK, aplicar"),
+            # não o estado ao vivo dos checkboxes — evita recálculo a cada clique.
             assuntos_marcados_aa = [
-                _a for _a in lista_assuntos_aa
-                if st.session_state.get(f"chk_aa_{_a}", True)
+                _a for _a in st.session_state.get('aa_assuntos_aplicados', lista_assuntos_aa)
+                if _a in lista_assuntos_aa
             ]
 
             if not assuntos_marcados_aa:
-                st.info("Nenhum assunto selecionado. Marque ao menos um assunto acima para ver o ranking.")
+                st.info("Nenhum assunto aplicado. Marque ao menos um assunto e clique em 'OK, aplicar'.")
             else:
                 # PLOs que têm ao menos um dos assuntos marcados (um PLO pode ter
                 # vários assuntos — basta um estar marcado pra entrar no cálculo)
