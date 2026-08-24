@@ -1739,8 +1739,7 @@ if vereador_selecionado == "Todos":
 
             st.caption(
                 "Selecione quais assuntos entram no cálculo da taxa de aprovação "
-                "de cada vereador — cada cidadão pode montar o próprio recorte "
-                "do que considera relevante para comparar."
+                "de cada vereador."
             )
 
             def _marcar_todos_aa():
@@ -1791,9 +1790,16 @@ if vereador_selecionado == "Todos":
 
                 n_cols_aa = 3
                 cols_aa = st.columns(n_cols_aa)
-                for i, _assunto_aa in enumerate(lista_assuntos_aa):
-                    with cols_aa[i % n_cols_aa]:
-                        st.checkbox(_assunto_aa, value=True, key=f"chk_aa_{_assunto_aa}")
+                # Blocos contínuos (1º terço, 2º terço, 3º terço) em vez de
+                # round-robin (i % n_cols) — assim a ordem alfabética se mantém
+                # contínua tanto lendo coluna a coluna no PC quanto empilhada
+                # no celular (onde as colunas viram uma lista única).
+                tam_bloco_aa = -(-len(lista_assuntos_aa) // n_cols_aa)  # divisão arredondada pra cima
+                for c in range(n_cols_aa):
+                    bloco_aa = lista_assuntos_aa[c * tam_bloco_aa: (c + 1) * tam_bloco_aa]
+                    with cols_aa[c]:
+                        for _assunto_aa in bloco_aa:
+                            st.checkbox(_assunto_aa, value=True, key=f"chk_aa_{_assunto_aa}")
 
             # O gráfico usa a seleção APLICADA (último clique em "OK, aplicar"),
             # não o estado ao vivo dos checkboxes — evita recálculo a cada clique.
