@@ -1558,9 +1558,10 @@ if modo_selecionado == "🗳️ Período Eleitoral" and vereador_selecionado == 
 
 if vereador_selecionado == "Todos":
 
-    aba1, aba2, aba3, aba_pop, aba_pron_geral = st.tabs([
+    aba1, aba2, aba3, aba_aprov_assunto, aba_pop, aba_pron_geral = st.tabs([
         "📊 Matérias por vereador", "⚖️ Aprovação de PLOs",
-        "🏷️ Projetos por assunto", "📱 Em Destaque", "📢 Pronunciamentos",
+        "🏷️ Projetos por assunto", "📈 Aprovação por Assunto",
+        "📱 Em Destaque", "📢 Pronunciamentos",
     ])
 
     with aba1:
@@ -1729,6 +1730,117 @@ if vereador_selecionado == "Todos":
                                    margin=dict(l=10, r=10, t=20, b=140))
             fig_heat = aplicar_tema_plot(fig_heat)
             st.plotly_chart(fig_heat, width='stretch', key="chart_heat", config=PLOT_CONFIG)
+
+    with aba_aprov_assunto:
+        if df_ass.empty:
+            st.info("Nenhum assunto cadastrado nos dados carregados.")
+        else:
+            # Todos os assuntos com pelo menos 1 PLO apresentado em 2026 —
+            # sem o corte "top 15" da aba "Projetos por assunto", pois aqui
+            # quem decide o recorte é a própria seleção de checkboxes.
+            df_taxa_assunto = (
+                df_ass.groupby('assunto')
+                .agg(
+                    apresentados=('materia_id', 'nunique'),
+                    aprovados=('virou_lei', lambda x: df_ass.loc[x.index]
+                               .drop_duplicates('materia_id')['virou_lei'].sum()),
+                )
+                .reset_index()
+            )
+            df_taxa_assunto['taxa'] = (
+                df_taxa_assunto['aprovados'] / df_taxa_assunto['apresentados'] * 100
+            ).round(1)
+
+            lista_assuntos_aa = sorted(df_taxa_assunto['assunto'].tolist())
+
+            st.caption(
+                "Selecione quais assuntos entram no ranking de aprovação. "
+                "Assuntos sem relevância para comparação (ex.: denominação de "
+                "logradouros, calendário oficial) podem ser desmarcados."
+            )
+
+            def _marcar_todos_aa():
+                for _a in lista_assuntos_aa:
+                    st.session_state[f"chk_aa_{_a}"] = True
+
+            def _desmarcar_todos_aa():
+                for _a in lista_assuntos_aa:
+                    st.session_state[f"chk_aa_{_a}"] = False
+
+            _qtd_marcados_aa = sum(
+                st.session_state.get(f"chk_aa_{_a}", True) for _a in lista_assuntos_aa
+            )
+            with st.expander(
+                f"🔧 Selecionar assuntos ({_qtd_marcados_aa} de {len(lista_assuntos_aa)} selecionados)",
+                expanded=False
+            ):
+                col_m_aa, col_d_aa = st.columns(2)
+                with col_m_aa:
+                    st.button("✅ Marcar todos", on_click=_marcar_todos_aa, key="btn_marcar_aa")
+                with col_d_aa:
+                    st.button("⬜ Desmarcar todos", on_click=_desmarcar_todos_aa, key="btn_desmarcar_aa")
+
+                n_cols_aa = 3
+                cols_aa = st.columns(n_cols_aa)
+                for i, _assunto_aa in enumerate(lista_assuntos_aa):
+                    with cols_aa[i % n_cols_aa]:
+                        st.checkbox(_assunto_aa, value=True, key=f"chk_aa_{_assunto_aa}")
+
+            assuntos_marcados_aa = [
+                _a for _a in lista_assuntos_aa
+                if st.session_state.get(f"chk_aa_{_a}", True)
+            ]
+
+            if not assuntos_marcados_aa:
+                st.info("Nenhum assunto selecionado. Marque ao menos um assunto acima para ver o ranking.")
+            else:
+                df_aa_sel = (
+                    df_taxa_assunto[df_taxa_assunto['assunto'].isin(assuntos_marcados_aa)]
+                    .sort_values('taxa', ascending=False)
+                )
+
+                def _url_aa(assunto):
+                    aid = mapa_assunto_id.get(assunto)
+                    if not aid:
+                        return None
+                    return url_sapl(ano=2026, assunto_id=aid, so_parlamentar=True)
+
+                st.markdown(
+                    html_barchart_h(df_aa_sel, 'assunto', 'taxa', _url_aa,
+                                    val_fmt="{:.1f}%", val_color=aprov_color,
+                                    grad_lo=aprov_grad_lo, grad_hi=aprov_grad_hi),
+                    unsafe_allow_html=True
+                )
+                st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
+
+                # Tabela com Assunto como hyperlink direto (funciona com um toque no celular)
+                _linhas_aa = ""
+                for _, _row_aa in df_aa_sel.iterrows():
+                    _aid_aa = mapa_assunto_id.get(_row_aa['assunto'])
+                    if _aid_aa:
+                        _url_taa = url_sapl(ano=2026, assunto_id=_aid_aa, so_parlamentar=True)
+                        _cel_aa = f'<a href="{_url_taa}" target="_blank" style="color:{cor_link}">{_row_aa["assunto"]} ↗</a>'
+                    else:
+                        _cel_aa = _row_aa['assunto']
+                    _linhas_aa += (
+                        f"<tr style='border-bottom:1px solid #eee'>"
+                        f"<td style='padding:6px 12px'>{_cel_aa}</td>"
+                        f"<td style='padding:6px 12px;text-align:center'>{int(_row_aa['apresentados'])}</td>"
+                        f"<td style='padding:6px 12px;text-align:center'>{int(_row_aa['aprovados'])}</td>"
+                        f"<td style='padding:6px 12px;text-align:center'>{_row_aa['taxa']}%</td>"
+                        f"</tr>"
+                    )
+                st.markdown(
+                    f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
+                    <thead><tr style="border-bottom:2px solid #ddd">
+                      <th style="text-align:left;padding:6px 12px">Assunto ↗ abre no SAPL</th>
+                      <th style="text-align:center;padding:6px 12px">Apresentados</th>
+                      <th style="text-align:center;padding:6px 12px">Aprovados</th>
+                      <th style="text-align:center;padding:6px 12px">Taxa (%)</th>
+                    </tr></thead>
+                    <tbody>{_linhas_aa}</tbody></table>""",
+                    unsafe_allow_html=True
+                )
 
     with aba_pop:
         if assunto_selecionado == "Todos":
