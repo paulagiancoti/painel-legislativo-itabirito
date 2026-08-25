@@ -6725,5 +6725,52 @@
       36
     ],
     "autores": []
+  },
+  {
+    "id": 5244,
+    "__str__": "Lei Ordinária Municipal nº 4.633, de 24 de agosto de 2026",
+    "link_detail_backend": "/norma/5244",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-08-24T15:13:24-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5244/lei_no_4633_de_24_de_agosto_de_2026_pl_161.2026.pdf",
+    "numero": "4633",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-08-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Programa Municipal de Incentivo ao Ciclismo, Mountain Bike e Downhill, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-08-25T12:30:29.217176-03:00",
+    "data_ultima_atualizacao": "2026-08-25T12:30:29.417359-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-08-25T12:28:22.178434-03:00",
+    "tipo": 1,
+    "materia": 23282,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      7
+    ],
+    "autores": []
   }
 ]
