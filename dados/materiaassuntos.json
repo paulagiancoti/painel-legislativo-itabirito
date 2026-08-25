@@ -120,6 +120,22 @@
     "materia": 20589
   },
   {
+    "id": 752,
+    "__str__": "Projeto de Lei Substitutivo nº 196 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/752",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24427
+  },
+  {
+    "id": 754,
+    "__str__": "Projeto de Lei Substitutivo nº 192 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/754",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24450
+  },
+  {
     "id": 704,
     "__str__": "Projeto de Lei Substitutivo nº 155 de 2026 - Administração Pública",
     "link_detail_backend": "/materia/materiaassunto/704",
@@ -150,6 +166,142 @@
     "metadata": {},
     "assunto": 44,
     "materia": 20832
+  },
+  {
+    "id": 789,
+    "__str__": "Projeto de Lei Ordinária nº 217 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/789",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24630
+  },
+  {
+    "id": 787,
+    "__str__": "Projeto de Lei Ordinária nº 216 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/787",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24627
+  },
+  {
+    "id": 785,
+    "__str__": "Projeto de Lei Ordinária nº 215 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/785",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24624
+  },
+  {
+    "id": 782,
+    "__str__": "Projeto de Lei Ordinária nº 213 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/782",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24534
+  },
+  {
+    "id": 780,
+    "__str__": "Projeto de Lei Ordinária nº 211 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/780",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24515
+  },
+  {
+    "id": 778,
+    "__str__": "Projeto de Lei Ordinária nº 210 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/778",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24513
+  },
+  {
+    "id": 776,
+    "__str__": "Projeto de Lei Ordinária nº 209 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/776",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24453
+  },
+  {
+    "id": 774,
+    "__str__": "Projeto de Lei Ordinária nº 208 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/774",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24452
+  },
+  {
+    "id": 768,
+    "__str__": "Projeto de Lei Ordinária nº 204 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/768",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24328
+  },
+  {
+    "id": 765,
+    "__str__": "Projeto de Lei Ordinária nº 202 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/765",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24326
+  },
+  {
+    "id": 763,
+    "__str__": "Projeto de Lei Ordinária nº 201 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/763",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24325
+  },
+  {
+    "id": 761,
+    "__str__": "Projeto de Lei Ordinária nº 200 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/761",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24314
+  },
+  {
+    "id": 758,
+    "__str__": "Projeto de Lei Ordinária nº 198 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/758",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24272
+  },
+  {
+    "id": 756,
+    "__str__": "Projeto de Lei Ordinária nº 197 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/756",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24271
+  },
+  {
+    "id": 747,
+    "__str__": "Projeto de Lei Ordinária nº 193 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/747",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24171
+  },
+  {
+    "id": 745,
+    "__str__": "Projeto de Lei Ordinária nº 192 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/745",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24170
+  },
+  {
+    "id": 739,
+    "__str__": "Projeto de Lei Ordinária nº 189 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/739",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24134
   },
   {
     "id": 727,
@@ -654,6 +806,46 @@
     "metadata": {},
     "assunto": 1,
     "materia": 22085
+  },
+  {
+    "id": 794,
+    "__str__": "Projeto de Lei Ordinária nº 220 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/794",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24677
+  },
+  {
+    "id": 793,
+    "__str__": "Projeto de Lei Ordinária nº 219 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/793",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24676
+  },
+  {
+    "id": 781,
+    "__str__": "Projeto de Lei Ordinária nº 212 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/781",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24517
+  },
+  {
+    "id": 757,
+    "__str__": "Projeto de Lei Ordinária nº 197 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/757",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24271
+  },
+  {
+    "id": 750,
+    "__str__": "Projeto de Lei Ordinária nº 195 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/750",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24173
   },
   {
     "id": 734,
@@ -1328,6 +1520,62 @@
     "materia": 20651
   },
   {
+    "id": 772,
+    "__str__": "Projeto de Lei Ordinária nº 207 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/772",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24451
+  },
+  {
+    "id": 773,
+    "__str__": "Projeto de Lei Ordinária nº 207 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/773",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24451
+  },
+  {
+    "id": 771,
+    "__str__": "Projeto de Lei Ordinária nº 206 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/771",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24356
+  },
+  {
+    "id": 770,
+    "__str__": "Projeto de Lei Ordinária nº 205 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/770",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24355
+  },
+  {
+    "id": 767,
+    "__str__": "Projeto de Lei Ordinária nº 203 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/767",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24327
+  },
+  {
+    "id": 760,
+    "__str__": "Projeto de Lei Ordinária nº 199 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/760",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24300
+  },
+  {
+    "id": 749,
+    "__str__": "Projeto de Lei Ordinária nº 194 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/749",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24172
+  },
+  {
     "id": 690,
     "__str__": "Projeto de Lei Ordinária nº 167 de 2026 - Denominação de Logradouros",
     "link_detail_backend": "/materia/materiaassunto/690",
@@ -1608,6 +1856,30 @@
     "materia": 23158
   },
   {
+    "id": 790,
+    "__str__": "Projeto de Lei Ordinária nº 217 de 2026 - Desenvolvimento Urbano",
+    "link_detail_backend": "/materia/materiaassunto/790",
+    "metadata": {},
+    "assunto": 53,
+    "materia": 24630
+  },
+  {
+    "id": 788,
+    "__str__": "Projeto de Lei Ordinária nº 216 de 2026 - Desenvolvimento Urbano",
+    "link_detail_backend": "/materia/materiaassunto/788",
+    "metadata": {},
+    "assunto": 53,
+    "materia": 24627
+  },
+  {
+    "id": 740,
+    "__str__": "Projeto de Lei Ordinária nº 189 de 2026 - Desenvolvimento Urbano",
+    "link_detail_backend": "/materia/materiaassunto/740",
+    "metadata": {},
+    "assunto": 53,
+    "materia": 24134
+  },
+  {
     "id": 725,
     "__str__": "Projeto de Lei Ordinária nº 181 de 2026 - Desenvolvimento Urbano",
     "link_detail_backend": "/materia/materiaassunto/725",
@@ -1766,6 +2038,22 @@
     "metadata": {},
     "assunto": 9,
     "materia": 22073
+  },
+  {
+    "id": 791,
+    "__str__": "Projeto de Lei Ordinária nº 218 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/791",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 24674
+  },
+  {
+    "id": 783,
+    "__str__": "Projeto de Lei Ordinária nº 213 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/783",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 24534
   },
   {
     "id": 723,
@@ -2134,6 +2422,22 @@
     "metadata": {},
     "assunto": 48,
     "materia": 22787
+  },
+  {
+    "id": 786,
+    "__str__": "Projeto de Lei Ordinária nº 215 de 2026 - Finanças e Orçamento Público",
+    "link_detail_backend": "/materia/materiaassunto/786",
+    "metadata": {},
+    "assunto": 48,
+    "materia": 24624
+  },
+  {
+    "id": 759,
+    "__str__": "Projeto de Lei Ordinária nº 198 de 2026 - Finanças e Orçamento Público",
+    "link_detail_backend": "/materia/materiaassunto/759",
+    "metadata": {},
+    "assunto": 48,
+    "materia": 24272
   },
   {
     "id": 545,
@@ -3432,6 +3736,22 @@
     "materia": 20832
   },
   {
+    "id": 766,
+    "__str__": "Projeto de Lei Ordinária nº 202 de 2026 - Indústria, Comércio e Serviços",
+    "link_detail_backend": "/materia/materiaassunto/766",
+    "metadata": {},
+    "assunto": 45,
+    "materia": 24326
+  },
+  {
+    "id": 748,
+    "__str__": "Projeto de Lei Ordinária nº 193 de 2026 - Indústria, Comércio e Serviços",
+    "link_detail_backend": "/materia/materiaassunto/748",
+    "metadata": {},
+    "assunto": 45,
+    "materia": 24171
+  },
+  {
     "id": 716,
     "__str__": "Projeto de Lei Ordinária nº 176 de 2026 - Indústria, Comércio e Serviços",
     "link_detail_backend": "/materia/materiaassunto/716",
@@ -3760,12 +4080,36 @@
     "materia": 21718
   },
   {
+    "id": 755,
+    "__str__": "Projeto de Lei Substitutivo nº 192 de 2026 - Meio Ambiente",
+    "link_detail_backend": "/materia/materiaassunto/755",
+    "metadata": {},
+    "assunto": 17,
+    "materia": 24450
+  },
+  {
     "id": 508,
     "__str__": "Projeto de Lei Substitutivo nº 111 de 2026 - Meio Ambiente",
     "link_detail_backend": "/materia/materiaassunto/508",
     "metadata": {},
     "assunto": 17,
     "materia": 22337
+  },
+  {
+    "id": 751,
+    "__str__": "Projeto de Lei Ordinária nº 195 de 2026 - Meio Ambiente",
+    "link_detail_backend": "/materia/materiaassunto/751",
+    "metadata": {},
+    "assunto": 17,
+    "materia": 24173
+  },
+  {
+    "id": 746,
+    "__str__": "Projeto de Lei Ordinária nº 192 de 2026 - Meio Ambiente",
+    "link_detail_backend": "/materia/materiaassunto/746",
+    "metadata": {},
+    "assunto": 17,
+    "materia": 24170
   },
   {
     "id": 698,
@@ -4016,6 +4360,22 @@
     "materia": 20586
   },
   {
+    "id": 753,
+    "__str__": "Projeto de Lei Substitutivo nº 196 de 2026 - Patrimônio Público",
+    "link_detail_backend": "/materia/materiaassunto/753",
+    "metadata": {},
+    "assunto": 46,
+    "materia": 24427
+  },
+  {
+    "id": 762,
+    "__str__": "Projeto de Lei Ordinária nº 200 de 2026 - Patrimônio Público",
+    "link_detail_backend": "/materia/materiaassunto/762",
+    "metadata": {},
+    "assunto": 46,
+    "materia": 24314
+  },
+  {
     "id": 528,
     "__str__": "Projeto de Lei Ordinária nº 113 de 2026 - Patrimônio Público",
     "link_detail_backend": "/materia/materiaassunto/528",
@@ -4038,6 +4398,30 @@
     "metadata": {},
     "assunto": 43,
     "materia": 22085
+  },
+  {
+    "id": 792,
+    "__str__": "Projeto de Lei Ordinária nº 218 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/792",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 24674
+  },
+  {
+    "id": 744,
+    "__str__": "Projeto de Lei Ordinária nº 191 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/744",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 24169
+  },
+  {
+    "id": 742,
+    "__str__": "Projeto de Lei Ordinária nº 190 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/742",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 24155
   },
   {
     "id": 737,
@@ -4592,6 +4976,14 @@
     "materia": 21718
   },
   {
+    "id": 777,
+    "__str__": "Projeto de Lei Ordinária nº 209 de 2026 - Proteção Animal",
+    "link_detail_backend": "/materia/materiaassunto/777",
+    "metadata": {},
+    "assunto": 15,
+    "materia": 24453
+  },
+  {
     "id": 653,
     "__str__": "Projeto de Lei Ordinária nº 154 de 2026 - Proteção Animal",
     "link_detail_backend": "/materia/materiaassunto/653",
@@ -4784,6 +5176,30 @@
     "materia": 21508
   },
   {
+    "id": 784,
+    "__str__": "Projeto de Lei Ordinária nº 214 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/784",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24583
+  },
+  {
+    "id": 769,
+    "__str__": "Projeto de Lei Ordinária nº 204 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/769",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24328
+  },
+  {
+    "id": 741,
+    "__str__": "Projeto de Lei Ordinária nº 190 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/741",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24155
+  },
+  {
     "id": 703,
     "__str__": "Projeto de Lei Ordinária nº 174 de 2026 - Saúde",
     "link_detail_backend": "/materia/materiaassunto/703",
@@ -4936,6 +5352,14 @@
     "materia": 20598
   },
   {
+    "id": 743,
+    "__str__": "Projeto de Lei Ordinária nº 191 de 2026 - Segurança Pública",
+    "link_detail_backend": "/materia/materiaassunto/743",
+    "metadata": {},
+    "assunto": 52,
+    "materia": 24169
+  },
+  {
     "id": 216,
     "__str__": "Projeto de Resolução nº 4 de 2012 - Servidor Público",
     "link_detail_backend": "/materia/materiaassunto/216",
@@ -5046,6 +5470,14 @@
     "metadata": {},
     "assunto": 30,
     "materia": 21071
+  },
+  {
+    "id": 779,
+    "__str__": "Projeto de Lei Ordinária nº 210 de 2026 - Servidor Público",
+    "link_detail_backend": "/materia/materiaassunto/779",
+    "metadata": {},
+    "assunto": 30,
+    "materia": 24513
   },
   {
     "id": 721,
@@ -5174,6 +5606,14 @@
     "metadata": {},
     "assunto": 22,
     "materia": 20585
+  },
+  {
+    "id": 764,
+    "__str__": "Projeto de Lei Ordinária nº 201 de 2026 - Trânsito",
+    "link_detail_backend": "/materia/materiaassunto/764",
+    "metadata": {},
+    "assunto": 23,
+    "materia": 24325
   },
   {
     "id": 719,
@@ -5350,6 +5790,14 @@
     "metadata": {},
     "assunto": 34,
     "materia": 6519
+  },
+  {
+    "id": 775,
+    "__str__": "Projeto de Lei Ordinária nº 208 de 2026 - Transporte",
+    "link_detail_backend": "/materia/materiaassunto/775",
+    "metadata": {},
+    "assunto": 34,
+    "materia": 24452
   },
   {
     "id": 736,
