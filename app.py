@@ -83,8 +83,8 @@ def carregar_dados(ultima_atualizacao=""):
         df_autores[df_autores['tipo'] == 1]
         .set_index('nome')['id'].to_dict()
     )
-    df_materias      = pd.DataFrame(materias)        # só 2026 — exibição
-    df_materias_hist = pd.DataFrame(materias_hist)   # 2025+2026 — cruzamento normas
+    df_materias      = pd.DataFrame(materias)        # só o ano corrente (dados/materias.json)
+    df_materias_hist = pd.DataFrame(materias_hist)   # todos os anos coletados — fonte do seletor de ano
 
     def normalizar_campos(df):
         """Garante que os campos tipo__sigla, tipo__descricao e autoria existam,
@@ -127,24 +127,30 @@ def carregar_dados(ultima_atualizacao=""):
         nome = mapa_assunto_nome.get(v['assunto'], f"ID {v['assunto']}")
         mapa_id_assuntos[str(v['materia'])].append(nome)
 
-    mapa_id_numero = {
-        str(row['id']): int(row['numero'])
-        for _, row in df_materias.iterrows()
+    # Chave (ano, numero) em vez de só numero — números de PL reiniciam a cada
+    # ano, então sem o ano no par, PLO nº30/2025 e PLO nº30/2026 colidiriam no
+    # mesmo dict (um sobrescreveria os assuntos do outro). Usa df_materias_hist
+    # (todos os anos) em vez de df_materias (só o ano corrente).
+    mapa_id_ano_numero = {
+        str(row['id']): (str(row['ano']), int(row['numero']))
+        for _, row in df_materias_hist.iterrows()
         # PERSONALIZAÇÃO: siglas dos tipos de matéria da sua Casa.
         # PLO=Projeto de Lei Ordinária, PLS=Substitutivo, PLS2=2º Substitutivo.
         # Verifique as siglas em /api/materia/tipomateria/?format=json
         if row['tipo__sigla'] in ('PLO', 'PLS', 'PLS2')
     }
-    assuntos_por_numero = defaultdict(set)
+    assuntos_por_ano_numero = defaultdict(set)
     for mid, ass_lista in mapa_id_assuntos.items():
-        numero = mapa_id_numero.get(mid)
-        if numero is not None:
+        ano_numero = mapa_id_ano_numero.get(mid)
+        if ano_numero is not None:
             for a in ass_lista:
-                assuntos_por_numero[numero].add(a)
+                assuntos_por_ano_numero[ano_numero].add(a)
 
-    # Expandir autorias — só 2026
+    # Expandir autorias — todos os anos coletados (o filtro por ano selecionado
+    # no seletor acontece depois, fora desta função — carregar_dados() é cacheada
+    # por timestamp só, então precisa devolver todos os anos de uma vez)
     linhas = []
-    for _, row in df_materias.iterrows():
+    for _, row in df_materias_hist.iterrows():
         autoria_raw = (
             row.get('autoria') or
             row.get('autoria_set') or
@@ -176,9 +182,10 @@ def carregar_dados(ultima_atualizacao=""):
             nomes_autores = []
 
         numero      = int(row['numero'])
+        ano_row     = str(row['ano'])
         tipo_sigla  = row['tipo__sigla']
         assuntos_proj = (
-            list(assuntos_por_numero.get(numero, []))
+            list(assuntos_por_ano_numero.get((ano_row, numero), []))
             if tipo_sigla == 'PLO'
             else mapa_id_assuntos.get(str(row['id']), [])
         )
@@ -211,9 +218,17 @@ def carregar_dados(ultima_atualizacao=""):
     df['autor_tipo']       = df['autor_nome'].map(mapa_tipo).fillna('Desconhecido')
     df['e_vereador_ativo'] = df['autor_nome'].isin(nomes_ativos)
 
-    pls_numeros = set(df[df['tipo_sigla'].isin(['PLS', 'PLS2'])]['numero'])
+    # Par (ano, numero) — evita que um PLS de um ano marque como "teve
+    # substitutivo" um PLO de outro ano com o mesmo número.
+    pls_ano_numeros = set(
+        zip(
+            df.loc[df['tipo_sigla'].isin(['PLS', 'PLS2']), 'ano'].astype(str),
+            df.loc[df['tipo_sigla'].isin(['PLS', 'PLS2']), 'numero'],
+        )
+    )
     df['plo_teve_substitutivo'] = (
-        (df['tipo_sigla'] == 'PLO') & (df['numero'].isin(pls_numeros))
+        (df['tipo_sigla'] == 'PLO') &
+        df.apply(lambda r: (str(r['ano']), r['numero']) in pls_ano_numeros, axis=1)
     )
 
     # ── Cruzamento normas → PLOs (histórico 2025+2026) ──────────────────────────
@@ -222,16 +237,15 @@ def carregar_dados(ultima_atualizacao=""):
     mapa_tipo_mat   = df_materias_hist.set_index('id_str')['tipo__sigla'].to_dict()
     mapa_numero_mat = df_materias_hist.set_index('id_str')['numero_int'].to_dict()
     mapa_ano_mat    = df_materias_hist.set_index('id_str')['ano'].to_dict()
-    # mapa_plo_num: só PLOs de 2026 — evita colisão de número entre anos
+    # mapa_plo_num: chave (ano, numero) — evita colisão entre anos
     # (PLO nº 30 de 2025 e PLO nº 30 de 2026 têm o mesmo numero_int;
-    #  sem filtro de ano, um sobrescreveria o outro no dict)
-    mapa_plo_num    = (
-        df_materias_hist[
-            (df_materias_hist['tipo__sigla'] == 'PLO') &
-            (df_materias_hist['ano'].astype(str) == '2026')
-        ]
-        .set_index('numero_int')['id_str'].to_dict()
-    )
+    #  sem o ano no par, um sobrescreveria o outro no dict). Cobre TODOS os
+    # anos coletados, não só o ano corrente — é o que permite ao seletor de
+    # ano calcular corretamente PLOs aprovados de qualquer ano.
+    mapa_plo_num    = {
+        (str(row['ano']), row['numero_int']): row['id_str']
+        for _, row in df_materias_hist[df_materias_hist['tipo__sigla'] == 'PLO'].iterrows()
+    }
     # Mapa: plo_id → autoria (do histórico)
     mapa_plo_autoria = (
         df_materias_hist[df_materias_hist['tipo__sigla'] == 'PLO']
@@ -240,34 +254,40 @@ def carregar_dados(ultima_atualizacao=""):
         .to_dict()
     )
 
+    # Percorre TODAS as normas de TODOS os anos coletados — uma lei de 2026
+    # pode ter origem num PLO de 2025 (e vice-versa), então não dá pra
+    # restringir a busca por ano da norma. Quem importa é o ano do PLO de
+    # origem ('ano_plo'), guardado em cada registro para o filtro por ano
+    # acontecer depois, fora desta função, no ano que a cidadã escolher.
     detalhes_leis = []
     for _, norma in df_normas[df_normas['materia'].notna()].iterrows():
         mid  = str(int(norma['materia']))
         tipo = mapa_tipo_mat.get(mid)
         num  = mapa_numero_mat.get(mid)
+        ano_mid = str(mapa_ano_mat.get(mid, ''))
         if not tipo or num is None:
             continue
         if tipo == 'PLO':
             plo_id = mid
         elif tipo in ('PLS', 'PLS2'):
-            plo_id = mapa_plo_num.get(num)
+            # O substitutivo (PLS/PLS2) é do mesmo ano do PLO que substitui —
+            # usa o próprio ano do PLS para achar o PLO original sem colisão.
+            plo_id = mapa_plo_num.get((ano_mid, num))
             if not plo_id:
                 continue
         else:
             continue
 
-        # Só conta PLOs do ano de referência (2026) — PLOs de 2025 aprovados
-        # em 2026 não são creditados ao desempenho do ano corrente
-        if str(mapa_ano_mat.get(plo_id, '')).strip() != '2026':
-            continue
+        ano_plo = str(mapa_ano_mat.get(plo_id, ''))
 
-        # Autores do PLO original (sempre de 2026 após o filtro acima)
+        # Autores do PLO original
         autoria_plo = mapa_plo_autoria.get(plo_id, '')
         autores_plo = [a.strip() for a in autoria_plo.split(',') if a.strip()] or ['']
 
         for autor_plo in autores_plo:
             detalhes_leis.append({
                 'plo_id':        plo_id,
+                'ano_plo':       ano_plo,
                 'numero_plo':    num,
                 'vinculado_via': tipo,
                 'lei_numero':    norma['numero'],
@@ -278,90 +298,35 @@ def carregar_dados(ultima_atualizacao=""):
     df_leis = (
         pd.DataFrame(detalhes_leis).drop_duplicates(['plo_id', 'autor_nome'])
         if detalhes_leis else pd.DataFrame(
-            columns=['plo_id', 'numero_plo', 'vinculado_via', 'lei_numero', 'lei_ementa', 'autor_nome']
+            columns=['plo_id', 'ano_plo', 'numero_plo', 'vinculado_via', 'lei_numero', 'lei_ementa', 'autor_nome']
         )
     )
 
-    # Marca plo_virou_lei em df (2026) para uso nas flags de assunto
+    # Marca plo_virou_lei em df (qualquer ano) para uso nas flags de assunto —
+    # é uma verdade global por materia_id (IDs não colidem entre anos), então
+    # não precisa de filtro de ano aqui.
     plos_lei_set = set(df_leis['plo_id'])
     df['plo_virou_lei'] = (
         (df['tipo_sigla'] == 'PLO') &
         (df['materia_id'].astype(str).isin(plos_lei_set))
     )
 
-    # ── Resumo por vereador ──────────────────────────────────────────────────────
-    df_parl     = df[df['e_vereador_ativo']]
-    df_plo_parl = df[(df['e_vereador_ativo']) & (df['tipo_sigla'] == 'PLO')]
-
-    ids_mesa   = set(str(m['parlamentar']) for m in mesa)
-    nomes_mesa = set(df_vereadores[df_vereadores['id'].astype(str).isin(ids_mesa)]['nome_parlamentar'])
-    qtd_mesa   = len(df[
-        (df['autor_nome'] == 'Mesa Diretora - MESA') |
-        (df['autor_nome'].str.contains('Mesa Diretora', na=False))
-    ]['materia_id'].unique())
-    df_vereadores['materias_mesa'] = df_vereadores['nome_parlamentar'].apply(
-        lambda n: qtd_mesa if n in nomes_mesa else 0
-    )
-
-    resumo = (
-        df_parl[~df_parl['tipo_sigla'].isin(['PLS', 'PLS2'])].groupby('autor_nome')
-        .agg(
-            total_geral   = ('materia_id', 'count'),
-            indicacoes    = ('tipo_sigla', lambda x: (x == 'IND').sum()),
-            requerimentos = ('tipo_sigla', lambda x: (x == 'REQ').sum()),
-            emendas       = ('tipo_sigla', lambda x: (x == 'EME').sum()),
-            mocoes        = ('tipo_sigla', lambda x: x.isin(['MOC']).sum()),
-            resolucoes    = ('tipo_sigla', lambda x: (x == 'PRE').sum()),
-        )
-        .reset_index()
-    )
-
-    # PLOs por vereador — contagem única (deduplifica co-autorias)
-    plo_por_autor = (
-        df_plo_parl.groupby('autor_nome')['materia_id']
-        .nunique().reset_index(name='projetos_lei')
-    )
-    sub_por_autor = (
-        df_plo_parl.groupby('autor_nome')['plo_teve_substitutivo']
-        .sum().reset_index(name='projetos_com_substitutivo')
-    )
-
-    # PLOs aprovados por vereador — via df_leis (inclui 2025+2026)
-    df_leis_ativos = df_leis[df_leis['autor_nome'].isin(nomes_ativos)]
-    aprov_por_autor = (
-        df_leis_ativos.groupby('autor_nome')['plo_id']
-        .nunique().reset_index(name='projetos_virou_lei')
-    )
-
-    plo_res = plo_por_autor.merge(sub_por_autor, on='autor_nome', how='left')
-    plo_res = plo_res.merge(aprov_por_autor, on='autor_nome', how='left')
-    plo_res = plo_res.fillna(0)
-    for col in ['projetos_lei', 'projetos_com_substitutivo', 'projetos_virou_lei']:
-        plo_res[col] = plo_res[col].astype(int)
-
-    resumo = resumo.merge(plo_res, on='autor_nome', how='left').fillna(0)
-    for col in ['projetos_lei', 'projetos_com_substitutivo', 'projetos_virou_lei']:
-        resumo[col] = resumo[col].astype(int)
-
-    resumo['taxa_aprovacao'] = (
-        (resumo['projetos_virou_lei'] / resumo['projetos_lei'] * 100)
-        .round(1).fillna(0)
-    )
-    mapa_materias_mesa = df_vereadores.set_index('nome_parlamentar')['materias_mesa'].to_dict()
-    resumo['materias_mesa'] = resumo['autor_nome'].map(mapa_materias_mesa).fillna(0).astype(int)
-
-    # Assuntos por PLO (2026)
+    # ── Assuntos por PLO — multi-ano (o resumo por vereador, que precisa ser
+    # recalculado a cada troca do seletor de ano, foi extraído para a função
+    # calcular_resumo_vereadores(), chamada fora daqui já com o ano filtrado) ──
+    df_plo_parl_multi = df[(df['e_vereador_ativo']) & (df['tipo_sigla'] == 'PLO')]
     linhas_ass = []
-    for _, row in df_plo_parl[df_plo_parl['tem_assunto']].iterrows():
+    for _, row in df_plo_parl_multi[df_plo_parl_multi['tem_assunto']].iterrows():
         for assunto in row['assuntos']:
             linhas_ass.append({
                 'autor_nome': row['autor_nome'],
                 'assunto':    assunto,
                 'materia_id': row['materia_id'],
+                'ano':        row['ano'],
             })
     df_ass = (
         pd.DataFrame(linhas_ass).drop_duplicates(['autor_nome', 'materia_id', 'assunto'])
-        if linhas_ass else pd.DataFrame(columns=['autor_nome', 'assunto', 'materia_id'])
+        if linhas_ass else pd.DataFrame(columns=['autor_nome', 'assunto', 'materia_id', 'ano'])
     )
     df_ass['virou_lei'] = df_ass['materia_id'].astype(str).isin(plos_lei_set)
 
@@ -446,7 +411,79 @@ def carregar_dados(ultima_atualizacao=""):
         columns=['orador_id','parlamentar','sessao_id','data','ano','sessao_nome',
                  'url_video','url_discurso','observacao'])
 
-    return df_vereadores, df, df_parl, resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_rel, mapa_tipo_sapl_id, mapa_tipo_seq, df_pronunc
+    # Nota: df_parl e resumo NÃO são mais devolvidos daqui — carregar_dados()
+    # é cacheada só por timestamp (não sabe qual ano a cidadã escolheu no
+    # seletor), então ela devolve os dados de TODOS os anos de uma vez e quem
+    # chama filtra pelo ano selecionado logo em seguida (ver bloco após a
+    # chamada desta função). "mesa" é devolvida para permitir recalcular o
+    # resumo por vereador a cada troca de ano, sem recarregar os JSONs.
+    return df_vereadores, df, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_rel, mapa_tipo_sapl_id, mapa_tipo_seq, df_pronunc, mesa
+
+
+def calcular_resumo_vereadores(df, df_parl, df_leis, mesa, df_vereadores):
+    """Recalcula o resumo por vereador (total de matérias, PLOs, aprovação
+    etc.) para o recorte de ano já aplicado em df/df_parl/df_leis. Extraída
+    de carregar_dados() porque precisa ser refeita a cada troca do seletor
+    de ano — não dá pra cachear uma vez só como o resto dos dados."""
+    df_plo_parl = df_parl[df_parl['tipo_sigla'] == 'PLO']
+    nomes_ativos = set(df_vereadores['nome_parlamentar'])
+
+    ids_mesa   = set(str(m['parlamentar']) for m in mesa)
+    nomes_mesa = set(df_vereadores[df_vereadores['id'].astype(str).isin(ids_mesa)]['nome_parlamentar'])
+    qtd_mesa   = len(df[
+        (df['autor_nome'] == 'Mesa Diretora - MESA') |
+        (df['autor_nome'].str.contains('Mesa Diretora', na=False))
+    ]['materia_id'].unique())
+    mapa_materias_mesa = {
+        n: (qtd_mesa if n in nomes_mesa else 0) for n in df_vereadores['nome_parlamentar']
+    }
+
+    resumo = (
+        df_parl[~df_parl['tipo_sigla'].isin(['PLS', 'PLS2'])].groupby('autor_nome')
+        .agg(
+            total_geral   = ('materia_id', 'count'),
+            indicacoes    = ('tipo_sigla', lambda x: (x == 'IND').sum()),
+            requerimentos = ('tipo_sigla', lambda x: (x == 'REQ').sum()),
+            emendas       = ('tipo_sigla', lambda x: (x == 'EME').sum()),
+            mocoes        = ('tipo_sigla', lambda x: x.isin(['MOC']).sum()),
+            resolucoes    = ('tipo_sigla', lambda x: (x == 'PRE').sum()),
+        )
+        .reset_index()
+    )
+
+    # PLOs por vereador — contagem única (deduplifica co-autorias)
+    plo_por_autor = (
+        df_plo_parl.groupby('autor_nome')['materia_id']
+        .nunique().reset_index(name='projetos_lei')
+    )
+    sub_por_autor = (
+        df_plo_parl.groupby('autor_nome')['plo_teve_substitutivo']
+        .sum().reset_index(name='projetos_com_substitutivo')
+    )
+
+    # PLOs aprovados por vereador — via df_leis (já filtrado pelo ano selecionado)
+    df_leis_ativos = df_leis[df_leis['autor_nome'].isin(nomes_ativos)]
+    aprov_por_autor = (
+        df_leis_ativos.groupby('autor_nome')['plo_id']
+        .nunique().reset_index(name='projetos_virou_lei')
+    )
+
+    plo_res = plo_por_autor.merge(sub_por_autor, on='autor_nome', how='left')
+    plo_res = plo_res.merge(aprov_por_autor, on='autor_nome', how='left')
+    plo_res = plo_res.fillna(0)
+    for col in ['projetos_lei', 'projetos_com_substitutivo', 'projetos_virou_lei']:
+        plo_res[col] = plo_res[col].astype(int)
+
+    resumo = resumo.merge(plo_res, on='autor_nome', how='left').fillna(0)
+    for col in ['projetos_lei', 'projetos_com_substitutivo', 'projetos_virou_lei']:
+        resumo[col] = resumo[col].astype(int)
+
+    resumo['taxa_aprovacao'] = (
+        (resumo['projetos_virou_lei'] / resumo['projetos_lei'] * 100)
+        .round(1).fillna(0)
+    )
+    resumo['materias_mesa'] = resumo['autor_nome'].map(mapa_materias_mesa).fillna(0).astype(int)
+    return resumo
 
 
 try:
@@ -454,7 +491,11 @@ try:
 except Exception:
     _ts = ""
 
-df_vereadores, df_expandido, df_parl, df_resumo, df_leis, df_ass, mapa_autor_id, mapa_assunto_id, df_relatorias, mapa_tipo_sapl_id, mapa_tipo_seq, df_pronunciamentos = carregar_dados(_ts)
+(
+    df_vereadores, df_expandido_multi, df_leis_multi, df_ass_multi,
+    mapa_autor_id, mapa_assunto_id, df_relatorias, mapa_tipo_sapl_id,
+    mapa_tipo_seq, df_pronunciamentos, mesa
+) = carregar_dados(_ts)
 
 # ID do parlamentar no SAPL → para URL /parlamentar/<id>
 mapa_parlamentar_id = df_vereadores.set_index('nome_parlamentar')['id'].to_dict()
@@ -473,8 +514,36 @@ st.markdown(
 st.caption("Dados: SAPL · Câmara Municipal de Itabirito (MG) · 2026")
 
 # ─── FILTROS (barra horizontal no topo) ────────────────────────────────────────
+# "Ano" é o primeiro filtro lido — igual já acontecia com modo_selecionado —
+# porque ele decide o recorte de dados que todos os outros filtros e abas vão
+# usar (tipo_opcoes, lista de vereadores, cards, tabelas etc.)
 
-f1, f2, f3, f4, f5 = st.columns([1.4, 1.2, 1.2, 0.9, 1.3])
+f0, f1, f2, f3, f4, f5 = st.columns([0.8, 1.3, 1.15, 1.15, 0.85, 1.25])
+
+with f0:
+    ano_selecionado = st.selectbox(
+        "📅 Ano", ["2026", "2025"],
+        help="Em 2025 ainda não há dados de assuntos nem de pronunciamentos "
+             "(por isso algumas abas não aparecem) e o detalhe individual por "
+             "vereador ainda não está disponível para esse ano."
+    )
+
+# Filtra os dados multi-ano para o ano escolhido no seletor acima. Os nomes
+# usados daqui pra frente (df_expandido, df_parl, df_leis, df_ass, df_resumo)
+# são os mesmos de sempre — só passam a apontar para o recorte do ano
+# selecionado, então o resto do arquivo não precisa saber que existe um
+# seletor de ano.
+df_expandido = df_expandido_multi[df_expandido_multi['ano'].astype(str) == ano_selecionado].copy()
+df_parl      = df_expandido[df_expandido['e_vereador_ativo']]
+df_leis      = (
+    df_leis_multi[df_leis_multi['ano_plo'].astype(str) == ano_selecionado]
+    if not df_leis_multi.empty else df_leis_multi
+)
+df_ass = (
+    df_ass_multi[df_ass_multi['ano'].astype(str) == ano_selecionado]
+    if not df_ass_multi.empty else df_ass_multi
+)
+df_resumo = calcular_resumo_vereadores(df_expandido, df_parl, df_leis, mesa, df_vereadores)
 
 assunto_selecionado = "Todos"
 tipo_opcoes = ["Todos"] + sorted([
@@ -542,14 +611,23 @@ if modo_selecionado == "🗳️ Período Eleitoral":
     with f1:
         st.write("")
     with f2:
-        vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
-        vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
+        if ano_selecionado == "2025":
+            st.caption("👤 Detalhe por vereador — disponível só em 2026")
+            vereador_selecionado = "Todos"
+        else:
+            vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
+            vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
 else:
     # Painel padrão — só chega aqui autenticado (senão foi rebaixado acima)
     with f3:
         tipo_selecionado = st.selectbox("📁 Tipo de matéria", tipo_opcoes)
     with f1:
-        if tipo_selecionado in ["Todos", "Projeto de Lei Ordinária"]:
+        # 2025 ainda não tem vínculo de assunto cadastrado no SAPL para os
+        # PLOs (praticamente zero registros) — filtro fica indisponível,
+        # igual já acontece no modo Período Eleitoral.
+        if ano_selecionado == "2025":
+            st.caption("🏷️ Assunto — disponível só em 2026")
+        elif tipo_selecionado in ["Todos", "Projeto de Lei Ordinária"]:
             assuntos_lista = ["Todos"] + sorted(df_ass['assunto'].unique().tolist())
             total_plos     = df_parl[df_parl['tipo_sigla'] == 'PLO']['materia_id'].nunique()
             plos_c_assunto = df_ass['materia_id'].nunique()
@@ -561,8 +639,15 @@ else:
         else:
             st.write("")
     with f2:
-        vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
-        vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
+        # Detalhe individual do vereador ainda não foi adaptado para 2025
+        # (relatorias, assuntos e pronunciamentos daquele ano têm cobertura
+        # diferente) — filtro fica indisponível, como no Período Eleitoral.
+        if ano_selecionado == "2025":
+            st.caption("👤 Detalhe por vereador — disponível só em 2026")
+            vereador_selecionado = "Todos"
+        else:
+            vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
+            vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
 
 with f4:
     tema = st.selectbox(
@@ -1087,6 +1172,9 @@ def _rod_orig(c_exec, c_mesa, c_outros):
     if linhas:
         st.caption("  \n".join(linhas))  # dois espaços + \n = <br> em markdown
 
+if ano_selecionado == "2025":
+    st.markdown("**📅 Dados gerais de 2025**")
+
 c1, c2, c3, c4, c5 = st.columns(5)
 with c1:
     st.metric("Vereadores ativos", len(df_vereadores))
@@ -1136,7 +1224,7 @@ if partes:
         )
     with st.expander("ℹ️ Sobre os dados exibidos"):
         st.caption(
-            "Em 2026 também foram apresentados: " +
+            f"Em {ano_selecionado} também foram apresentados: " +
             ", ".join(partes) +
             " — não incluídos nos comparativos entre vereadores." +
             nota_leis
@@ -1423,7 +1511,7 @@ def renderizar_aba_materias():
     """Aba 'Matérias': total geral por tipo + filtro interno opcional por vereador —
     reaproveitada no período eleitoral (único modo que a chama). Sem comparativo
     entre vereadores: o gráfico por vereador só aparece após escolha explícita."""
-    st.markdown("##### Matérias apresentadas por tipo — 2026")
+    st.markdown(f"##### Matérias apresentadas por tipo — {ano_selecionado}")
     st.caption("Somente vereadores em exercício — não inclui Executivo, Mesa Diretora ou autores externos.")
     _tipos_pe = [t for t in tipo_opcoes if t != "Todos"]
     _linhas_tipo_pe = []
@@ -1440,7 +1528,7 @@ def renderizar_aba_materias():
         tid = mapa_tipo_sapl_id.get(tipo_desc)
         if not tid:
             return None
-        return url_sapl(ano=2026, tipo_materia_id=tid, so_parlamentar=True)
+        return url_sapl(ano=int(ano_selecionado), tipo_materia_id=tid, so_parlamentar=True)
 
     st.markdown(
         html_barchart_h(df_tipo_geral_pe, 'tipo', 'total', _url_tipo_geral_pe),
@@ -1467,9 +1555,9 @@ def renderizar_aba_materias():
             tid = mapa_tipo_sapl_id.get(tipo_desc)
             if not tid or not _autor_id_pe:
                 return None
-            return url_sapl(ano=2026, autor_id=_autor_id_pe, so_parlamentar=True, tipo_materia_id=tid)
+            return url_sapl(ano=int(ano_selecionado), autor_id=_autor_id_pe, so_parlamentar=True, tipo_materia_id=tid)
 
-        st.markdown(f"**Matérias de {_vereador_pe} por tipo — 2026**")
+        st.markdown(f"**Matérias de {_vereador_pe} por tipo — {ano_selecionado}**")
         st.markdown(
             html_barchart_h(df_v_tipo_pe, 'tipo_descricao', 'total', _url_tipo_vereador_pe),
             unsafe_allow_html=True
@@ -1486,25 +1574,32 @@ def renderizar_aba_materias():
 if modo_selecionado == "🗳️ Período Eleitoral" and vereador_selecionado == "Todos":
     st.caption("🗳️ Visualização adaptada para o período eleitoral.")
 
-    _titulos_pe = ["🏷️ Projetos por assunto", "📄 Matérias", "📢 Pronunciamentos", "📋 Vereadores"]
+    if ano_selecionado == "2025":
+        # 2025 ainda não tem assunto nem pronunciamentos alimentados
+        # historicamente — só as duas abas com dado completo aparecem.
+        _titulos_pe = ["📄 Matérias", "📋 Vereadores"]
+    else:
+        _titulos_pe = ["🏷️ Projetos por assunto", "📄 Matérias", "📢 Pronunciamentos", "📋 Vereadores"]
     _abas_pe = st.tabs(_titulos_pe)
     _idx_pe = {nome: i for i, nome in enumerate(_titulos_pe)}   # indexação por nome — evita erro de posição
 
     # ── ABA: PROJETOS POR ASSUNTO — igual à versão padrão, sem o heatmap ───────
-    with _abas_pe[_idx_pe["🏷️ Projetos por assunto"]]:
-        renderizar_projetos_por_assunto_sem_heatmap()
+    if "🏷️ Projetos por assunto" in _idx_pe:
+        with _abas_pe[_idx_pe["🏷️ Projetos por assunto"]]:
+            renderizar_projetos_por_assunto_sem_heatmap()
 
     # ── ABA: MATÉRIAS — total geral por tipo + filtro interno por vereador ─────
     with _abas_pe[_idx_pe["📄 Matérias"]]:
         renderizar_aba_materias()
 
     # ── ABA: PRONUNCIAMENTOS — sem filtro de vereador, atende à cartilha ATRICON ─
-    with _abas_pe[_idx_pe["📢 Pronunciamentos"]]:
-        renderizar_pronunciamentos_geral()
+    if "📢 Pronunciamentos" in _idx_pe:
+        with _abas_pe[_idx_pe["📢 Pronunciamentos"]]:
+            renderizar_pronunciamentos_geral()
 
     # ── ABA: VEREADORES — sempre visível, ordem alfabética, sem taxa ───────────
     with _abas_pe[_idx_pe["📋 Vereadores"]]:
-        st.markdown("### Vereadores de Itabirito — 2026")
+        st.markdown(f"### Vereadores de Itabirito — {ano_selecionado}")
 
         def _num_html(valor, cor, href):
             _num = (f'<div style="font-size:26px;font-weight:700;color:{cor};'
@@ -1539,20 +1634,20 @@ if modo_selecionado == "🗳️ Período Eleitoral" and vereador_selecionado == 
                 _tid_req   = mapa_tipo_sapl_id.get('REQ')
 
                 _url_pl = (
-                    url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True,
+                    url_sapl(ano=int(ano_selecionado), autor_id=autor_id_c, so_parlamentar=True,
                             tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
                     if autor_id_c else None
                 )
                 _url_ind = (
-                    url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True, tipo_materia_id=_tid_ind)
+                    url_sapl(ano=int(ano_selecionado), autor_id=autor_id_c, so_parlamentar=True, tipo_materia_id=_tid_ind)
                     if autor_id_c and _tid_ind else None
                 )
                 _url_req = (
-                    url_sapl(ano=2026, autor_id=autor_id_c, so_parlamentar=True, tipo_materia_id=_tid_req)
+                    url_sapl(ano=int(ano_selecionado), autor_id=autor_id_c, so_parlamentar=True, tipo_materia_id=_tid_req)
                     if autor_id_c and _tid_req else None
                 )
                 # Tarja de matérias — apenas vereador + ano, sem outros filtros
-                _url_mat = url_sapl(ano=2026, autor_id=autor_id_c) if autor_id_c else None
+                _url_mat = url_sapl(ano=int(ano_selecionado), autor_id=autor_id_c) if autor_id_c else None
                 _tarja = f'{int(row["total_geral"])} matérias apresentadas'
                 _tarja_html = (
                     f'<a href="{_url_mat}" target="_blank" style="text-decoration:none">'
@@ -1590,11 +1685,22 @@ if modo_selecionado == "🗳️ Período Eleitoral" and vereador_selecionado == 
 
 if vereador_selecionado == "Todos":
 
-    aba1, aba2, aba3, aba_aprov_assunto, aba_pop, aba_pron_geral = st.tabs([
-        "📊 Matérias por vereador", "⚖️ Aprovação de PLOs",
-        "🏷️ Projetos por assunto", "📈 Aprovação por Assunto",
-        "📱 Em Destaque", "📢 Pronunciamentos",
-    ])
+    if ano_selecionado == "2025":
+        # 2025 ainda não tem assunto nem pronunciamentos alimentados
+        # historicamente — só as abas com dado completo aparecem.
+        _titulos_pd = ["📊 Matérias por vereador", "⚖️ Aprovação de PLOs", "📱 Em Destaque"]
+    else:
+        _titulos_pd = [
+            "📊 Matérias por vereador", "⚖️ Aprovação de PLOs",
+            "🏷️ Projetos por assunto", "📈 Aprovação por Assunto",
+            "📱 Em Destaque", "📢 Pronunciamentos",
+        ]
+    _abas_pd = st.tabs(_titulos_pd)
+    _idx_pd  = {nome: i for i, nome in enumerate(_titulos_pd)}   # indexação por nome — evita erro de posição
+
+    aba1    = _abas_pd[_idx_pd["📊 Matérias por vereador"]]
+    aba2    = _abas_pd[_idx_pd["⚖️ Aprovação de PLOs"]]
+    aba_pop = _abas_pd[_idx_pd["📱 Em Destaque"]]
 
     with aba1:
         df_ranking = (
@@ -1608,7 +1714,7 @@ if vereador_selecionado == "Todos":
                 return None
             ass_id = mapa_assunto_id.get(assunto_selecionado) if assunto_selecionado != "Todos" else None
             tip_id = mapa_tipo_sapl_id.get(tipo_selecionado) if tipo_selecionado != "Todos" else None
-            return url_sapl(ano=2026, autor_id=aid, assunto_id=ass_id, tipo_materia_id=tip_id)
+            return url_sapl(ano=int(ano_selecionado), autor_id=aid, assunto_id=ass_id, tipo_materia_id=tip_id)
 
         st.markdown(
             html_barchart_h(df_ranking, 'autor_nome', 'total', _url_ranking,
@@ -1624,7 +1730,7 @@ if vereador_selecionado == "Todos":
             aid = mapa_autor_id.get(nome)
             if not aid:
                 return None
-            return url_sapl(ano=2026, autor_id=aid, so_parlamentar=True,
+            return url_sapl(ano=int(ano_selecionado), autor_id=aid, so_parlamentar=True,
                             tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
 
         st.markdown(
@@ -1644,7 +1750,7 @@ if vereador_selecionado == "Todos":
         for _, _row in _df_tab.iterrows():
             _aid_tab = mapa_autor_id.get(_row['autor_nome'])
             if _aid_tab:
-                _url_tab = url_sapl(ano=2026, autor_id=_aid_tab,
+                _url_tab = url_sapl(ano=int(ano_selecionado), autor_id=_aid_tab,
                                     so_parlamentar=True, tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
                 _cel_ver = f'<a href="{_url_tab}" target="_blank" style="color:{cor_link}">{_row["autor_nome"]} ↗</a>'
             else:
@@ -1671,249 +1777,253 @@ if vereador_selecionado == "Todos":
             unsafe_allow_html=True
         )
 
-    with aba3:
-        if df_ass.empty:
-            st.info("Nenhum assunto cadastrado nos dados carregados.")
-        else:
-            top_assuntos = (
-                df_ass.groupby('assunto')['materia_id'].nunique()
-                .sort_values(ascending=False).head(15).index.tolist()
-            )
-            df_ass_top = df_ass[df_ass['assunto'].isin(top_assuntos)]
-            df_comp = (
-                df_ass_top.groupby('assunto')
-                .agg(
-                    apresentados=('materia_id', 'nunique'),
-                    aprovados=('virou_lei', lambda x: df_ass_top.loc[x.index]
-                               .drop_duplicates('materia_id')['virou_lei'].sum()),
+    if ano_selecionado != "2025":
+        aba3 = _abas_pd[_idx_pd["🏷️ Projetos por assunto"]]
+        with aba3:
+            if df_ass.empty:
+                st.info("Nenhum assunto cadastrado nos dados carregados.")
+            else:
+                top_assuntos = (
+                    df_ass.groupby('assunto')['materia_id'].nunique()
+                    .sort_values(ascending=False).head(15).index.tolist()
                 )
-                .reset_index().sort_values('apresentados', ascending=False)
-            )
-
-            def _url_ass3(assunto):
-                aid = mapa_assunto_id.get(assunto)
-                if not aid:
-                    return None
-                return url_sapl(ano=2026, assunto_id=aid, so_parlamentar=True)
-
-            st.markdown(
-                html_barchart_grouped_h(
-                    df_comp, 'assunto', _url_ass3,
-                    series=[('apresentados', 'apresentados'), ('aprovados', 'aprovados')],
-                    colors=[cor_azul, cor_verde],
-                ),
-                unsafe_allow_html=True
-            )
-            st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
-            df_comp['taxa'] = (df_comp['aprovados'] / df_comp['apresentados'] * 100).round(1)
-            df_comp.columns = ['Assunto', 'Apresentados', 'Aprovados', 'Taxa (%)']
-            df_comp_sorted = df_comp.sort_values('Taxa (%)', ascending=False)
-            # Tabela com Assunto como hyperlink direto (funciona com um toque no celular)
-            _autor_fil = mapa_autor_id.get(vereador_selecionado) if vereador_selecionado != "Todos" else None
-            _linhas_ass = ""
-            for _, _row in df_comp_sorted.iterrows():
-                _aid_t = mapa_assunto_id.get(_row['Assunto'])
-                if _aid_t:
-                    _url_t = url_sapl(ano=2026, autor_id=_autor_fil, assunto_id=_aid_t, so_parlamentar=True)
-                    _cel = f'<a href="{_url_t}" target="_blank" style="color:{cor_link}">{_row["Assunto"]} ↗</a>'
-                else:
-                    _cel = _row['Assunto']
-                _linhas_ass += (
-                    f"<tr style='border-bottom:1px solid #eee'>"
-                    f"<td style='padding:6px 12px'>{_cel}</td>"
-                    f"<td style='padding:6px 12px;text-align:center'>{int(_row['Apresentados'])}</td>"
-                    f"<td style='padding:6px 12px;text-align:center'>{int(_row['Aprovados'])}</td>"
-                    f"<td style='padding:6px 12px;text-align:center'>{_row['Taxa (%)']}%</td>"
-                    f"</tr>"
+                df_ass_top = df_ass[df_ass['assunto'].isin(top_assuntos)]
+                df_comp = (
+                    df_ass_top.groupby('assunto')
+                    .agg(
+                        apresentados=('materia_id', 'nunique'),
+                        aprovados=('virou_lei', lambda x: df_ass_top.loc[x.index]
+                                   .drop_duplicates('materia_id')['virou_lei'].sum()),
+                    )
+                    .reset_index().sort_values('apresentados', ascending=False)
                 )
-            st.markdown(
-                f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
-                <thead><tr style="border-bottom:2px solid #ddd">
-                  <th style="text-align:left;padding:6px 12px">Assunto ↗ abre no SAPL</th>
-                  <th style="text-align:center;padding:6px 12px">Apresentados</th>
-                  <th style="text-align:center;padding:6px 12px">Aprovados</th>
-                  <th style="text-align:center;padding:6px 12px">Taxa (%)</th>
-                </tr></thead>
-                <tbody>{_linhas_ass}</tbody></table>""",
-                unsafe_allow_html=True
-            )
-            st.divider()
-            st.markdown("**Comparativo entre vereadores por assunto**")
-            df_heat = (
-                df_ass_top.groupby(['autor_nome', 'assunto'])
-                ['materia_id'].nunique().reset_index(name='qtd')
-            )
-            # Tabela pivot para go.Heatmap (suporta on_select corretamente)
-            import plotly.graph_objects as go
-            df_pivot   = df_heat.pivot_table(values='qtd', index='autor_nome', columns='assunto', fill_value=0)
-            autores_px = df_pivot.index.tolist()
-            assuntos_px = df_pivot.columns.tolist()
-            # customdata: matriz com (autor, assunto) por célula
-            custom = [[[a, s] for s in assuntos_px] for a in autores_px]
-            fig_heat = go.Figure(data=go.Heatmap(
-                z=df_pivot.values.tolist(),
-                x=assuntos_px,
-                y=autores_px,
-                colorscale=plot_colorscale if isinstance(plot_colorscale, list) else 'Blues',
-                customdata=custom,
-                hovertemplate='<b>%{y}</b><br>%{x}: %{z} PLO(s)<extra></extra>',
-            ))
-            fig_heat.update_layout(height=500, xaxis_tickangle=-40,
-                                   margin=dict(l=10, r=10, t=20, b=140))
-            fig_heat = aplicar_tema_plot(fig_heat)
-            st.plotly_chart(fig_heat, width='stretch', key="chart_heat", config=PLOT_CONFIG)
 
-    with aba_aprov_assunto:
-        if df_ass.empty:
-            st.info("Nenhum assunto cadastrado nos dados carregados.")
-        else:
-            lista_assuntos_aa = sorted(df_ass['assunto'].unique().tolist())
+                def _url_ass3(assunto):
+                    aid = mapa_assunto_id.get(assunto)
+                    if not aid:
+                        return None
+                    return url_sapl(ano=2026, assunto_id=aid, so_parlamentar=True)
 
-            st.caption(
-                "Selecione quais assuntos entram no cálculo da taxa de aprovação "
-                "de cada vereador."
-            )
+                st.markdown(
+                    html_barchart_grouped_h(
+                        df_comp, 'assunto', _url_ass3,
+                        series=[('apresentados', 'apresentados'), ('aprovados', 'aprovados')],
+                        colors=[cor_azul, cor_verde],
+                    ),
+                    unsafe_allow_html=True
+                )
+                st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
+                df_comp['taxa'] = (df_comp['aprovados'] / df_comp['apresentados'] * 100).round(1)
+                df_comp.columns = ['Assunto', 'Apresentados', 'Aprovados', 'Taxa (%)']
+                df_comp_sorted = df_comp.sort_values('Taxa (%)', ascending=False)
+                # Tabela com Assunto como hyperlink direto (funciona com um toque no celular)
+                _autor_fil = mapa_autor_id.get(vereador_selecionado) if vereador_selecionado != "Todos" else None
+                _linhas_ass = ""
+                for _, _row in df_comp_sorted.iterrows():
+                    _aid_t = mapa_assunto_id.get(_row['Assunto'])
+                    if _aid_t:
+                        _url_t = url_sapl(ano=2026, autor_id=_autor_fil, assunto_id=_aid_t, so_parlamentar=True)
+                        _cel = f'<a href="{_url_t}" target="_blank" style="color:{cor_link}">{_row["Assunto"]} ↗</a>'
+                    else:
+                        _cel = _row['Assunto']
+                    _linhas_ass += (
+                        f"<tr style='border-bottom:1px solid #eee'>"
+                        f"<td style='padding:6px 12px'>{_cel}</td>"
+                        f"<td style='padding:6px 12px;text-align:center'>{int(_row['Apresentados'])}</td>"
+                        f"<td style='padding:6px 12px;text-align:center'>{int(_row['Aprovados'])}</td>"
+                        f"<td style='padding:6px 12px;text-align:center'>{_row['Taxa (%)']}%</td>"
+                        f"</tr>"
+                    )
+                st.markdown(
+                    f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
+                    <thead><tr style="border-bottom:2px solid #ddd">
+                      <th style="text-align:left;padding:6px 12px">Assunto ↗ abre no SAPL</th>
+                      <th style="text-align:center;padding:6px 12px">Apresentados</th>
+                      <th style="text-align:center;padding:6px 12px">Aprovados</th>
+                      <th style="text-align:center;padding:6px 12px">Taxa (%)</th>
+                    </tr></thead>
+                    <tbody>{_linhas_ass}</tbody></table>""",
+                    unsafe_allow_html=True
+                )
+                st.divider()
+                st.markdown("**Comparativo entre vereadores por assunto**")
+                df_heat = (
+                    df_ass_top.groupby(['autor_nome', 'assunto'])
+                    ['materia_id'].nunique().reset_index(name='qtd')
+                )
+                # Tabela pivot para go.Heatmap (suporta on_select corretamente)
+                import plotly.graph_objects as go
+                df_pivot   = df_heat.pivot_table(values='qtd', index='autor_nome', columns='assunto', fill_value=0)
+                autores_px = df_pivot.index.tolist()
+                assuntos_px = df_pivot.columns.tolist()
+                # customdata: matriz com (autor, assunto) por célula
+                custom = [[[a, s] for s in assuntos_px] for a in autores_px]
+                fig_heat = go.Figure(data=go.Heatmap(
+                    z=df_pivot.values.tolist(),
+                    x=assuntos_px,
+                    y=autores_px,
+                    colorscale=plot_colorscale if isinstance(plot_colorscale, list) else 'Blues',
+                    customdata=custom,
+                    hovertemplate='<b>%{y}</b><br>%{x}: %{z} PLO(s)<extra></extra>',
+                ))
+                fig_heat.update_layout(height=500, xaxis_tickangle=-40,
+                                       margin=dict(l=10, r=10, t=20, b=140))
+                fig_heat = aplicar_tema_plot(fig_heat)
+                st.plotly_chart(fig_heat, width='stretch', key="chart_heat", config=PLOT_CONFIG)
 
-            def _marcar_todos_aa():
-                for _a in lista_assuntos_aa:
-                    st.session_state[f"chk_aa_{_a}"] = True
-                st.session_state['aa_expander_open'] = True
 
-            def _desmarcar_todos_aa():
-                for _a in lista_assuntos_aa:
-                    st.session_state[f"chk_aa_{_a}"] = False
-                st.session_state['aa_expander_open'] = True
+        aba_aprov_assunto = _abas_pd[_idx_pd["📈 Aprovação por Assunto"]]
+        with aba_aprov_assunto:
+            if df_ass.empty:
+                st.info("Nenhum assunto cadastrado nos dados carregados.")
+            else:
+                lista_assuntos_aa = sorted(df_ass['assunto'].unique().tolist())
 
-            def _aplicar_filtro_aa():
-                # Só agora a seleção dos checkboxes "trava" no gráfico —
-                # marcar/desmarcar individualmente não recalcula nada sozinho.
-                st.session_state['aa_assuntos_aplicados'] = [
-                    _a for _a in lista_assuntos_aa
-                    if st.session_state.get(f"chk_aa_{_a}", True)
-                ]
-                st.session_state['aa_expander_open'] = False
+                st.caption(
+                    "Selecione quais assuntos entram no cálculo da taxa de aprovação "
+                    "de cada vereador."
+                )
 
-            _qtd_marcados_aa = sum(
-                st.session_state.get(f"chk_aa_{_a}", True) for _a in lista_assuntos_aa
-            )
-            with st.expander(
-                f"🔧 Selecionar assuntos ({_qtd_marcados_aa} de {len(lista_assuntos_aa)} marcados)",
-                expanded=st.session_state.get('aa_expander_open', True)
-            ):
-                col_m_aa, col_d_aa, col_ok_aa = st.columns(3)
-                with col_m_aa:
-                    st.button("✅ Marcar todos", on_click=_marcar_todos_aa, key="btn_marcar_aa")
-                with col_d_aa:
-                    st.button("⬜ Desmarcar todos", on_click=_desmarcar_todos_aa, key="btn_desmarcar_aa")
-                with col_ok_aa:
-                    st.button("👍 OK, aplicar", on_click=_aplicar_filtro_aa,
-                              key="btn_aplicar_aa", type="primary")
+                def _marcar_todos_aa():
+                    for _a in lista_assuntos_aa:
+                        st.session_state[f"chk_aa_{_a}"] = True
+                    st.session_state['aa_expander_open'] = True
 
-                _selecao_atual_aa = [
-                    _a for _a in lista_assuntos_aa
-                    if st.session_state.get(f"chk_aa_{_a}", True)
-                ]
-                _aplicado_atual_aa = [
+                def _desmarcar_todos_aa():
+                    for _a in lista_assuntos_aa:
+                        st.session_state[f"chk_aa_{_a}"] = False
+                    st.session_state['aa_expander_open'] = True
+
+                def _aplicar_filtro_aa():
+                    # Só agora a seleção dos checkboxes "trava" no gráfico —
+                    # marcar/desmarcar individualmente não recalcula nada sozinho.
+                    st.session_state['aa_assuntos_aplicados'] = [
+                        _a for _a in lista_assuntos_aa
+                        if st.session_state.get(f"chk_aa_{_a}", True)
+                    ]
+                    st.session_state['aa_expander_open'] = False
+
+                _qtd_marcados_aa = sum(
+                    st.session_state.get(f"chk_aa_{_a}", True) for _a in lista_assuntos_aa
+                )
+                with st.expander(
+                    f"🔧 Selecionar assuntos ({_qtd_marcados_aa} de {len(lista_assuntos_aa)} marcados)",
+                    expanded=st.session_state.get('aa_expander_open', True)
+                ):
+                    col_m_aa, col_d_aa, col_ok_aa = st.columns(3)
+                    with col_m_aa:
+                        st.button("✅ Marcar todos", on_click=_marcar_todos_aa, key="btn_marcar_aa")
+                    with col_d_aa:
+                        st.button("⬜ Desmarcar todos", on_click=_desmarcar_todos_aa, key="btn_desmarcar_aa")
+                    with col_ok_aa:
+                        st.button("👍 OK, aplicar", on_click=_aplicar_filtro_aa,
+                                  key="btn_aplicar_aa", type="primary")
+
+                    _selecao_atual_aa = [
+                        _a for _a in lista_assuntos_aa
+                        if st.session_state.get(f"chk_aa_{_a}", True)
+                    ]
+                    _aplicado_atual_aa = [
+                        _a for _a in st.session_state.get('aa_assuntos_aplicados', lista_assuntos_aa)
+                        if _a in lista_assuntos_aa
+                    ]
+                    if set(_selecao_atual_aa) != set(_aplicado_atual_aa):
+                        st.caption("⚠️ Seleção alterada — clique em **OK, aplicar** para atualizar o gráfico.")
+
+                    n_cols_aa = 3
+                    cols_aa = st.columns(n_cols_aa)
+                    # Blocos contínuos (1º terço, 2º terço, 3º terço) em vez de
+                    # round-robin (i % n_cols) — assim a ordem alfabética se mantém
+                    # contínua tanto lendo coluna a coluna no PC quanto empilhada
+                    # no celular (onde as colunas viram uma lista única).
+                    tam_bloco_aa = -(-len(lista_assuntos_aa) // n_cols_aa)  # divisão arredondada pra cima
+                    for c in range(n_cols_aa):
+                        bloco_aa = lista_assuntos_aa[c * tam_bloco_aa: (c + 1) * tam_bloco_aa]
+                        with cols_aa[c]:
+                            for _assunto_aa in bloco_aa:
+                                st.checkbox(_assunto_aa, value=True, key=f"chk_aa_{_assunto_aa}")
+
+                # O gráfico usa a seleção APLICADA (último clique em "OK, aplicar"),
+                # não o estado ao vivo dos checkboxes — evita recálculo a cada clique.
+                assuntos_marcados_aa = [
                     _a for _a in st.session_state.get('aa_assuntos_aplicados', lista_assuntos_aa)
                     if _a in lista_assuntos_aa
                 ]
-                if set(_selecao_atual_aa) != set(_aplicado_atual_aa):
-                    st.caption("⚠️ Seleção alterada — clique em **OK, aplicar** para atualizar o gráfico.")
 
-                n_cols_aa = 3
-                cols_aa = st.columns(n_cols_aa)
-                # Blocos contínuos (1º terço, 2º terço, 3º terço) em vez de
-                # round-robin (i % n_cols) — assim a ordem alfabética se mantém
-                # contínua tanto lendo coluna a coluna no PC quanto empilhada
-                # no celular (onde as colunas viram uma lista única).
-                tam_bloco_aa = -(-len(lista_assuntos_aa) // n_cols_aa)  # divisão arredondada pra cima
-                for c in range(n_cols_aa):
-                    bloco_aa = lista_assuntos_aa[c * tam_bloco_aa: (c + 1) * tam_bloco_aa]
-                    with cols_aa[c]:
-                        for _assunto_aa in bloco_aa:
-                            st.checkbox(_assunto_aa, value=True, key=f"chk_aa_{_assunto_aa}")
-
-            # O gráfico usa a seleção APLICADA (último clique em "OK, aplicar"),
-            # não o estado ao vivo dos checkboxes — evita recálculo a cada clique.
-            assuntos_marcados_aa = [
-                _a for _a in st.session_state.get('aa_assuntos_aplicados', lista_assuntos_aa)
-                if _a in lista_assuntos_aa
-            ]
-
-            if not assuntos_marcados_aa:
-                st.info("Nenhum assunto aplicado. Marque ao menos um assunto e clique em 'OK, aplicar'.")
-            else:
-                # PLOs que têm ao menos um dos assuntos marcados (um PLO pode ter
-                # vários assuntos — basta um estar marcado pra entrar no cálculo)
-                df_ass_filtrado_aa = df_ass[df_ass['assunto'].isin(assuntos_marcados_aa)]
-
-                df_vereador_aa = (
-                    df_ass_filtrado_aa.groupby('autor_nome')
-                    .agg(
-                        apresentados=('materia_id', 'nunique'),
-                        aprovados=('virou_lei', lambda x: df_ass_filtrado_aa.loc[x.index]
-                                   .drop_duplicates('materia_id')['virou_lei'].sum()),
-                    )
-                    .reset_index()
-                )
-                df_vereador_aa = df_vereador_aa[df_vereador_aa['apresentados'] > 0].copy()
-
-                if df_vereador_aa.empty:
-                    st.info("Nenhum PLO encontrado para os assuntos selecionados.")
+                if not assuntos_marcados_aa:
+                    st.info("Nenhum assunto aplicado. Marque ao menos um assunto e clique em 'OK, aplicar'.")
                 else:
-                    df_vereador_aa['taxa'] = (
-                        df_vereador_aa['aprovados'] / df_vereador_aa['apresentados'] * 100
-                    ).round(1)
-                    df_vereador_aa = df_vereador_aa.sort_values('taxa', ascending=False)
+                    # PLOs que têm ao menos um dos assuntos marcados (um PLO pode ter
+                    # vários assuntos — basta um estar marcado pra entrar no cálculo)
+                    df_ass_filtrado_aa = df_ass[df_ass['assunto'].isin(assuntos_marcados_aa)]
 
-                    def _url_vereador_aa(nome):
-                        aid = mapa_autor_id.get(nome)
-                        if not aid:
-                            return None
-                        return url_sapl(ano=2026, autor_id=aid, so_parlamentar=True,
-                                        tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
-
-                    st.markdown(
-                        html_barchart_h(df_vereador_aa, 'autor_nome', 'taxa', _url_vereador_aa,
-                                        val_fmt="{:.1f}%", val_color=aprov_color,
-                                        grad_lo=aprov_grad_lo, grad_hi=aprov_grad_hi),
-                        unsafe_allow_html=True
-                    )
-                    st.caption("💡 Clique em uma barra para abrir os Projetos de Lei do vereador no SAPL.")
-
-                    # Tabela com nome do vereador como hyperlink (funciona com um toque no celular)
-                    _linhas_aa = ""
-                    for _, _row_aa in df_vereador_aa.iterrows():
-                        _aid_vaa = mapa_autor_id.get(_row_aa['autor_nome'])
-                        if _aid_vaa:
-                            _url_taa = url_sapl(ano=2026, autor_id=_aid_vaa, so_parlamentar=True,
-                                                tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
-                            _cel_aa = f'<a href="{_url_taa}" target="_blank" style="color:{cor_link}">{_row_aa["autor_nome"]} ↗</a>'
-                        else:
-                            _cel_aa = _row_aa['autor_nome']
-                        _linhas_aa += (
-                            f"<tr style='border-bottom:1px solid #eee'>"
-                            f"<td style='padding:6px 12px'>{_cel_aa}</td>"
-                            f"<td style='padding:6px 12px;text-align:center'>{int(_row_aa['apresentados'])}</td>"
-                            f"<td style='padding:6px 12px;text-align:center'>{int(_row_aa['aprovados'])}</td>"
-                            f"<td style='padding:6px 12px;text-align:center'>{_row_aa['taxa']}%</td>"
-                            f"</tr>"
+                    df_vereador_aa = (
+                        df_ass_filtrado_aa.groupby('autor_nome')
+                        .agg(
+                            apresentados=('materia_id', 'nunique'),
+                            aprovados=('virou_lei', lambda x: df_ass_filtrado_aa.loc[x.index]
+                                       .drop_duplicates('materia_id')['virou_lei'].sum()),
                         )
-                    st.markdown(
-                        f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
-                        <thead><tr style="border-bottom:2px solid #ddd">
-                          <th style="text-align:left;padding:6px 12px">Vereador ↗ abre no SAPL</th>
-                          <th style="text-align:center;padding:6px 12px">PLOs no recorte</th>
-                          <th style="text-align:center;padding:6px 12px">Aprovados</th>
-                          <th style="text-align:center;padding:6px 12px">Taxa (%)</th>
-                        </tr></thead>
-                        <tbody>{_linhas_aa}</tbody></table>""",
-                        unsafe_allow_html=True
+                        .reset_index()
                     )
+                    df_vereador_aa = df_vereador_aa[df_vereador_aa['apresentados'] > 0].copy()
+
+                    if df_vereador_aa.empty:
+                        st.info("Nenhum PLO encontrado para os assuntos selecionados.")
+                    else:
+                        df_vereador_aa['taxa'] = (
+                            df_vereador_aa['aprovados'] / df_vereador_aa['apresentados'] * 100
+                        ).round(1)
+                        df_vereador_aa = df_vereador_aa.sort_values('taxa', ascending=False)
+
+                        def _url_vereador_aa(nome):
+                            aid = mapa_autor_id.get(nome)
+                            if not aid:
+                                return None
+                            return url_sapl(ano=2026, autor_id=aid, so_parlamentar=True,
+                                            tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
+
+                        st.markdown(
+                            html_barchart_h(df_vereador_aa, 'autor_nome', 'taxa', _url_vereador_aa,
+                                            val_fmt="{:.1f}%", val_color=aprov_color,
+                                            grad_lo=aprov_grad_lo, grad_hi=aprov_grad_hi),
+                            unsafe_allow_html=True
+                        )
+                        st.caption("💡 Clique em uma barra para abrir os Projetos de Lei do vereador no SAPL.")
+
+                        # Tabela com nome do vereador como hyperlink (funciona com um toque no celular)
+                        _linhas_aa = ""
+                        for _, _row_aa in df_vereador_aa.iterrows():
+                            _aid_vaa = mapa_autor_id.get(_row_aa['autor_nome'])
+                            if _aid_vaa:
+                                _url_taa = url_sapl(ano=2026, autor_id=_aid_vaa, so_parlamentar=True,
+                                                    tipo_materia_id=TIPO_MATERIA_SAPL['PLO'])
+                                _cel_aa = f'<a href="{_url_taa}" target="_blank" style="color:{cor_link}">{_row_aa["autor_nome"]} ↗</a>'
+                            else:
+                                _cel_aa = _row_aa['autor_nome']
+                            _linhas_aa += (
+                                f"<tr style='border-bottom:1px solid #eee'>"
+                                f"<td style='padding:6px 12px'>{_cel_aa}</td>"
+                                f"<td style='padding:6px 12px;text-align:center'>{int(_row_aa['apresentados'])}</td>"
+                                f"<td style='padding:6px 12px;text-align:center'>{int(_row_aa['aprovados'])}</td>"
+                                f"<td style='padding:6px 12px;text-align:center'>{_row_aa['taxa']}%</td>"
+                                f"</tr>"
+                            )
+                        st.markdown(
+                            f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
+                            <thead><tr style="border-bottom:2px solid #ddd">
+                              <th style="text-align:left;padding:6px 12px">Vereador ↗ abre no SAPL</th>
+                              <th style="text-align:center;padding:6px 12px">PLOs no recorte</th>
+                              <th style="text-align:center;padding:6px 12px">Aprovados</th>
+                              <th style="text-align:center;padding:6px 12px">Taxa (%)</th>
+                            </tr></thead>
+                            <tbody>{_linhas_aa}</tbody></table>""",
+                            unsafe_allow_html=True
+                        )
 
     with aba_pop:
         if assunto_selecionado == "Todos":
-            st.markdown("### Vereadores de Itabirito — 2026")
+            st.markdown(f"### Vereadores de Itabirito — {ano_selecionado}")
             df_grid_list = list(df_resumo.sort_values('taxa_aprovacao', ascending=False).iterrows())
             for row_start in range(0, len(df_grid_list), 3):
                 cols = st.columns(3)
@@ -2008,8 +2118,10 @@ if vereador_selecionado == "Todos":
                     )
 
     # ─── ABA PRONUNCIAMENTOS (visão geral) ────────────────────────────────────
-    with aba_pron_geral:
-        renderizar_pronunciamentos_geral()
+    if ano_selecionado != "2025":
+        aba_pron_geral = _abas_pd[_idx_pd["📢 Pronunciamentos"]]
+        with aba_pron_geral:
+            renderizar_pronunciamentos_geral()
 
 
 # ─── DETALHE DO VEREADOR ───────────────────────────────────────────────────────
