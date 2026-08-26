@@ -14,9 +14,13 @@ from datetime import datetime, timezone, timedelta
 
 # URL do SAPL da sua Casa Legislativa
 BASE_URL = "https://sapl.itabirito.mg.leg.br"
-# Anos a coletar. Adicione anos anteriores para ter histórico completo.
-# Quanto mais anos, mais lenta a coleta — avalie o necessário.
-ANOS     = [2025, 2026]
+# Anos a coletar diariamente (só o(s) ano(s) ainda "abertos", com matérias
+# que podem mudar). Anos fechados (legislativamente encerrados) NÃO entram
+# aqui — ficam fixos em materias_historico.json, mesclados uma vez a partir
+# de coleta pontual (ver coletar_pontual_2023_2024.py e equivalentes).
+# 2023/2024/2025 foram mesclados manualmente em ago/2026 e saíram desta lista.
+# Ao virar 2027, adicionar 2027 aqui e (quando 2026 fechar) removê-lo.
+ANOS     = [2026]
 FUSO     = timezone(timedelta(hours=-3))
 
 HEADERS = {
@@ -173,7 +177,7 @@ def alertar(msg, critico=False):
 
 # ─── 1. MATÉRIAS ──────────────────────────────────────────────────────────────
 
-print("\n[1/6] Coletando matérias 2025 e 2026 (pesquisar-materia)...")
+print(f"\n[1/6] Coletando matérias {', '.join(str(a) for a in ANOS)} (pesquisar-materia)...")
 
 # Carrega estado anterior
 existentes_hist = carregar_existente("materias_historico.json")
