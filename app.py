@@ -524,8 +524,7 @@ with f0:
     ano_selecionado = st.selectbox(
         "📅 Ano", ["2026", "2025"],
         help="Em 2025 ainda não há dados de assuntos nem de pronunciamentos "
-             "(por isso algumas abas não aparecem) e o detalhe individual por "
-             "vereador ainda não está disponível para esse ano."
+             "(por isso essas abas não aparecem nesse ano)."
     )
 
 # Filtra os dados multi-ano para o ano escolhido no seletor acima. Os nomes
@@ -611,12 +610,8 @@ if modo_selecionado == "🗳️ Período Eleitoral":
     with f1:
         st.write("")
     with f2:
-        if ano_selecionado == "2025":
-            st.caption("👤 Detalhe por vereador — disponível só em 2026")
-            vereador_selecionado = "Todos"
-        else:
-            vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
-            vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
+        vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
+        vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
 else:
     # Painel padrão — só chega aqui autenticado (senão foi rebaixado acima)
     with f3:
@@ -639,15 +634,8 @@ else:
         else:
             st.write("")
     with f2:
-        # Detalhe individual do vereador ainda não foi adaptado para 2025
-        # (relatorias, assuntos e pronunciamentos daquele ano têm cobertura
-        # diferente) — filtro fica indisponível, como no Período Eleitoral.
-        if ano_selecionado == "2025":
-            st.caption("👤 Detalhe por vereador — disponível só em 2026")
-            vereador_selecionado = "Todos"
-        else:
-            vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
-            vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
+        vereadores_lista     = ["Todos"] + sorted(df_parl['autor_nome'].unique().tolist())
+        vereador_selecionado = st.selectbox("👤 Vereador", vereadores_lista)
 
 with f4:
     tema = st.selectbox(
@@ -2133,9 +2121,22 @@ if vereador_selecionado != "Todos":
     cargo_v    = mapa_cargo.get(vereador_selecionado, '')
 
     _titulo_pop2 = "📋 Resumo Geral" if modo_selecionado == "🗳️ Período Eleitoral" else "📱 Em Destaque"
-    aba_pop2, aba_d1, aba_d2, aba_d3, aba_rel, aba_pron = st.tabs([
-        _titulo_pop2, "📂 Matérias", "✅ PLOs aprovados", "🏷️ Assuntos", "📋 Relatorias", "📢 Pronunciamentos"
-    ])
+    if ano_selecionado == "2025":
+        # 2025 ainda não tem assuntos nem pronunciamentos alimentados
+        # historicamente — só as abas com dado completo aparecem.
+        _titulos_dv = [_titulo_pop2, "📂 Matérias", "✅ PLOs aprovados", "📋 Relatorias"]
+    else:
+        _titulos_dv = [
+            _titulo_pop2, "📂 Matérias", "✅ PLOs aprovados",
+            "🏷️ Assuntos", "📋 Relatorias", "📢 Pronunciamentos",
+        ]
+    _abas_dv = st.tabs(_titulos_dv)
+    _idx_dv  = {nome: i for i, nome in enumerate(_titulos_dv)}   # indexação por nome — evita erro de posição
+
+    aba_pop2 = _abas_dv[_idx_dv[_titulo_pop2]]
+    aba_d1   = _abas_dv[_idx_dv["📂 Matérias"]]
+    aba_d2   = _abas_dv[_idx_dv["✅ PLOs aprovados"]]
+    aba_rel  = _abas_dv[_idx_dv["📋 Relatorias"]]
 
     with aba_pop2:
         taxa     = float(dados_v['taxa_aprovacao'])
@@ -2160,7 +2161,7 @@ if vereador_selecionado != "Todos":
         for a in top_ass:
             aid = mapa_assunto_id.get(a)
             if autor_id_v and aid:
-                href = url_sapl(ano=2026, autor_id=autor_id_v, assunto_id=aid, so_parlamentar=True)
+                href = url_sapl(ano=int(ano_selecionado), autor_id=autor_id_v, assunto_id=aid, so_parlamentar=True)
                 pills_parts.append(
                     f'<a href="{href}" target="_blank" class="pill-ass" '
                     f'style="text-decoration:none;cursor:pointer" title="Ver no SAPL">{a} 🔗</a>'
@@ -2288,7 +2289,7 @@ if vereador_selecionado != "Todos":
     with aba_d2:
         st.subheader(f"✅ {vereador_selecionado}")
         st.divider()
-        # PLOs aprovados do vereador (apenas 2026 — filtro aplicado em carregar_dados)
+        # PLOs aprovados do vereador (já filtrado pelo ano selecionado, via df_leis)
         df_leis_v = df_leis[df_leis['autor_nome'] == vereador_selecionado].drop_duplicates('plo_id')
         if df_leis_v.empty:
             st.info("Nenhum PLO aprovado como lei até o momento.")
@@ -2338,72 +2339,74 @@ if vereador_selecionado != "Todos":
                 })
             st.dataframe(pd.DataFrame(linhas_subst), width='stretch', hide_index=True)
 
-    with aba_d3:
-        st.subheader(f"🏷️ {vereador_selecionado}")
-        st.divider()
-        df_ass_v = df_ass[df_ass['autor_nome'] == vereador_selecionado]
-        if df_ass_v.empty:
-            st.info("Nenhum assunto cadastrado nos PLOs deste vereador.")
-        else:
-            autor_id_v = mapa_autor_id.get(vereador_selecionado)
-            df_ass_count = (
-                df_ass_v.groupby('assunto').size()
-                .reset_index(name='projetos').sort_values('projetos', ascending=False)
-            )
-
-            def _url_ass_v(assunto):
-                aid = mapa_assunto_id.get(assunto)
-                if not aid or not autor_id_v:
-                    return None
-                return url_sapl(ano=2026, autor_id=autor_id_v, assunto_id=aid, so_parlamentar=True)
-
-            st.markdown(
-                html_barchart_h(df_ass_count, 'assunto', 'projetos', _url_ass_v, label_w=160),
-                unsafe_allow_html=True
-            )
-            st.caption("💡 Clique em uma barra para abrir os PLOs deste assunto no SAPL.")
-            pct_cobertura = round(
-                len(df_ass_v['materia_id'].unique()) / int(dados_v['projetos_lei']) * 100, 1
-            )
-            st.caption(
-                f"ℹ️ Assuntos cadastrados em {len(df_ass_v['materia_id'].unique())} "
-                f"de {int(dados_v['projetos_lei'])} PLOs ({pct_cobertura}%)"
-            )
-            df_ass_v_aprov = df_ass_v.groupby('assunto').agg(
-                apresentados=('materia_id', 'nunique'),
-                aprovados=('virou_lei', lambda x: df_ass_v.loc[x.index]
-                           .drop_duplicates('materia_id')['virou_lei'].sum())
-            ).reset_index()
-            if df_ass_v_aprov['aprovados'].sum() > 0:
-                df_aprov_long = df_ass_v_aprov.melt(
-                    id_vars='assunto', value_vars=['apresentados', 'aprovados'],
-                    var_name='situação', value_name='projetos'
+    if ano_selecionado != "2025":
+        aba_d3 = _abas_dv[_idx_dv["🏷️ Assuntos"]]
+        with aba_d3:
+            st.subheader(f"🏷️ {vereador_selecionado}")
+            st.divider()
+            df_ass_v = df_ass[df_ass['autor_nome'] == vereador_selecionado]
+            if df_ass_v.empty:
+                st.info("Nenhum assunto cadastrado nos PLOs deste vereador.")
+            else:
+                autor_id_v = mapa_autor_id.get(vereador_selecionado)
+                df_ass_count = (
+                    df_ass_v.groupby('assunto').size()
+                    .reset_index(name='projetos').sort_values('projetos', ascending=False)
                 )
-                fig6 = px.bar(
-                    df_aprov_long, x='assunto', y='projetos',
-                    color='situação', barmode='group',
-                    labels={'assunto': '', 'projetos': 'PLOs', 'situação': ''},
-                    color_discrete_map={'apresentados': cor_azul, 'aprovados': cor_verde},
-                    title="Apresentados vs aprovados por assunto"
+
+                def _url_ass_v(assunto):
+                    aid = mapa_assunto_id.get(assunto)
+                    if not aid or not autor_id_v:
+                        return None
+                    return url_sapl(ano=2026, autor_id=autor_id_v, assunto_id=aid, so_parlamentar=True)
+
+                st.markdown(
+                    html_barchart_h(df_ass_count, 'assunto', 'projetos', _url_ass_v, label_w=160),
+                    unsafe_allow_html=True
                 )
-                fig6.update_layout(height=350, xaxis_tickangle=-35,
-                                   margin=dict(l=10, r=10, t=40, b=100),
-                                   legend=dict(orientation='h', y=1.08))
-                fig6 = aplicar_tema_plot(fig6)
-                evento6 = st.plotly_chart(fig6, width='stretch', on_select="rerun", key="chart_ass_v2", config=PLOT_CONFIG)
-                pontos6 = evento6.get("selection", {}).get("points", []) if evento6 else []
-                if pontos6:
-                    assunto_clicado6 = pontos6[0].get("x")
-                    assunto_id6 = mapa_assunto_id.get(assunto_clicado6)
-                    if assunto_id6:
-                        st.link_button(
-                            f"🔗 Ver PLOs de {vereador_selecionado} sobre '{assunto_clicado6}' no SAPL",
-                            url_sapl(ano=2026, autor_id=autor_id_v,
-                                     assunto_id=assunto_id6, so_parlamentar=True)
-                        )
-                else:
-                    st.caption("💡 Clique em uma barra para abrir os PLOs deste assunto no SAPL.")
-# ─── ABA RELATORIAS ────────────────────────────────────────────────────────────
+                st.caption("💡 Clique em uma barra para abrir os PLOs deste assunto no SAPL.")
+                pct_cobertura = round(
+                    len(df_ass_v['materia_id'].unique()) / int(dados_v['projetos_lei']) * 100, 1
+                )
+                st.caption(
+                    f"ℹ️ Assuntos cadastrados em {len(df_ass_v['materia_id'].unique())} "
+                    f"de {int(dados_v['projetos_lei'])} PLOs ({pct_cobertura}%)"
+                )
+                df_ass_v_aprov = df_ass_v.groupby('assunto').agg(
+                    apresentados=('materia_id', 'nunique'),
+                    aprovados=('virou_lei', lambda x: df_ass_v.loc[x.index]
+                               .drop_duplicates('materia_id')['virou_lei'].sum())
+                ).reset_index()
+                if df_ass_v_aprov['aprovados'].sum() > 0:
+                    df_aprov_long = df_ass_v_aprov.melt(
+                        id_vars='assunto', value_vars=['apresentados', 'aprovados'],
+                        var_name='situação', value_name='projetos'
+                    )
+                    fig6 = px.bar(
+                        df_aprov_long, x='assunto', y='projetos',
+                        color='situação', barmode='group',
+                        labels={'assunto': '', 'projetos': 'PLOs', 'situação': ''},
+                        color_discrete_map={'apresentados': cor_azul, 'aprovados': cor_verde},
+                        title="Apresentados vs aprovados por assunto"
+                    )
+                    fig6.update_layout(height=350, xaxis_tickangle=-35,
+                                       margin=dict(l=10, r=10, t=40, b=100),
+                                       legend=dict(orientation='h', y=1.08))
+                    fig6 = aplicar_tema_plot(fig6)
+                    evento6 = st.plotly_chart(fig6, width='stretch', on_select="rerun", key="chart_ass_v2", config=PLOT_CONFIG)
+                    pontos6 = evento6.get("selection", {}).get("points", []) if evento6 else []
+                    if pontos6:
+                        assunto_clicado6 = pontos6[0].get("x")
+                        assunto_id6 = mapa_assunto_id.get(assunto_clicado6)
+                        if assunto_id6:
+                            st.link_button(
+                                f"🔗 Ver PLOs de {vereador_selecionado} sobre '{assunto_clicado6}' no SAPL",
+                                url_sapl(ano=2026, autor_id=autor_id_v,
+                                         assunto_id=assunto_id6, so_parlamentar=True)
+                            )
+                    else:
+                        st.caption("💡 Clique em uma barra para abrir os PLOs deste assunto no SAPL.")
+    # ─── ABA RELATORIAS ────────────────────────────────────────────────────────────
 
     with aba_rel:
         st.markdown(f"### 🏷️ {vereador_selecionado}")
@@ -2415,17 +2418,17 @@ if vereador_selecionado != "Todos":
             st.info("📋 Os dados de relatorias ainda não foram coletados. "
                     "Execute o workflow 'Atualizar dados SAPL' para incluí-los.")
         else:
-            # Filtra por vereador e por 2026
+            # Filtra por vereador e pelo ano selecionado no topo
             df_rel_v = df_relatorias[
                 (df_relatorias['parlamentar'] == parl_id_v) &
-                (df_relatorias['ano'].astype(str) == '2026')
+                (df_relatorias['ano'].astype(str) == ano_selecionado)
             ].copy()
 
             total_rel = len(df_rel_v)
-            st.caption(f"📋 {total_rel} relatoria(s) registrada(s) para {vereador_selecionado} em 2026")
+            st.caption(f"📋 {total_rel} relatoria(s) registrada(s) para {vereador_selecionado} em {ano_selecionado}")
 
             if df_rel_v.empty:
-                st.info(f"Nenhuma relatoria registrada para {vereador_selecionado} em 2026.")
+                st.info(f"Nenhuma relatoria registrada para {vereador_selecionado} em {ano_selecionado}.")
             else:
                 # Ordenação: sequencia_regimental → número → comissão
                 df_rel_v['seq_reg'] = df_rel_v['tipo_sigla'].map(mapa_tipo_seq).fillna(999)
@@ -2455,16 +2458,16 @@ if vereador_selecionado != "Todos":
                 if not tipos_desc_rel:
                     # Sem filtro de tipo: link geral por parlamentar
                     st.link_button(
-                        f"🔗 Ver matérias de relatoria de {vereador_selecionado} em 2026 no SAPL",
+                        f"🔗 Ver matérias de relatoria de {vereador_selecionado} em {ano_selecionado} no SAPL",
                         f"{BASE_SAPL_URL}/materia/pesquisar-materia"
-                        f"?salvar=Pesquisar&ano=2026&relatoria__parlamentar_id={parl_id_v}"
+                        f"?salvar=Pesquisar&ano={ano_selecionado}&relatoria__parlamentar_id={parl_id_v}"
                     )
                 elif len(tipos_desc_rel) == 1:
                     # Uma descrição — botão único com nome completo do tipo
                     tid = mapa_tipo_sapl_id.get(tipos_desc_rel[0])
                     url_t = (
                         f"{BASE_SAPL_URL}/materia/pesquisar-materia"
-                        f"?salvar=Pesquisar&ano=2026&relatoria__parlamentar_id={parl_id_v}"
+                        f"?salvar=Pesquisar&ano={ano_selecionado}&relatoria__parlamentar_id={parl_id_v}"
                         + (f"&tipo={tid}" if tid else "")
                     )
                     st.link_button(
@@ -2478,11 +2481,11 @@ if vereador_selecionado != "Todos":
                         tid = mapa_tipo_sapl_id.get(desc)
                         url_t = (
                             f"{BASE_SAPL_URL}/materia/pesquisar-materia"
-                            f"?salvar=Pesquisar&ano=2026&relatoria__parlamentar_id={parl_id_v}"
+                            f"?salvar=Pesquisar&ano={ano_selecionado}&relatoria__parlamentar_id={parl_id_v}"
                             + (f"&tipo={tid}" if tid else "")
                         )
                         st.link_button(
-                            f"🔗 Ver {desc} de relatoria de {vereador_selecionado} em 2026 no SAPL",
+                            f"🔗 Ver {desc} de relatoria de {vereador_selecionado} em {ano_selecionado} no SAPL",
                             url_t, key=f"rel_link_{desc}"
                         )
 
@@ -2499,63 +2502,65 @@ if vereador_selecionado != "Todos":
 
 # ─── ABA PRONUNCIAMENTOS ───────────────────────────────────────────────────────
 
-    with aba_pron:
-        st.markdown(f"### 🏷️ {vereador_selecionado}")
-        st.divider()
+    if ano_selecionado != "2025":
+        aba_pron = _abas_dv[_idx_dv["📢 Pronunciamentos"]]
+        with aba_pron:
+            st.markdown(f"### 🏷️ {vereador_selecionado}")
+            st.divider()
 
-        if df_pronunciamentos.empty:
-            st.info("📢 Os dados de pronunciamentos ainda não foram coletados. "
-                    "Execute o workflow 'Coletar dados pontuais' para incluí-los.")
-        else:
-            df_pron_v = df_pronunciamentos[
-                (df_pronunciamentos['parlamentar'] == parl_id_v) &
-                (df_pronunciamentos['ano'] == '2026')
-            ].copy()
-
-            total_pron = len(df_pron_v)
-            st.caption(f"📢 {total_pron} pronunciamento(s) registrado(s) para {vereador_selecionado} em 2026")
-
-            if df_pron_v.empty:
-                st.info(f"Nenhum pronunciamento registrado para {vereador_selecionado} em 2026.")
+            if df_pronunciamentos.empty:
+                st.info("📢 Os dados de pronunciamentos ainda não foram coletados. "
+                        "Execute o workflow 'Coletar dados pontuais' para incluí-los.")
             else:
-                df_pron_v = df_pron_v.sort_values('data', ascending=False)
-                df_pron_v['Data'] = pd.to_datetime(df_pron_v['data']).dt.strftime('%d/%m/%Y')
+                df_pron_v = df_pronunciamentos[
+                    (df_pronunciamentos['parlamentar'] == parl_id_v) &
+                    (df_pronunciamentos['ano'] == '2026')
+                ].copy()
 
-                # Tabela HTML: link clicável quando há URL, observação entre parênteses quando não há
-                def cel_discurso_html(row):
-                    if row['url_discurso']:
-                        return (f'<a href="{row["url_discurso"]}" target="_blank" '
-                                f'style="color:{cor_link}">🎥 Assistir no Instagram</a>')
-                    elif row['observacao']:
-                        return f'<span style="color:#888;font-size:0.9em">({row["observacao"]})</span>'
-                    return '—'
+                total_pron = len(df_pron_v)
+                st.caption(f"📢 {total_pron} pronunciamento(s) registrado(s) para {vereador_selecionado} em 2026")
 
-                linhas_html = ""
-                for _, row in df_pron_v.iterrows():
-                    # Sessão: link para o YouTube se disponível
-                    if row.get('url_video'):
-                        cel_sessao = (f'<a href="{row["url_video"]}" target="_blank" '
-                                      f'style="color:{cor_link}">{row["sessao_nome"]} 📺</a>')
-                    else:
-                        cel_sessao = row['sessao_nome']
-                    linhas_html += (
-                        f"<tr style='border-bottom:1px solid #eee'>"
-                        f"<td style='white-space:nowrap;padding:6px 12px;vertical-align:top'>{row['Data']}</td>"
-                        f"<td style='white-space:nowrap;padding:6px 12px;vertical-align:top'>{cel_sessao}</td>"
-                        f"<td style='word-break:break-word;padding:6px 12px;vertical-align:top'>{cel_discurso_html(row)}</td>"
-                        f"</tr>"
+                if df_pron_v.empty:
+                    st.info(f"Nenhum pronunciamento registrado para {vereador_selecionado} em 2026.")
+                else:
+                    df_pron_v = df_pron_v.sort_values('data', ascending=False)
+                    df_pron_v['Data'] = pd.to_datetime(df_pron_v['data']).dt.strftime('%d/%m/%Y')
+
+                    # Tabela HTML: link clicável quando há URL, observação entre parênteses quando não há
+                    def cel_discurso_html(row):
+                        if row['url_discurso']:
+                            return (f'<a href="{row["url_discurso"]}" target="_blank" '
+                                    f'style="color:{cor_link}">🎥 Assistir no Instagram</a>')
+                        elif row['observacao']:
+                            return f'<span style="color:#888;font-size:0.9em">({row["observacao"]})</span>'
+                        return '—'
+
+                    linhas_html = ""
+                    for _, row in df_pron_v.iterrows():
+                        # Sessão: link para o YouTube se disponível
+                        if row.get('url_video'):
+                            cel_sessao = (f'<a href="{row["url_video"]}" target="_blank" '
+                                          f'style="color:{cor_link}">{row["sessao_nome"]} 📺</a>')
+                        else:
+                            cel_sessao = row['sessao_nome']
+                        linhas_html += (
+                            f"<tr style='border-bottom:1px solid #eee'>"
+                            f"<td style='white-space:nowrap;padding:6px 12px;vertical-align:top'>{row['Data']}</td>"
+                            f"<td style='white-space:nowrap;padding:6px 12px;vertical-align:top'>{cel_sessao}</td>"
+                            f"<td style='word-break:break-word;padding:6px 12px;vertical-align:top'>{cel_discurso_html(row)}</td>"
+                            f"</tr>"
+                        )
+                    st.markdown(
+                        f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
+                        <thead><tr style="border-bottom:2px solid #ddd">
+                          <th style="text-align:left;padding:6px 12px">Data</th>
+                          <th style="text-align:left;padding:6px 12px">Sessão</th>
+                          <th style="text-align:left;padding:6px 12px">Discurso</th>
+                        </tr></thead>
+                        <tbody>{linhas_html}</tbody>
+                        </table>""",
+                        unsafe_allow_html=True
                     )
-                st.markdown(
-                    f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
-                    <thead><tr style="border-bottom:2px solid #ddd">
-                      <th style="text-align:left;padding:6px 12px">Data</th>
-                      <th style="text-align:left;padding:6px 12px">Sessão</th>
-                      <th style="text-align:left;padding:6px 12px">Discurso</th>
-                    </tr></thead>
-                    <tbody>{linhas_html}</tbody>
-                    </table>""",
-                    unsafe_allow_html=True
-                )
 
 # ─── RODAPÉ INSTITUCIONAL ───────────────────────────────────────────────────────
 
