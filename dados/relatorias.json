@@ -59758,5 +59758,17 @@
     "parlamentar": 32,
     "tipo_fim_relatoria": null,
     "comissao": 1
+  },
+  {
+    "id": 5027,
+    "__str__": "Projeto de Lei Substitutivo nº 239 de 2023 - 02/01/2023",
+    "link_detail_backend": "/materia/relatoria/5027",
+    "metadata": {},
+    "data_designacao_relator": "2023-01-02",
+    "data_destituicao_relator": null,
+    "materia": 12653,
+    "parlamentar": 36,
+    "tipo_fim_relatoria": null,
+    "comissao": 10
   }
 ]
