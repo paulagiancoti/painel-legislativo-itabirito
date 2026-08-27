@@ -124,5 +124,59 @@
     "sessao_nome": "19ª Sessão Ordinária",
     "url_discurso": "https://www.instagram.com/p/DZ8L4vVIzdM/",
     "observacao": "Considerações finais da Presidência"
+  },
+
+  {
+    "parlamentar": 17,
+    "sessao_plenaria": 579,
+    "data": "2026-07-06",
+    "sessao_nome": "20ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+
+  {
+    "parlamentar": 17,
+    "sessao_plenaria": 582,
+    "data": "2026-07-13",
+    "sessao_nome": "21ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+
+  {
+    "parlamentar": 17,
+    "sessao_plenaria": 583,
+    "data": "2026-08-03",
+    "sessao_nome": "22ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+
+  {
+    "parlamentar": 17,
+    "sessao_plenaria": 584,
+    "data": "2026-08-10",
+    "sessao_nome": "23ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+
+  {
+    "parlamentar": 17,
+    "sessao_plenaria": 585,
+    "data": "2026-08-17",
+    "sessao_nome": "24ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+
+  {
+    "parlamentar": 17,
+    "sessao_plenaria": 586,
+    "data": "2026-08-24",
+    "sessao_nome": "25ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
   }
 ]
