@@ -31,9 +31,12 @@ jobs:
         run: git pull --ff-only origin main
 
       - name: Rodar atualização
+        id: atualizacao
         run: python atualizar_dados.py
 
       - name: Verificar se dados foram coletados
+        id: verificar
+        if: always()
         run: |
           python3 - << 'PYEOF'
           import json, sys, os
@@ -53,6 +56,15 @@ jobs:
           PYEOF
 
       - name: Commitar mudanças (somente se dados válidos)
+        # "always()" faz este passo rodar mesmo se "Rodar atualização" tiver
+        # falhado (ex: SAPL fora do ar para só 1 dos 6 tipos de dado) — sem
+        # isso, os outros 5 tipos que deram certo eram descartados junto.
+        # A condição de "verificar" continua obrigatória: só commita se os
+        # arquivos essenciais existem e não estão vazios. O job inteiro
+        # continua marcado como falho quando "Rodar atualização" falha
+        # (e o e-mail de aviso do GitHub continua chegando normalmente) —
+        # só o commit deixa de ser descartado.
+        if: always() && steps.verificar.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
