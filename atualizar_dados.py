@@ -33,7 +33,7 @@ FUSO     = timezone(timedelta(hours=-3))
 # rebaixar esse ID específico manualmente (baixar de novo com o corte
 # temporariamente mais baixo, ou editar direto no materiaassuntos.json).
 # 0 = sem corte, baixa tudo todo dia (comportamento padrão/seguro).
-ASSUNTOS_CORTE_ID = 0
+ASSUNTOS_CORTE_ID = 794
 
 HEADERS = {
     "User-Agent": (
