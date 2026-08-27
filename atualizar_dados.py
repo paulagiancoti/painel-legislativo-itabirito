@@ -241,13 +241,16 @@ total_leis_anterior = sum(
 print(f"  Normas existentes: {len(existentes_normas)}, maior ID={max_id_normas}")
 print(f"  Leis Ordinárias existentes (tipo 1): {total_leis_anterior}")
 
-# Busca via coletar_incrementais (varre da última página pra trás até achar
-# um ID conhecido) em vez de confiar no filtro id__gt da URL — o SAPL de
-# Itabirito ignora esse parâmetro silenciosamente. Sinal do bug antigo: o
-# total nunca mudava depois do merge, porque "as novas" já eram todas
-# conhecidas (o filtro não filtrava nada, sempre voltava o ano 2026 inteiro).
+# Busca o ano 2026 inteiro, sempre. Tentamos usar coletar_incrementais() aqui
+# (como relatorias/sessões), mas o log de 27/08 mostrou "maior ID na última
+# página: 3820" quando o maior ID real já era 5245 — evidência de que este
+# endpoint específico ordena do mais recente para o mais antigo (ao contrário
+# dos outros), o que faria coletar_incrementais() nunca mais achar nada de
+# novo, silenciosamente. Sem conseguir confirmar a ordenação de verdade, é
+# mais seguro aceitar o desperdício (156 registros, ~16 páginas, nunca deu
+# timeout neste endpoint) do que arriscar perder lei nova sem perceber.
 ep_normas = "/api/norma/normajuridica/?format=json&ano=2026"
-novas_normas = coletar_incrementais(ep_normas, max_id_normas)
+novas_normas = coletar_paginado(ep_normas)
 
 if novas_normas:
     merged_normas = merge_por_id(existentes_normas, novas_normas)
