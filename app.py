@@ -1322,9 +1322,9 @@ def renderizar_pronunciamentos_geral():
     else:
         mapa_id_parl = df_vereadores.set_index('id')['nome_parlamentar'].to_dict()
 
-        # Apenas oradores reais (não extras) de 2026
+        # Apenas oradores reais (não extras) do ano selecionado
         df_pron_2026 = df_pronunciamentos[
-            (df_pronunciamentos['ano'] == '2026') &
+            (df_pronunciamentos['ano'] == ano_selecionado) &
             (df_pronunciamentos['orador_id'].apply(lambda x: str(x).isdigit()))
         ].copy()
 
@@ -1698,9 +1698,12 @@ if modo_selecionado == "🗳️ Período Eleitoral" and vereador_selecionado == 
 if vereador_selecionado == "Todos":
 
     if ano_selecionado == "2025":
-        # 2025 ainda não tem assunto nem pronunciamentos alimentados
-        # historicamente — só as abas com dado completo aparecem.
-        _titulos_pd = ["📊 Matérias por vereador", "⚖️ Aprovação de PLOs", "📱 Em Destaque"]
+        # 2025 ainda não tem assunto alimentado historicamente — só essa
+        # aba fica de fora. Pronunciamentos já tem dado completo de 2025.
+        _titulos_pd = [
+            "📊 Matérias por vereador", "⚖️ Aprovação de PLOs",
+            "📱 Em Destaque", "📢 Pronunciamentos",
+        ]
     else:
         _titulos_pd = [
             "📊 Matérias por vereador", "⚖️ Aprovação de PLOs",
@@ -1710,9 +1713,10 @@ if vereador_selecionado == "Todos":
     _abas_pd = st.tabs(_titulos_pd)
     _idx_pd  = {nome: i for i, nome in enumerate(_titulos_pd)}   # indexação por nome — evita erro de posição
 
-    aba1    = _abas_pd[_idx_pd["📊 Matérias por vereador"]]
-    aba2    = _abas_pd[_idx_pd["⚖️ Aprovação de PLOs"]]
-    aba_pop = _abas_pd[_idx_pd["📱 Em Destaque"]]
+    aba1        = _abas_pd[_idx_pd["📊 Matérias por vereador"]]
+    aba2        = _abas_pd[_idx_pd["⚖️ Aprovação de PLOs"]]
+    aba_pop     = _abas_pd[_idx_pd["📱 Em Destaque"]]
+    aba_pron_geral = _abas_pd[_idx_pd["📢 Pronunciamentos"]]
 
     with aba1:
         df_ranking = (
@@ -2130,10 +2134,8 @@ if vereador_selecionado == "Todos":
                     )
 
     # ─── ABA PRONUNCIAMENTOS (visão geral) ────────────────────────────────────
-    if ano_selecionado != "2025":
-        aba_pron_geral = _abas_pd[_idx_pd["📢 Pronunciamentos"]]
-        with aba_pron_geral:
-            renderizar_pronunciamentos_geral()
+    with aba_pron_geral:
+        renderizar_pronunciamentos_geral()
 
 
 # ─── DETALHE DO VEREADOR ───────────────────────────────────────────────────────
@@ -2146,9 +2148,12 @@ if vereador_selecionado != "Todos":
 
     _titulo_pop2 = "📋 Resumo Geral" if modo_selecionado == "🗳️ Período Eleitoral" else "📱 Em Destaque"
     if ano_selecionado == "2025":
-        # 2025 ainda não tem assuntos nem pronunciamentos alimentados
-        # historicamente — só as abas com dado completo aparecem.
-        _titulos_dv = [_titulo_pop2, "📂 Matérias", "✅ PLOs aprovados", "📋 Relatorias"]
+        # 2025 ainda não tem assuntos alimentados historicamente — só essa
+        # aba fica de fora. Pronunciamentos já tem dado completo de 2025.
+        _titulos_dv = [
+            _titulo_pop2, "📂 Matérias", "✅ PLOs aprovados",
+            "📋 Relatorias", "📢 Pronunciamentos",
+        ]
     else:
         _titulos_dv = [
             _titulo_pop2, "📂 Matérias", "✅ PLOs aprovados",
@@ -2161,6 +2166,7 @@ if vereador_selecionado != "Todos":
     aba_d1   = _abas_dv[_idx_dv["📂 Matérias"]]
     aba_d2   = _abas_dv[_idx_dv["✅ PLOs aprovados"]]
     aba_rel  = _abas_dv[_idx_dv["📋 Relatorias"]]
+    aba_pron = _abas_dv[_idx_dv["📢 Pronunciamentos"]]
 
     with aba_pop2:
         taxa     = float(dados_v['taxa_aprovacao'])
@@ -2526,65 +2532,63 @@ if vereador_selecionado != "Todos":
 
 # ─── ABA PRONUNCIAMENTOS ───────────────────────────────────────────────────────
 
-    if ano_selecionado != "2025":
-        aba_pron = _abas_dv[_idx_dv["📢 Pronunciamentos"]]
-        with aba_pron:
-            st.markdown(f"### 🏷️ {vereador_selecionado}")
-            st.divider()
+    with aba_pron:
+        st.markdown(f"### 🏷️ {vereador_selecionado}")
+        st.divider()
 
-            if df_pronunciamentos.empty:
-                st.info("📢 Os dados de pronunciamentos ainda não foram coletados. "
-                        "Execute o workflow 'Coletar dados pontuais' para incluí-los.")
+        if df_pronunciamentos.empty:
+            st.info("📢 Os dados de pronunciamentos ainda não foram coletados. "
+                    "Execute o workflow 'Coletar dados pontuais' para incluí-los.")
+        else:
+            df_pron_v = df_pronunciamentos[
+                (df_pronunciamentos['parlamentar'] == parl_id_v) &
+                (df_pronunciamentos['ano'] == ano_selecionado)
+            ].copy()
+
+            total_pron = len(df_pron_v)
+            st.caption(f"📢 {total_pron} pronunciamento(s) registrado(s) para {vereador_selecionado} em {ano_selecionado}")
+
+            if df_pron_v.empty:
+                st.info(f"Nenhum pronunciamento registrado para {vereador_selecionado} em {ano_selecionado}.")
             else:
-                df_pron_v = df_pronunciamentos[
-                    (df_pronunciamentos['parlamentar'] == parl_id_v) &
-                    (df_pronunciamentos['ano'] == '2026')
-                ].copy()
+                df_pron_v = df_pron_v.sort_values('data', ascending=False)
+                df_pron_v['Data'] = pd.to_datetime(df_pron_v['data']).dt.strftime('%d/%m/%Y')
 
-                total_pron = len(df_pron_v)
-                st.caption(f"📢 {total_pron} pronunciamento(s) registrado(s) para {vereador_selecionado} em 2026")
+                # Tabela HTML: link clicável quando há URL, observação entre parênteses quando não há
+                def cel_discurso_html(row):
+                    if row['url_discurso']:
+                        return (f'<a href="{row["url_discurso"]}" target="_blank" '
+                                f'style="color:{cor_link}">🎥 Assistir no Instagram</a>')
+                    elif row['observacao']:
+                        return f'<span style="color:#888;font-size:0.9em">({row["observacao"]})</span>'
+                    return '—'
 
-                if df_pron_v.empty:
-                    st.info(f"Nenhum pronunciamento registrado para {vereador_selecionado} em 2026.")
-                else:
-                    df_pron_v = df_pron_v.sort_values('data', ascending=False)
-                    df_pron_v['Data'] = pd.to_datetime(df_pron_v['data']).dt.strftime('%d/%m/%Y')
-
-                    # Tabela HTML: link clicável quando há URL, observação entre parênteses quando não há
-                    def cel_discurso_html(row):
-                        if row['url_discurso']:
-                            return (f'<a href="{row["url_discurso"]}" target="_blank" '
-                                    f'style="color:{cor_link}">🎥 Assistir no Instagram</a>')
-                        elif row['observacao']:
-                            return f'<span style="color:#888;font-size:0.9em">({row["observacao"]})</span>'
-                        return '—'
-
-                    linhas_html = ""
-                    for _, row in df_pron_v.iterrows():
-                        # Sessão: link para o YouTube se disponível
-                        if row.get('url_video'):
-                            cel_sessao = (f'<a href="{row["url_video"]}" target="_blank" '
-                                          f'style="color:{cor_link}">{row["sessao_nome"]} 📺</a>')
-                        else:
-                            cel_sessao = row['sessao_nome']
-                        linhas_html += (
-                            f"<tr style='border-bottom:1px solid #eee'>"
-                            f"<td style='white-space:nowrap;padding:6px 12px;vertical-align:top'>{row['Data']}</td>"
-                            f"<td style='white-space:nowrap;padding:6px 12px;vertical-align:top'>{cel_sessao}</td>"
-                            f"<td style='word-break:break-word;padding:6px 12px;vertical-align:top'>{cel_discurso_html(row)}</td>"
-                            f"</tr>"
-                        )
-                    st.markdown(
-                        f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
-                        <thead><tr style="border-bottom:2px solid #ddd">
-                          <th style="text-align:left;padding:6px 12px">Data</th>
-                          <th style="text-align:left;padding:6px 12px">Sessão</th>
-                          <th style="text-align:left;padding:6px 12px">Discurso</th>
-                        </tr></thead>
-                        <tbody>{linhas_html}</tbody>
-                        </table>""",
-                        unsafe_allow_html=True
+                linhas_html = ""
+                for _, row in df_pron_v.iterrows():
+                    # Sessão: link para o YouTube se disponível
+                    if row.get('url_video'):
+                        cel_sessao = (f'<a href="{row["url_video"]}" target="_blank" '
+                                      f'style="color:{cor_link}">{row["sessao_nome"]} 📺</a>')
+                    else:
+                        cel_sessao = row['sessao_nome']
+                    linhas_html += (
+                        f"<tr style='border-bottom:1px solid #eee'>"
+                        f"<td style='white-space:nowrap;padding:6px 12px;vertical-align:top'>{row['Data']}</td>"
+                        f"<td style='white-space:nowrap;padding:6px 12px;vertical-align:top'>{cel_sessao}</td>"
+                        f"<td style='word-break:break-word;padding:6px 12px;vertical-align:top'>{cel_discurso_html(row)}</td>"
+                        f"</tr>"
                     )
+                st.markdown(
+                    f"""<table style="width:100%;border-collapse:collapse;font-size:0.95em">
+                    <thead><tr style="border-bottom:2px solid #ddd">
+                      <th style="text-align:left;padding:6px 12px">Data</th>
+                      <th style="text-align:left;padding:6px 12px">Sessão</th>
+                      <th style="text-align:left;padding:6px 12px">Discurso</th>
+                    </tr></thead>
+                    <tbody>{linhas_html}</tbody>
+                    </table>""",
+                    unsafe_allow_html=True
+                )
 
 # ─── RODAPÉ INSTITUCIONAL ───────────────────────────────────────────────────────
 
