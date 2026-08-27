@@ -12,9 +12,13 @@ st.set_page_config(
 )
 
 @st.cache_data(show_spinner="⏳ Carregando dados do Painel Legislativo...")
-def carregar_dados(ultima_atualizacao=""):
-    """O parâmetro ultima_atualizacao serve como chave de cache:
-    quando os dados são atualizados, o timestamp muda e o cache é invalidado automaticamente."""
+def carregar_dados(cache_key=""):
+    """O parâmetro cache_key serve só como chave de cache do Streamlit — o
+    valor em si não é usado dentro da função. Hoje é a soma dos horários de
+    modificação dos arquivos em dados/ (ver _cache_key logo abaixo da função),
+    não mais o texto de ultima_atualizacao.json — assim qualquer arquivo
+    mudando invalida o cache, mesmo numa edição manual que não passa pelo
+    atualizar_dados.py."""
     with open("dados/vereadores.json", encoding="utf-8") as f:
         vereadores = json.load(f)
     with open("dados/mesa_diretora.json", encoding="utf-8") as f:
@@ -491,11 +495,31 @@ try:
 except Exception:
     _ts = ""
 
+# Chave de cache separada do texto exibido acima ("_ts" só serve pro texto
+# "última atualização em..." na tela). O cache de carregar_dados() usa
+# _cache_key: soma do horário de modificação de cada arquivo em dados/.
+# Isso evita o problema de 27-28/08/2026: ultima_atualizacao.json só é
+# reescrito quando as matérias são coletadas com sucesso (ver atualizar_dados.py),
+# então uma falha ali travava _ts e o site continuava servindo cache velho —
+# mesmo com outro arquivo (ex: pronunciamentos_extras.json) atualizado de
+# verdade no Git. Com _cache_key, qualquer arquivo mudando — pela automação
+# ou por edição manual direto no GitHub — já invalida o cache sozinho.
+_ARQUIVOS_CACHE = [
+    "dados/vereadores.json", "dados/mesa_diretora.json", "dados/autores.json",
+    "dados/materias.json", "dados/materias_historico.json", "dados/normas.json",
+    "dados/assuntos.json", "dados/materiaassuntos.json", "dados/relatorias.json",
+    "dados/sessoes.json", "dados/oradores.json", "dados/pronunciamentos_extras.json",
+    "dados/comissoes.json", "dados/tipomaterias.json",
+]
+_cache_key = str(sum(
+    os.path.getmtime(_arq) for _arq in _ARQUIVOS_CACHE if os.path.exists(_arq)
+))
+
 (
     df_vereadores, df_expandido_multi, df_leis_multi, df_ass_multi,
     mapa_autor_id, mapa_assunto_id, df_relatorias, mapa_tipo_sapl_id,
     mapa_tipo_seq, df_pronunciamentos, mesa
-) = carregar_dados(_ts)
+) = carregar_dados(_cache_key)
 
 # ID do parlamentar no SAPL → para URL /parlamentar/<id>
 mapa_parlamentar_id = df_vereadores.set_index('nome_parlamentar')['id'].to_dict()
