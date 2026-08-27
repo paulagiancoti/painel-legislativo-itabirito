@@ -241,16 +241,14 @@ total_leis_anterior = sum(
 print(f"  Normas existentes: {len(existentes_normas)}, maior ID={max_id_normas}")
 print(f"  Leis Ordinárias existentes (tipo 1): {total_leis_anterior}")
 
-# Incremental: só busca normas de 2026 com ID maior que o já armazenado.
-# Novas leis sempre têm ID maior — leis existentes não são alteradas.
-if max_id_normas > 0:
-    ep_normas = f"/api/norma/normajuridica/?format=json&ano=2026&id__gt={max_id_normas}"
-    print(f"  Buscando apenas novas (id > {max_id_normas})...")
-else:
-    ep_normas = "/api/norma/normajuridica/?format=json&ano=2026"
-    print("  Primeira coleta — baixando todas...")
+# Busca via coletar_incrementais (varre da última página pra trás até achar
+# um ID conhecido) em vez de confiar no filtro id__gt da URL — o SAPL de
+# Itabirito ignora esse parâmetro silenciosamente. Sinal do bug antigo: o
+# total nunca mudava depois do merge, porque "as novas" já eram todas
+# conhecidas (o filtro não filtrava nada, sempre voltava o ano 2026 inteiro).
+ep_normas = "/api/norma/normajuridica/?format=json&ano=2026"
+novas_normas = coletar_incrementais(ep_normas, max_id_normas)
 
-novas_normas = coletar_paginado(ep_normas)
 if novas_normas:
     merged_normas = merge_por_id(existentes_normas, novas_normas)
     # PERSONALIZAÇÃO: mesmo ID de lei ordinária acima
@@ -308,22 +306,36 @@ print("\n[5/6] Coletando oradores (pronunciamentos)...")
 existentes_or = carregar_existente("oradores.json")
 print(f"  Oradores existentes: {len(existentes_or)}")
 
-# Busca sempre o ano corrente completo (sem id__gt).
-# Motivo: o orador é registrado no SAPL no dia da sessão (ID atribuído),
-# mas o url_discurso é adicionado dias depois quando o vídeo é postado.
-# Com id__gt nunca buscaríamos de novo o registro existente para pegar o link.
-# Buscar o ano inteiro (~300-400 registros) é rápido e garante que url_discurso
-# seja sempre atualizado nos registros já armazenados.
+# Corte: maior ID ENTRE OS QUE JÁ TÊM url_discurso preenchida — não o maior
+# ID visto. O ID é atribuído na data do REGISTRO no SAPL, não na data da
+# sessão (ex: um orador de 2025 registrado hoje ganha ID mais alto que um
+# orador de 2026 já registrado há semanas). Um corte por "maior ID visto"
+# travaria para sempre nesse tipo de registro, porque ele nunca vai ganhar
+# URL. O corte por "maior ID COM url" se autocorrige: assim que qualquer
+# registro mais recente ganhar URL (inclusive depois de um período sem posts
+# no Instagram, como o período eleitoral), o corte anda sozinho — sem
+# depender de ninguém lembrar de mudar algo manualmente.
+ids_com_url = [int(o["id"]) for o in existentes_or if (o.get("url_discurso") or "").strip()]
+corte_id = max(ids_com_url, default=0)
+
 ano_atual = str(datetime.now(tz=FUSO).year)
-ep_or = f"/api/sessao/oradorordemdia/?format=json&sessao_plenaria__data_inicio__gte={ano_atual}-01-01"
-print(f"  Buscando todos os oradores de {ano_atual} (refresh completo do ano)...")
-novos_or = coletar_paginado(ep_or)
+if corte_id == 0:
+    # Piso de segurança: se nenhum registro tem url ainda, cai no
+    # comportamento antigo (ano corrente inteiro) em vez de arriscar buscar
+    # tudo desde 2010 (o SAPL tem sessão registrada desde então).
+    print(f"  Nenhum orador com url_discurso preenchida ainda — refresh completo de {ano_atual} (piso de segurança).")
+    ep_or = f"/api/sessao/oradorordemdia/?format=json&sessao_plenaria__data_inicio__gte={ano_atual}-01-01"
+    novos_or = coletar_paginado(ep_or)
+else:
+    print(f"  Maior ID com url_discurso preenchida: {corte_id}. Buscando registros mais novos que esse...")
+    novos_or = coletar_incrementais("/api/sessao/oradorordemdia/?format=json", corte_id)
+
 if novos_or:
     merged_or = merge_por_id(existentes_or, novos_or)
     salvar_json("oradores.json", merged_or)
-    print(f"  {len(novos_or)} orador(es) de {ano_atual}. Total no arquivo: {len(merged_or)}")
+    print(f"  {len(novos_or)} orador(es) coletado(s). Total no arquivo: {len(merged_or)}")
 elif existentes_or:
-    print("  Nenhum orador coletado — dados anteriores mantidos")
+    print("  Nenhum orador novo — dados anteriores mantidos")
 else:
     alertar("Nenhum orador coletado — mantendo dados anteriores")
 
