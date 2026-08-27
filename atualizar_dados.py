@@ -299,6 +299,7 @@ else:
 
 print("\n[3/6] Coletando vínculos matéria↔assunto...")
 existentes_ma = carregar_existente("materiaassuntos.json")
+print(f"  Vínculos existentes: {len(existentes_ma)}")
 if ASSUNTOS_CORTE_ID > 0:
     print(f"  Corte manual ativo: ID {ASSUNTOS_CORTE_ID} (ajustável no topo do arquivo)")
     novos_ma = coletar_incrementais("/api/materia/materiaassunto/?format=json", ASSUNTOS_CORTE_ID)
