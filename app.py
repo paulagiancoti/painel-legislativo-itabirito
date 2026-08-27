@@ -1587,9 +1587,9 @@ if modo_selecionado == "🗳️ Período Eleitoral" and vereador_selecionado == 
     st.caption("🗳️ Visualização adaptada para o período eleitoral.")
 
     if ano_selecionado == "2025":
-        # 2025 ainda não tem assunto nem pronunciamentos alimentados
-        # historicamente — só as duas abas com dado completo aparecem.
-        _titulos_pe = ["📄 Matérias", "📋 Vereadores"]
+        # 2025 ainda não tem assunto alimentado historicamente — só essa
+        # aba fica de fora. Pronunciamentos já tem dado completo de 2025.
+        _titulos_pe = ["📄 Matérias", "📢 Pronunciamentos", "📋 Vereadores"]
     else:
         _titulos_pe = ["🏷️ Projetos por assunto", "📄 Matérias", "📢 Pronunciamentos", "📋 Vereadores"]
     _abas_pe = st.tabs(_titulos_pe)
