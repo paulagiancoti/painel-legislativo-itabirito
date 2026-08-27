@@ -36180,5 +36180,53 @@
       7
     ],
     "autores": []
+  },
+  {
+    "id": 5245,
+    "__str__": "Lei Ordinária Municipal nº 4.634, de 26 de agosto de 2026",
+    "link_detail_backend": "/norma/5245",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-08-26T16:11:08-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5245/lei_no_4634_de_26_de_agosto_de_2026_pl_184.2026.pdf",
+    "numero": "4634",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-08-26",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Declara de Utilidade Pública a Associação Cultural Orquestra Minas Rock.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-08-27T06:47:00.356967-03:00",
+    "data_ultima_atualizacao": "2026-08-27T06:47:00.600112-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-08-27T06:45:25.440230-03:00",
+    "tipo": 1,
+    "materia": 23789,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      3,
+      27
+    ],
+    "autores": []
   }
 ]

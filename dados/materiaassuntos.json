@@ -632,6 +632,14 @@
     "materia": 21528
   },
   {
+    "id": 795,
+    "__str__": "Projeto de Lei Ordinária nº 223 de 2026 - Associação",
+    "link_detail_backend": "/materia/materiaassunto/795",
+    "metadata": {},
+    "assunto": 25,
+    "materia": 24680
+  },
+  {
     "id": 729,
     "__str__": "Projeto de Lei Ordinária nº 184 de 2026 - Associação",
     "link_detail_backend": "/materia/materiaassunto/729",
@@ -792,6 +800,22 @@
     "materia": 10718
   },
   {
+    "id": 803,
+    "__str__": "Projeto de Lei Substitutivo nº 226 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/803",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24764
+  },
+  {
+    "id": 801,
+    "__str__": "Projeto de Lei Substitutivo nº 225 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/801",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24765
+  },
+  {
     "id": 553,
     "__str__": "Projeto de Lei Substitutivo nº 123 de 2026 - Calendário Oficial",
     "link_detail_backend": "/materia/materiaassunto/553",
@@ -806,6 +830,22 @@
     "metadata": {},
     "assunto": 1,
     "materia": 22085
+  },
+  {
+    "id": 805,
+    "__str__": "Projeto de Lei Ordinária nº 228 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/805",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24766
+  },
+  {
+    "id": 797,
+    "__str__": "Projeto de Lei Ordinária nº 224 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/797",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24694
   },
   {
     "id": 794,
@@ -1518,6 +1558,14 @@
     "metadata": {},
     "assunto": 28,
     "materia": 20651
+  },
+  {
+    "id": 804,
+    "__str__": "Projeto de Lei Ordinária nº 227 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/804",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24710
   },
   {
     "id": 772,
@@ -3736,6 +3784,14 @@
     "materia": 20832
   },
   {
+    "id": 798,
+    "__str__": "Projeto de Lei Ordinária nº 224 de 2026 - Indústria, Comércio e Serviços",
+    "link_detail_backend": "/materia/materiaassunto/798",
+    "metadata": {},
+    "assunto": 45,
+    "materia": 24694
+  },
+  {
     "id": 766,
     "__str__": "Projeto de Lei Ordinária nº 202 de 2026 - Indústria, Comércio e Serviços",
     "link_detail_backend": "/materia/materiaassunto/766",
@@ -4382,6 +4438,14 @@
     "metadata": {},
     "assunto": 46,
     "materia": 22176
+  },
+  {
+    "id": 802,
+    "__str__": "Projeto de Lei Substitutivo nº 225 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/802",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 24765
   },
   {
     "id": 672,
@@ -5176,6 +5240,14 @@
     "materia": 21508
   },
   {
+    "id": 806,
+    "__str__": "Projeto de Lei Ordinária nº 228 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/806",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24766
+  },
+  {
     "id": 784,
     "__str__": "Projeto de Lei Ordinária nº 214 de 2026 - Saúde",
     "link_detail_backend": "/materia/materiaassunto/784",
@@ -5854,6 +5926,14 @@
     "metadata": {},
     "assunto": 26,
     "materia": 21528
+  },
+  {
+    "id": 796,
+    "__str__": "Projeto de Lei Ordinária nº 223 de 2026 - Utilidade Pública",
+    "link_detail_backend": "/materia/materiaassunto/796",
+    "metadata": {},
+    "assunto": 26,
+    "materia": 24680
   },
   {
     "id": 730,
