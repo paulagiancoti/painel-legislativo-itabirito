@@ -23,6 +23,18 @@ BASE_URL = "https://sapl.itabirito.mg.leg.br"
 ANOS     = [2026]
 FUSO     = timezone(timedelta(hours=-3))
 
+# Corte manual dos vínculos matéria↔assunto (materiaassunto). Esse endpoint
+# não tem campo de "revisado/validado" nem de data de edição — só {id,
+# materia, assunto} — então não dá pra saber sozinho o que já foi conferido
+# pela chefia. Ajuste esse número manualmente sempre que a chefia validar os
+# assuntos até um certo ponto: tudo com ID até aqui deixa de ser rebaixado
+# todo dia. IMPORTANTE — se um assunto já confirmado for editado depois (a
+# chefia pede pra trocar), essa edição NÃO vai aparecer sozinha: é preciso
+# rebaixar esse ID específico manualmente (baixar de novo com o corte
+# temporariamente mais baixo, ou editar direto no materiaassuntos.json).
+# 0 = sem corte, baixa tudo todo dia (comportamento padrão/seguro).
+ASSUNTOS_CORTE_ID = 0
+
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -77,13 +89,22 @@ def coletar_paginado(endpoint):
 def coletar_incrementais(endpoint, max_id_conhecido):
     """
     Coleta apenas registros com id > max_id_conhecido, sem depender do filtro
-    id__gt funcionar no servidor (o SAPL de Itabirito ignora esse parâmetro).
+    id__gt funcionar no servidor (o SAPL de Itabirito ignora esse parâmetro
+    em alguns endpoints).
 
-    Estratégia: começa da ÚLTIMA página (IDs mais altos) e volta página a página
-    até encontrar um ID já conhecido. Para quando encontra — não pagina o passado.
+    Detecta sozinha se o endpoint ordena crescente (mais antigo → mais novo,
+    como relatorias/sessões) ou decrescente (mais novo → mais antigo, como
+    normas — descoberto em 27/08/2026: a checagem rápida da página final
+    reportava "sem novidade" com um ID bem menor que o maior já conhecido,
+    sinal de que a página final tinha os registros MAIS ANTIGOS, não os mais
+    novos). Compara o maior ID da página 1 com o da última página antes de
+    decidir qual direção andar. Se não der pra determinar com confiança
+    (falha ao buscar uma das duas), cai num fetch completo — mais lento,
+    mas nunca perde registro silenciosamente.
 
-    Exemplo: 273 páginas, max_id=2675 → lê ~6 páginas em vez de 273.
-    Assume ordenação padrão do DRF (id crescente do início ao fim das páginas).
+    Exemplo (ordem crescente): 273 páginas, max_id=2675 → lê ~6 páginas em
+    vez de 273 (anda da última pra primeira).
+    Exemplo (ordem decrescente): anda da primeira pra última.
     """
     if max_id_conhecido == 0:
         print("  Primeira coleta — baixando tudo...")
@@ -91,7 +112,6 @@ def coletar_incrementais(endpoint, max_id_conhecido):
 
     sep = "&" if "?" in endpoint else "?"
 
-    # Passo 1: descobrir total de páginas
     dados_p1 = get_json(f"{BASE_URL}{endpoint}{sep}page=1")
     if not dados_p1:
         print("  Falhou ao consultar número de páginas.")
@@ -100,43 +120,51 @@ def coletar_incrementais(endpoint, max_id_conhecido):
         return [r for r in dados_p1 if r["id"] > max_id_conhecido]
 
     total_pages = dados_p1.get("pagination", {}).get("total_pages", 1)
+    resultados_p1 = dados_p1.get("results", [])
+    ids_p1 = [r["id"] for r in resultados_p1]
 
-    # Passo 2: verificar rapidamente se há novidades na última página
-    dados_ult = dados_p1 if total_pages == 1 else get_json(
-        f"{BASE_URL}{endpoint}{sep}page={total_pages}"
-    )
-    if dados_ult:
-        ids_ult = [r["id"] for r in dados_ult.get("results", [])]
-        if ids_ult and max(ids_ult) <= max_id_conhecido:
-            print(f"  Sem novos registros (maior ID na última página: {max(ids_ult)})")
-            return []
+    if total_pages == 1:
+        return [r for r in resultados_p1 if r["id"] > max_id_conhecido]
+
+    dados_ult = get_json(f"{BASE_URL}{endpoint}{sep}page={total_pages}")
+    ids_ult = [r["id"] for r in dados_ult.get("results", [])] if dados_ult else []
+
+    if not ids_p1 or not ids_ult:
+        print("  Não deu pra confirmar a ordenação (falha ao consultar página) — baixando tudo (seguro).")
+        return coletar_paginado(endpoint)
+
+    def _varre(pagina_inicial, pagina_final, passo, dados_pagina_inicial):
+        novos = []
+        for pagina in range(pagina_inicial, pagina_final, passo):
+            dados = dados_pagina_inicial if pagina == pagina_inicial else get_json(
+                f"{BASE_URL}{endpoint}{sep}page={pagina}"
+            )
+            if not dados:
+                print(f"  Falhou na página {pagina} — pulando.")
+                continue
+            resultados   = dados.get("results", [])
+            novos_pagina = [r for r in resultados if r["id"] > max_id_conhecido]
+            tem_antigo   = any(r["id"] <= max_id_conhecido for r in resultados)
+            novos += novos_pagina
+            seta = "→" if passo > 0 else "←"
+            print(f"  {seta} Página {pagina}/{total_pages}: {len(novos_pagina)} novo(s)"
+                  + (" — ponto de corte, parando" if tem_antigo else ""))
+            if tem_antigo:
+                break
+            time.sleep(0.5)
+        return novos
+
+    if max(ids_p1) > max(ids_ult):
+        # Ordem decrescente: página 1 tem os IDs mais novos.
+        print(f"  Ordenação decrescente detectada. {total_pages} páginas — coletando da primeira em diante...")
+        return _varre(1, total_pages + 1, 1, dados_p1)
+
+    if max(ids_ult) <= max_id_conhecido:
+        print(f"  Sem novos registros (maior ID na última página: {max(ids_ult)})")
+        return []
 
     print(f"  {total_pages} páginas no total. Coletando da última para a primeira...")
-    novos = []
-
-    for pagina in range(total_pages, 0, -1):
-        # Reutiliza a última página já buscada no passo 2
-        dados = dados_ult if pagina == total_pages else get_json(
-            f"{BASE_URL}{endpoint}{sep}page={pagina}"
-        )
-        if not dados:
-            print(f"  Falhou na página {pagina} — pulando.")
-            continue
-
-        resultados   = dados.get("results", [])
-        novos_pagina = [r for r in resultados if r["id"] > max_id_conhecido]
-        tem_antigo   = any(r["id"] <= max_id_conhecido for r in resultados)
-
-        novos += novos_pagina
-        print(f"  ← Página {pagina}/{total_pages}: {len(novos_pagina)} novo(s)"
-              + (" — ponto de corte, parando" if tem_antigo else ""))
-
-        if tem_antigo:
-            break
-
-        time.sleep(0.5)
-
-    return novos
+    return _varre(total_pages, 0, -1, dados_ult)
 
 def carregar_existente(nome_arquivo):
     """Carrega dados existentes do JSON, retorna lista vazia se não existir."""
@@ -241,16 +269,11 @@ total_leis_anterior = sum(
 print(f"  Normas existentes: {len(existentes_normas)}, maior ID={max_id_normas}")
 print(f"  Leis Ordinárias existentes (tipo 1): {total_leis_anterior}")
 
-# Busca o ano 2026 inteiro, sempre. Tentamos usar coletar_incrementais() aqui
-# (como relatorias/sessões), mas o log de 27/08 mostrou "maior ID na última
-# página: 3820" quando o maior ID real já era 5245 — evidência de que este
-# endpoint específico ordena do mais recente para o mais antigo (ao contrário
-# dos outros), o que faria coletar_incrementais() nunca mais achar nada de
-# novo, silenciosamente. Sem conseguir confirmar a ordenação de verdade, é
-# mais seguro aceitar o desperdício (156 registros, ~16 páginas, nunca deu
-# timeout neste endpoint) do que arriscar perder lei nova sem perceber.
+# Busca via coletar_incrementais — agora com detecção automática de direção
+# (ver docstring da função), então funciona mesmo com este endpoint
+# ordenando do mais novo pro mais antigo, como descobrimos em 27/08/2026.
 ep_normas = "/api/norma/normajuridica/?format=json&ano=2026"
-novas_normas = coletar_paginado(ep_normas)
+novas_normas = coletar_incrementais(ep_normas, max_id_normas)
 
 if novas_normas:
     merged_normas = merge_por_id(existentes_normas, novas_normas)
@@ -275,11 +298,24 @@ else:
 # ─── 3. ASSUNTOS ──────────────────────────────────────────────────────────────
 
 print("\n[3/6] Coletando vínculos matéria↔assunto...")
-novos_ma = coletar_paginado("/api/materia/materiaassunto/?format=json")
-if novos_ma:
-    salvar_json("materiaassuntos.json", novos_ma)
+existentes_ma = carregar_existente("materiaassuntos.json")
+if ASSUNTOS_CORTE_ID > 0:
+    print(f"  Corte manual ativo: ID {ASSUNTOS_CORTE_ID} (ajustável no topo do arquivo)")
+    novos_ma = coletar_incrementais("/api/materia/materiaassunto/?format=json", ASSUNTOS_CORTE_ID)
+    if novos_ma:
+        merged_ma = merge_por_id(existentes_ma, novos_ma)
+        salvar_json("materiaassuntos.json", merged_ma)
+        print(f"  {len(novos_ma)} vínculo(s) novo(s) desde o corte. Total: {len(merged_ma)}")
+    elif existentes_ma:
+        print("  Nenhum vínculo novo desde o corte — dados anteriores mantidos")
+    else:
+        alertar("Nenhum vínculo de assunto coletado — mantendo dados anteriores")
 else:
-    alertar("Nenhum vínculo de assunto coletado — mantendo dados anteriores")
+    novos_ma = coletar_paginado("/api/materia/materiaassunto/?format=json")
+    if novos_ma:
+        salvar_json("materiaassuntos.json", novos_ma)
+    else:
+        alertar("Nenhum vínculo de assunto coletado — mantendo dados anteriores")
 
 # ─── 4. RELATORIAS (merge por ID — retroativas são comuns) ───────────────────
 
