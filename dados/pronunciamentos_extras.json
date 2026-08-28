@@ -1,5 +1,301 @@
 [
   {
+    "parlamentar": 37,
+    "sessao_plenaria": 346,
+    "data": "2025-02-03",
+    "sessao_nome": "1ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 347,
+    "data": "2025-02-10",
+    "sessao_nome": "2ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 351,
+    "data": "2025-02-24",
+    "sessao_nome": "4ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 353,
+    "data": "2025-03-10",
+    "sessao_nome": "5ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 354,
+    "data": "2025-03-17",
+    "sessao_nome": "6ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 355,
+    "data": "2025-03-24",
+    "sessao_nome": "7ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 363,
+    "data": "2025-04-07",
+    "sessao_nome": "9ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 364,
+    "data": "2025-04-14",
+    "sessao_nome": "10ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 365,
+    "data": "2025-04-28",
+    "sessao_nome": "11ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 366,
+    "data": "2025-05-05",
+    "sessao_nome": "12ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 367,
+    "data": "2025-05-12",
+    "sessao_nome": "13ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 372,
+    "data": "2025-05-19",
+    "sessao_nome": "15ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 373,
+    "data": "2025-05-26",
+    "sessao_nome": "16ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 374,
+    "data": "2025-06-02",
+    "sessao_nome": "17ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 376,
+    "data": "2025-06-09",
+    "sessao_nome": "18ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 378,
+    "data": "2025-06-16",
+    "sessao_nome": "19ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 379,
+    "data": "2025-06-23",
+    "sessao_nome": "20ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 381,
+    "data": "2025-07-07",
+    "sessao_nome": "22ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 383,
+    "data": "2025-07-14",
+    "sessao_nome": "23ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 385,
+    "data": "2025-08-04",
+    "sessao_nome": "24ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 386,
+    "data": "2025-08-11",
+    "sessao_nome": "25ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 387,
+    "data": "2025-08-18",
+    "sessao_nome": "26ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 388,
+    "data": "2025-08-25",
+    "sessao_nome": "27ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 389,
+    "data": "2025-09-01",
+    "sessao_nome": "28ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 391,
+    "data": "2025-09-08",
+    "sessao_nome": "29ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 515,
+    "data": "2025-09-15",
+    "sessao_nome": "30ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 516,
+    "data": "2025-09-22",
+    "sessao_nome": "31ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 517,
+    "data": "2025-09-29",
+    "sessao_nome": "32ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 519,
+    "data": "2025-10-06",
+    "sessao_nome": "33ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 520,
+    "data": "2025-10-13",
+    "sessao_nome": "34ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 521,
+    "data": "2025-10-20",
+    "sessao_nome": "35ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 522,
+    "data": "2025-11-03",
+    "sessao_nome": "36ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 524,
+    "data": "2025-11-10",
+    "sessao_nome": "37ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 530,
+    "data": "2025-11-24",
+    "sessao_nome": "39ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 534,
+    "data": "2025-12-01",
+    "sessao_nome": "40ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 537,
+    "data": "2025-12-15",
+    "sessao_nome": "41ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 37,
+    "sessao_plenaria": 541,
+    "data": "2025-12-22",
+    "sessao_nome": "42ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
     "parlamentar": 17,
     "sessao_plenaria": 549,
     "data": "2026-02-02",
@@ -55,7 +351,6 @@
     "url_discurso": "https://www.instagram.com/reel/DWSEdQ_CFPA/",
     "observacao": "Considerações finais da Presidência"
   },
-  
   {
     "parlamentar": 17,
     "sessao_plenaria": 559,
@@ -72,7 +367,6 @@
     "url_discurso": "https://www.instagram.com/reel/DXICfVTiFwk/",
     "observacao": "Considerações finais da Presidência"
   },
-  
   {
     "parlamentar": 17,
     "sessao_plenaria": 564,
@@ -81,7 +375,6 @@
     "url_discurso": "https://www.instagram.com/reel/DX96F6QoKE1/",
     "observacao": "Considerações finais da Presidência"
   },
-  
   {
     "parlamentar": 17,
     "sessao_plenaria": 566,
@@ -98,7 +391,6 @@
     "url_discurso": "https://www.instagram.com/reel/DYiEqtlIpgj/",
     "observacao": "Considerações finais da Presidência"
   },
-  
   {
     "parlamentar": 17,
     "sessao_plenaria": 571,
@@ -107,7 +399,6 @@
     "url_discurso": "https://www.instagram.com/reel/DZYF5E3oCYJ/",
     "observacao": "Considerações finais da Presidência"
   },
-  
   {
     "parlamentar": 17,
     "sessao_plenaria": 575,
@@ -116,7 +407,6 @@
     "url_discurso": "https://www.instagram.com/reel/DZqMI8KIgB8/",
     "observacao": "Considerações finais da Presidência"
   },
-
   {
     "parlamentar": 17,
     "sessao_plenaria": 576,
@@ -125,7 +415,6 @@
     "url_discurso": "https://www.instagram.com/p/DZ8L4vVIzdM/",
     "observacao": "Considerações finais da Presidência"
   },
-
   {
     "parlamentar": 17,
     "sessao_plenaria": 579,
@@ -134,7 +423,6 @@
     "url_discurso": "",
     "observacao": "Considerações finais da Presidência"
   },
-
   {
     "parlamentar": 17,
     "sessao_plenaria": 582,
@@ -143,7 +431,6 @@
     "url_discurso": "",
     "observacao": "Considerações finais da Presidência"
   },
-
   {
     "parlamentar": 17,
     "sessao_plenaria": 583,
@@ -152,7 +439,6 @@
     "url_discurso": "",
     "observacao": "Considerações finais da Presidência"
   },
-
   {
     "parlamentar": 17,
     "sessao_plenaria": 584,
@@ -161,7 +447,6 @@
     "url_discurso": "",
     "observacao": "Considerações finais da Presidência"
   },
-
   {
     "parlamentar": 17,
     "sessao_plenaria": 585,
@@ -170,7 +455,6 @@
     "url_discurso": "",
     "observacao": "Considerações finais da Presidência"
   },
-
   {
     "parlamentar": 17,
     "sessao_plenaria": 586,
