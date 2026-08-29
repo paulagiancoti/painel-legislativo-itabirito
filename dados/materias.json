@@ -28118,5 +28118,925 @@
     "autoria": "Danilo Donato do Só Por Hoje",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24792/indicacao_retirada_de_entulho_santo_antonio.pdf",
     "ementa": "Indica o envio ao Poder Executivo Municipal, sugerindo que seja feita a retirada de entulho na Rua Nossa Senhora Da Gloria."
+  },
+  {
+    "id": "24809",
+    "ano": "2026",
+    "numero": "1659",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24809/indicacao_fiscalizacao_de_cones.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal, por meio da Secretaria competente, a realização de fiscalização na Rua Guilherme Rodrigues de Oliveira, no trecho entre o Bairro Santa Efigênia e a nova Rodoviária, em razão da utilização de cones para bloqueio de vagas de estacionamento em área pública, especialmente nos finais de semana."
+  },
+  {
+    "id": "24810",
+    "ano": "2026",
+    "numero": "1660",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24810/indicacao_corremaao_escadaria_da_vila_goncalo.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a instalação de corrimão na escadaria da Vila Gonçalo, visando proporcionar maior segurança e acessibilidade aos moradores e usuários do local."
+  },
+  {
+    "id": "24811",
+    "ano": "2026",
+    "numero": "1661",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24811/indicacao_estudo_de_tecnico_e_instalacao_de_cameras_olho_vivo_pedra_saudade.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de estudo técnico para avaliar a possibilidade de instalação de câmera de monitoramento do sistema Olho Vivo na região da Pedra da Saudade, no sentido do Bairro Tombadouro, visando ampliar a segurança e o monitoramento da região."
+  },
+  {
+    "id": "24812",
+    "ano": "2026",
+    "numero": "1662",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24812/indicacao_reforco_policial.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a adoção de providências, junto aos órgãos de segurança pública competentes, para solicitar reforço do policiamento e a realização de rondas preventivas nas Ruas Maestro João Rosa, Hermano Pereira Lima, Professor Daulas, Padre Randolfo e Pedra da Saudade."
+  },
+  {
+    "id": "24813",
+    "ano": "2026",
+    "numero": "1663",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24813/indicacao_reparo_asfaltico_rua_nicolau_silva.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de reparo asfáltico no trecho da Rua Nicolau Silva, em frente ao nº 186, no Bairro Saudade, onde foi realizada intervenção pelo SAAE, em razão da deterioração do pavimento e da formação de uma cratera que oferece risco de acidentes a pedestres e motoristas."
+  },
+  {
+    "id": "24814",
+    "ano": "2026",
+    "numero": "1664",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24814/indicacao_86.2026_-_entulhos_na_calcada_heitor_vila_lobos_novo_itabirito.pdf",
+    "ementa": "Indicação ao Poder Executivo Municipal, para que sejam retirados os entulhos na rua Heitor Villa Lobos, Novo Itabirito."
+  },
+  {
+    "id": "24815",
+    "ano": "2026",
+    "numero": "1665",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24815/indicacao_87.2026_fiscalizacao_de_ponto_de_onibus_novo_itabirito.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a necessidade de fiscalização do ponto de ônibus no Novo Itabirito."
+  },
+  {
+    "id": "24816",
+    "ano": "2026",
+    "numero": "1666",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24816/indicacao_88.2026_pintura_de_quebra_mola_bairro_novo_itabirito.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal que, por intermédio da Secretaria Municipal competente, sejam adotadas as providências necessárias para a realização de pintura e revitalização da sinalização horizontal dos quebra-molas localizado na Avenida Telê Santana, Novo Itabirito."
+  },
+  {
+    "id": "24817",
+    "ano": "2026",
+    "numero": "1667",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24817/indicacao_89.2026_pintura_de_quebra_mola_bairro_coutry.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal que, por intermédio da Secretaria Municipal competente, sejam adotadas as providências necessárias para a realização de pintura e revitalização da sinalização horizontal dos quebra-molas localizado na Rua Antônio Campos, Bairro Coutry."
+  },
+  {
+    "id": "24818",
+    "ano": "2026",
+    "numero": "1668",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24818/indicacao_90.2026_troca_de_vidro_ponto_e_onibus_novo_itabirito.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a necessidade de providenciar a substituição do vidro quebrado do ponto de ônibus localizado no bairro Novo Itabirito, garantindo melhores condições de segurança, proteção e conforto aos usuários do transporte público."
+  },
+  {
+    "id": "24831",
+    "ano": "2026",
+    "numero": "1669",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Rose da Saúde",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24831/indicacoes_solicitacao_de_realizacao_de_revitalizacao_asfaltica_em_toda_a_extensao_da_rua_jose_benedito.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, por meio da Secretaria competente a solicitação de realização de revitalização asfáltica em toda a extensão da Rua José Benedito, localizada no Bairro Santa Efigênia."
+  },
+  {
+    "id": "24832",
+    "ano": "2026",
+    "numero": "1670",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Rose da Saúde",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24832/indicacoes_solicitacao_de_realizacao_de_servicos_de_limpeza_e_capina_em_toda_a_extensao_dos_rios_do_municipio.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, por meio da Secretaria competente a solicitação de realização de serviços de limpeza e capina em toda a extensão dos rios do município, visando à manutenção e conservação de suas margens e à melhoria das condições ambientais e urbanas."
+  },
+  {
+    "id": "24833",
+    "ano": "2026",
+    "numero": "1671",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Rose da Saúde",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24833/indicacoes_solicitacao_de_realizacao_de_servicos_de_limpeza_e_manutencao_dos_bueiros_e_sistemas_de_escoamento_de_agua.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, por meio da Secretaria competente a solicitação de realização de serviços de limpeza e manutenção dos bueiros e sistemas de escoamento de água, a fim de prevenir a ocorrência de enchentes, alagamentos e demais transtornos à população."
+  },
+  {
+    "id": "24835",
+    "ano": "2026",
+    "numero": "1672",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Rose da Saúde",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24835/indicacoes_solicitacao_de_substituicao_da_lampada_queimada_localizada_na_rua_dona_cristina.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, por meio da Secretaria competente a solicitação de substituição da lâmpada queimada localizada na Rua Dona Cristina, próximo ao nº 148, no bairro Santa Efigênia."
+  },
+  {
+    "id": "24836",
+    "ano": "2026",
+    "numero": "1673",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Rose da Saúde",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24836/indicacoes_solicitacao_de_substituicao_das_lampadas_queimada_localizada_na_rua_joaquim_malheiros.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, por meio da Secretaria competente a solicitação de substituição das lâmpadas queimada localizada na Rua Joaquim Malheiros próximo ao número 88, no bairro Bela Vista."
+  },
+  {
+    "id": "24839",
+    "ano": "2026",
+    "numero": "1674",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Rose da Saúde",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24839/indicacoesa_solicitacao_de_substituicao_da_lampada_queimada_localizada_na_rua_joao_pinheiro.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, por meio da Secretaria competente a solicitação de substituição da lâmpada queimada localizada na Rua João Pinheiro, próximo aos números 1102 e 1162, no bairro Santa Efigênia."
+  },
+  {
+    "id": "24842",
+    "ano": "2026",
+    "numero": "1675",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24842/indicacao_01_31082026.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a adoção de medidas para o reforço da segurança preventiva nos bairros Estância Real, Village Park e Vila Real, mediante a implantação de câmeras de videomonitoramento em pontos estratégicos e o reforço do patrulhamento preventivo da Guarda Municipal."
+  },
+  {
+    "id": "24843",
+    "ano": "2026",
+    "numero": "1676",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24843/indicacao_02_31082026.pdf",
+    "ementa": "Solicita estudo técnico e adoção de medidas para melhoria da circulação e fiscalização do trânsito nas Ruas Francisco Marques Júnior e Carolina Vieira Melillo, no Bairro Nossa Senhora de Fátima."
+  },
+  {
+    "id": "24844",
+    "ano": "2026",
+    "numero": "1677",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24844/indicacao_03_31082026.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a implantação de mesas e bancos destinados à prática de damas na Rua José Oliveira da Silva, no Bairro Santa Rita."
+  },
+  {
+    "id": "24845",
+    "ano": "2026",
+    "numero": "1678",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24845/indicacao_04_31082026.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de vistoria e a adoção de providências para manutenção da iluminação pública, poda de árvores, reparo do pavimento, reforma de quebra-molas e reposição da sinalização de trânsito na Avenida Queiroz Júnior, altura do nº 1795, próximo à Pracinha São Cristóvão, na região central."
+  },
+  {
+    "id": "24846",
+    "ano": "2026",
+    "numero": "1679",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24846/indicacao_05_31082026.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de vistoria e manutenção da iluminação pública, com substituição de lâmpadas queimadas e adoção das demais providências necessárias, em pontos localizados nos bairros Praia, Mirante do Matias, Belo Monte, Novo Itabirito, São José, São Mateus, Vila Real, Bela Vista e Santa Rita."
+  },
+  {
+    "id": "24847",
+    "ano": "2026",
+    "numero": "1680",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24847/indicacao_06_31082026.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização, com urgência, de manutenção da iluminação pública na Rua Paraná, nº 28, no Bairro Bela Vista, próximo à Cemig e à Associação do Bairro Bela Vista, com a substituição da lâmpada queimada no poste localizado em frente à residência indicada."
+  },
+  {
+    "id": "24848",
+    "ano": "2026",
+    "numero": "1681",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24848/indicacao_07_31082026_1.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal, por meio da Secretaria Municipal de Segurança, Prevenção e Mobilidade Urbana, a implantação de abrigo para usuários do transporte coletivo e escolar e de redutor de velocidade nas proximidades da interseção da via principal do Distrito de Acuruí com a Rua Bela Vista."
+  },
+  {
+    "id": "24856",
+    "ano": "2026",
+    "numero": "1682",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24856/indicacao_-_estudo_em_melhoria_na_sinalizacao_viaria_na_rua_uniao_do_bairro_gutierrez.pdf",
+    "ementa": "Estudo em melhoria na sinalização viária na rua União, bairro Gutierrez."
+  },
+  {
+    "id": "24857",
+    "ano": "2026",
+    "numero": "1683",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24857/indicacao_-_limpeza_e_desobstruacao_de_bueiro_na_rua_augusto_bretas___bairro_matozinhos.pdf",
+    "ementa": "Limpeza e desobstrução de bueiro, na rua Augusto Bretas, em frente ao nº 76, bairro Matozinhos."
+  },
+  {
+    "id": "24858",
+    "ano": "2026",
+    "numero": "1684",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24858/indicacao_-_manutencao_asfaltica_na_rua_augusto_bretas_bairro_matozinhos.pdf",
+    "ementa": "Manutenção asfáltica na rua Augusto Bretas, em frente ao nº474, bairro Matozinhos."
+  },
+  {
+    "id": "24859",
+    "ano": "2026",
+    "numero": "1685",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24859/indicacao_-_recolhimento_de_3_postes_de_iluminacao_as_margens_das_ruas_em_ribeirao_do_eixo_1.pdf",
+    "ementa": "Recolhimento de 3 postes de iluminação na estrada principal e na Rua dos Colibris, Ribeirão do Eixo."
+  },
+  {
+    "id": "24860",
+    "ano": "2026",
+    "numero": "1686",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24860/manutencao_de_calcamento_na_rua_araujo_lima.pdf",
+    "ementa": "Manutenção de calçamento na rua Araújo Lima em frente ao nº 75, bairro Centro."
+  },
+  {
+    "id": "24862",
+    "ano": "2026",
+    "numero": "1687",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24862/indicacao_-_pintura_quebra_mola_-_marzagao_-_31.08.26_-_assinado.pdf",
+    "ementa": "Indico o envio ao Poder Executivo Municipal, para solicitar à Secretaria Municipal competente a revitalização da pintura de todos os quebra-molas localizados na Estrada Principal – Rodovia MG 030 no Bairro Marzagão."
+  },
+  {
+    "id": "24863",
+    "ano": "2026",
+    "numero": "1688",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24863/indicacao_-_iluminacao_publica_-_r._rouxinol_-_b._floresta_-_31.08.26_-_assinado.pdf",
+    "ementa": "Indico o envio ao Poder Executivo Municipal, para solicitar à Secretaria Municipal competente a substituição da lâmpada no poste de iluminação pública localizado na Rua Rouxinol esquina com a Rua Bem-te-vi, Bairro Floresta."
+  },
+  {
+    "id": "24864",
+    "ano": "2026",
+    "numero": "1689",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24864/indicacao_-_instalacao_de_quebra_mola_-_b._vila_goncalo_-_31.08.26_-_assinado.pdf",
+    "ementa": "Indico o envio ao Poder Executivo Municipal, para solicitar à Secretaria Municipal competente realizada vistoria técnica e, constatada a necessidade, a instalação de quebra-molas (lombada) nas proximidades da Igreja Pentecostal Cenáculo da Fé, localizada na Rua José de Souza nº 534, Bairro Vila Gonçalo."
+  },
+  {
+    "id": "24865",
+    "ano": "2026",
+    "numero": "1690",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24865/indicacao_-_cacamba_para_lixo_-_b._esplanada_da_serra_-_31.08.26_-_assinado.pdf",
+    "ementa": "Indico o envio ao Poder Executivo Municipal, para solicitar à Secretaria Municipal competente a disponibilização e instalação de caçambas para o descarte adequado de resíduos sólidos no Bairro Esplanada da Serra, em pontos estratégicos e de fácil acesso aos moradores."
+  },
+  {
+    "id": "24866",
+    "ano": "2026",
+    "numero": "1691",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24866/indicacao_-_limpeza_retirada_de_terra_-_b._vila_goncalo_-_31.08.26_-_assinado.pdf",
+    "ementa": "Indico o envio ao Poder Executivo Municipal, para solicitar à Secretaria Municipal competente a retirada da terra proveniente do cedimento do barranco localizado em terreno próximo a Igreja Pentecostal Cenáculo da Fé, localizada na Rua José de Souza nº 534, Bairro Vila Gonçalo."
+  },
+  {
+    "id": "24867",
+    "ano": "2026",
+    "numero": "1692",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24867/indicacao_-_pintura_sinalizacao_viaria_pare_-_rua_antonio_maia_filho_-_b._cohab_-_31.08.26_-_assinado.pdf",
+    "ementa": "Indico o envio ao Poder Executivo Municipal, para sugerir à Secretaria Municipal competente a revitalização da pintura da sinalização viária “PARE” na Rua Antônio Maia Filho, esquina com Rua Francisco Marques Junior, Bairro COHAB."
+  },
+  {
+    "id": "24868",
+    "ano": "2026",
+    "numero": "1693",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24868/indicacao_-_pintura_sinalizacao_viaria_de_a_preferencia_-_b._meu_sitio_-_31.08.26_-_assinado.pdf",
+    "ementa": "Indico o envio ao Poder Executivo Municipal, para sugerir à Secretaria Municipal competente a revitalização da pintura da sinalização viária de “dê a preferência” na Rua Esperança, esquina com Rua a João Donato Costa, Bairro Meu Sítio."
+  },
+  {
+    "id": "24875",
+    "ano": "2026",
+    "numero": "1694",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24875/1-indicacao_de_iluminacao_rua_jaracanda_monte_verde.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, que providencie a substituição das lâmpadas queimadas, na Rua Jacarandá, próximo aos n° 41 ao 53, Bairro Monte Verde, Itabirito/MG."
+  },
+  {
+    "id": "24876",
+    "ano": "2026",
+    "numero": "1695",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24876/2-_manutencao_nos_banheiros_do_alto_do_cristo.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, que providencie a manutenção e conservação dos banheiros públicos do Cristo Redentor, Estrada do Tombadouro, Morro do Cristo, CEP 35.450-000, Itabirito/MG."
+  },
+  {
+    "id": "24877",
+    "ano": "2026",
+    "numero": "1696",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24877/3-_indicacao_tapa_buraco_nossa_senhora_de_fatima.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, que providencie o serviço de tapa-buracos na rua Antônio Lima, próximo ao n° 113, bairro Nossa senhora de Fátima, Itabirito/MG."
+  },
+  {
+    "id": "24878",
+    "ano": "2026",
+    "numero": "1697",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24878/4-_indicacao_tapa_buraco_santo_antonio.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, que providencie o serviço de tapa-buracos na rua Luiz Gomes do Carmo, próximo ao n° 82, bairro Santo Antônio, Itabirito/MG."
+  },
+  {
+    "id": "24879",
+    "ano": "2026",
+    "numero": "1698",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24879/5-indicacao_de_iluminacao_rua_francisco_marques_junior.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, que providencie a substituição das lâmpadas queimadas, na Rua Francisco Marques Júnior, próximo n° 494, Bairro Nossa Senhora de Fátima, Itabirito/MG."
+  },
+  {
+    "id": "24880",
+    "ano": "2026",
+    "numero": "1699",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24880/6-_indicacao_tampa_buraco_santa_efigenia.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, que providencie o serviço de tapa-buracos na rua Capitão Serafim, próximo ao n° 90, bairro Santa Efigênia, Itabirito/MG."
+  },
+  {
+    "id": "24881",
+    "ano": "2026",
+    "numero": "1700",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24881/7-indicacao_de_iluminacao_recanto_das_colinas_2.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, que providencie a substituição das lâmpadas queimadas na Rua Girassol, em frente ao n° 333, Bairro Recanto das Colinas 2, Itabirito/MG."
+  },
+  {
+    "id": "24883",
+    "ano": "2026",
+    "numero": "1701",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24883/cercamento_da_area_da_floresta_natural_municipal_da_grota_da_mina.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, sugerindo a realização do cercamento da área da Floresta Natural Municipal da Grota da Mina."
+  },
+  {
+    "id": "24884",
+    "ano": "2026",
+    "numero": "1702",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24884/demolicao_da_antiga_caixa_dagua_localizada_na_area_da_floresta_natural_municipal_da_grota_da_mina.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, sugerindo a demolição da antiga caixa d’água localizada na área da Floresta Natural Municipal da Grota da Mina."
+  },
+  {
+    "id": "24885",
+    "ano": "2026",
+    "numero": "1703",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24885/indicacao_1703.2026.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, sugerindo a realização de pavimentação da continuação da Rua José Pereira Lima até a portaria da Floresta Natural Municipal da Grota da Mina, bem como a implantação de meio-fio e rede de esgoto."
+  },
+  {
+    "id": "24886",
+    "ano": "2026",
+    "numero": "1704",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24886/limpeza_e_capina_no_bairro_agostinho_rodrigues.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, sugerindo a realização de limpeza e capina no Bairro Agostinho Rodrigues, em razão das festividades de Nossa Senhora de Nazaré."
+  },
+  {
+    "id": "24887",
+    "ano": "2026",
+    "numero": "1705",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24887/instalacao_de_luminarias_nos_postes_de_iluminacao_publica_existentes_na_rua_nigeria_no_bairro_agua_limpa.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, sugerindo a instalação de iluminação pública nos postes existentes na Rua Nigéria, no Bairro Água Limpa."
+  },
+  {
+    "id": "24889",
+    "ano": "2026",
+    "numero": "1706",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Max Fortes",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24889/indicacao_-_troca_de_lamapada_santa_tereza_recreio_dos_bandeirantes.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, solicitação de troca de iluminação pública nos endereços relacionados."
+  },
+  {
+    "id": "24895",
+    "ano": "2026",
+    "numero": "1707",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Daniel Sudano",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24895/31-08_-_desentupimento_dos_bueiros.pdf",
+    "ementa": "Indicação ao Excelentíssimo Senhor Prefeito Municipal e ao Serviço Autônomo de Água e Esgoto de Itabirito – SAAE, que seja realizada vistoria nos bueiros e canaletas do Município de Itabirito, com a execução dos serviços de limpeza e desobstrução daqueles que apresentarem necessidade, visando à prevenção de alagamentos durante o período chuvoso."
+  },
+  {
+    "id": "24896",
+    "ano": "2026",
+    "numero": "1708",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Daniel Sudano",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24896/31-08_-iluminacao_praca_tele_santana.pdf",
+    "ementa": "Indicação ao Excelentíssimo Senhor Prefeito Municipal e à Secretaria Municipal competente, que sejam realizados serviços de melhoria e reforço da iluminação pública na Praça Dr. Guilherme, conhecida popularmente como Praça dos Correios, especificamente na extensão do calçadão da Travessa Domingos Pereira da Silva, onde se localiza a estátua em homenagem a Telê Santana, no Centro."
+  },
+  {
+    "id": "24897",
+    "ano": "2026",
+    "numero": "1709",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Daniel Sudano",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24897/31-08_-limpeza_pracinha_santo_anonio.pdf",
+    "ementa": "Indicação ao Excelentíssimo Senhor Prefeito Municipal e à Secretaria Municipal competente, que sejam realizados serviços de limpeza e conservação na praça localizada na Rua João XXIII, no Bairro Santo Antônio."
+  },
+  {
+    "id": "24898",
+    "ano": "2026",
+    "numero": "1710",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Daniel Sudano",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24898/31-08_-manutencao_asfaltica_rua_profa_maria_woods.pdf",
+    "ementa": "Indicação ao Excelentíssimo Senhor Prefeito Municipal e à Secretaria Municipal competente, que sejam realizadas obras de manutenção asfáltica na Rua Professora Maria Woods, no bairro Santa Rita, visando à recuperação do pavimento."
+  },
+  {
+    "id": "24899",
+    "ano": "2026",
+    "numero": "1711",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Daniel Sudano",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24899/31-08_-extensao_de_rede_iluminacao_publica_francisco_jose_de_carvalho__portoes.pdf",
+    "ementa": "Indicação ao Excelentíssimo Senhor Prefeito Municipal e à Secretaria Municipal competente, que sejam realizados estudos técnicos e posteriormente executada a extensão da rede elétrica, com a instalação de iluminação pública, na Rua Francisco José de Carvalho, no trecho compreendido entre os números 5522 e 6290."
+  },
+  {
+    "id": "24900",
+    "ano": "2026",
+    "numero": "1712",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Daniel Sudano",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24900/31-08_-drenagem_na_avenida_jose_farid_rahme.pdf",
+    "ementa": "Indicação ao Excelentíssimo Senhor Prefeito Municipal e à Secretaria Municipal competente, que sejam realizados estudos técnicos e posteriormente execução de serviços de drenagem na Av. José Farid Rahme."
+  },
+  {
+    "id": "24819",
+    "ano": "2026",
+    "numero": "778",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24819/requerimento_126.2026_tapa_buraco_bairro_novo_itabirito.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, solicitando a realização de operação tapa-buracos e serviços de recuperação da pavimentação asfáltica nas vias públicas do bairro Novo Itabirito."
+  },
+  {
+    "id": "24820",
+    "ano": "2026",
+    "numero": "779",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24820/requerimento_127.2026_tapa_buraco_santa_efigenia.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, solicitando a realização de operação tapa-buracos e serviços de recuperação da pavimentação asfáltica nas vias públicas do Bairro Sant Efigênia."
+  },
+  {
+    "id": "24821",
+    "ano": "2026",
+    "numero": "780",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24821/requerimento_128.2026_tapa_buraco_bairro_coutry.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, solicitando a realização de operação tapa-buracos e serviços de recuperação da pavimentação asfáltica nos logradouros do Bairro Coutry."
+  },
+  {
+    "id": "24823",
+    "ano": "2026",
+    "numero": "781",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24823/requerimento_129.2026_tapa_buraco_bairro_dona_lila.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, solicitando a realização de operação tapa-buracos e serviços de recuperação da pavimentação asfáltica na Rua Benjamim Simões, Bairro Dona Lila."
+  },
+  {
+    "id": "24825",
+    "ano": "2026",
+    "numero": "782",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24825/requerimento_130.2026_tapa_buraco_bairro_serra_verde.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, solicitando a realização de operação tapa-buracos e serviços de recuperação da pavimentação asfáltica na rua Teresinha M Dos Reis, Bairro Serra Azul."
+  },
+  {
+    "id": "24841",
+    "ano": "2026",
+    "numero": "783",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Rose da Saúde",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24841/requerimento_solicitacao_que_seja_realizado_estudo_tecnico_para_a_instalacao_de_cameras_de_monitoramento.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, a solicitação que seja realizado estudo técnico para a instalação de câmeras de monitoramento (Olho Vivo), no Bairro Novo Itabirito, com possibilidade de integração junto à Guarda Municipal e à Polícia Militar."
+  },
+  {
+    "id": "24849",
+    "ano": "2026",
+    "numero": "784",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24849/requerimento_08__31082026.pdf",
+    "ementa": "Requer ao Poder Executivo Municipal informações e esclarecimentos acerca da efetiva aplicação, fiscalização e cumprimento da Lei Municipal nº 3.667, de 06 de maio de 2022, que dispõe sobre a obrigatoriedade de alinhamento e retirada de fios, cabos e equipamentos excedentes fixados em postes de energia elétrica no Município de Itabirito."
+  },
+  {
+    "id": "24850",
+    "ano": "2026",
+    "numero": "785",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24850/requerimento_07__31082026.pdf",
+    "ementa": "Requer ao Poder Executivo Municipal informações e esclarecimentos acerca da não entrega dos uniformes escolares aos alunos da rede municipal de ensino de Itabirito, considerando o avançado período do ano letivo de 2026."
+  },
+  {
+    "id": "24851",
+    "ano": "2026",
+    "numero": "786",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24851/requerimento_06__31082026.pdf",
+    "ementa": "Requer ao Poder Executivo Municipal informações e esclarecimentos acerca da falta de profissionais cirurgiões-dentistas no Centro de Especialidades Odontológicas – CEO de Itabirito, diante de relatos de que a unidade estaria há aproximadamente oito meses com déficit de dentistas."
+  },
+  {
+    "id": "24852",
+    "ano": "2026",
+    "numero": "787",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24852/requerimento_05__31082026.pdf",
+    "ementa": "Requer ao Poder Executivo Municipal informações e esclarecimentos acerca da falta e da irregularidade no fornecimento de medicamentos na rede municipal de saúde de Itabirito, diante das recorrentes reclamações da população."
+  },
+  {
+    "id": "24853",
+    "ano": "2026",
+    "numero": "788",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24853/requerimento_03__31082026.pdf",
+    "ementa": "Requer ao Poder Executivo Municipal informações e esclarecimentos acerca dos horários de funcionamento e do atendimento da Farmácia da UPA de Itabirito, diante de relatos de interrupção do serviço durante o período diurno e noturno."
+  },
+  {
+    "id": "24854",
+    "ano": "2026",
+    "numero": "789",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24854/requerimento_02__31082026.pdf",
+    "ementa": "Requer informações e esclarecimentos ao Poder Executivo Municipal acerca da campanha de vacinação de cães e gatos realizada nos dias 22 e 23 de agosto de 2026, especialmente quanto à disponibilidade de doses, critérios de distribuição e atendimento da população."
+  },
+  {
+    "id": "24855",
+    "ano": "2026",
+    "numero": "790",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24855/requerimento_01__31082026.pdf",
+    "ementa": "Requer a realização de Audiência Pública para discussão do Projeto de Lei nº 196/2026, que dispõe sobre a proteção e a gestão do patrimônio cultural do Município de Itabirito, bem como sobre as atribuições, competências e funcionamento do Conselho Municipal do Patrimônio Cultural – CONPATRI."
+  },
+  {
+    "id": "24869",
+    "ano": "2026",
+    "numero": "791",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24869/requerimento_-_descarte_de_rejeitos_-_corrego_do_bacao_-_31.08.26_-_assinado.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, solicitando à Secretaria Municipal Competente informações detalhadas acerca do descarte e/ou disposição de rejeitos e resíduos em terreno localizado no distrito de Córrego do Bação, especialmente quanto à movimentação de caminhões que, segundo relatos e constatação realizada no local, estariam realizando o despejo e posterior aterramento de materiais no referido terreno."
+  },
+  {
+    "id": "24870",
+    "ano": "2026",
+    "numero": "792",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24870/requerimento_-_saae_-_afundamento_de_via_-_r._brasil_-_b._lourdes_-_31.08.26_-_assinado.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, para oficiar o Serviço Autônomo de Saneamento Básico de Itabirito (SAAE), para realizar vistoria técnica na Rua Brasil, Bairro de Lourdes, a fim de verificar o afundamento existente na via, bem como avaliar suas causas, extensão e eventuais riscos à segurança de pedestres, motoristas e demais usuários."
+  },
+  {
+    "id": "24872",
+    "ano": "2026",
+    "numero": "793",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24872/requerimento_-_estrutura_da_ubs_-_corrego_do_bacao_-_31.08.26_-_assinado.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, solicitando à Secretaria Municipal de Saúde informações e providências acerca das condições de infraestrutura e acessibilidade da Unidade Básica de Saúde – UBS do distrito de Córrego do Bação, especialmente quanto às condições das paredes, às instalações sanitárias e à acessibilidade da unidade."
+  },
+  {
+    "id": "24888",
+    "ano": "2026",
+    "numero": "794",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24888/requerimento_-_saae_-_limpeza_de_bueiro_-_r._adelino_fernandes_-_b._usina_esperanca_-_31.08.26_-_assinado.pdf",
+    "ementa": "Requer o encaminhamento de ofício ao Serviço Autônomo de Saneamento Básico de Itabirito – SAAE, para que sejam adotadas as providências necessárias à limpeza e desobstrução do bueiro localizado na Rua Adelino Fernandes, no Bairro Usina Esperança."
+  },
+  {
+    "id": "24890",
+    "ano": "2026",
+    "numero": "795",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Max Fortes",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24890/requerimento_parceria_entre_prefeitura_e_caixa_economica.pdf",
+    "ementa": "Solicita que seja encaminhado ao Poder Executivo Municipal, juntamente com Secretaria Municipal de Planejamento e Orçamento, para que sejam prestadas informações e encaminhados documentos referentes ao Contrato nº 039/2026, celebrado com a Caixa Econômica Federal."
+  },
+  {
+    "id": "24892",
+    "ano": "2026",
+    "numero": "796",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Renê Butekus",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24892/requerimento-_desassoreamento_dos_rios.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, solicitando a realização de serviços de limpeza, desobstrução e desassoreamento do Rio Itabirito, do Córrego Criminoso e do Córrego da Carioca."
+  },
+  {
+    "id": "24893",
+    "ano": "2026",
+    "numero": "797",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Daniel Sudano",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24893/31-08_-_requerimento__mocao_de_aplausos_-_giovane_melillo.pdf",
+    "ementa": "MOÇÃO DE APLAUSOS – Moção de Aplausos concedida ao Senhor Giovani Donada Melillo, em reconhecimento à sua trajetória de dedicação à vida pública e à sua contribuição para o desenvolvimento de Itabirito."
+  },
+  {
+    "id": "24894",
+    "ano": "2026",
+    "numero": "798",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Daniel Sudano",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24894/31-08_-esclarecimentos_sobre_assoreamento_do_rio_itabirito_-_fred.pdf",
+    "ementa": "Requeiro a Vossa Excelência, que seja encaminhado ao Poder Executivo Municipal, por meio da Secretaria competente, o presente requerimento, solicitando informações e providências quanto ao assoreamento e ao acúmulo de materiais no Rio Itabirito."
+  },
+  {
+    "id": "24826",
+    "ano": "2026",
+    "numero": "231",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Rose da Saúde",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24826/projeto_de_lei_-_saude_mental_pdf.pdf",
+    "ementa": "Institui diretrizes para incentivo à arte, cultura, convivência, capacitação e inclusão produtiva como ações complementares de promoção da saúde mental no Município de Itabirito/MG."
+  },
+  {
+    "id": "24827",
+    "ano": "2026",
+    "numero": "232",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Rose da Saúde",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24827/projeto_de_lei_-_valores_que_protegem_pdf.pdf",
+    "ementa": "Institui a diretrizes para o Programa Municipal “VALORES QUE PROTEGEM”."
+  },
+  {
+    "id": "24828",
+    "ano": "2026",
+    "numero": "233",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24828/pl_13._2026.pdf",
+    "ementa": "Institui no Município de Itabirito a Campanha Municipal de Conscientização, Esclarecimento e Apoio às Pessoas com Vitiligo."
+  },
+  {
+    "id": "24829",
+    "ano": "2026",
+    "numero": "234",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24829/pl_14._2026.pdf",
+    "ementa": "Dispõe sobre diretrizes para a promoção de espaços de convivência e lazer adaptados para idosos nas praças e parques públicos do Município de Itabirito e dá outras providências."
+  },
+  {
+    "id": "24830",
+    "ano": "2026",
+    "numero": "235",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Anderson do Sou Notícia",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24830/pl_15.2026.pdf",
+    "ementa": "Institui o \"Dia da Alimentação Saudável\" no Calendário Oficial de Eventos do Município de Itabirito e dá outras providências."
+  },
+  {
+    "id": "24834",
+    "ano": "2026",
+    "numero": "236",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24834/pl04_promocao_permanencia_de_meninas_31082026.pdf",
+    "ementa": "Institui diretrizes para a promoção da permanência de meninas e mulheres na prática esportiva ao longo da vida no Município de Itabirito e dá outras providências."
+  },
+  {
+    "id": "24837",
+    "ano": "2026",
+    "numero": "237",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24837/pl03_conscientizacao_e_orientacao_sindrome_ovario_31082026.pdf",
+    "ementa": "Institui diretrizes para a Política Municipal de Conscientização e Orientação sobre a Síndrome dos Ovários Policísticos – SOP, no Município de Itabirito, e dá outras providências."
+  },
+  {
+    "id": "24838",
+    "ano": "2026",
+    "numero": "238",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24838/pl02_conscientizacao_prevencao_e_promocao_saude_31082026.pdf",
+    "ementa": "Institui diretrizes para a Política Municipal de Conscientização, Prevenção e Promoção da Saúde Cardiovascular da Mulher no Município de Itabirito e dá outras providências."
+  },
+  {
+    "id": "24840",
+    "ano": "2026",
+    "numero": "239",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24840/pl01_iniciacao_e_formacao_esportiva_31082026.pdf",
+    "ementa": "Institui diretrizes para a promoção da iniciação e formação esportiva de crianças no Município de Itabirito, estabelece princípios, objetivos e ações orientadoras do Programa Municipal “Esporte na Base – Iniciação Esportiva para Crianças” e dá outras providências."
+  },
+  {
+    "id": "24871",
+    "ano": "2026",
+    "numero": "240",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Márcio Juninho, Daniel Sudano, Danilo Donato do Só Por Hoje, Danilo Grilo, Fabinho Fonseca, Léo do Social, Lucas do Zé Maria, Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24871/projeto_de_lei_-_denomina_rua_jose_inacio_-_ze_batata.pdf",
+    "ementa": "Denomina “Rua José Inácio – Zé Batata”, a via pública localizada no Loteamento Encanto das Águas, Bairro Portões, neste município."
+  },
+  {
+    "id": "24873",
+    "ano": "2026",
+    "numero": "241",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24873/denomina_portaria_antonio_de_castro_assis_.pdf",
+    "ementa": "Denomina “Portaria Antônio de Castro Assis” a portaria de acesso à Unidade de Conservação Floresta Natural Municipal da Grota da Mina, localizada na Rua José Pereira Lima, nº 160, Bairro Funcionários, CEP 35452-010, no Município de Itabirito."
+  },
+  {
+    "id": "24874",
+    "ano": "2026",
+    "numero": "242",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Elio da Mata",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24874/projeto_de_lei_no_242.2026_-_executivo_recebido_280826_as_15.22.pdf",
+    "ementa": "Denomina Alameda Odair Eugênio Leite, no Bairro Praia, neste Município de Itabirito/MG."
+  },
+  {
+    "id": "24891",
+    "ano": "2026",
+    "numero": "243",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24891/pl_institui_o_dia_do_patrimonio_historico_no_municipio_de_itabirito.pdf",
+    "ementa": "Institui o \"Dia do Patrimônio Histórico\" no Município de Itabirito e dá outras providências."
+  },
+  {
+    "id": "24822",
+    "ano": "2026",
+    "numero": "48",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24822/emenda_01_aditiva_projeto_de_lei_no_1982026.pdf",
+    "ementa": "Acrescenta parágrafos ao art. 19 do Projeto de Lei nº 198/2026, que dispõe sobre o Fundo de Desenvolvimento Econômico de Itabirito / FUNDI, para estabelecer requisitos mínimos de transparência ativa na aplicação dos recursos do Fundo."
+  },
+  {
+    "id": "24824",
+    "ano": "2026",
+    "numero": "49",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24824/emenda_02_substitutiva_projeto_de_lei_no_198_1.pdf",
+    "ementa": "Emenda Substitutiva ao Projeto de Lei nº 198, de 06 de agosto de 2026, que dispõe sobre Desenvolvimento o Fundo Econômico de de Itabirito, FUNDI, institui diretrizes para sua gestão, operacionalização, governança e e dá outras providências."
+  },
+  {
+    "id": "24861",
+    "ano": "2026",
+    "numero": "50",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Dr. Edson",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24861/emenda_substitutiva_pl_198-2026_-_assinado.pdf",
+    "ementa": "Projeto de Emenda Substitutiva ao Projeto de Lei nº 198 de 06 de agosto de 2026, dispõe sobre o Fundo de Desenvolvimento Econômico de Itabirito – FUNDI, institui diretrizes para sua gestão, governança e operacionalização, e dá outras providências."
+  },
+  {
+    "id": "24882",
+    "ano": "2026",
+    "numero": "51",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Max Fortes",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/24882/emenda_aditiva_ao_projeto_198_2026_fundi_-_cnpj_itabirito.pdf",
+    "ementa": "Emenda Aditiva ao Projeto de Lei nº 198, de 06 de agosto de 2026, que Dispõe sobre o Fundo de Desenvolvimento Econômico de Itabirito – FUNDI, institui diretrizes para sua gestão, governança e operacionalização, e dá outras providências."
   }
 ]
