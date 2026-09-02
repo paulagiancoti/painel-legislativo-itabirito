@@ -23,18 +23,6 @@ BASE_URL = "https://sapl.itabirito.mg.leg.br"
 ANOS     = [2026]
 FUSO     = timezone(timedelta(hours=-3))
 
-# Corte manual dos vínculos matéria↔assunto (materiaassunto). Esse endpoint
-# não tem campo de "revisado/validado" nem de data de edição — só {id,
-# materia, assunto} — então não dá pra saber sozinho o que já foi conferido
-# pela chefia. Ajuste esse número manualmente sempre que a chefia validar os
-# assuntos até um certo ponto: tudo com ID até aqui deixa de ser rebaixado
-# todo dia. IMPORTANTE — se um assunto já confirmado for editado depois (a
-# chefia pede pra trocar), essa edição NÃO vai aparecer sozinha: é preciso
-# rebaixar esse ID específico manualmente (baixar de novo com o corte
-# temporariamente mais baixo, ou editar direto no materiaassuntos.json).
-# 0 = sem corte, baixa tudo todo dia (comportamento padrão/seguro).
-ASSUNTOS_CORTE_ID = 794
-
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -85,6 +73,38 @@ def coletar_paginado(endpoint):
         pagina += 1
         time.sleep(0.5)
     return todos
+
+def coletar_paginado_completo(endpoint):
+    """
+    Igual a coletar_paginado, mas também informa se a coleta chegou até a
+    última página ou parou no meio por falha (timeout/erro esgotando as
+    tentativas). Necessário para endpoints onde o resultado vira uma
+    substituição direta do arquivo (sem merge_por_id): só é seguro substituir
+    quando a coleta veio completa — uma coleta parcial não pode virar o novo
+    arquivo, ou perderíamos os registros das páginas não alcançadas.
+    """
+    todos = []
+    pagina = 1
+    completo = True
+    while True:
+        sep = "&" if "?" in endpoint else "?"
+        dados = get_json(f"{BASE_URL}{endpoint}{sep}page={pagina}")
+        if dados is None:
+            print(f"  Falhou na página {pagina} — abortando.")
+            completo = False
+            break
+        if isinstance(dados, list):
+            todos += dados
+            break
+        resultados = dados.get("results", [])
+        todos += resultados
+        total = dados.get("pagination", {}).get("total_pages", 1)
+        print(f"  Página {pagina}/{total} ({len(resultados)} registros)")
+        if pagina >= total:
+            break
+        pagina += 1
+        time.sleep(0.5)
+    return todos, completo
 
 def coletar_incrementais(endpoint, max_id_conhecido):
     """
@@ -300,23 +320,28 @@ else:
 print("\n[3/6] Coletando vínculos matéria↔assunto...")
 existentes_ma = carregar_existente("materiaassuntos.json")
 print(f"  Vínculos existentes: {len(existentes_ma)}")
-if ASSUNTOS_CORTE_ID > 0:
-    print(f"  Corte manual ativo: ID {ASSUNTOS_CORTE_ID} (ajustável no topo do arquivo)")
-    novos_ma = coletar_incrementais("/api/materia/materiaassunto/?format=json", ASSUNTOS_CORTE_ID)
-    if novos_ma:
-        merged_ma = merge_por_id(existentes_ma, novos_ma)
-        salvar_json("materiaassuntos.json", merged_ma)
-        print(f"  {len(novos_ma)} vínculo(s) novo(s) desde o corte. Total: {len(merged_ma)}")
-    elif existentes_ma:
-        print("  Nenhum vínculo novo desde o corte — dados anteriores mantidos")
-    else:
-        alertar("Nenhum vínculo de assunto coletado — mantendo dados anteriores")
+# Este endpoint NÃO é ordenado pelo campo "id" (confirmado em 02/09/2026 — a
+# página 1 mistura IDs baixos e altos, tudo indica que é agrupado por
+# "assunto"). Por isso coletar_incrementais não serve aqui: a função depende
+# de detectar uma direção de ordenação pra poder parar cedo, e sem ordenação
+# nenhuma um vínculo novo pode estar em qualquer uma das páginas. Sempre
+# baixa tudo — e como não há corte que reduza o número de páginas, o
+# resultado é uma substituição direta do arquivo (não um merge), o que como
+# bônus corrige exclusões no SAPL automaticamente. Só é seguro substituir se
+# a coleta chegou completa — daí o uso de coletar_paginado_completo em vez de
+# coletar_paginado: uma falha no meio (timeout, por exemplo) não pode virar o
+# novo arquivo, isso perderia as páginas não alcançadas.
+todos_ma, completo_ma = coletar_paginado_completo("/api/materia/materiaassunto/?format=json")
+if not completo_ma:
+    alertar(
+        "Coleta de vínculos matéria-assunto parou no meio (falha numa página) "
+        "— dados anteriores mantidos, tentativa completa de novo amanhã.",
+    )
+elif todos_ma:
+    salvar_json("materiaassuntos.json", todos_ma)
+    print(f"  Total atual: {len(todos_ma)} vínculo(s)")
 else:
-    novos_ma = coletar_paginado("/api/materia/materiaassunto/?format=json")
-    if novos_ma:
-        salvar_json("materiaassuntos.json", novos_ma)
-    else:
-        alertar("Nenhum vínculo de assunto coletado — mantendo dados anteriores")
+    alertar("Nenhum vínculo de assunto coletado — mantendo dados anteriores")
 
 # ─── 4. RELATORIAS (merge por ID — retroativas são comuns) ───────────────────
 
