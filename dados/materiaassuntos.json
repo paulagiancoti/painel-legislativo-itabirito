@@ -168,6 +168,22 @@
     "materia": 20832
   },
   {
+    "id": 810,
+    "__str__": "Projeto de Lei Ordinária nº 231 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/810",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24826
+  },
+  {
+    "id": 807,
+    "__str__": "Projeto de Lei Ordinária nº 229 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/807",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 24779
+  },
+  {
     "id": 789,
     "__str__": "Projeto de Lei Ordinária nº 217 de 2026 - Administração Pública",
     "link_detail_backend": "/materia/materiaassunto/789",
@@ -800,6 +816,14 @@
     "materia": 10718
   },
   {
+    "id": 830,
+    "__str__": "Projeto de Lei Substitutivo nº 243 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/830",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24932
+  },
+  {
     "id": 803,
     "__str__": "Projeto de Lei Substitutivo nº 226 de 2026 - Calendário Oficial",
     "link_detail_backend": "/materia/materiaassunto/803",
@@ -832,12 +856,52 @@
     "materia": 22085
   },
   {
+    "id": 831,
+    "__str__": "Projeto de Lei Ordinária nº 244 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/831",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24933
+  },
+  {
+    "id": 819,
+    "__str__": "Projeto de Lei Ordinária nº 235 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/819",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24830
+  },
+  {
+    "id": 809,
+    "__str__": "Projeto de Lei Ordinária nº 230 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/809",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24787
+  },
+  {
     "id": 805,
     "__str__": "Projeto de Lei Ordinária nº 228 de 2026 - Calendário Oficial",
     "link_detail_backend": "/materia/materiaassunto/805",
     "metadata": {},
     "assunto": 1,
     "materia": 24766
+  },
+  {
+    "id": 838,
+    "__str__": "Projeto de Lei Ordinária nº 226 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/838",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24709
+  },
+  {
+    "id": 835,
+    "__str__": "Projeto de Lei Ordinária nº 225 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/835",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 24708
   },
   {
     "id": 797,
@@ -1560,6 +1624,30 @@
     "materia": 20651
   },
   {
+    "id": 829,
+    "__str__": "Projeto de Lei Ordinária nº 242 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/829",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24874
+  },
+  {
+    "id": 828,
+    "__str__": "Projeto de Lei Ordinária nº 241 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/828",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24873
+  },
+  {
+    "id": 827,
+    "__str__": "Projeto de Lei Ordinária nº 240 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/827",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24871
+  },
+  {
     "id": 804,
     "__str__": "Projeto de Lei Ordinária nº 227 de 2026 - Denominação de Logradouros",
     "link_detail_backend": "/materia/materiaassunto/804",
@@ -1568,17 +1656,17 @@
     "materia": 24710
   },
   {
-    "id": 772,
+    "id": 773,
     "__str__": "Projeto de Lei Ordinária nº 207 de 2026 - Denominação de Logradouros",
-    "link_detail_backend": "/materia/materiaassunto/772",
+    "link_detail_backend": "/materia/materiaassunto/773",
     "metadata": {},
     "assunto": 41,
     "materia": 24451
   },
   {
-    "id": 773,
+    "id": 772,
     "__str__": "Projeto de Lei Ordinária nº 207 de 2026 - Denominação de Logradouros",
-    "link_detail_backend": "/materia/materiaassunto/773",
+    "link_detail_backend": "/materia/materiaassunto/772",
     "metadata": {},
     "assunto": 41,
     "materia": 24451
@@ -2088,6 +2176,22 @@
     "materia": 22073
   },
   {
+    "id": 825,
+    "__str__": "Projeto de Lei Ordinária nº 239 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/825",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 24840
+  },
+  {
+    "id": 839,
+    "__str__": "Projeto de Lei Ordinária nº 226 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/839",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 24709
+  },
+  {
     "id": 791,
     "__str__": "Projeto de Lei Ordinária nº 218 de 2026 - Educação",
     "link_detail_backend": "/materia/materiaassunto/791",
@@ -2286,6 +2390,22 @@
     "metadata": {},
     "assunto": 11,
     "materia": 7793
+  },
+  {
+    "id": 826,
+    "__str__": "Projeto de Lei Ordinária nº 239 de 2026 - Esporte",
+    "link_detail_backend": "/materia/materiaassunto/826",
+    "metadata": {},
+    "assunto": 11,
+    "materia": 24840
+  },
+  {
+    "id": 821,
+    "__str__": "Projeto de Lei Ordinária nº 236 de 2026 - Esporte",
+    "link_detail_backend": "/materia/materiaassunto/821",
+    "metadata": {},
+    "assunto": 11,
+    "materia": 24834
   },
   {
     "id": 691,
@@ -3880,6 +4000,14 @@
     "materia": 22341
   },
   {
+    "id": 817,
+    "__str__": "Projeto de Lei Ordinária nº 234 de 2026 - Lazer",
+    "link_detail_backend": "/materia/materiaassunto/817",
+    "metadata": {},
+    "assunto": 14,
+    "materia": 24829
+  },
+  {
     "id": 676,
     "__str__": "Projeto de Lei Ordinária nº 159 de 2026 - Lazer",
     "link_detail_backend": "/materia/materiaassunto/676",
@@ -4464,6 +4592,54 @@
     "materia": 22085
   },
   {
+    "id": 820,
+    "__str__": "Projeto de Lei Ordinária nº 236 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/820",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 24834
+  },
+  {
+    "id": 815,
+    "__str__": "Projeto de Lei Ordinária nº 234 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/815",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 24829
+  },
+  {
+    "id": 813,
+    "__str__": "Projeto de Lei Ordinária nº 232 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/813",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 24827
+  },
+  {
+    "id": 837,
+    "__str__": "Projeto de Lei Ordinária nº 226 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/837",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 24709
+  },
+  {
+    "id": 836,
+    "__str__": "Projeto de Lei Ordinária nº 225 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/836",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 24708
+  },
+  {
+    "id": 834,
+    "__str__": "Projeto de Lei Ordinária nº 222 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/834",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 24679
+  },
+  {
     "id": 792,
     "__str__": "Projeto de Lei Ordinária nº 218 de 2026 - Política Pública Social",
     "link_detail_backend": "/materia/materiaassunto/792",
@@ -4880,6 +5056,30 @@
     "materia": 22073
   },
   {
+    "id": 824,
+    "__str__": "Projeto de Lei Ordinária nº 239 de 2026 - Programa",
+    "link_detail_backend": "/materia/materiaassunto/824",
+    "metadata": {},
+    "assunto": 27,
+    "materia": 24840
+  },
+  {
+    "id": 812,
+    "__str__": "Projeto de Lei Ordinária nº 232 de 2026 - Programa",
+    "link_detail_backend": "/materia/materiaassunto/812",
+    "metadata": {},
+    "assunto": 27,
+    "materia": 24827
+  },
+  {
+    "id": 833,
+    "__str__": "Projeto de Lei Ordinária nº 222 de 2026 - Programa",
+    "link_detail_backend": "/materia/materiaassunto/833",
+    "metadata": {},
+    "assunto": 27,
+    "materia": 24679
+  },
+  {
     "id": 685,
     "__str__": "Projeto de Lei Ordinária nº 164 de 2026 - Programa",
     "link_detail_backend": "/materia/materiaassunto/685",
@@ -5144,6 +5344,14 @@
     "materia": 21071
   },
   {
+    "id": 808,
+    "__str__": "Projeto de Lei Ordinária nº 229 de 2026 - SAAE",
+    "link_detail_backend": "/materia/materiaassunto/808",
+    "metadata": {},
+    "assunto": 20,
+    "materia": 24779
+  },
+  {
     "id": 536,
     "__str__": "Projeto de Lei Ordinária nº 129 de 2026 - SAAE",
     "link_detail_backend": "/materia/materiaassunto/536",
@@ -5240,12 +5448,68 @@
     "materia": 21508
   },
   {
+    "id": 823,
+    "__str__": "Projeto de Lei Ordinária nº 238 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/823",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24838
+  },
+  {
+    "id": 822,
+    "__str__": "Projeto de Lei Ordinária nº 237 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/822",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24837
+  },
+  {
+    "id": 818,
+    "__str__": "Projeto de Lei Ordinária nº 235 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/818",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24830
+  },
+  {
+    "id": 816,
+    "__str__": "Projeto de Lei Ordinária nº 234 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/816",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24829
+  },
+  {
+    "id": 814,
+    "__str__": "Projeto de Lei Ordinária nº 233 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/814",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24828
+  },
+  {
+    "id": 811,
+    "__str__": "Projeto de Lei Ordinária nº 231 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/811",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24826
+  },
+  {
     "id": 806,
     "__str__": "Projeto de Lei Ordinária nº 228 de 2026 - Saúde",
     "link_detail_backend": "/materia/materiaassunto/806",
     "metadata": {},
     "assunto": 21,
     "materia": 24766
+  },
+  {
+    "id": 832,
+    "__str__": "Projeto de Lei Ordinária nº 221 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/832",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24678
   },
   {
     "id": 784,
