@@ -36228,5 +36228,100 @@
       27
     ],
     "autores": []
+  },
+  {
+    "id": 5251,
+    "__str__": "Lei Ordinária Municipal nº 4.636, de 01 de setembro de 2026",
+    "link_detail_backend": "/norma/5251",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-01T14:37:23-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5251/lei_no_4636_de_01_de_setembro_de_2026_pl_188.2026.pdf",
+    "numero": "4636",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-01",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Altera a Lei Municipal nº 2.519, de 18 de agosto de 2006, que \"concede passe livre às pessoas\r\nportadoras de deficiência no sistema de transporte coletivo municipal e dá outras providências\", visando à ampliação e desburocratização do atendimento médico pericial no âmbito do SUS.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-04T09:03:54.950496-03:00",
+    "data_ultima_atualizacao": "2026-09-04T09:03:55.153345-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-04T09:01:54.616147-03:00",
+    "tipo": 1,
+    "materia": 23945,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      35
+    ],
+    "autores": []
+  },
+  {
+    "id": 5250,
+    "__str__": "Lei Ordinária Municipal nº 4.635, de 01 de setembro de 2026",
+    "link_detail_backend": "/norma/5250",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-01T14:35:45-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5250/lei_no_4635_de_01_de_setembro_de_2026_pl_112.2026.pdf",
+    "numero": "4635",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-01",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Programa Municipal Arquitetura Solidária no Município de Itabirito, regulamenta a doação de Projetos Arquitetônicos para Edificações Residenciais, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-04T09:01:44.310095-03:00",
+    "data_ultima_atualizacao": "2026-09-04T09:01:44.528404-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-04T08:59:43.607359-03:00",
+    "tipo": 1,
+    "materia": 22175,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      33,
+      6
+    ],
+    "autores": []
   }
 ]
