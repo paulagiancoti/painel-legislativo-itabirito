@@ -16589,5 +16589,33 @@
     "sessao_legislativa": 72,
     "legislatura": 41,
     "correspondencias": []
+  },
+  {
+    "id": 590,
+    "__str__": "4ª Sessão Solene da 2ª Sessão Legislativa da 22ª Legislatura",
+    "link_detail_backend": "/sessao/590",
+    "metadata": {},
+    "cod_andamento_sessao": null,
+    "painel_aberto": false,
+    "data_inicio": "2026-09-07",
+    "hora_inicio": "18:12",
+    "hora_fim": "20:44",
+    "numero": 4,
+    "data_fim": "2026-09-07",
+    "url_audio": "",
+    "url_video": "https://www.youtube.com/watch?v=dJ95GA98GaE",
+    "upload_pauta": null,
+    "upload_ata": null,
+    "upload_anexo": null,
+    "iniciada": true,
+    "finalizada": false,
+    "interativa": false,
+    "tema_solene": "",
+    "data_ultima_atualizacao": "2026-09-07T20:44:39.908341-03:00",
+    "publicar_pauta": false,
+    "tipo": 5,
+    "sessao_legislativa": 72,
+    "legislatura": 41,
+    "correspondencias": []
   }
 ]
