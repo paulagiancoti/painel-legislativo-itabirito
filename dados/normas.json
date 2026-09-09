@@ -36323,5 +36323,98 @@
       6
     ],
     "autores": []
+  },
+  {
+    "id": 5256,
+    "__str__": "Lei Ordinária Municipal nº 4.638, de 04 de setembro de 2026",
+    "link_detail_backend": "/norma/5256",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-04T14:33:32-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5256/lei_no_4638_de_04_de_setembro_de_2026_pl_186.2026.pdf",
+    "numero": "4638",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-04",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui no Município de Itabirito, a “Semana do Produtor Rural” e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-09T07:06:02.014656-03:00",
+    "data_ultima_atualizacao": "2026-09-09T07:06:02.255959-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-09T07:04:06.959469-03:00",
+    "tipo": 1,
+    "materia": 23863,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
+    "autores": []
+  },
+  {
+    "id": 5255,
+    "__str__": "Lei Ordinária Municipal nº 4.637, de 04 de setembro de 2026",
+    "link_detail_backend": "/norma/5255",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-04T14:28:56-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5255/lei_no_4637_de_04_de_setembro_de_2026_pl_185.2026.pdf",
+    "numero": "4637",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-04",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre o incentivo à utilização de recursos de comunicação acessível e de linguagem visual nas orientações de saúde destinadas a pessoas com baixa escolaridade, analfabetismo ou dificuldades de compreensão, no âmbito do Município de Itabirito/MG, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-09T07:03:34.948935-03:00",
+    "data_ultima_atualizacao": "2026-09-09T07:03:35.210382-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-09T07:00:24.508256-03:00",
+    "tipo": 1,
+    "materia": 23862,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      24,
+      2
+    ],
+    "autores": []
   }
 ]
