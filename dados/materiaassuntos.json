@@ -1624,6 +1624,38 @@
     "materia": 20651
   },
   {
+    "id": 844,
+    "__str__": "Projeto de Lei Ordinária nº 248 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/844",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24973
+  },
+  {
+    "id": 843,
+    "__str__": "Projeto de Lei Ordinária nº 247 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/843",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24972
+  },
+  {
+    "id": 842,
+    "__str__": "Projeto de Lei Ordinária nº 246 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/842",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24971
+  },
+  {
+    "id": 841,
+    "__str__": "Projeto de Lei Ordinária nº 245 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/841",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 24970
+  },
+  {
     "id": 829,
     "__str__": "Projeto de Lei Ordinária nº 242 de 2026 - Denominação de Logradouros",
     "link_detail_backend": "/materia/materiaassunto/829",
@@ -5446,6 +5478,14 @@
     "metadata": {},
     "assunto": 21,
     "materia": 21508
+  },
+  {
+    "id": 840,
+    "__str__": "Projeto de Lei Ordinária nº 244 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/840",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 24933
   },
   {
     "id": 823,
