@@ -856,6 +856,14 @@
     "materia": 22085
   },
   {
+    "id": 852,
+    "__str__": "Projeto de Lei Ordinária nº 255 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/852",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 25080
+  },
+  {
     "id": 831,
     "__str__": "Projeto de Lei Ordinária nº 244 de 2026 - Calendário Oficial",
     "link_detail_backend": "/materia/materiaassunto/831",
@@ -1432,6 +1440,30 @@
     "materia": 20318
   },
   {
+    "id": 853,
+    "__str__": "Projeto de Lei Ordinária nº 256 de 2026 - Cultura",
+    "link_detail_backend": "/materia/materiaassunto/853",
+    "metadata": {},
+    "assunto": 8,
+    "materia": 25089
+  },
+  {
+    "id": 860,
+    "__str__": "Projeto de Lei Ordinária nº 250 de 2026 - Cultura",
+    "link_detail_backend": "/materia/materiaassunto/860",
+    "metadata": {},
+    "assunto": 8,
+    "materia": 25044
+  },
+  {
+    "id": 847,
+    "__str__": "Projeto de Lei Ordinária nº 249 de 2026 - Cultura",
+    "link_detail_backend": "/materia/materiaassunto/847",
+    "metadata": {},
+    "assunto": 8,
+    "materia": 25042
+  },
+  {
     "id": 449,
     "__str__": "Projeto de Lei Ordinária nº 102 de 2026 - Cultura",
     "link_detail_backend": "/materia/materiaassunto/449",
@@ -1510,6 +1542,14 @@
     "metadata": {},
     "assunto": 28,
     "materia": 22073
+  },
+  {
+    "id": 857,
+    "__str__": "Projeto de Lei Ordinária nº 258 de 2026 - Defesa e Segurança",
+    "link_detail_backend": "/materia/materiaassunto/857",
+    "metadata": {},
+    "assunto": 28,
+    "materia": 25130
   },
   {
     "id": 686,
@@ -1622,6 +1662,22 @@
     "metadata": {},
     "assunto": 28,
     "materia": 20651
+  },
+  {
+    "id": 859,
+    "__str__": "Projeto de Lei Ordinária nº 260 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/859",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 25140
+  },
+  {
+    "id": 858,
+    "__str__": "Projeto de Lei Ordinária nº 259 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/858",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 25139
   },
   {
     "id": 844,
@@ -2208,6 +2264,22 @@
     "materia": 22073
   },
   {
+    "id": 862,
+    "__str__": "Projeto de Lei Ordinária nº 257 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/862",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 25106
+  },
+  {
+    "id": 861,
+    "__str__": "Projeto de Lei Ordinária nº 254 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/861",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 25076
+  },
+  {
     "id": 825,
     "__str__": "Projeto de Lei Ordinária nº 239 de 2026 - Educação",
     "link_detail_backend": "/materia/materiaassunto/825",
@@ -2422,6 +2494,14 @@
     "metadata": {},
     "assunto": 11,
     "materia": 7793
+  },
+  {
+    "id": 850,
+    "__str__": "Projeto de Lei Ordinária nº 253 de 2026 - Esporte",
+    "link_detail_backend": "/materia/materiaassunto/850",
+    "metadata": {},
+    "assunto": 11,
+    "materia": 25074
   },
   {
     "id": 826,
@@ -3936,6 +4016,14 @@
     "materia": 20832
   },
   {
+    "id": 848,
+    "__str__": "Projeto de Lei Ordinária nº 251 de 2026 - Indústria, Comércio e Serviços",
+    "link_detail_backend": "/materia/materiaassunto/848",
+    "metadata": {},
+    "assunto": 45,
+    "materia": 25046
+  },
+  {
     "id": 798,
     "__str__": "Projeto de Lei Ordinária nº 224 de 2026 - Indústria, Comércio e Serviços",
     "link_detail_backend": "/materia/materiaassunto/798",
@@ -4030,6 +4118,14 @@
     "metadata": {},
     "assunto": 14,
     "materia": 22341
+  },
+  {
+    "id": 851,
+    "__str__": "Projeto de Lei Ordinária nº 254 de 2026 - Lazer",
+    "link_detail_backend": "/materia/materiaassunto/851",
+    "metadata": {},
+    "assunto": 14,
+    "materia": 25076
   },
   {
     "id": 817,
@@ -4310,6 +4406,14 @@
     "metadata": {},
     "assunto": 17,
     "materia": 22337
+  },
+  {
+    "id": 849,
+    "__str__": "Projeto de Lei Ordinária nº 252 de 2026 - Meio Ambiente",
+    "link_detail_backend": "/materia/materiaassunto/849",
+    "metadata": {},
+    "assunto": 17,
+    "materia": 25073
   },
   {
     "id": 751,
@@ -4622,6 +4726,14 @@
     "metadata": {},
     "assunto": 43,
     "materia": 22085
+  },
+  {
+    "id": 856,
+    "__str__": "Projeto de Lei Ordinária nº 258 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/856",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 25130
   },
   {
     "id": 820,
@@ -5086,6 +5198,14 @@
     "metadata": {},
     "assunto": 27,
     "materia": 22073
+  },
+  {
+    "id": 846,
+    "__str__": "Projeto de Lei Ordinária nº 249 de 2026 - Programa",
+    "link_detail_backend": "/materia/materiaassunto/846",
+    "metadata": {},
+    "assunto": 27,
+    "materia": 25042
   },
   {
     "id": 824,
@@ -6056,6 +6176,14 @@
     "materia": 20624
   },
   {
+    "id": 855,
+    "__str__": "Projeto de Lei Ordinária nº 257 de 2026 - Transparência",
+    "link_detail_backend": "/materia/materiaassunto/855",
+    "metadata": {},
+    "assunto": 50,
+    "materia": 25106
+  },
+  {
     "id": 677,
     "__str__": "Projeto de Lei Ordinária nº 160 de 2026 - Transparência",
     "link_detail_backend": "/materia/materiaassunto/677",
@@ -6166,6 +6294,14 @@
     "metadata": {},
     "assunto": 34,
     "materia": 6519
+  },
+  {
+    "id": 854,
+    "__str__": "Projeto de Lei Ordinária nº 257 de 2026 - Transporte",
+    "link_detail_backend": "/materia/materiaassunto/854",
+    "metadata": {},
+    "assunto": 34,
+    "materia": 25106
   },
   {
     "id": 775,
