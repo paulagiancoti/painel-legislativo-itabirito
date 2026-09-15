@@ -36416,5 +36416,84 @@
       2
     ],
     "autores": []
+  },
+  {
+    "id": 5259,
+    "__str__": "Lei Ordinária Municipal nº 4.640, de 14 de setembro de 2026",
+    "link_detail_backend": "/norma/5259",
+    "metadata": {},
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5259/lei_no_4640_de_14_de_setembro_de_2026_pl_189.2026.pdf",
+    "numero": "4640",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-14",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Política Municipal de Prevenção de Alagamentos e Resiliência Urbana no Município\r\nde Itabirito, estabelece princípios, objetivos e diretrizes para o incentivo à manutenção\r\npreventiva da infraestrutura de drenagem urbana e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-15T07:05:08.082566-03:00",
+    "data_ultima_atualizacao": "2026-09-15T07:05:08.304880-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-15T07:03:19.741167-03:00",
+    "tipo": 1,
+    "materia": 24134,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4
+    ],
+    "autores": []
+  },
+  {
+    "id": 5258,
+    "__str__": "Lei Ordinária Municipal nº 4.639, de 11 de setembro de 2026",
+    "link_detail_backend": "/norma/5258",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-11T14:07:14-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5258/lei_no_4639_de_11_de_setembro_de_2026_pl_191.2026.pdf",
+    "numero": "4639",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-11",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Política Municipal de Orientação, Prevenção e Autodefesa Feminina no âmbito do\r\nMunicípio de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-15T07:03:03.507100-03:00",
+    "data_ultima_atualizacao": "2026-09-15T07:03:03.527660-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-15T07:03:03.307337-03:00",
+    "tipo": 1,
+    "materia": 24169,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      29
+    ],
+    "autores": []
   }
 ]
