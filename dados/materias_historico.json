@@ -129438,5 +129438,45 @@
     "autoria": "Márcio Juninho",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25341/substituicao_da_lixeira_existente_na_rua_coqueiro_verde_no_bairro_marzagao.pdf",
     "ementa": "Indica o envio ao Poder Executivo Municipal, sugerindo a substituição da lixeira existente na Rua Coqueiro Verde, próximo ao nº 50, no Bairro Marzagão."
+  },
+  {
+    "id": "25342",
+    "ano": "2026",
+    "numero": "868",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25342/requerimento_secretario_de_esportes_eduardo_braga_1-1_1.pdf",
+    "ementa": "Requer ao Presidente do Legislativo Municipal, que seja autorizada o uso da Tribuna ao Senhor Eduardo dos Reis Braga, Secretário de Esportes e Lazer, para que possa fazer uso da palavra na Sessão Ordinária do dia 28/9/2026, a fim de tratar de assuntos da pasta, notadamente sobre as obras na Arena Telê Santana."
+  },
+  {
+    "id": "25343",
+    "ano": "2026",
+    "numero": "26",
+    "tipo__sigla": "VETO",
+    "tipo__descricao": "Veto do Prefeito",
+    "autoria": "Elio da Mata",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25343/veto_integral_ao_autografo_193.2026_-_executivo.pdf",
+    "ementa": "Veto Integral ao Autógrafo de Lei nº 193/2026 que Dispõe sobre a implantação de infraestrutura subterrânea destinada às redes de energia elétrica, telecomunicações e serviços congêneres nos novos loteamentos e condomínios urbanos aprovados no Município de Itabirito/MG e dá outras providências."
+  },
+  {
+    "id": "25344",
+    "ano": "2026",
+    "numero": "27",
+    "tipo__sigla": "VETO",
+    "tipo__descricao": "Veto do Prefeito",
+    "autoria": "Elio da Mata",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25344/veto_integral_ao_autografo_202.2026_-_executivo.pdf",
+    "ementa": "Veto Integral ao Autógrafo de Lei nº 202/2026 que Institui a Política Municipal de Planejamento Estratégico da Rede Viária e da Conectividade Urbana do Município de Itabirito, estabelecendo princípios, objetivos, diretrizes e instrumentos destinados ao fortalecimento do planejamento viário, da integração territorial e do desenvolvimento urbano sustentável, e dá outras providências."
+  },
+  {
+    "id": "25345",
+    "ano": "2026",
+    "numero": "28",
+    "tipo__sigla": "VETO",
+    "tipo__descricao": "Veto do Prefeito",
+    "autoria": "Elio da Mata",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25345/veto_integral_ao_autografo_206.2026_-_executivo.pdf",
+    "ementa": "Veto Integral ao Autógrafo de Lei nº 206/2026 que Denomina rua Caetana Inês Xavier a via pública situada no Distrito de São Gonçalo do Monte, neste município, e dá outras providências."
   }
 ]
