@@ -36542,5 +36542,195 @@
       23
     ],
     "autores": []
+  },
+  {
+    "id": 5265,
+    "__str__": "Lei Ordinária Municipal nº 4.645, de 21 de setembro de 2026",
+    "link_detail_backend": "/norma/5265",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-21T16:18:30-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5265/lei_no_4645_de_21_de_setembro_de_2026_pl_204.2026.pdf",
+    "numero": "4645",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-21",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Política Municipal de Prevenção da Cegueira Evitável, em fomento à promoção da saúde ocular e à prevenção da Síndrome do Olho Seco – “Julho Turquesa”, no âmbito do Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-23T07:14:36.852047-03:00",
+    "data_ultima_atualizacao": "2026-09-23T07:14:37.058452-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-23T07:12:25.704536-03:00",
+    "tipo": 1,
+    "materia": 24328,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5264,
+    "__str__": "Lei Ordinária Municipal nº 4.644, de 21 de setembro de 2026",
+    "link_detail_backend": "/norma/5264",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-21T16:19:17-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5264/lei_no_4644_de_21_de_setembro_de_2026_pl_201.2026.pdf",
+    "numero": "4644",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-21",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a Política Municipal de Segurança Viária em Interseções – \"Esquina Segura Itabirito\", destinada à prevenção de sinistros de trânsito, à melhoria das condições de visibilidade nos cruzamentos e à proteção de pedestres e demais usuários vulneráveis das vias públicas, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-23T07:12:17.308915-03:00",
+    "data_ultima_atualizacao": "2026-09-23T07:12:17.655252-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-23T07:10:23.294616-03:00",
+    "tipo": 1,
+    "materia": 24325,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      9,
+      29,
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5263,
+    "__str__": "Lei Ordinária Municipal nº 4.643, de 21 de setembro de 2026",
+    "link_detail_backend": "/norma/5263",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-21T16:19:50-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5263/lei_no_4643_de_21_de_setembro_de_2026_pl_195.2026.pdf",
+    "numero": "4643",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-21",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Dia Municipal de Valorização das Mães Solo no Calendário Oficial de Eventos do Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-23T07:10:04.585939-03:00",
+    "data_ultima_atualizacao": "2026-09-23T07:10:04.776899-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-23T07:08:10.327827-03:00",
+    "tipo": 1,
+    "materia": 24173,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      25
+    ],
+    "autores": []
+  },
+  {
+    "id": 5262,
+    "__str__": "Lei Ordinária Municipal nº 4.642, de 21 de setembro de 2026",
+    "link_detail_backend": "/norma/5262",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-21T16:20:34-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5262/lei_no_4642_de_21_de_setembro_de_2026_pl_194.2026.pdf",
+    "numero": "4642",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-21",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Avenida Antônio Paciente Chaves”, a Avenida Perimetral, localizada no loteamento\r\ndenominado Retiro do Bação, situado no Distrito do Bação, no Município de Itabirito/ MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-23T07:07:52.493400-03:00",
+    "data_ultima_atualizacao": "2026-09-23T07:07:52.672910-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-23T07:04:52.891100-03:00",
+    "tipo": 1,
+    "materia": 24172,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
   }
 ]

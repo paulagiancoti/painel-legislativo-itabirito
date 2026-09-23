@@ -168,6 +168,30 @@
     "materia": 20832
   },
   {
+    "id": 868,
+    "__str__": "Projeto de Lei Ordinária nº 263 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/868",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 25219
+  },
+  {
+    "id": 866,
+    "__str__": "Projeto de Lei Ordinária nº 262 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/866",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 25218
+  },
+  {
+    "id": 863,
+    "__str__": "Projeto de Lei Ordinária nº 261 de 2026 - Administração Pública",
+    "link_detail_backend": "/materia/materiaassunto/863",
+    "metadata": {},
+    "assunto": 44,
+    "materia": 25217
+  },
+  {
     "id": 810,
     "__str__": "Projeto de Lei Ordinária nº 231 de 2026 - Administração Pública",
     "link_detail_backend": "/materia/materiaassunto/810",
@@ -854,6 +878,30 @@
     "metadata": {},
     "assunto": 1,
     "materia": 22085
+  },
+  {
+    "id": 875,
+    "__str__": "Projeto de Lei Ordinária nº 267 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/875",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 25304
+  },
+  {
+    "id": 873,
+    "__str__": "Projeto de Lei Ordinária nº 266 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/873",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 25264
+  },
+  {
+    "id": 871,
+    "__str__": "Projeto de Lei Ordinária nº 265 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/871",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 25261
   },
   {
     "id": 852,
@@ -1662,6 +1710,14 @@
     "metadata": {},
     "assunto": 28,
     "materia": 20651
+  },
+  {
+    "id": 870,
+    "__str__": "Projeto de Lei Ordinária nº 264 de 2026 - Denominação de Logradouros",
+    "link_detail_backend": "/materia/materiaassunto/870",
+    "metadata": {},
+    "assunto": 41,
+    "materia": 25235
   },
   {
     "id": 859,
@@ -4600,6 +4656,14 @@
     "materia": 7040
   },
   {
+    "id": 869,
+    "__str__": "Projeto de Lei Ordinária nº 263 de 2026 - Mobilidade Urbana",
+    "link_detail_backend": "/materia/materiaassunto/869",
+    "metadata": {},
+    "assunto": 18,
+    "materia": 25219
+  },
+  {
     "id": 696,
     "__str__": "Projeto de Lei Ordinária nº 171 de 2026 - Mobilidade Urbana",
     "link_detail_backend": "/materia/materiaassunto/696",
@@ -4726,6 +4790,14 @@
     "metadata": {},
     "assunto": 43,
     "materia": 22085
+  },
+  {
+    "id": 876,
+    "__str__": "Projeto de Lei Ordinária nº 267 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/876",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 25304
   },
   {
     "id": 856,
@@ -5600,6 +5672,22 @@
     "materia": 21508
   },
   {
+    "id": 874,
+    "__str__": "Projeto de Lei Ordinária nº 266 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/874",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 25264
+  },
+  {
+    "id": 872,
+    "__str__": "Projeto de Lei Ordinária nº 265 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/872",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 25261
+  },
+  {
     "id": 840,
     "__str__": "Projeto de Lei Ordinária nº 244 de 2026 - Saúde",
     "link_detail_backend": "/materia/materiaassunto/840",
@@ -5846,6 +5934,14 @@
     "metadata": {},
     "assunto": 21,
     "materia": 20598
+  },
+  {
+    "id": 865,
+    "__str__": "Projeto de Lei Ordinária nº 261 de 2026 - Segurança Pública",
+    "link_detail_backend": "/materia/materiaassunto/865",
+    "metadata": {},
+    "assunto": 52,
+    "materia": 25217
   },
   {
     "id": 743,
@@ -6104,6 +6200,14 @@
     "materia": 20585
   },
   {
+    "id": 867,
+    "__str__": "Projeto de Lei Ordinária nº 262 de 2026 - Trânsito",
+    "link_detail_backend": "/materia/materiaassunto/867",
+    "metadata": {},
+    "assunto": 23,
+    "materia": 25218
+  },
+  {
     "id": 764,
     "__str__": "Projeto de Lei Ordinária nº 201 de 2026 - Trânsito",
     "link_detail_backend": "/materia/materiaassunto/764",
@@ -6294,6 +6398,14 @@
     "metadata": {},
     "assunto": 34,
     "materia": 6519
+  },
+  {
+    "id": 864,
+    "__str__": "Projeto de Lei Ordinária nº 261 de 2026 - Transporte",
+    "link_detail_backend": "/materia/materiaassunto/864",
+    "metadata": {},
+    "assunto": 34,
+    "materia": 25217
   },
   {
     "id": 854,
