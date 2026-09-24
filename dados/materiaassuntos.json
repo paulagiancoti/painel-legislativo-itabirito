@@ -840,6 +840,22 @@
     "materia": 10718
   },
   {
+    "id": 877,
+    "__str__": "Projeto de Lei Substitutivo nº 266 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/877",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 25394
+  },
+  {
+    "id": 879,
+    "__str__": "Projeto de Lei Substitutivo nº 265 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/879",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 25393
+  },
+  {
     "id": 830,
     "__str__": "Projeto de Lei Substitutivo nº 243 de 2026 - Calendário Oficial",
     "link_detail_backend": "/materia/materiaassunto/830",
@@ -886,22 +902,6 @@
     "metadata": {},
     "assunto": 1,
     "materia": 25304
-  },
-  {
-    "id": 873,
-    "__str__": "Projeto de Lei Ordinária nº 266 de 2026 - Calendário Oficial",
-    "link_detail_backend": "/materia/materiaassunto/873",
-    "metadata": {},
-    "assunto": 1,
-    "materia": 25264
-  },
-  {
-    "id": 871,
-    "__str__": "Projeto de Lei Ordinária nº 265 de 2026 - Calendário Oficial",
-    "link_detail_backend": "/materia/materiaassunto/871",
-    "metadata": {},
-    "assunto": 1,
-    "materia": 25261
   },
   {
     "id": 852,
@@ -5656,6 +5656,22 @@
     "materia": 6974
   },
   {
+    "id": 878,
+    "__str__": "Projeto de Lei Substitutivo nº 266 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/878",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 25394
+  },
+  {
+    "id": 880,
+    "__str__": "Projeto de Lei Substitutivo nº 265 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/880",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 25393
+  },
+  {
     "id": 554,
     "__str__": "Projeto de Lei Substitutivo nº 123 de 2026 - Saúde",
     "link_detail_backend": "/materia/materiaassunto/554",
@@ -5670,22 +5686,6 @@
     "metadata": {},
     "assunto": 21,
     "materia": 21508
-  },
-  {
-    "id": 874,
-    "__str__": "Projeto de Lei Ordinária nº 266 de 2026 - Saúde",
-    "link_detail_backend": "/materia/materiaassunto/874",
-    "metadata": {},
-    "assunto": 21,
-    "materia": 25264
-  },
-  {
-    "id": 872,
-    "__str__": "Projeto de Lei Ordinária nº 265 de 2026 - Saúde",
-    "link_detail_backend": "/materia/materiaassunto/872",
-    "metadata": {},
-    "assunto": 21,
-    "materia": 25261
   },
   {
     "id": 840,

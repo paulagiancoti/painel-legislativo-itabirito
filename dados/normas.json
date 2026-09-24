@@ -36732,5 +36732,50 @@
       23
     ],
     "autores": []
+  },
+  {
+    "id": 5267,
+    "__str__": "Lei Ordinária Municipal nº 4.646, de 22 de setembro de 2026",
+    "link_detail_backend": "/norma/5267",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-22T15:08:49-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5267/lei_no_4646_de_22_de_setembro_de_2026_pl_198.2026.pdf",
+    "numero": "4646",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-22",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre o Fundo de Desenvolvimento Econômico de Itabirito – FUNDI, institui diretrizes\r\npara sua gestão, governança e operacionalização, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-24T07:02:55.251065-03:00",
+    "data_ultima_atualizacao": "2026-09-24T07:02:55.469550-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-24T07:01:16.193389-03:00",
+    "tipo": 1,
+    "materia": 24272,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
+    "autores": []
   }
 ]
