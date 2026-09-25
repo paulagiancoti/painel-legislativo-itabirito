@@ -36777,5 +36777,382 @@
     "user": 89,
     "assuntos": [],
     "autores": []
+  },
+  {
+    "id": 5275,
+    "__str__": "Lei Ordinária Municipal nº 4.654, de 23 de setembro de 2026",
+    "link_detail_backend": "/norma/5275",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-23T15:42:13-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5275/lei_no_4654_de_23_de_setembro_de_2026_pl_213.2026.pdf",
+    "numero": "4654",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Altera a Lei Municipal nº 3.524, de 09 de abril de 2021, que institui o Programa “A Escola vai à Câmara” e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-25T08:26:45.338898-03:00",
+    "data_ultima_atualizacao": "2026-09-25T08:26:45.524445-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-25T08:25:14.180828-03:00",
+    "tipo": 1,
+    "materia": 24534,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      40,
+      8
+    ],
+    "autores": []
+  },
+  {
+    "id": 5274,
+    "__str__": "Lei Ordinária Municipal nº 4.653, de 23 de setembro de 2026",
+    "link_detail_backend": "/norma/5274",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-23T15:42:44-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5274/lei_no_4653_de_23_de_setembro_de_2026_pl_212.2026.pdf",
+    "numero": "4653",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Dia da Cavalgada no Bairro Água Limpa, no Município de Itabirito, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-25T08:25:00.283267-03:00",
+    "data_ultima_atualizacao": "2026-09-25T08:25:00.562470-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-25T08:23:35.373511-03:00",
+    "tipo": 1,
+    "materia": 24517,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      25
+    ],
+    "autores": []
+  },
+  {
+    "id": 5273,
+    "__str__": "Lei Ordinária Municipal nº 4.652, de 23 de setembro de 2026",
+    "link_detail_backend": "/norma/5273",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-23T15:43:16-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5273/lei_no_4652_de_23_de_setembro_de_2026_pl_211.2026.pdf",
+    "numero": "4652",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Reconhece e ratifica a condição de associada da Câmara Municipal de Itabirito junto ao Conselho Estadual de Controle Interno de Minas Gerais – CONECI-MG, autoriza a realização do pagamento das contribuições associativas, anuidades e demais valores regularmente instituídos pelo CONECI-MG e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-25T08:23:03.884090-03:00",
+    "data_ultima_atualizacao": "2026-09-25T08:23:04.087240-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-25T08:20:59.100129-03:00",
+    "tipo": 1,
+    "materia": 24515,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      26,
+      40
+    ],
+    "autores": []
+  },
+  {
+    "id": 5272,
+    "__str__": "Lei Ordinária Municipal nº 4.651, de 23 de setembro de 2026",
+    "link_detail_backend": "/norma/5272",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-23T15:43:51-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5272/lei_no_4651_de_23_de_setembro_de_2026_pl_210.2026.pdf",
+    "numero": "4651",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Altera e insere dispositivos na Lei Municipal nº 3.093, de 11 de agosto de 2015 – Plano de Cargos, Carreiras e Vencimentos dos Servidores da Câmara Municipal de Itabirito -MG, com alterações posteriores e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-25T08:20:10.565527-03:00",
+    "data_ultima_atualizacao": "2026-09-25T08:20:10.724754-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-25T08:18:50.593891-03:00",
+    "tipo": 1,
+    "materia": 24513,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      40,
+      31
+    ],
+    "autores": []
+  },
+  {
+    "id": 5271,
+    "__str__": "Lei Ordinária Municipal nº 4.650, de 23 de setembro de 2026",
+    "link_detail_backend": "/norma/5271",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-23T15:44:28-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5271/lei_no_4650_de_23_de_setembro_de_2026_pl_208.2026.pdf",
+    "numero": "4650",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Estabelece diretrizes municipais de transparência e qualidade do serviço público de transporte coletivo no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-25T08:18:37.547522-03:00",
+    "data_ultima_atualizacao": "2026-09-25T08:18:37.714970-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-25T08:16:38.832580-03:00",
+    "tipo": 1,
+    "materia": 24452,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      35
+    ],
+    "autores": []
+  },
+  {
+    "id": 5270,
+    "__str__": "Lei Ordinária Municipal nº 4.649, de 23 de setembro de 2026",
+    "link_detail_backend": "/norma/5270",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-23T15:45:06-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5270/lei_no_4649_de_23_de_setembro_de_2026_pl_207.2026.pdf",
+    "numero": "4649",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina Travessa Roque Lucas Braga, situada nas coordenadas geográficas 20°17'00.8\"S,\r\n43°49'46.3\"W, localizada na comunidade de Córrego do Bação, neste Município.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-25T08:15:44.670177-03:00",
+    "data_ultima_atualizacao": "2026-09-25T08:15:44.868264-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-25T08:14:15.186555-03:00",
+    "tipo": 1,
+    "materia": 24451,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5269,
+    "__str__": "Lei Ordinária Municipal nº 4.648, de 23 de setembro de 2026",
+    "link_detail_backend": "/norma/5269",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-23T15:45:41-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5269/lei_no_4648_de_23_de_setembro_de_2026_pl_165.2026.pdf",
+    "numero": "4648",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Altera a Lei Municipal nº 3.325, de 8 de julho de 2019, que dispõe sobre o Parcelamento, o Uso e a Ocupação do Solo Urbano no Município de Itabirito/MG e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-25T08:13:46.768680-03:00",
+    "data_ultima_atualizacao": "2026-09-25T08:13:46.951116-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-25T08:11:32.546885-03:00",
+    "tipo": 1,
+    "materia": 23743,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
+    "autores": []
+  },
+  {
+    "id": 5268,
+    "__str__": "Lei Ordinária Municipal nº 4.647, de 23 de setembro de 2026",
+    "link_detail_backend": "/norma/5268",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-23T15:46:17-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5268/lei_no_4647_de_23_de_setembro_de_2026_pl_154.2026.pdf",
+    "numero": "4647",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Política Municipal de Atenção à Pessoa em Situação de Acumulação de Animais e dá\r\noutras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-25T08:11:16.337257-03:00",
+    "data_ultima_atualizacao": "2026-09-25T08:11:16.537736-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-25T08:09:19.088459-03:00",
+    "tipo": 1,
+    "materia": 23146,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      41
+    ],
+    "autores": []
   }
 ]

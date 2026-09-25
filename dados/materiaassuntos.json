@@ -2312,20 +2312,20 @@
     "materia": 8054
   },
   {
+    "id": 881,
+    "__str__": "Projeto de Lei Substitutivo nº 257 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/881",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 25435
+  },
+  {
     "id": 461,
     "__str__": "Projeto de Lei Substitutivo nº 76 de 2026 - Educação",
     "link_detail_backend": "/materia/materiaassunto/461",
     "metadata": {},
     "assunto": 9,
     "materia": 22073
-  },
-  {
-    "id": 862,
-    "__str__": "Projeto de Lei Ordinária nº 257 de 2026 - Educação",
-    "link_detail_backend": "/materia/materiaassunto/862",
-    "metadata": {},
-    "assunto": 9,
-    "materia": 25106
   },
   {
     "id": 861,
@@ -6280,12 +6280,12 @@
     "materia": 20624
   },
   {
-    "id": 855,
-    "__str__": "Projeto de Lei Ordinária nº 257 de 2026 - Transparência",
-    "link_detail_backend": "/materia/materiaassunto/855",
+    "id": 882,
+    "__str__": "Projeto de Lei Substitutivo nº 257 de 2026 - Transparência",
+    "link_detail_backend": "/materia/materiaassunto/882",
     "metadata": {},
     "assunto": 50,
-    "materia": 25106
+    "materia": 25435
   },
   {
     "id": 677,
@@ -6400,20 +6400,20 @@
     "materia": 6519
   },
   {
+    "id": 883,
+    "__str__": "Projeto de Lei Substitutivo nº 257 de 2026 - Transporte",
+    "link_detail_backend": "/materia/materiaassunto/883",
+    "metadata": {},
+    "assunto": 34,
+    "materia": 25435
+  },
+  {
     "id": 864,
     "__str__": "Projeto de Lei Ordinária nº 261 de 2026 - Transporte",
     "link_detail_backend": "/materia/materiaassunto/864",
     "metadata": {},
     "assunto": 34,
     "materia": 25217
-  },
-  {
-    "id": 854,
-    "__str__": "Projeto de Lei Ordinária nº 257 de 2026 - Transporte",
-    "link_detail_backend": "/materia/materiaassunto/854",
-    "metadata": {},
-    "assunto": 34,
-    "materia": 25106
   },
   {
     "id": 775,
