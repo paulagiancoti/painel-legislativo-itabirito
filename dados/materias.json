@@ -32505,9 +32505,9 @@
     "numero": "891",
     "tipo__sigla": "REQ",
     "tipo__descricao": "Requerimento",
-    "autoria": "Ezio Pimenta",
-    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25477/requerimento_01_28092026.pdf",
-    "ementa": "Requer informações acerca da interrupção no abastecimento de água no bairro Cardoso, dos protocolos registrados pelos moradores e dos prazos adotados pelo SAAE para atendimento das ocorrências."
+    "autoria": "Ezio Pimenta, Dr. Edson, Max Fortes",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25477/requerimento_itabirito_futebol_clube.pdf",
+    "ementa": "Requer ao Poder Executivo Municipal informações e documentos referentes a recursos públicos, apoio financeiro, patrimonial, estrutural ou operacional eventualmente concedido pelo Município ao Itabirito Sociedade Anônima do Futebol – Itabirito Futebol Clube, desde sua constituição, em 2022, até a presente data."
   },
   {
     "id": "25478",
@@ -32535,9 +32535,9 @@
     "numero": "894",
     "tipo__sigla": "REQ",
     "tipo__descricao": "Requerimento",
-    "autoria": "Ezio Pimenta",
+    "autoria": "Ezio Pimenta, Dr. Edson, Max Fortes",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25481/requerimento_04_28092026.pdf",
-    "ementa": "Solicita informações ao Poder Executivo Municipal acerca da sinalização viária e do sentido de circulação da Rua Maria Pires dos Santos, no bairro Santa Efigênia, incluindo a regulamentação oficial da via, eventuais divergências de sinalização, estudos técnicos existentes e providências previstas para sua regularização."
+    "ementa": "Requer ao Poder Executivo Municipal informações e documentos referentes à execução orçamentária, financeira e contábil do Município de Itabirito no exercício de 2024, especialmente quanto aos apontamentos constantes do processo de prestação de contas apreciado pelo Tribunal de Contas do Estado de Minas Gerais – TCEMG."
   },
   {
     "id": "25483",
@@ -32712,7 +32712,7 @@
   {
     "id": "25502",
     "ano": "2026",
-    "numero": "267",
+    "numero": "235",
     "tipo__sigla": "PLS",
     "tipo__descricao": "Projeto de Lei Substitutivo",
     "autoria": "Anderson do Sou Notícia",
@@ -32722,11 +32722,191 @@
   {
     "id": "25505",
     "ano": "2026",
-    "numero": "268",
+    "numero": "267",
     "tipo__sigla": "PLS",
     "tipo__descricao": "Projeto de Lei Substitutivo",
     "autoria": "Anderson do Sou Notícia",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25505/pl_substitutivo_267_2026.pdf",
     "ementa": "Institui o dia 27 de janeiro como o dia de luto e de memória às mulheres vítimas de feminicídio no âmbito do Município de Itabirito, estabelece diretrizes para a implementação de memoriais simbólicos, e dá outras providências."
+  },
+  {
+    "id": "25506",
+    "ano": "2026",
+    "numero": "1930",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25506/indicacao_01_28092026.pdf",
+    "ementa": "Solicita à Secretaria Municipal de Obras, Serviços e Infraestrutura que verifique junto à CEMIG as causas das frequentes quedas de energia elétrica no Bairro Santa Rita e bairros adjacentes, buscando providências para a regularização e melhoria do fornecimento."
+  },
+  {
+    "id": "25507",
+    "ano": "2026",
+    "numero": "1931",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25507/indicacao_07_28092026.pdf",
+    "ementa": "Solicita ao Poder Executivo a substituição de lâmpada de iluminação pública na Rua Pio XXII, no Bairro Centro, em frente à Farmácia Drogasil, Rua Pedro José de Alcântara e Rua Padre José Torquato, Bairro Vila José Lopes, Rua Sempre Viva próximo ao nº15 Bairro Matozinhos."
+  },
+  {
+    "id": "25508",
+    "ano": "2026",
+    "numero": "1932",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25508/indicacao_06_28092026.pdf",
+    "ementa": "Solicita ao Poder Executivo a realização de estudo técnico visando à viabilidade de canalização das águas que atravessam a Rua Itabira, nas proximidades do nº 730, no Bairro Água Limpa, ocasionando erosão e prejuízos ao trânsito e à segurança da população."
+  },
+  {
+    "id": "25509",
+    "ano": "2026",
+    "numero": "1933",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25509/indicacao_05_28092026.pdf",
+    "ementa": "Solicita ao Poder Executivo a realização de estudo viário visando verificar a viabilidade da proibição de conversão à esquerda na Rua Dona Cristina, no Bairro Santa Efigênia, após o retorno para a Praça, na Rua João Pinheiro, nas proximidades do Supermercado Sacramento."
+  },
+  {
+    "id": "25510",
+    "ano": "2026",
+    "numero": "1934",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25510/indicacao_04_28092026.pdf",
+    "ementa": "Solicita a implantação de faixa de retenção, pintura da legenda “PARE” e faixa de aproximação na Rua João Faria Gurgel, em frente ao nº 11, no Bairro Santa Rita."
+  },
+  {
+    "id": "25511",
+    "ano": "2026",
+    "numero": "1935",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25511/indicacao_03_28092026.pdf",
+    "ementa": "Solicita ao Poder Executivo a implantação de faixa de pedestres elevada em frente ao ponto de ônibus localizado na Rua da Carioca, nº 988, no Bairro Santa Rita."
+  },
+  {
+    "id": "25512",
+    "ano": "2026",
+    "numero": "1936",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25512/indicacao_02_28092026.pdf",
+    "ementa": "Solicita ao SAAE a realização de vistoria e reparação na rede de esgoto da Rua Augusto Bretas, no Bairro Matozinhos, em razão do extravasamento de esgoto e presença de fezes na via durante períodos de chuva."
+  },
+  {
+    "id": "25514",
+    "ano": "2026",
+    "numero": "1937",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Renê Butekus",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25514/indicacoes_-_faixa_de_pedestre_e_sinalizacao_-_rua_jasmim.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, solicitando a instalação de faixa de pedestres e placa de sinalização na Rua Jasmim, próximo ao ponto de ônibus em frente ao nº 207, no Bairro Matozinhos."
+  },
+  {
+    "id": "25516",
+    "ano": "2026",
+    "numero": "1938",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25516/indicacao_-_limpeza_e_retirada_de_entulho_na_rua_5_no_bairro_country.pdf",
+    "ementa": "Realizados a limpeza e retirada de entulhos da rua 5 no bairro Country."
+  },
+  {
+    "id": "25517",
+    "ano": "2026",
+    "numero": "1939",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25517/indicacao_-_manutencao_asfaltica_na_rua_joao_donada_tayeda__em_frente_ao__no_467_agostinho_rodrigues.pdf",
+    "ementa": "Serviços de manutenção asfáltica na rua João Donada Tayeda, em frente ao nº 467, no bairro Agostinho Rodrigues."
+  },
+  {
+    "id": "25518",
+    "ano": "2026",
+    "numero": "1940",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25518/indicacao_-_manutencao_de_calcamento__na_avenida_madre_iluminata_no_bairro_santo_antonio.pdf",
+    "ementa": "Manutenção do calçamento da Avenida Madre Iluminata, em frente ao nº 207, no bairro Santo Antônio."
+  },
+  {
+    "id": "25519",
+    "ano": "2026",
+    "numero": "1941",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25519/indicacao_-_recapeamento_asfaltico_na_rua_aurea_jose_dos_santos.pdf",
+    "ementa": "Recapeamento asfáltico na rua Áurea José dos Santos , em frente ao nº 176, no bairro Santo Antônio."
+  },
+  {
+    "id": "25523",
+    "ano": "2026",
+    "numero": "1942",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25523/indicacao_-__troca_da_lampada_da_iluminacao_publica_no_viaduto_doutor_flavio_alves_ferreira_bastosem_frente_ao_bar_maron_bar.pdf",
+    "ementa": "Realizada a troca da lâmpada da iluminação pública no Viaduto Doutor Flávio Alves Ferreira Bastos, do bairro Inconfidentes, em frente ao Maron Bar."
+  },
+  {
+    "id": "25513",
+    "ano": "2026",
+    "numero": "904",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Fabinho Fonseca",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25513/cmi-_requerimento_25092026_1.pdf",
+    "ementa": "Requeiro que seja arquivados o Projeto de Lei n°205/2026 de minha autoria."
+  },
+  {
+    "id": "25520",
+    "ano": "2026",
+    "numero": "905",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25520/requerimento_-__podas_de_arvores_na_rua_laudiceia_silva_oliveira__bairro_novo_itabirito_3.pdf",
+    "ementa": "Requer a Vossa Excelência que seja encaminhado expediente ao Poder Executivo Municipal, solicitando a realização de poda das árvores localizadas na Rua Laudicéia Silva Oliveira, em frente ao nº 460, no bairro Novo Itabirito."
+  },
+  {
+    "id": "25521",
+    "ano": "2026",
+    "numero": "906",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25521/requerimento_-_instalacao_de_02_dois_bracos_com_luminarias_para_iluminacao_publica_em_rua_localizada_na_zona_rural_do_saboeiro.pdf",
+    "ementa": "Requer a Vossa Excelência a instalação de 02 (dois) braços com luminárias para iluminação pública em rua localizada na zona rural de Saboeiro."
+  },
+  {
+    "id": "25522",
+    "ano": "2026",
+    "numero": "907",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25522/requerimento_-_manutencao_asfaltica_na_avenida_tiradentes_bairro_novo_itabirito.pdf",
+    "ementa": "Requer a Vossa Excelência que seja feita a manutenção asfáltica na Avenida Tiradentes, em frente ao Nº 281, no bairro Novo Itabirito."
+  },
+  {
+    "id": "25515",
+    "ano": "2026",
+    "numero": "275",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25515/pl_institui_o_dia_municipal_de_conscientizacao_da_sindrome_de_tourette_no_municipio_de_itabirito.pdf",
+    "ementa": "Institui o Dia Municipal de Conscientização da Síndrome de Tourette” no Município de Itabirito e dá outras providências."
   }
 ]

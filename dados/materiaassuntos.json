@@ -840,6 +840,14 @@
     "materia": 10718
   },
   {
+    "id": 886,
+    "__str__": "Projeto de Lei Substitutivo nº 267 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/886",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 25505
+  },
+  {
     "id": 877,
     "__str__": "Projeto de Lei Substitutivo nº 266 de 2026 - Calendário Oficial",
     "link_detail_backend": "/materia/materiaassunto/877",
@@ -862,6 +870,14 @@
     "metadata": {},
     "assunto": 1,
     "materia": 24932
+  },
+  {
+    "id": 884,
+    "__str__": "Projeto de Lei Substitutivo nº 235 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/884",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 25502
   },
   {
     "id": 803,
@@ -896,14 +912,6 @@
     "materia": 22085
   },
   {
-    "id": 875,
-    "__str__": "Projeto de Lei Ordinária nº 267 de 2026 - Calendário Oficial",
-    "link_detail_backend": "/materia/materiaassunto/875",
-    "metadata": {},
-    "assunto": 1,
-    "materia": 25304
-  },
-  {
     "id": 852,
     "__str__": "Projeto de Lei Ordinária nº 255 de 2026 - Calendário Oficial",
     "link_detail_backend": "/materia/materiaassunto/852",
@@ -918,14 +926,6 @@
     "metadata": {},
     "assunto": 1,
     "materia": 24933
-  },
-  {
-    "id": 819,
-    "__str__": "Projeto de Lei Ordinária nº 235 de 2026 - Calendário Oficial",
-    "link_detail_backend": "/materia/materiaassunto/819",
-    "metadata": {},
-    "assunto": 1,
-    "materia": 24830
   },
   {
     "id": 809,
@@ -4768,6 +4768,14 @@
     "materia": 22176
   },
   {
+    "id": 887,
+    "__str__": "Projeto de Lei Substitutivo nº 267 de 2026 - Política Pública Social",
+    "link_detail_backend": "/materia/materiaassunto/887",
+    "metadata": {},
+    "assunto": 43,
+    "materia": 25505
+  },
+  {
     "id": 802,
     "__str__": "Projeto de Lei Substitutivo nº 225 de 2026 - Política Pública Social",
     "link_detail_backend": "/materia/materiaassunto/802",
@@ -4790,14 +4798,6 @@
     "metadata": {},
     "assunto": 43,
     "materia": 22085
-  },
-  {
-    "id": 876,
-    "__str__": "Projeto de Lei Ordinária nº 267 de 2026 - Política Pública Social",
-    "link_detail_backend": "/materia/materiaassunto/876",
-    "metadata": {},
-    "assunto": 43,
-    "materia": 25304
   },
   {
     "id": 856,
@@ -5672,6 +5672,14 @@
     "materia": 25393
   },
   {
+    "id": 885,
+    "__str__": "Projeto de Lei Substitutivo nº 235 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/885",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 25502
+  },
+  {
     "id": 554,
     "__str__": "Projeto de Lei Substitutivo nº 123 de 2026 - Saúde",
     "link_detail_backend": "/materia/materiaassunto/554",
@@ -5710,14 +5718,6 @@
     "metadata": {},
     "assunto": 21,
     "materia": 24837
-  },
-  {
-    "id": 818,
-    "__str__": "Projeto de Lei Ordinária nº 235 de 2026 - Saúde",
-    "link_detail_backend": "/materia/materiaassunto/818",
-    "metadata": {},
-    "assunto": 21,
-    "materia": 24830
   },
   {
     "id": 816,
