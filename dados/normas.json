@@ -37154,5 +37154,290 @@
       41
     ],
     "autores": []
+  },
+  {
+    "id": 5281,
+    "__str__": "Lei Ordinária Municipal nº 4.660, de 25 de setembro de 2026",
+    "link_detail_backend": "/norma/5281",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-25T16:06:47-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5281/lei_no_4660_de_25_de_setembro_de_2026_pl_227.2026.pdf",
+    "numero": "4660",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua Bernardo Rocha Ribeiro”, a Rua atualmente conhecida por “Travessa Dona Cristina”, localizada no Bairro Santa Efigênia, Município de Itabirito/ MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-28T07:20:44.297935-03:00",
+    "data_ultima_atualizacao": "2026-09-28T07:20:44.321352-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-28T07:20:43.901386-03:00",
+    "tipo": 1,
+    "materia": 24710,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5280,
+    "__str__": "Lei Ordinária Municipal nº 4.659, de 25 de setembro de 2026",
+    "link_detail_backend": "/norma/5280",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-25T16:07:25-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5280/lei_no_4659_de_25_de_setembro_de_2026_pl_224.2026.pdf",
+    "numero": "4659",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui, no calendário oficial de eventos do Município de Itabirito, o “Feirão de Veículos de\r\nItabirito”, a ser realizado de forma integrada ao evento “Fim de semana na Feira” instituído pela Lei Municipal nº 4.333, de 07 de julho de 2025, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-28T07:15:04.873051-03:00",
+    "data_ultima_atualizacao": "2026-09-28T07:15:05.058495-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-28T07:12:39.552704-03:00",
+    "tipo": 1,
+    "materia": 24694,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      22
+    ],
+    "autores": []
+  },
+  {
+    "id": 5279,
+    "__str__": "Lei Ordinária Municipal nº 4.658, de 25 de setembro de 2026",
+    "link_detail_backend": "/norma/5279",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-25T16:08:19-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5279/lei_no_4658_de_25_de_setembro_de_2026_pl_217.2026.pdf",
+    "numero": "4658",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a promoção de espaços públicos de lazer inclusivos e multissensoriais no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-28T07:12:29.200250-03:00",
+    "data_ultima_atualizacao": "2026-09-28T07:12:29.425322-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-28T07:10:12.899646-03:00",
+    "tipo": 1,
+    "materia": 24630,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      34,
+      14
+    ],
+    "autores": []
+  },
+  {
+    "id": 5278,
+    "__str__": "Lei Ordinária Municipal nº 4.657, de 25 de setembro de 2026",
+    "link_detail_backend": "/norma/5278",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-25T16:09:00-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5278/lei_no_4657_de_25_de_setembro_de_2026_pl_216.2026.pdf",
+    "numero": "4657",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Estabelece diretrizes para a Política Municipal de Ruas Completas e Mobilidade Ativa no\r\nMunicípio de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-28T07:10:02.794635-03:00",
+    "data_ultima_atualizacao": "2026-09-28T07:10:03.025936-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-28T07:02:31.664588-03:00",
+    "tipo": 1,
+    "materia": 24627,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      9,
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5277,
+    "__str__": "Lei Ordinária Municipal nº 4.656, de 25 de setembro de 2026",
+    "link_detail_backend": "/norma/5277",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-25T16:09:36-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5277/lei_no_4656_de_25_de_setembro_de_2026_pl_215.2026.pdf",
+    "numero": "4656",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para o fortalecimento da resiliência e da diversificação econômica do\r\nMunicípio de Itabirito diante das transformações econômicas e tributárias nacionais e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-28T07:02:20.461213-03:00",
+    "data_ultima_atualizacao": "2026-09-28T07:02:20.640443-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-28T07:00:33.480166-03:00",
+    "tipo": 1,
+    "materia": 24624,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      32
+    ],
+    "autores": []
+  },
+  {
+    "id": 5276,
+    "__str__": "Lei Ordinária Municipal nº 4.655, de 25 de setembro de 2026",
+    "link_detail_backend": "/norma/5276",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-25T16:10:14-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5276/lei_no_4655_de_25_de_setembro_de_2026_pl_214.2026.pdf",
+    "numero": "4655",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a atenção integral à pessoa acamada no Município de Itabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-28T07:00:22.740092-03:00",
+    "data_ultima_atualizacao": "2026-09-28T07:00:22.997546-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-28T06:55:07.627896-03:00",
+    "tipo": 1,
+    "materia": 24583,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      34,
+      2
+    ],
+    "autores": []
   }
 ]

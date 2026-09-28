@@ -16673,5 +16673,33 @@
     "sessao_legislativa": 72,
     "legislatura": 41,
     "correspondencias": []
+  },
+  {
+    "id": 593,
+    "__str__": "29ª Sessão Ordinária da 2ª Sessão Legislativa da 22ª Legislatura",
+    "link_detail_backend": "/sessao/593",
+    "metadata": {},
+    "cod_andamento_sessao": null,
+    "painel_aberto": true,
+    "data_inicio": "2026-09-28",
+    "hora_inicio": "17:15",
+    "hora_fim": "",
+    "numero": 29,
+    "data_fim": "2026-09-28",
+    "url_audio": "",
+    "url_video": "https://www.youtube.com/watch?v=zwIfPpczHfY",
+    "upload_pauta": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/593/pauta/reuniao_ordinaria_280926.pdf",
+    "upload_ata": null,
+    "upload_anexo": null,
+    "iniciada": true,
+    "finalizada": false,
+    "interativa": false,
+    "tema_solene": "",
+    "data_ultima_atualizacao": "2026-09-28T17:15:07.473710-03:00",
+    "publicar_pauta": true,
+    "tipo": 1,
+    "sessao_legislativa": 72,
+    "legislatura": 41,
+    "correspondencias": []
   }
 ]
