@@ -912,6 +912,22 @@
     "materia": 22085
   },
   {
+    "id": 898,
+    "__str__": "Projeto de Lei Ordinária nº 275 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/898",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 25515
+  },
+  {
+    "id": 897,
+    "__str__": "Projeto de Lei Ordinária nº 274 de 2026 - Calendário Oficial",
+    "link_detail_backend": "/materia/materiaassunto/897",
+    "metadata": {},
+    "assunto": 1,
+    "materia": 25504
+  },
+  {
     "id": 852,
     "__str__": "Projeto de Lei Ordinária nº 255 de 2026 - Calendário Oficial",
     "link_detail_backend": "/materia/materiaassunto/852",
@@ -1486,6 +1502,14 @@
     "metadata": {},
     "assunto": 8,
     "materia": 20318
+  },
+  {
+    "id": 890,
+    "__str__": "Projeto de Lei Ordinária nº 269 de 2026 - Cultura",
+    "link_detail_backend": "/materia/materiaassunto/890",
+    "metadata": {},
+    "assunto": 8,
+    "materia": 25419
   },
   {
     "id": 853,
@@ -2136,6 +2160,14 @@
     "materia": 23158
   },
   {
+    "id": 896,
+    "__str__": "Projeto de Lei Ordinária nº 273 de 2026 - Desenvolvimento Urbano",
+    "link_detail_backend": "/materia/materiaassunto/896",
+    "metadata": {},
+    "assunto": 53,
+    "materia": 25482
+  },
+  {
     "id": 790,
     "__str__": "Projeto de Lei Ordinária nº 217 de 2026 - Desenvolvimento Urbano",
     "link_detail_backend": "/materia/materiaassunto/790",
@@ -2326,6 +2358,22 @@
     "metadata": {},
     "assunto": 9,
     "materia": 22073
+  },
+  {
+    "id": 901,
+    "__str__": "Projeto de Lei Ordinária nº 269 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/901",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 25419
+  },
+  {
+    "id": 888,
+    "__str__": "Projeto de Lei Ordinária nº 268 de 2026 - Educação",
+    "link_detail_backend": "/materia/materiaassunto/888",
+    "metadata": {},
+    "assunto": 9,
+    "materia": 25418
   },
   {
     "id": 861,
@@ -4464,6 +4512,14 @@
     "materia": 22337
   },
   {
+    "id": 892,
+    "__str__": "Projeto de Lei Ordinária nº 270 de 2026 - Meio Ambiente",
+    "link_detail_backend": "/materia/materiaassunto/892",
+    "metadata": {},
+    "assunto": 17,
+    "materia": 25420
+  },
+  {
     "id": 849,
     "__str__": "Projeto de Lei Ordinária nº 252 de 2026 - Meio Ambiente",
     "link_detail_backend": "/materia/materiaassunto/849",
@@ -4654,6 +4710,14 @@
     "metadata": {},
     "assunto": 18,
     "materia": 7040
+  },
+  {
+    "id": 900,
+    "__str__": "Projeto de Lei Ordinária nº 271 de 2026 - Mobilidade Urbana",
+    "link_detail_backend": "/materia/materiaassunto/900",
+    "metadata": {},
+    "assunto": 18,
+    "materia": 25421
   },
   {
     "id": 869,
@@ -5272,6 +5336,14 @@
     "materia": 22073
   },
   {
+    "id": 891,
+    "__str__": "Projeto de Lei Ordinária nº 270 de 2026 - Programa",
+    "link_detail_backend": "/materia/materiaassunto/891",
+    "metadata": {},
+    "assunto": 27,
+    "materia": 25420
+  },
+  {
     "id": 846,
     "__str__": "Projeto de Lei Ordinária nº 249 de 2026 - Programa",
     "link_detail_backend": "/materia/materiaassunto/846",
@@ -5462,6 +5534,14 @@
     "metadata": {},
     "assunto": 15,
     "materia": 21718
+  },
+  {
+    "id": 894,
+    "__str__": "Projeto de Lei Ordinária nº 272 de 2026 - Proteção Animal",
+    "link_detail_backend": "/materia/materiaassunto/894",
+    "metadata": {},
+    "assunto": 15,
+    "materia": 25480
   },
   {
     "id": 777,
@@ -5694,6 +5774,30 @@
     "metadata": {},
     "assunto": 21,
     "materia": 21508
+  },
+  {
+    "id": 899,
+    "__str__": "Projeto de Lei Ordinária nº 275 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/899",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 25515
+  },
+  {
+    "id": 902,
+    "__str__": "Projeto de Lei Ordinária nº 274 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/902",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 25504
+  },
+  {
+    "id": 889,
+    "__str__": "Projeto de Lei Ordinária nº 268 de 2026 - Saúde",
+    "link_detail_backend": "/materia/materiaassunto/889",
+    "metadata": {},
+    "assunto": 21,
+    "materia": 25418
   },
   {
     "id": 840,
@@ -6136,6 +6240,14 @@
     "materia": 23158
   },
   {
+    "id": 895,
+    "__str__": "Projeto de Lei Ordinária nº 273 de 2026 - Social",
+    "link_detail_backend": "/materia/materiaassunto/895",
+    "metadata": {},
+    "assunto": 22,
+    "materia": 25482
+  },
+  {
     "id": 538,
     "__str__": "Projeto de Lei Ordinária nº 137 de 2026 - Social",
     "link_detail_backend": "/materia/materiaassunto/538",
@@ -6198,6 +6310,14 @@
     "metadata": {},
     "assunto": 22,
     "materia": 20585
+  },
+  {
+    "id": 893,
+    "__str__": "Projeto de Lei Ordinária nº 271 de 2026 - Trânsito",
+    "link_detail_backend": "/materia/materiaassunto/893",
+    "metadata": {},
+    "assunto": 23,
+    "materia": 25421
   },
   {
     "id": 867,
