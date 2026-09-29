@@ -393,6 +393,14 @@
   },
   {
     "parlamentar": 17,
+    "sessao_plenaria": 570,
+    "data": "2026-06-01",
+    "sessao_nome": "16ª Sessão Ordinária",
+    "url_discurso": "",
+    "observacao": "Considerações finais da Presidência"
+  },
+  {
+    "parlamentar": 17,
     "sessao_plenaria": 571,
     "data": "2026-06-08",
     "sessao_nome": "17ª Sessão Ordinária",
