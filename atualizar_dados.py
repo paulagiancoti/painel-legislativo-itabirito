@@ -384,7 +384,31 @@ ids_com_url = [int(o["id"]) for o in existentes_or if (o.get("url_discurso") or 
 corte_id = max(ids_com_url, default=0)
 
 ano_atual = str(datetime.now(tz=FUSO).year)
-if corte_id == 0:
+
+# Modo PONTUAL (coleta completa) — só roda quando o workflow é disparado à mão
+# com a opção "oradores_completo" marcada (vira ORADORES_COMPLETO=true aqui).
+# Serve para quando links (url_discurso) são preenchidos no SAPL em registros
+# ANTIGOS, com ID abaixo do corte "maior ID com url": o modo incremental nunca
+# volta para rebaixar esses registros. Baixa TODOS os oradores e substitui o
+# arquivo inteiro (assim também reflete exclusões feitas no SAPL). Nos
+# disparos automáticos (cron) a variável vem vazia e nada disso roda.
+ORADORES_COMPLETO = os.environ.get("ORADORES_COMPLETO", "").strip().lower() == "true"
+oradores_substituir = False
+
+if ORADORES_COMPLETO:
+    print("  🔁 MODO PONTUAL: coleta completa de todos os oradores (ignora o corte por ID).")
+    novos_or, completo_or = coletar_paginado_completo("/api/sessao/oradorordemdia/?format=json")
+    if not completo_or:
+        # Coleta parcial nunca vira o arquivo novo — o que veio é só mesclado.
+        alertar("Coleta completa de oradores veio incompleta — só mesclado o que chegou, rode de novo")
+    elif len(novos_or) < 0.9 * len(existentes_or):
+        # Queda grande de registros é suspeita (resposta estranha do SAPL):
+        # não substitui, só mescla, e avisa para conferir.
+        alertar(f"Coleta completa trouxe {len(novos_or)} oradores, bem menos que os "
+                f"{len(existentes_or)} atuais — arquivo NÃO substituído, conferir", critico=True)
+    else:
+        oradores_substituir = True
+elif corte_id == 0:
     # Piso de segurança: se nenhum registro tem url ainda, cai no
     # comportamento antigo (ano corrente inteiro) em vez de arriscar buscar
     # tudo desde 2010 (o SAPL tem sessão registrada desde então).
@@ -395,7 +419,14 @@ else:
     print(f"  Maior ID com url_discurso preenchida: {corte_id}. Buscando registros mais novos que esse...")
     novos_or = coletar_incrementais("/api/sessao/oradorordemdia/?format=json", corte_id)
 
-if novos_or:
+if novos_or and oradores_substituir:
+    ids_antes  = {str(o["id"]) for o in existentes_or}
+    ids_depois = {str(o["id"]) for o in novos_or}
+    com_url    = sum(1 for o in novos_or if (o.get("url_discurso") or "").strip())
+    salvar_json("oradores.json", novos_or)
+    print(f"  Arquivo substituído: {len(novos_or)} oradores ({com_url} com url_discurso). "
+          f"Novos: {len(ids_depois - ids_antes)} · removidos (excluídos no SAPL): {len(ids_antes - ids_depois)}")
+elif novos_or:
     merged_or = merge_por_id(existentes_or, novos_or)
     salvar_json("oradores.json", merged_or)
     print(f"  {len(novos_or)} orador(es) coletado(s). Total no arquivo: {len(merged_or)}")
