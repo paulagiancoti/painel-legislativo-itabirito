@@ -23,26 +23,30 @@ O painel possui dois modos, selecionáveis no filtro "🗳️ Visualização":
 
 A senha do modo padrão é lida via `st.secrets` (Streamlit Cloud) ou variável de ambiente (outros serviços de hospedagem) — ver "Como rodar localmente" abaixo e `COMO_PUBLICAR.md`. Sem essa senha configurada, o modo padrão fica permanentemente inacessível e o painel roda sempre no modo público — útil para hospedar uma cópia pública (ex. embed no site) separada da versão de revisão interna.
 
+### Seletor de ano
+Os dados podem ser consultados por ano (hoje **2026** e **2025**). Em 2025 as abas de assunto não aparecem, porque não há classificação por assunto para as matérias daquele ano.
+
 ### Visão geral (todos os vereadores)
 - **Ranking de matérias** por vereador com link direto ao SAPL
 - **Taxa de aprovação de PLOs** (Projetos de Lei Ordinária) com tabela clicável por parlamentar
 - **Projetos por assunto** — gráfico de barras, tabela com links e mapa de calor comparativo
+- **Aprovação por Assunto** — taxa de aprovação recalculada só com os assuntos que o cidadão escolher
 - **Em Destaque** — cards individuais com foto, estatísticas e assuntos de atuação
-- **Pronunciamentos** — lista de sessões com oradores, links para o SAPL e YouTube
+- **Pronunciamentos** — lista de sessões com oradores e considerações finais da Presidência, com links para o SAPL, para a sessão completa no YouTube e para o recorte de cada fala no Instagram da Câmara
 
 ### Perfil do vereador
 - **Matérias** — tabela filtrável por tipo
 - **PLOs aprovados** — projetos que viraram lei, com informação sobre substitutivos
 - **Assuntos** — gráfico de atuação com links diretos ao SAPL
 - **Relatorias** — filtro por tipo de matéria e comissão, com links ao SAPL
-- **Pronunciamentos** — histórico de sessões com links para vídeo e discurso
+- **Pronunciamentos** — histórico de sessões com links para a sessão no YouTube e para o recorte da fala no Instagram
 
 ### Recursos gerais
-- **Filtros combinados** — Assunto, Vereador, Tipo de matéria, Tema visual e Modo de visualização
+- **Filtros combinados** — Ano, Assunto, Vereador, Tipo de matéria, Contraste (tema visual) e Visualização (modo)
 - **Links clicáveis** nos gráficos e tabelas — abrem a pesquisa no SAPL já filtrada
 - **Seletores dropdown** abaixo dos gráficos para navegação direta no celular
 - **Temas visuais** — Claro, Escuro e Institucional (cores da identidade visual da Câmara)
-- **Atualização automática** diária via GitHub Actions
+- **Atualização automática** duas vezes ao dia via GitHub Actions
 
 ---
 
@@ -55,7 +59,7 @@ A senha do modo padrão é lida via `st.secrets` (Streamlit Cloud) ou variável 
 | Pandas | Manipulação dos dados |
 | Plotly | Gráficos interativos |
 | Requests | Coleta de dados via API SAPL |
-| GitHub Actions | Atualização automática diária |
+| GitHub Actions | Atualização automática (2x ao dia) |
 | Render | Hospedagem (embed no site da Câmara) |
 | Streamlit Cloud | Hospedagem (versão pública direta) |
 
@@ -68,8 +72,9 @@ A senha do modo padrão é lida via `st.secrets` (Streamlit Cloud) ou variável 
 ```
 painel-legislativo-itabirito/
 ├── app.py                        # Painel principal (Streamlit)
-├── atualizar_dados.py            # Coleta diária: matérias, normas, vínculos, relatorias, oradores, sessões
+├── atualizar_dados.py            # Coleta automática: matérias, normas, assuntos e vínculos, relatorias, oradores, sessões
 ├── coletar_dados_iniciais.py     # Coleta única: vereadores, autores, mesa, assuntos, comissões, tipos
+├── coletar_pontual.py            # Coleta manual: baixa novamente todos os oradores
 ├── atualizar_fotos.py            # Coleta manual de fotos dos vereadores
 ├── requirements.txt              # Dependências Python
 ├── COMO_PUBLICAR.md              # Guia completo de publicação e manutenção
@@ -77,36 +82,40 @@ painel-legislativo-itabirito/
 │   └── config.toml               # Configuração de tema
 ├── .github/
 │   └── workflows/
-│       ├── atualizar.yml         # GitHub Actions — atualização automática diária
+│       ├── atualizar.yml         # GitHub Actions — atualização automática (2x ao dia)
+│       ├── coletar_pontual.yml   # GitHub Actions — recoleta manual dos oradores
 │       └── atualizar_fotos.yml   # GitHub Actions — atualização manual de fotos
 └── dados/
     ├── vereadores.json
     ├── autores.json
     ├── mesa_diretora.json
     ├── materias.json             # Matérias de 2026 (exibição)
-    ├── materias_historico.json   # Matérias 2025+2026 (cruzamento com normas)
+    ├── materias_historico.json   # Histórico de matérias (seletor de ano e cruzamento com normas)
     ├── normas.json
-    ├── assuntos.json             # Tipos de assunto (quase estático)
-    ├── materiaassuntos.json      # Vínculos matéria↔assunto (atualizado diariamente)
+    ├── assuntos.json             # Lista de assuntos (atualizada a cada coleta)
+    ├── materiaassuntos.json      # Vínculos matéria↔assunto (atualizado a cada coleta)
     ├── relatorias.json
-    ├── oradores.json
+    ├── oradores.json             # Oradores das sessões, com link do recorte no Instagram
     ├── sessoes.json
     ├── comissoes.json            # Criado manualmente (API indisponível)
     ├── tipomaterias.json
-    └── pronunciamentos_extras.json  # Considerações finais do Presidente (manual)
+    └── pronunciamentos_extras.json  # Considerações finais da Presidência (manual)
 ```
 
 ---
 
 ## Fonte dos dados
 
-Todos os dados são extraídos da API pública do SAPL de Itabirito:
+Todos os dados são extraídos do SAPL de Itabirito — da API pública e da pesquisa pública de matérias (usada para autoria e para os assuntos das matérias):
 
 ```
 https://sapl.itabirito.mg.leg.br/api/
+https://sapl.itabirito.mg.leg.br/materia/pesquisar-materia
 ```
 
-Os dados são atualizados automaticamente todo dia às **22h (horário de Brasília)** via GitHub Actions. Em caso de falha na coleta automática, os dados anteriores são preservados (o script não sobrescreve arquivos com resultado vazio).
+Os dados são atualizados automaticamente duas vezes ao dia, por volta das **11h e 22h (horário de Brasília)**, via GitHub Actions — o horário exato pode atrasar, pois o agendamento do GitHub não é garantido. Em caso de falha na coleta automática, os dados anteriores são preservados: o script não sobrescreve arquivos com resultado vazio ou incompleto.
+
+Os links dos recortes de pronunciamentos no Instagram são cadastrados manualmente no SAPL pela equipe da Câmara.
 
 ---
 
@@ -117,7 +126,7 @@ Os dados são atualizados automaticamente todo dia às **22h (horário de Brasí
 - **Mesa Diretora** aparece como nota informativa, não somada individualmente.
 - **Co-autorias** são expandidas em linhas; a contagem usa `nunique()` por `materia_id`.
 - O cruzamento de normas usa `materias_historico.json` para capturar PLOs de 2025 aprovados como leis em 2026.
-- Apenas PLOs do ano corrente (2026) são contabilizados nas métricas de aprovação.
+- As métricas de aprovação contabilizam apenas os PLOs do ano selecionado.
 
 ---
 
@@ -154,6 +163,8 @@ python -m streamlit run app.py
 Para publicar uma atualização de código: edite o arquivo desejado e faça commit — o Render e o Streamlit Cloud atualizam automaticamente.
 
 Para atualizar os dados manualmente fora do horário agendado, consulte o arquivo **[COMO_PUBLICAR.md](COMO_PUBLICAR.md)**.
+
+Se links de pronunciamentos antigos forem corrigidos no SAPL, rode manualmente o workflow **"Coletar oradores (pontual)"** para que o painel receba as correções.
 
 ---
 
