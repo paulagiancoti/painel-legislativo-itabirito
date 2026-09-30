@@ -1,7 +1,21 @@
 """
 coletar_pontual.py
-Coleta dados pontuais sem rodar o processo completo.
-Atualmente: sessões plenárias e oradores (pronunciamentos).
+Coleta pontual SÓ DE ORADORES (pronunciamentos) — baixa TODOS de novo.
+
+Uso: depois de preencher links (url_discurso) no SAPL em registros ANTIGOS.
+A coleta diária (atualizar_dados.py) é incremental pelo "maior ID com url" e
+nunca volta para rebaixar registros antigos — esta coleta resolve isso.
+
+Resistente a SAPL lento:
+  - cada página tem várias tentativas, com espera crescente;
+  - página que falhar não aborta a coleta: segue para as próximas e, no fim,
+    tenta de novo só as que falharam (até 2 repescagens).
+Segurança:
+  - só SUBSTITUI o arquivo se TODAS as páginas vierem (assim também reflete
+    exclusões feitas no SAPL);
+  - se faltar alguma página, só mescla o que chegou (nada se perde) e
+    termina com erro para você rodar de novo;
+  - se vier bem menos registro que o arquivo atual, não substitui (suspeito).
 """
 
 import requests
@@ -9,11 +23,14 @@ import json
 import os
 import sys
 import time
+from datetime import datetime, timezone, timedelta
 
 # Garante saída imediata nos logs do GitHub Actions
 sys.stdout.reconfigure(line_buffering=True)
 
 BASE_URL = "https://sapl.itabirito.mg.leg.br"
+ENDPOINT = "/api/sessao/oradorordemdia/?format=json"
+FUSO     = timezone(timedelta(hours=-3))
 
 HEADERS = {
     "User-Agent": (
@@ -21,45 +38,36 @@ HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/120.0.0.0 Safari/537.36"
     ),
-    "Accept": "application/json, */*; q=0.01",
-    "Accept-Language": "pt-BR,pt;q=0.9",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
     "X-Requested-With": "XMLHttpRequest",
+    "Referer": BASE_URL,
 }
 
-def get_json(url, tentativas=2, espera=3):
+TENTATIVAS_POR_PAGINA = 5     # por passada
+ESPERA_BASE           = 10    # segundos; cresce a cada tentativa (10, 20, 30...)
+REPESCAGENS           = 2     # passadas extras só nas páginas que falharam
+PAUSA_ANTES_REPESCA   = 60    # segundos de folga pro SAPL antes de repescar
+
+# ─── HELPERS ──────────────────────────────────────────────────────────────────
+
+def get_json(url, tentativas=TENTATIVAS_POR_PAGINA, espera=ESPERA_BASE):
     for i in range(tentativas):
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=(15, 60))
-            print(f"    [{resp.status_code}] {url}")
+            resp = requests.get(url, headers=HEADERS, timeout=(20, 90))
             if resp.status_code == 200 and resp.text.strip():
                 return resp.json()
+            print(f"    HTTP {resp.status_code} — tentativa {i+1}/{tentativas}")
+        except requests.exceptions.Timeout:
+            print(f"    Timeout — tentativa {i+1}/{tentativas}")
         except Exception as e:
-            print(f"    Erro: {e}")
+            print(f"    Erro: {e} — tentativa {i+1}/{tentativas}")
         if i < tentativas - 1:
-            time.sleep(espera)
+            time.sleep(espera * (i + 1))
     return None
 
-def coletar_paginado(endpoint):
-    todos = []
-    pagina = 1
-    while True:
-        sep = "&" if "?" in endpoint else "?"
-        dados = get_json(f"{BASE_URL}{endpoint}{sep}page={pagina}")
-        if dados is None:
-            print(f"  Falhou na página {pagina} — abortando.")
-            break
-        if isinstance(dados, list):
-            todos += dados
-            break
-        resultados = dados.get("results", [])
-        todos += resultados
-        total = dados.get("pagination", {}).get("total_pages", 1)
-        print(f"  Página {pagina}/{total} ({len(resultados)} registros)")
-        if pagina >= total:
-            break
-        pagina += 1
-        time.sleep(0.3)
-    return todos
+def url_pagina(pagina):
+    return f"{BASE_URL}{ENDPOINT}&page={pagina}"
 
 def carregar_existente(nome):
     caminho = os.path.join("dados", nome)
@@ -81,66 +89,96 @@ def salvar_json(nome, dados):
         json.dump(dados, f, ensure_ascii=False, indent=2)
     print(f"  ✓ {caminho} salvo ({len(dados)} registros)")
 
-# ─── ORADORES ─────────────────────────────────────────────────────────────────
+def gravar_timestamp():
+    agora = datetime.now(tz=FUSO).strftime("%d/%m/%Y às %H:%M")
+    os.makedirs("dados", exist_ok=True)
+    with open("dados/ultima_atualizacao.json", "w", encoding="utf-8") as f:
+        json.dump({"data_hora": agora}, f, ensure_ascii=False)
+    print(f"  Timestamp gravado: {agora} (invalida o cache do painel)")
 
-print("\n[1] Coletando oradores (pronunciamentos)...")
+# ─── COLETA ───────────────────────────────────────────────────────────────────
+
+print("\n[1] Coletando TODOS os oradores (pronunciamentos)...")
 existentes_or = carregar_existente("oradores.json")
-max_id_or = max((r["id"] for r in existentes_or), default=0)
-print(f"  Oradores existentes: {len(existentes_or)}, maior ID={max_id_or}")
-ep_or = (
-    f"/api/sessao/oradorordemdia/?format=json&id__gt={max_id_or}"
-    if max_id_or > 0 else "/api/sessao/oradorordemdia/?format=json"
-)
-print(f"  Endpoint: {ep_or}")
-novos_or = coletar_paginado(ep_or)
-print(f"  Retornou: {len(novos_or)} registro(s)")
-if novos_or:
-    merged_or = merge_por_id(existentes_or, novos_or)
-    salvar_json("oradores.json", merged_or)
-elif max_id_or > 0:
-    print("  Nenhum orador novo — dados anteriores mantidos")
+print(f"  Oradores no arquivo atual: {len(existentes_or)}")
+
+primeira = get_json(url_pagina(1))
+if not primeira:
+    print("  ✗ SAPL não respondeu nem a página 1 — nada alterado. Tente mais tarde.")
+    sys.exit(1)
+
+if isinstance(primeira, list):
+    # Endpoint sem paginação: veio tudo de uma vez
+    por_pagina  = {1: primeira}
+    total_pages = 1
 else:
-    print("  ✗ Nenhum orador coletado e não havia arquivo anterior")
+    total_pages = primeira.get("pagination", {}).get("total_pages", 1)
+    por_pagina  = {1: primeira.get("results", [])}
+print(f"  Página 1/{total_pages} ({len(por_pagina[1])} registros)")
 
-# ─── SESSÕES PLENÁRIAS ────────────────────────────────────────────────────────
+faltando = list(range(2, total_pages + 1))
+for passada in range(REPESCAGENS + 1):
+    if not faltando:
+        break
+    if passada > 0:
+        print(f"\n  Repescagem {passada}/{REPESCAGENS}: {len(faltando)} página(s) — "
+              f"aguardando {PAUSA_ANTES_REPESCA}s antes...")
+        time.sleep(PAUSA_ANTES_REPESCA)
+    falharam = []
+    for pagina in faltando:
+        dados = get_json(url_pagina(pagina))
+        if dados is None:
+            print(f"  ✗ Página {pagina}/{total_pages} falhou — segue para a próxima")
+            falharam.append(pagina)
+            continue
+        resultados = dados.get("results", []) if isinstance(dados, dict) else dados
+        por_pagina[pagina] = resultados
+        print(f"  Página {pagina}/{total_pages} ({len(resultados)} registros)")
+        time.sleep(0.5)
+    faltando = falharam
 
-print("\n[2] Coletando sessões plenárias...")
-existentes_sess = carregar_existente("sessoes.json")
-max_id_sess = max((r["id"] for r in existentes_sess), default=0)
-print(f"  Sessões existentes: {len(existentes_sess)}, maior ID={max_id_sess}")
-ep_sess = (
-    f"/api/sessao/sessaoplenaria/?format=json&id__gt={max_id_sess}"
-    if max_id_sess > 0 else "/api/sessao/sessaoplenaria/?format=json"
-)
-print(f"  Endpoint: {ep_sess}")
-novas_sess = coletar_paginado(ep_sess)
-print(f"  Retornou: {len(novas_sess)} registro(s)")
-if novas_sess:
-    merged_sess = merge_por_id(existentes_sess, novas_sess)
-    salvar_json("sessoes.json", merged_sess)
-elif max_id_sess > 0:
-    print("  Nenhuma sessão nova — dados anteriores mantidos")
+coletados = [r for p in sorted(por_pagina) for r in por_pagina[p]]
+# Remove duplicados (se a paginação "andou" durante a coleta, um registro
+# pode aparecer em duas páginas) mantendo a ordem do SAPL.
+vistos, novos_or = set(), []
+for r in coletados:
+    if str(r["id"]) not in vistos:
+        vistos.add(str(r["id"]))
+        novos_or.append(r)
+
+print(f"\n  Coletados: {len(novos_or)} oradores em {len(por_pagina)}/{total_pages} páginas")
+
+# ─── SALVAR ───────────────────────────────────────────────────────────────────
+
+sucesso = False
+if faltando:
+    print(f"  ⚠️  Páginas que não vieram mesmo após as repescagens: {faltando}")
+    if novos_or:
+        merged = merge_por_id(existentes_or, novos_or)
+        salvar_json("oradores.json", merged)
+        print("  Arquivo NÃO substituído — só mesclado o que chegou (nada foi perdido).")
+        gravar_timestamp()
+    print("  → Rode de novo mais tarde para completar.")
+elif existentes_or and len(novos_or) < 0.9 * len(existentes_or):
+    print(f"  🔴 Veio {len(novos_or)} oradores, bem menos que os {len(existentes_or)} atuais — "
+          f"arquivo NÃO alterado. Conferir o SAPL antes de rodar de novo.")
 else:
-    print("  ✗ Nenhuma sessão coletada e não havia arquivo anterior")
+    ids_antes  = {str(o["id"]) for o in existentes_or}
+    ids_depois = {str(o["id"]) for o in novos_or}
+    com_url    = sum(1 for o in novos_or if (o.get("url_discurso") or "").strip())
+    antes_url  = sum(1 for o in existentes_or if (o.get("url_discurso") or "").strip())
+    salvar_json("oradores.json", novos_or)
+    print(f"  Arquivo substituído. Com url_discurso: {antes_url} → {com_url}. "
+          f"Novos: {len(ids_depois - ids_antes)} · removidos (excluídos no SAPL): "
+          f"{len(ids_antes - ids_depois)}")
+    gravar_timestamp()
+    sucesso = True
 
-# ─── RESUMO ───────────────────────────────────────────────────────────────────
-
-print("\n─── Resultado ───")
-for arq in ["oradores.json", "sessoes.json"]:
-    caminho = os.path.join("dados", arq)
-    if os.path.exists(caminho):
-        d = json.load(open(caminho, encoding="utf-8"))
-        print(f"  {arq}: {len(d)} registros")
-    else:
-        print(f"  {arq}: não encontrado")
-
-# ─── TIMESTAMP (invalida cache do Streamlit/Render) ───────────────────────────
-
-from datetime import datetime, timezone, timedelta
-FUSO = timezone(timedelta(hours=-3))
-agora = datetime.now(tz=FUSO).strftime("%d/%m/%Y às %H:%M")
-os.makedirs("dados", exist_ok=True)
-with open("dados/ultima_atualizacao.json", "w", encoding="utf-8") as f:
-    json.dump({"data_hora": agora}, f, ensure_ascii=False)
-print(f"\nTimestamp gravado: {agora}")
-print("→ Cache do Streamlit será invalidado no próximo acesso.")
+print("\n" + "=" * 60)
+if sucesso:
+    print("✓ Coleta pontual de oradores concluída e completa.")
+    print("=" * 60)
+    sys.exit(0)
+print("⚠️  Coleta pontual NÃO ficou completa — ver mensagens acima.")
+print("=" * 60)
+sys.exit(1)
