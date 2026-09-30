@@ -1,4 +1,4 @@
-name: Coletar dados pontuais
+name: Coletar oradores (pontual)
 
 on:
   workflow_dispatch:   # apenas manual
@@ -8,6 +8,12 @@ env:
 
 permissions:
   contents: write
+
+# Mesmo grupo do "Atualizar dados SAPL": se a atualização diária estiver
+# rodando, esta espera ela terminar (e vice-versa) — evita conflito no push.
+concurrency:
+  group: atualizar-dados-sapl
+  cancel-in-progress: false
 
 jobs:
   coletar:
@@ -24,13 +30,21 @@ jobs:
       - name: Instalar dependências
         run: pip install requests
 
-      - name: Rodar coleta pontual
+      - name: Garantir que estamos no main mais recente
+        run: git pull --ff-only origin main
+
+      - name: Rodar coleta pontual de oradores
         run: python coletar_pontual.py
 
-      - name: Commitar arquivos coletados
+      - name: Commitar oradores
+        # "always()": se a coleta ficou incompleta, o script já mesclou só o
+        # que chegou (sem perder nada) — vale salvar esse avanço. O job
+        # continua marcado como falho nesse caso, para você rodar de novo.
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add dados/oradores.json dados/sessoes.json dados/ultima_atualizacao.json || true
-          git diff --staged --quiet || git commit -m "Coleta pontual: oradores e sessoes"
+          git add dados/oradores.json dados/ultima_atualizacao.json || true
+          git diff --staged --quiet || git commit -m "Coleta pontual: oradores"
+          git pull --rebase origin main
           git push
