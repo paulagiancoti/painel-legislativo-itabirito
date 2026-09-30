@@ -6480,18 +6480,6 @@
     "parlamentar": 185
   },
   {
-    "id": 553,
-    "__str__": "Ezio Pimenta (10º orador)",
-    "link_detail_backend": "/sessao/oradorordemdia/553",
-    "metadata": {},
-    "numero_ordem": 10,
-    "url_discurso": "https://www.instagram.com/p/DQpRcTTiP8_/",
-    "observacao": "",
-    "upload_anexo": null,
-    "sessao_plenaria": 522,
-    "parlamentar": 185
-  },
-  {
     "id": 543,
     "__str__": "Manoel da Autoescola (10º orador)",
     "link_detail_backend": "/sessao/oradorordemdia/543",
@@ -6610,6 +6598,18 @@
     "upload_anexo": null,
     "sessao_plenaria": 522,
     "parlamentar": 28
+  },
+  {
+    "id": 553,
+    "__str__": "Ezio Pimenta (10º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/553",
+    "metadata": {},
+    "numero_ordem": 10,
+    "url_discurso": "https://www.instagram.com/p/DQpRcTTiP8_/",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 522,
+    "parlamentar": 185
   },
   {
     "id": 554,
