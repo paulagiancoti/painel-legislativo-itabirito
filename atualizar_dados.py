@@ -317,20 +317,39 @@ else:
 
 # ─── 3. ASSUNTOS ──────────────────────────────────────────────────────────────
 
-print("\n[3/6] Coletando vínculos matéria↔assunto...")
+# ── 3a. Lista de assuntos (assuntomateria) ────────────────────────────────────
+# Baixada a cada rodada (~5 páginas) para que assunto criado, renomeado ou
+# apagado no SAPL entre sozinho. Se a coleta falhar ou vier incompleta, usa o
+# assuntos.json já salvo como reserva — a etapa de vínculos segue normalmente.
+print("\n[3/6] Coletando assuntos e vínculos matéria↔assunto...")
+print("  Lista de assuntos:")
+lista_ass_salva = carregar_existente("assuntos.json")
+lista_ass_nova, completo_ass = coletar_paginado_completo("/api/materia/assuntomateria/?format=json")
+if completo_ass and lista_ass_nova:
+    salvar_json("assuntos.json", lista_ass_nova)
+    lista_ass = lista_ass_nova
+    ids_salvos = {int(a["id"]) for a in lista_ass_salva}
+    ids_novos  = {int(a["id"]) for a in lista_ass_nova}
+    if ids_novos != ids_salvos:
+        print(f"  Assuntos novos: {sorted(ids_novos - ids_salvos)} · "
+              f"removidos no SAPL: {sorted(ids_salvos - ids_novos)}")
+else:
+    alertar("Lista de assuntos não veio completa — usando assuntos.json salvo como reserva")
+    lista_ass = lista_ass_salva
+print(f"  {len(lista_ass)} assunto(s) na lista")
+
+# ── 3b. Vínculos — MÉTODO ATUAL (paginar materiaassunto) ─────────────────────
+# ⚠️ VERSÃO DE COMPARAÇÃO (set/2026): o arquivo materiaassuntos.json ainda é
+# salvo por este método. O método novo (3c) roda junto só para comparar —
+# se os dois baterem, a próxima versão remove este bloco e passa a salvar
+# pelo método por assunto.
+#
+# Este endpoint NÃO é ordenado pelo campo "id" (ordenação do próprio SAPL é
+# por nome do assunto) — por isso não tem como fazer coleta incremental:
+# sempre baixa tudo e substitui o arquivo, e só se a coleta vier completa.
+print("  Vínculos — método atual (paginação de materiaassunto):")
 existentes_ma = carregar_existente("materiaassuntos.json")
 print(f"  Vínculos existentes: {len(existentes_ma)}")
-# Este endpoint NÃO é ordenado pelo campo "id" (confirmado em 02/09/2026 — a
-# página 1 mistura IDs baixos e altos, tudo indica que é agrupado por
-# "assunto"). Por isso coletar_incrementais não serve aqui: a função depende
-# de detectar uma direção de ordenação pra poder parar cedo, e sem ordenação
-# nenhuma um vínculo novo pode estar em qualquer uma das páginas. Sempre
-# baixa tudo — e como não há corte que reduza o número de páginas, o
-# resultado é uma substituição direta do arquivo (não um merge), o que como
-# bônus corrige exclusões no SAPL automaticamente. Só é seguro substituir se
-# a coleta chegou completa — daí o uso de coletar_paginado_completo em vez de
-# coletar_paginado: uma falha no meio (timeout, por exemplo) não pode virar o
-# novo arquivo, isso perderia as páginas não alcançadas.
 todos_ma, completo_ma = coletar_paginado_completo("/api/materia/materiaassunto/?format=json")
 if not completo_ma:
     alertar(
@@ -342,6 +361,80 @@ elif todos_ma:
     print(f"  Total atual: {len(todos_ma)} vínculo(s)")
 else:
     alertar("Nenhum vínculo de assunto coletado — mantendo dados anteriores")
+
+# ── 3c. Vínculos — MÉTODO NOVO (pesquisar-materia, 1 pedido por assunto) ─────
+# A tela pesquisar-materia devolve tudo numa resposta só (sem paginação),
+# então é 1 pedido por assunto, sem filtro de ano (pega todos os anos).
+# Cada assunto é independente: falha num não atrapalha os outros. Os que
+# falharem ganham uma repescagem no fim.
+# Aqui só COMPARA com o método atual — não salva materiaassuntos.json.
+print("  Vínculos — método novo (pesquisar-materia por assunto, comparação):")
+pares_por_assunto = {}   # id do assunto → set de ids de matéria
+falharam_ass = [int(a["id"]) for a in lista_ass]
+for passada in range(2):
+    if not falharam_ass:
+        break
+    if passada > 0:
+        print(f"  Repescagem: {len(falharam_ass)} assunto(s) — aguardando 30s...")
+        time.sleep(30)
+    pendentes, falharam_ass = falharam_ass, []
+    for aid in pendentes:
+        dados = get_json(
+            f"{BASE_URL}/materia/pesquisar-materia?format=json&materiaassunto__assunto={aid}"
+        )
+        if not isinstance(dados, dict) or "results" not in dados:
+            falharam_ass.append(aid)
+            continue
+        pares_por_assunto[aid] = {int(r["id"]) for r in dados["results"]}
+        time.sleep(0.5)
+print(f"  {len(pares_por_assunto)}/{len(lista_ass)} assunto(s) coletado(s) · "
+      f"{sum(len(v) for v in pares_por_assunto.values())} vínculo(s)")
+if falharam_ass:
+    print(f"  Assuntos que não responderam: {sorted(falharam_ass)}")
+
+# Arquivo TEMPORÁRIO, só para conferência (o app não lê) — sai na próxima versão.
+salvar_json("materiaassuntos_por_assunto.json", [
+    {"materia": m, "assunto": aid}
+    for aid in sorted(pares_por_assunto) for m in sorted(pares_por_assunto[aid])
+])
+
+# ── 3d. Comparação dos dois métodos ──────────────────────────────────────────
+# Só compara os assuntos que o método novo conseguiu baixar, e só se o método
+# atual veio completo (senão a diferença seria falha de coleta, não de método).
+print("\n  ── COMPARAÇÃO DOS MÉTODOS (vínculos matéria↔assunto) ──")
+if not completo_ma:
+    print("  Método atual não veio completo — comparação não é confiável nesta rodada.")
+else:
+    nome_ass = {int(a["id"]): a.get("assunto", "?") for a in lista_ass}
+    atual = {(int(v["materia"]), int(v["assunto"])) for v in todos_ma
+             if int(v["assunto"]) in pares_por_assunto}
+    novo  = {(m, aid) for aid, ms in pares_por_assunto.items() for m in ms}
+    so_atual = sorted(atual - novo, key=lambda p: (p[1], p[0]))
+    so_novo  = sorted(novo - atual, key=lambda p: (p[1], p[0]))
+    fora_lista = sorted({int(v["assunto"]) for v in todos_ma} - {int(a["id"]) for a in lista_ass})
+    print(f"  Assuntos comparados: {len(pares_por_assunto)} · pares em comum: {len(atual & novo)}")
+    # Mesmo par (matéria, assunto) cadastrado 2x no SAPL: o método atual traz
+    # as duas cópias; o método novo, por construção, traz só uma.
+    contagem = {}
+    for v in todos_ma:
+        par = (int(v["materia"]), int(v["assunto"]))
+        contagem[par] = contagem.get(par, 0) + 1
+    duplicados = sorted(p for p, n in contagem.items() if n > 1)
+    if duplicados:
+        print(f"  Vínculos duplicados no SAPL (mesma matéria + mesmo assunto): "
+              f"{[f'matéria {m} · assunto {a}' for m, a in duplicados]}")
+    if fora_lista:
+        print(f"  ⚠️  Vínculos apontam para assunto(s) fora da lista: {fora_lista}")
+    if not so_atual and not so_novo:
+        print("  ✅ Os dois métodos BATEM — nenhuma diferença.")
+    else:
+        for rotulo, lista in (("Só no método ATUAL (paginação)", so_atual),
+                              ("Só no método NOVO (por assunto)", so_novo)):
+            print(f"  {rotulo}: {len(lista)}")
+            for m, aid in lista[:40]:
+                print(f"    matéria {m} · assunto {aid} ({nome_ass.get(aid, '?')})")
+            if len(lista) > 40:
+                print(f"    ... e mais {len(lista) - 40}")
 
 # ─── 4. RELATORIAS (merge por ID — retroativas são comuns) ───────────────────
 
