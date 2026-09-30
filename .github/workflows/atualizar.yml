@@ -5,11 +5,6 @@ on:
     - cron: '0 1 * * *'    # 22h Brasília (atual)
     - cron: '0 14 * * *'   # 11h Brasília (horário comercial)
   workflow_dispatch:
-    inputs:
-      oradores_completo:
-        description: 'Baixar TODOS os oradores de novo (pontual — só depois de terminar de preencher os links antigos no SAPL)'
-        type: boolean
-        default: false
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 permissions:
@@ -37,9 +32,6 @@ jobs:
 
       - name: Rodar atualização
         id: atualizacao
-        env:
-          # Vazio nos disparos automáticos (cron) → coleta incremental normal
-          ORADORES_COMPLETO: ${{ inputs.oradores_completo }}
         run: python atualizar_dados.py
 
       - name: Verificar se dados foram coletados
