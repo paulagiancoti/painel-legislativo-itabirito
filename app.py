@@ -547,8 +547,8 @@ f0, f1, f2, f3, f4, f5 = st.columns([0.8, 1.3, 1.15, 1.15, 0.85, 1.25])
 with f0:
     ano_selecionado = st.selectbox(
         "📅 Ano", ["2026", "2025"],
-        help="Em 2025 ainda não há dados de assuntos nem de pronunciamentos "
-             "(por isso essas abas não aparecem nesse ano)."
+        help="Em 2025 ainda não há dados de assuntos "
+             "(por isso as abas de assunto não aparecem nesse ano)."
     )
 
 # Filtra os dados multi-ano para o ano escolhido no seletor acima. Os nomes
