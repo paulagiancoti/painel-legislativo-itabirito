@@ -37439,5 +37439,101 @@
       2
     ],
     "autores": []
+  },
+  {
+    "id": 5283,
+    "__str__": "Lei Ordinária Municipal nº 4.662, de 28 de setembro de 2026",
+    "link_detail_backend": "/norma/5283",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-28T15:27:48-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5283/lei_no_4662_de_28_de_setembro_de_2026_pl_234.2026.pdf",
+    "numero": "4662",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-28",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre diretrizes para a promoção de espaços de convivência e lazer adaptados para idosos nas praças e parques públicos do Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-30T09:41:43.241073-03:00",
+    "data_ultima_atualizacao": "2026-09-30T09:41:43.433092-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-30T09:39:22.683293-03:00",
+    "tipo": 1,
+    "materia": 24829,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      34,
+      14
+    ],
+    "autores": []
+  },
+  {
+    "id": 5282,
+    "__str__": "Lei Ordinária Municipal nº 4.661, de 28 de setembro de 2026",
+    "link_detail_backend": "/norma/5282",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-09-28T15:28:33-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5282/lei_no_4661_de_28_de_setembro_de_2026_pl_228.2026.pdf",
+    "numero": "4661",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-09-28",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre a instituição da \"Corrida da Saúde\" no Município de Itabirito, inclui o evento no\r\nCalendário Oficial do Município e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-09-30T09:38:14.691450-03:00",
+    "data_ultima_atualizacao": "2026-09-30T09:38:14.864560-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-09-30T09:36:21.686366-03:00",
+    "tipo": 1,
+    "materia": 24766,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      7,
+      2
+    ],
+    "autores": []
   }
 ]
