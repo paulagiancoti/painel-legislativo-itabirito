@@ -32505,7 +32505,7 @@
     "numero": "891",
     "tipo__sigla": "REQ",
     "tipo__descricao": "Requerimento",
-    "autoria": "Ezio Pimenta, Dr. Edson, Max Fortes",
+    "autoria": "Max Fortes, Dr. Edson, Ezio Pimenta",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25477/requerimento_891.2026.pdf",
     "ementa": "Requer ao Poder Executivo Municipal, informações e documentos referentes a recursos públicos, apoio financeiro, patrimonial, estrutural ou operacional eventualmente concedido pelo Município ao Itabirito Sociedade Anônima do Futebol – Itabirito Futebol Clube, desde sua constituição, em 2022, até a presente data."
   },
@@ -32535,7 +32535,7 @@
     "numero": "894",
     "tipo__sigla": "REQ",
     "tipo__descricao": "Requerimento",
-    "autoria": "Ezio Pimenta, Dr. Edson, Max Fortes",
+    "autoria": "Max Fortes, Dr. Edson, Ezio Pimenta",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25481/requerimento_894.2026.pdf",
     "ementa": "Requer ao Poder Executivo Municipal informações e documentos referentes à execução orçamentária, financeira e contábil do Município de Itabirito no exercício de 2024, especialmente quanto aos apontamentos constantes do processo de prestação de contas apreciado pelo Tribunal de Contas do Estado de Minas Gerais – TCEMG."
   },
@@ -32958,5 +32958,55 @@
     "autoria": "Lucas do Zé Maria",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25559/indicacao_5.pdf",
     "ementa": "Indico ao Poder Executivo Municipal, por meio da Secretaria competente, que sejam promovidas ações de conscientização e orientação da população quanto à correta destinação de materiais e resíduos nas proximidades do viaduto localizado no bairro Munu, bem como sejam adotadas e avaliadas medidas de fiscalização e prevenção destinadas a coibir o descarte irregular de resíduos no local."
+  },
+  {
+    "id": "25583",
+    "ano": "2026",
+    "numero": "1948",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25583/indicacoes_para_estudo_tecnico_de_transito_para_avaliar_a_instalacao_de_espelhos_convexos_de_seguranca_na_curva_entre_a_rua_capitao_antonio_marques.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de estudo técnico de trânsito para avaliar a instalação de espelhos convexos de segurança na curva entre a Rua Capitão Antônio Marques e a Rua Padre João do Amaral, no bairro Vila Gonçalo, conforme demonstrado na imagem anexada."
+  },
+  {
+    "id": "25584",
+    "ano": "2026",
+    "numero": "1949",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25584/indicacoes_para_estudo_tecnico_de_transito_para_avaliar_a_instalacao_de_placas_e_sinalizacao_no_cruzamento_da_rua_alameda_alvarenga_peixoto.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de estudo técnico de trânsito para avaliar a instalação de placas e sinalização no cruzamento da Rua Alameda Alvarenga Peixoto, nas proximidades do nº 3078, no bairro Quinta dos Inconfidentes, conforme demonstrado na imagem anexada."
+  },
+  {
+    "id": "25585",
+    "ano": "2026",
+    "numero": "1950",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25585/indicacoes_para_operacao_tapa-buracos_na_avenida_dos_inconfidentes_nas_proximidades_do_no_498_em_frente_a_farmacia_de_minas_no_bairro_bela_vista.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de operação tapa-buracos na Avenida dos Inconfidentes, nas proximidades do nº 498, em frente à Farmácia de Minas, no bairro Bela Vista, conforme demonstrado na imagem anexada."
+  },
+  {
+    "id": "25586",
+    "ano": "2026",
+    "numero": "1951",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25586/indicacoes_para_providencias_para_solicitar_o_reforco_do_patrulhamento_preventivo_da_guarda_civil_municipal.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a adoção de providências para solicitar o reforço do patrulhamento preventivo da Guarda Civil Municipal, em conjunto com a Polícia Militar, nas regiões dos bairros Boa Viagem e Saudade e áreas próximas."
+  },
+  {
+    "id": "25587",
+    "ano": "2026",
+    "numero": "1952",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/25587/indicacoes_para_estudo_tecnico_de_transito_para_avaliar_a_instalacao_de_espelho_convexo_de_seguranca_na_rua_mariana_no_bairro_monte_sinai.pdf",
+    "ementa": "Indica ao Poder Executivo Municipal a realização de estudo técnico de trânsito para avaliar a instalação de espelho convexo de segurança na Rua Mariana, no bairro Monte Sinai, conforme demonstrado na imagem anexada."
   }
 ]
