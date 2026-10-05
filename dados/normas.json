@@ -37535,5 +37535,53 @@
       2
     ],
     "autores": []
+  },
+  {
+    "id": 5284,
+    "__str__": "Portaria nº 229, de 02 de outubro de 2026",
+    "link_detail_backend": "/norma/5284",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Leandro Silva Marques",
+              [
+                "2026-10-02T14:30:37-03:00",
+                "ICP-Brasil - AC SyngularID Multipla"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5284/portaria_no_229_de_2_de_outubro_de_2026.pdf",
+    "numero": "229",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-02",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre Ponto Facultativo no âmbito da Câmara Municipal de Itabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-05T11:49:25.964771-03:00",
+    "data_ultima_atualizacao": "2026-10-05T11:49:26.173487-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-05T11:41:46.557310-03:00",
+    "tipo": 12,
+    "materia": null,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      40,
+      31
+    ],
+    "autores": []
   }
 ]
