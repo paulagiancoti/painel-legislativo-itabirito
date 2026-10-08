@@ -212,6 +212,10 @@
     "assunto": 1
   },
   {
+    "materia": 25638,
+    "assunto": 1
+  },
+  {
     "materia": 4101,
     "assunto": 3
   },
@@ -432,6 +436,10 @@
     "assunto": 9
   },
   {
+    "materia": 25636,
+    "assunto": 9
+  },
+  {
     "materia": 7394,
     "assunto": 10
   },
@@ -628,6 +636,10 @@
     "assunto": 15
   },
   {
+    "materia": 25704,
+    "assunto": 15
+  },
+  {
     "materia": 45,
     "assunto": 16
   },
@@ -797,6 +809,10 @@
   },
   {
     "materia": 25420,
+    "assunto": 17
+  },
+  {
+    "materia": 25704,
     "assunto": 17
   },
   {
@@ -1096,6 +1112,14 @@
     "assunto": 21
   },
   {
+    "materia": 25641,
+    "assunto": 21
+  },
+  {
+    "materia": 25642,
+    "assunto": 21
+  },
+  {
     "materia": 6518,
     "assunto": 22
   },
@@ -1185,6 +1209,10 @@
   },
   {
     "materia": 25421,
+    "assunto": 23
+  },
+  {
+    "materia": 25702,
     "assunto": 23
   },
   {
@@ -2788,6 +2816,18 @@
     "assunto": 43
   },
   {
+    "materia": 25619,
+    "assunto": 43
+  },
+  {
+    "materia": 25636,
+    "assunto": 43
+  },
+  {
+    "materia": 25642,
+    "assunto": 43
+  },
+  {
     "materia": 20584,
     "assunto": 44
   },
@@ -3056,6 +3096,22 @@
     "assunto": 44
   },
   {
+    "materia": 25653,
+    "assunto": 44
+  },
+  {
+    "materia": 25654,
+    "assunto": 44
+  },
+  {
+    "materia": 25702,
+    "assunto": 44
+  },
+  {
+    "materia": 25704,
+    "assunto": 44
+  },
+  {
     "materia": 7305,
     "assunto": 45
   },
@@ -3121,6 +3177,10 @@
   },
   {
     "materia": 25046,
+    "assunto": 45
+  },
+  {
+    "materia": 25705,
     "assunto": 45
   },
   {
@@ -3224,6 +3284,10 @@
     "assunto": 48
   },
   {
+    "materia": 25738,
+    "assunto": 48
+  },
+  {
     "materia": 20967,
     "assunto": 49
   },
@@ -3261,6 +3325,10 @@
   },
   {
     "materia": 25435,
+    "assunto": 50
+  },
+  {
+    "materia": 25654,
     "assunto": 50
   },
   {

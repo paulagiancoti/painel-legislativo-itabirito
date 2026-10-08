@@ -37583,5 +37583,381 @@
       31
     ],
     "autores": []
+  },
+  {
+    "id": 5292,
+    "__str__": "Lei Ordinária Municipal nº 4.670, de 05 de outubro de 2026",
+    "link_detail_backend": "/norma/5292",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-05T14:42:26-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5292/lei_no_4670_de_05_de_outubro_de_2026_pl_241.2026.pdf",
+    "numero": "4670",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-05",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Portaria Antônio de Castro Assis” a portaria de acesso à Unidade de Conservação\r\nFloresta Natural Municipal da Grota da Mina, localizada na Rua José Pereira Lima, nº 160,\r\nBairro Funcionários, CEP 35452-010, no Município de Itabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-08T07:46:45.121358-03:00",
+    "data_ultima_atualizacao": "2026-10-08T07:46:45.317042-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-08T07:44:51.236489-03:00",
+    "tipo": 1,
+    "materia": 24873,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4
+    ],
+    "autores": []
+  },
+  {
+    "id": 5291,
+    "__str__": "Lei Ordinária Municipal nº 4.669, de 05 de outubro de 2026",
+    "link_detail_backend": "/norma/5291",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-05T14:41:49-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5291/lei_no_4669_de_05_de_outubro_de_2026_pl_240.2026.pdf",
+    "numero": "4669",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-05",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua José Inácio – Zé Batata”, a via pública localizada no Loteamento Encanto das\r\nÁguas, Bairro Portões, neste  Município.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-08T07:44:38.479256-03:00",
+    "data_ultima_atualizacao": "2026-10-08T07:44:38.650628-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-08T07:42:59.600164-03:00",
+    "tipo": 1,
+    "materia": 24871,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5290,
+    "__str__": "Lei Ordinária Municipal nº 4.668, de 05 de outubro de 2026",
+    "link_detail_backend": "/norma/5290",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-05T14:40:56-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5290/lei_no_4668_de_05_de_outubro_de_2026_pl_239.2026.pdf",
+    "numero": "4668",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-05",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a promoção da iniciação e formação esportiva de crianças no Município\r\nde Itabirito, estabelece princípios, objetivos e ações orientadoras do Programa Municipal\r\n“Esporte na Base – Iniciação Esportiva para Crianças” e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-08T07:42:49.182251-03:00",
+    "data_ultima_atualizacao": "2026-10-08T07:42:49.416983-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-08T07:40:58.842295-03:00",
+    "tipo": 1,
+    "materia": 24840,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      7
+    ],
+    "autores": []
+  },
+  {
+    "id": 5289,
+    "__str__": "Lei Ordinária Municipal nº 4.667, de 05 de outubro de 2026",
+    "link_detail_backend": "/norma/5289",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-05T14:40:18-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5289/lei_no_4667_de_05_de_outubro_de_2026_pl_238.2026.pdf",
+    "numero": "4667",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-05",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a Política Municipal de Conscientização, Prevenção e Promoção da\r\nSaúde Cardiovascular da Mulher no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-08T07:40:47.964860-03:00",
+    "data_ultima_atualizacao": "2026-10-08T07:40:48.163810-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-08T07:39:00.484799-03:00",
+    "tipo": 1,
+    "materia": 24838,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5288,
+    "__str__": "Lei Ordinária Municipal nº 4.666, de 05 de outubro de 2026",
+    "link_detail_backend": "/norma/5288",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-05T14:39:43-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5288/lei_no_4666_de_05_de_outubro_de_2026_pl_237.2026.pdf",
+    "numero": "4666",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-05",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a Política Municipal de Conscientização e Orientação sobre a Síndrome\r\ndos Ovários Policísticos – SOP, no Município de Itabirito, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-08T07:35:36.268546-03:00",
+    "data_ultima_atualizacao": "2026-10-08T07:35:36.427709-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-08T07:33:51.887588-03:00",
+    "tipo": 1,
+    "materia": 24837,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5287,
+    "__str__": "Lei Ordinária Municipal nº 4.665, de 05 de outubro de 2026",
+    "link_detail_backend": "/norma/5287",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-05T14:39:09-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5287/lei_no_4665_de_05_de_outubro_de_2026_pl_236.2026.pdf",
+    "numero": "4665",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-05",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a promoção da permanência de meninas e mulheres na prática esportiva ao longo da vida no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-08T07:33:41.192365-03:00",
+    "data_ultima_atualizacao": "2026-10-08T07:33:41.355381-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-08T07:32:01.605966-03:00",
+    "tipo": 1,
+    "materia": 24834,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      7
+    ],
+    "autores": []
+  },
+  {
+    "id": 5286,
+    "__str__": "Lei Ordinária Municipal nº 4.664, de 05 de outubro de 2026",
+    "link_detail_backend": "/norma/5286",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-05T14:38:26-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5286/lei_no_4664_de_05_de_outubro_de_2026_pl_233.2026.pdf",
+    "numero": "4664",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-05",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui no Município de Itabirito a Campanha Municipal de Conscientização, Esclarecimento e Apoio às Pessoas com Vitiligo.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-08T07:31:54.392075-03:00",
+    "data_ultima_atualizacao": "2026-10-08T07:31:54.579288-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-08T07:30:13.418111-03:00",
+    "tipo": 1,
+    "materia": 24828,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5285,
+    "__str__": "Lei Ordinária Municipal nº 4.663, de 05 de outubro de 2026",
+    "link_detail_backend": "/norma/5285",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-05T15:50:39-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5285/lei_no_4663_de_05_de_outubro_de_2026_pl_230.2026.pdf",
+    "numero": "4663",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-05",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui no Município de Itabirito a Semana Municipal de Conscientização Pró Vida e\r\nProteção à Maternidade, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-08T07:30:01.649376-03:00",
+    "data_ultima_atualizacao": "2026-10-08T07:30:01.944729-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-08T07:27:40.828101-03:00",
+    "tipo": 1,
+    "materia": 24787,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
   }
 ]
