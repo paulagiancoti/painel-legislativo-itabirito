@@ -37959,5 +37959,193 @@
       2
     ],
     "autores": []
+  },
+  {
+    "id": 5296,
+    "__str__": "Lei Ordinária Municipal nº 4.674, de 08 de outubro de 2026",
+    "link_detail_backend": "/norma/5296",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-08T17:45:16-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5296/lei_no_4674_de_8_de_outubro_de_2026.pdf",
+    "numero": "4674",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-08",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para o Programa Municipal “VALORES QUE PROTEGEM”.\r\nFicam instituídas diretrizes para o Programa Municipal “VALORES QUE PROTEGEM”, destinado à promoção do respeito, da valorização, da proteção e da prevenção da violência contra a mulher em todas as fases da vida.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-13T09:28:38.869042-03:00",
+    "data_ultima_atualizacao": "2026-10-13T09:28:38.886501-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-13T09:28:38.706777-03:00",
+    "tipo": 1,
+    "materia": 24827,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      28,
+      29
+    ],
+    "autores": []
+  },
+  {
+    "id": 5295,
+    "__str__": "Lei Ordinária Municipal nº 4.673, de 08 de outubro de 2026",
+    "link_detail_backend": "/norma/5295",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-08T17:45:51-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5295/lei_no_4673_de_8_de_outubro_de_2026.pdf",
+    "numero": "4673",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-08",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para incentivo à arte, cultura, convivência, capacitação e inclusão produtiva\r\ncomo ações complementares de promoção da saúde mental no Município de Itabirito/MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-13T09:25:41.292727-03:00",
+    "data_ultima_atualizacao": "2026-10-13T09:25:41.312096-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-13T09:25:41.125421-03:00",
+    "tipo": 1,
+    "materia": 24826,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      3,
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5294,
+    "__str__": "Lei Ordinária Municipal nº 4.672, de 08 de outubro de 2026",
+    "link_detail_backend": "/norma/5294",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-08T17:46:27-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5294/lei_no_4672_de_8_de_outubro_de_2026.pdf",
+    "numero": "4672",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-08",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o “Agosto Verde”, como mês da primeira infância no Município de Itabirito/MG, e dá\r\noutras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-13T09:22:27.681652-03:00",
+    "data_ultima_atualizacao": "2026-10-13T09:22:27.703522-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-13T09:22:27.504610-03:00",
+    "tipo": 1,
+    "materia": 24764,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
+    "autores": []
+  },
+  {
+    "id": 5293,
+    "__str__": "Lei Ordinária Municipal nº 4.671, de 08 de outubro de 2026",
+    "link_detail_backend": "/norma/5293",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-08T17:47:08-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5293/lei_no_4671_de_8_de_outubro_de_2026.pdf",
+    "numero": "4671",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-08",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre a instituição do “Agosto Lilás” no Município de Itabirito/MG, para que o Poder\r\nExecutivo realize ações permanentes de conscientização pelo fim da violência contra a\r\nmulher, em conformidade com a Lei Federal nº 14.942, de 31 de julho de 2024, que alterou a Lei nº 14.448/2022, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-13T09:18:29.592605-03:00",
+    "data_ultima_atualizacao": "2026-10-13T09:18:29.611893-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-13T09:18:29.423421-03:00",
+    "tipo": 1,
+    "materia": 24765,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      29
+    ],
+    "autores": []
   }
 ]
