@@ -38147,5 +38147,287 @@
       29
     ],
     "autores": []
+  },
+  {
+    "id": 5302,
+    "__str__": "Lei Ordinária Municipal nº 4.680, de 09 de outubro de 2026",
+    "link_detail_backend": "/norma/5302",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-09T16:38:59-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5302/lei_no_4680_de_9_de_outubro_de_2026.pdf",
+    "numero": "4680",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-09",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Mirante Maria José Junqueira Patrocínio” o mirante localizado na Unidade de\r\nConservação Floresta Natural Municipal da Grota da Mina, no Município de Itabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-14T07:39:39.087928-03:00",
+    "data_ultima_atualizacao": "2026-10-14T07:39:39.108199-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-14T07:39:38.892159-03:00",
+    "tipo": 1,
+    "materia": 25140,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4
+    ],
+    "autores": []
+  },
+  {
+    "id": 5301,
+    "__str__": "Lei Ordinária Municipal nº 4.679, de 09 de outubro de 2026",
+    "link_detail_backend": "/norma/5301",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-09T16:38:23-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5301/lei_no_4679_de_9_de_outubro_de_2026.pdf",
+    "numero": "4679",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-09",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Canto da Seriema” a praça localizada na Avenida Márcio Antônio de Oliveira, no Bairro Água Limpa, no Município de Itabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-14T07:37:35.733695-03:00",
+    "data_ultima_atualizacao": "2026-10-14T07:37:35.751836-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-14T07:37:35.560888-03:00",
+    "tipo": 1,
+    "materia": 25139,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5300,
+    "__str__": "Lei Ordinária Municipal nº 4.678, de 09 de outubro de 2026",
+    "link_detail_backend": "/norma/5300",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-09T16:37:44-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5300/lei_no_4678_de_9_de_outubro_de_2026.pdf",
+    "numero": "4678",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-09",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua Antônio Neves Augusto”, a rua sem denominação, localizada em Ribeirão do\r\nEixo, Município de Itabirito/ MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-14T07:35:31.936228-03:00",
+    "data_ultima_atualizacao": "2026-10-14T07:35:31.955243-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-14T07:35:31.756088-03:00",
+    "tipo": 1,
+    "materia": 24973,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5299,
+    "__str__": "Lei Ordinária Municipal nº 4.677, de 09 de outubro de 2026",
+    "link_detail_backend": "/norma/5299",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-09T16:36:57-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5299/lei_no_4677_de_9_de_outubro_de_2026.pdf",
+    "numero": "4677",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-09",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua das Garças”, a rua sem denominação, localizada em Ribeirão do Eixo, Município de Itabirito/ MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-14T07:33:29.712419-03:00",
+    "data_ultima_atualizacao": "2026-10-14T07:33:29.732095-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-14T07:33:29.542919-03:00",
+    "tipo": 1,
+    "materia": 24972,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5298,
+    "__str__": "Lei Ordinária Municipal nº 4.676, de 09 de outubro de 2026",
+    "link_detail_backend": "/norma/5298",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-09T16:36:22-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5298/lei_no_4676_de_9_de_outubro_de_2026.pdf",
+    "numero": "4676",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-09",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua Albatroz”, a rua sem denominação, localizada em Ribeirão do Eixo, Município de Itabirito/ MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-14T07:30:46.612324-03:00",
+    "data_ultima_atualizacao": "2026-10-14T07:30:46.632348-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-14T07:30:46.429076-03:00",
+    "tipo": 1,
+    "materia": 24971,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5297,
+    "__str__": "Lei Ordinária Municipal nº 4.675, de 09 de outubro de 2026",
+    "link_detail_backend": "/norma/5297",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-09T16:35:40-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5297/lei_no_4675_de_9_de_outubro_de_2026.pdf",
+    "numero": "4675",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-09",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua Inhambu”, a rua sem denominação, localizada em Ribeirão do Eixo,\r\nMunicípio de Itabirito/ MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-14T07:27:31.359924-03:00",
+    "data_ultima_atualizacao": "2026-10-14T07:27:31.379594-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-14T07:27:31.099120-03:00",
+    "tipo": 1,
+    "materia": 24970,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
   }
 ]
