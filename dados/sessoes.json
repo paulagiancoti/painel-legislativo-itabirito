@@ -16757,5 +16757,33 @@
     "sessao_legislativa": 72,
     "legislatura": 41,
     "correspondencias": []
+  },
+  {
+    "id": 596,
+    "__str__": "32ª Sessão Ordinária da 2ª Sessão Legislativa da 22ª Legislatura",
+    "link_detail_backend": "/sessao/596",
+    "metadata": {},
+    "cod_andamento_sessao": null,
+    "painel_aberto": false,
+    "data_inicio": "2026-10-26",
+    "hora_inicio": "17:00",
+    "hora_fim": "",
+    "numero": 32,
+    "data_fim": "2026-10-26",
+    "url_audio": "",
+    "url_video": "https://www.youtube.com/watch?v=Hg_BTEjw608",
+    "upload_pauta": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/596/pauta/reuniao_ordinaria_261026.pdf",
+    "upload_ata": null,
+    "upload_anexo": null,
+    "iniciada": true,
+    "finalizada": false,
+    "interativa": false,
+    "tema_solene": "",
+    "data_ultima_atualizacao": "2026-10-26T16:24:54.065089-03:00",
+    "publicar_pauta": true,
+    "tipo": 1,
+    "sessao_legislativa": 72,
+    "legislatura": 41,
+    "correspondencias": []
   }
 ]
