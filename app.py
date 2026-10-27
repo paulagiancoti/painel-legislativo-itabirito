@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import json
 import os
+import unicodedata
 from collections import defaultdict
 
 st.set_page_config(
@@ -1112,6 +1113,29 @@ def html_barchart_grouped_h(df_bar, col_label, url_fn, series, colors,
     return f'<div style="padding:4px 0">{"".join(rows)}</div>'
 
 
+def _chave_alfabetica(texto):
+    """Chave de ordem alfabética sem diferenciar maiúsculas/minúsculas nem
+    acentos (ex: "Ézio" fica junto de "Ezio", não depois do "Z")."""
+    sem_acento = unicodedata.normalize('NFKD', str(texto))
+    sem_acento = ''.join(c for c in sem_acento if not unicodedata.combining(c))
+    return sem_acento.casefold()
+
+
+def ordenar_ranking(df_rank, col_taxa, col_aprovados, col_nome):
+    """Critério único de classificação para todo ranking por porcentagem:
+    1º maior taxa (%), 2º maior quantidade de aprovados, 3º ordem alfabética.
+    Usar sempre esta função — sort_values só pela taxa deixa os empates em
+    ordem arbitrária."""
+    if df_rank.empty:
+        return df_rank
+    return (
+        df_rank.assign(_ord_nome=df_rank[col_nome].map(_chave_alfabetica))
+        .sort_values([col_taxa, col_aprovados, '_ord_nome'],
+                     ascending=[False, False, True], kind='mergesort')
+        .drop(columns='_ord_nome')
+    )
+
+
 
 df_sem_pls  = df_parl[~df_parl['tipo_sigla'].isin(['PLS', 'PLS2'])].copy()
 df_filtrado = df_sem_pls.copy()
@@ -1489,7 +1513,7 @@ def renderizar_projetos_por_assunto_sem_heatmap():
         st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
         df_comp_pe['taxa'] = (df_comp_pe['aprovados'] / df_comp_pe['apresentados'] * 100).round(1)
         df_comp_pe.columns = ['Assunto', 'Apresentados', 'Aprovados', 'Taxa (%)']
-        df_comp_pe_sorted = df_comp_pe.sort_values('Taxa (%)', ascending=False)
+        df_comp_pe_sorted = ordenar_ranking(df_comp_pe, 'Taxa (%)', 'Aprovados', 'Assunto')
         _autor_fil_pe = mapa_autor_id.get(vereador_selecionado) if vereador_selecionado != "Todos" else None
         _linhas_ass_pe = ""
         for _, _row in df_comp_pe_sorted.iterrows():
@@ -1740,7 +1764,8 @@ if vereador_selecionado == "Todos":
         st.caption("💡 Clique em uma barra para abrir as matérias do vereador no SAPL.")
 
     with aba2:
-        df_aprov = df_resumo[df_resumo['projetos_lei'] > 0].sort_values('taxa_aprovacao', ascending=False)
+        df_aprov = ordenar_ranking(df_resumo[df_resumo['projetos_lei'] > 0],
+                                   'taxa_aprovacao', 'projetos_virou_lei', 'autor_nome')
 
         def _url_aprov(nome):
             aid = mapa_autor_id.get(nome)
@@ -1760,7 +1785,7 @@ if vereador_selecionado == "Todos":
         _df_tab = (
             df_aprov[['autor_nome', 'projetos_lei', 'projetos_virou_lei',
                       'taxa_aprovacao', 'projetos_com_substitutivo']]
-            .sort_values('taxa_aprovacao', ascending=False)
+            .pipe(ordenar_ranking, 'taxa_aprovacao', 'projetos_virou_lei', 'autor_nome')
         )
         _linhas_aprov = ""
         for _, _row in _df_tab.iterrows():
@@ -1831,7 +1856,7 @@ if vereador_selecionado == "Todos":
                 st.caption("💡 Clique em uma barra para abrir os PLOs do assunto no SAPL.")
                 df_comp['taxa'] = (df_comp['aprovados'] / df_comp['apresentados'] * 100).round(1)
                 df_comp.columns = ['Assunto', 'Apresentados', 'Aprovados', 'Taxa (%)']
-                df_comp_sorted = df_comp.sort_values('Taxa (%)', ascending=False)
+                df_comp_sorted = ordenar_ranking(df_comp, 'Taxa (%)', 'Aprovados', 'Assunto')
                 # Tabela com Assunto como hyperlink direto (funciona com um toque no celular)
                 _autor_fil = mapa_autor_id.get(vereador_selecionado) if vereador_selecionado != "Todos" else None
                 _linhas_ass = ""
@@ -1990,7 +2015,7 @@ if vereador_selecionado == "Todos":
                         df_vereador_aa['taxa'] = (
                             df_vereador_aa['aprovados'] / df_vereador_aa['apresentados'] * 100
                         ).round(1)
-                        df_vereador_aa = df_vereador_aa.sort_values('taxa', ascending=False)
+                        df_vereador_aa = ordenar_ranking(df_vereador_aa, 'taxa', 'aprovados', 'autor_nome')
 
                         def _url_vereador_aa(nome):
                             aid = mapa_autor_id.get(nome)
@@ -2040,7 +2065,7 @@ if vereador_selecionado == "Todos":
     with aba_pop:
         if assunto_selecionado == "Todos":
             st.markdown(f"### Vereadores de Itabirito — {ano_selecionado}")
-            df_grid_list = list(df_resumo.sort_values('taxa_aprovacao', ascending=False).iterrows())
+            df_grid_list = list(ordenar_ranking(df_resumo, 'taxa_aprovacao', 'projetos_virou_lei', 'autor_nome').iterrows())
             for row_start in range(0, len(df_grid_list), 3):
                 cols = st.columns(3)
                 for j, (_, row) in enumerate(df_grid_list[row_start:row_start + 3]):
