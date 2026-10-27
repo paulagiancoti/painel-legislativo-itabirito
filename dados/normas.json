@@ -38429,5 +38429,147 @@
       23
     ],
     "autores": []
+  },
+  {
+    "id": 5308,
+    "__str__": "Lei Ordinária Municipal nº 4.683, de 23 de outubro de 2026",
+    "link_detail_backend": "/norma/5308",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-23T15:55:03-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5308/lei_no_4683_de_23_de_outubro_de_2026_pl_255.2026.pdf",
+    "numero": "4683",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Dia Municipal dos Guardas Municipais de Itabirito, a ser comemorado anualmente em 19 de maio e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-27T07:00:17.887562-03:00",
+    "data_ultima_atualizacao": "2026-10-27T07:00:17.910162-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-27T07:00:17.712334-03:00",
+    "tipo": 1,
+    "materia": 25080,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      25
+    ],
+    "autores": []
+  },
+  {
+    "id": 5307,
+    "__str__": "Lei Ordinária Municipal nº 4.682, de 23 de outubro de 2026",
+    "link_detail_backend": "/norma/5307",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-23T15:55:44-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5307/lei_no_4682_de_23_de_outubro_de_2026_pl_252.2026.pdf",
+    "numero": "4682",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para o incentivo à destinação ambientalmente adequada de resíduos\neletroeletrônicos no Município de Itabirito/MG, por meio da conscientização, do reuso, da reciclagem e da logística reversa, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-27T06:58:13.334189-03:00",
+    "data_ultima_atualizacao": "2026-10-27T06:58:13.362166-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-27T06:58:13.097827-03:00",
+    "tipo": 1,
+    "materia": 25073,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4
+    ],
+    "autores": []
+  },
+  {
+    "id": 5306,
+    "__str__": "Lei Ordinária Municipal nº 4.681, de 23 de outubro de 2026",
+    "link_detail_backend": "/norma/5306",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-23T15:56:32-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5306/lei_no_4681_de_23_de_outubro_de_2026_pl_251.2026.pdf",
+    "numero": "4681",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Estabelece diretrizes para a valorização de ambiente favorável à atração de investimentos\nprodutivos, à instalação e expansão de empreendimentos e à diversificação econômica no\nMunicípio de Itabirito, sob a denominação “Itabirito Cidade para Investir”, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-27T06:56:15.479865-03:00",
+    "data_ultima_atualizacao": "2026-10-27T06:56:15.498330-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-27T06:56:15.282313-03:00",
+    "tipo": 1,
+    "materia": 25046,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      22,
+      11
+    ],
+    "autores": []
   }
 ]

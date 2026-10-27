@@ -63203,7 +63203,6 @@
     "tipo_fim_relatoria": null,
     "comissao": 1
   },
-
   {
     "id": 5329,
     "__str__": "Projeto de Lei Ordinária nº 288 de 2026 - 19/01/2026",
@@ -63288,7 +63287,6 @@
     "tipo_fim_relatoria": null,
     "comissao": 6
   },
-  
   {
     "id": 5317,
     "__str__": "Projeto de Lei Ordinária nº 275 de 2026 - 19/01/2026",
@@ -63468,5 +63466,149 @@
     "parlamentar": 187,
     "tipo_fim_relatoria": null,
     "comissao": 4
+  },
+  {
+    "id": 5349,
+    "__str__": "Projeto de Lei Substitutivo nº 285 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5349",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25896,
+    "parlamentar": 188,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
+  },
+  {
+    "id": 5339,
+    "__str__": "Projeto de Lei Ordinária nº 287 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5339",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25805,
+    "parlamentar": 34,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
+  },
+  {
+    "id": 5340,
+    "__str__": "Projeto de Lei Ordinária nº 287 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5340",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25805,
+    "parlamentar": 188,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
+  },
+  {
+    "id": 5341,
+    "__str__": "Projeto de Lei Ordinária nº 292 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5341",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25884,
+    "parlamentar": 33,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
+  },
+  {
+    "id": 5342,
+    "__str__": "Projeto de Lei Ordinária nº 292 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5342",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25884,
+    "parlamentar": 34,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
+  },
+  {
+    "id": 5343,
+    "__str__": "Projeto de Lei Ordinária nº 292 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5343",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25884,
+    "parlamentar": 188,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
+  },
+  {
+    "id": 5344,
+    "__str__": "Projeto de Lei Ordinária nº 295 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5344",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25887,
+    "parlamentar": 33,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
+  },
+  {
+    "id": 5345,
+    "__str__": "Projeto de Lei Ordinária nº 295 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5345",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25887,
+    "parlamentar": 34,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
+  },
+  {
+    "id": 5346,
+    "__str__": "Projeto de Lei Ordinária nº 295 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5346",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25887,
+    "parlamentar": 188,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
+  },
+  {
+    "id": 5347,
+    "__str__": "Projeto de Lei Substitutivo nº 285 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5347",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25896,
+    "parlamentar": 33,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
+  },
+  {
+    "id": 5348,
+    "__str__": "Projeto de Lei Substitutivo nº 285 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5348",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25896,
+    "parlamentar": 34,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
+  },
+  {
+    "id": 5338,
+    "__str__": "Projeto de Lei Ordinária nº 287 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5338",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 25805,
+    "parlamentar": 33,
+    "tipo_fim_relatoria": null,
+    "comissao": 2
   }
 ]
