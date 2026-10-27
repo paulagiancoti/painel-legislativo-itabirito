@@ -63203,18 +63203,7 @@
     "tipo_fim_relatoria": null,
     "comissao": 1
   },
-  {
-    "id": 5328,
-    "__str__": "Projeto de Lei Ordinária nº 290 de 2026 - 19/01/2026",
-    "link_detail_backend": "/materia/relatoria/5328",
-    "metadata": {},
-    "data_designacao_relator": "2026-01-19",
-    "data_destituicao_relator": null,
-    "materia": 25871,
-    "parlamentar": 186,
-    "tipo_fim_relatoria": null,
-    "comissao": 1
-  },
+
   {
     "id": 5329,
     "__str__": "Projeto de Lei Ordinária nº 288 de 2026 - 19/01/2026",
@@ -63299,18 +63288,7 @@
     "tipo_fim_relatoria": null,
     "comissao": 6
   },
-  {
-    "id": 5336,
-    "__str__": "Projeto de Lei Ordinária nº 290 de 2026 - 19/01/2026",
-    "link_detail_backend": "/materia/relatoria/5336",
-    "metadata": {},
-    "data_designacao_relator": "2026-01-19",
-    "data_destituicao_relator": null,
-    "materia": 25871,
-    "parlamentar": 23,
-    "tipo_fim_relatoria": null,
-    "comissao": 8
-  },
+  
   {
     "id": 5317,
     "__str__": "Projeto de Lei Ordinária nº 275 de 2026 - 19/01/2026",
