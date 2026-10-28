@@ -38571,5 +38571,147 @@
       11
     ],
     "autores": []
+  },
+  {
+    "id": 5312,
+    "__str__": "Lei Ordinária Municipal nº 4.686, de 26 de outubro de 2026",
+    "link_detail_backend": "/norma/5312",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-26T14:26:41-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5312/lei_no_4686_de_26_de_outubro_de_2026_pl_253.2026.pdf",
+    "numero": "4686",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-26",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a realização do evento “Corrida do Pagode” no Município de Itabirito e\ndá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-28T11:01:53.201464-03:00",
+    "data_ultima_atualizacao": "2026-10-28T11:01:53.220933-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-28T11:01:53.041549-03:00",
+    "tipo": 1,
+    "materia": 25074,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      3,
+      7
+    ],
+    "autores": []
+  },
+  {
+    "id": 5311,
+    "__str__": "Lei Ordinária Municipal nº 4.685, de 26 de outubro de 2026",
+    "link_detail_backend": "/norma/5311",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-26T14:28:15-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5311/lei_no_4685_de_26_de_outubro_de_2026_pl_250.2026.pdf",
+    "numero": "4685",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-26",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Estabelece diretrizes para o incentivo ao Turismo de Base Comunitária no Município de\nItabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-28T10:59:31.902376-03:00",
+    "data_ultima_atualizacao": "2026-10-28T10:59:31.925603-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-28T10:59:31.717047-03:00",
+    "tipo": 1,
+    "materia": 25044,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      3
+    ],
+    "autores": []
+  },
+  {
+    "id": 5310,
+    "__str__": "Lei Ordinária Municipal nº 4.684, de 26 de outubro de 2026",
+    "link_detail_backend": "/norma/5310",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-26T14:27:35-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5310/lei_no_4684_de_26_de_outubro_de_2026_pl_249.2026.pdf",
+    "numero": "4684",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-26",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para o Programa Conheça Itabirito – História, Patrimônio e Identidade,\ndestinado a promover o conhecimento, a valorização e a aproximação da população com\na história, o patrimônio cultural e natural, as paisagens, os distritos, as comunidades e\ndemais referências da identidade do Município, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-28T10:55:44.263410-03:00",
+    "data_ultima_atualizacao": "2026-10-28T10:55:44.285192-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-28T10:55:44.034335-03:00",
+    "tipo": 1,
+    "materia": 25042,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      28
+    ],
+    "autores": []
   }
 ]
