@@ -224,10 +224,6 @@
     "assunto": 1
   },
   {
-    "materia": 25904,
-    "assunto": 1
-  },
-  {
     "materia": 25906,
     "assunto": 1
   },
@@ -257,6 +253,10 @@
   },
   {
     "materia": 26034,
+    "assunto": 1
+  },
+  {
+    "materia": 26136,
     "assunto": 1
   },
   {
@@ -896,11 +896,11 @@
     "assunto": 17
   },
   {
-    "materia": 25904,
+    "materia": 25909,
     "assunto": 17
   },
   {
-    "materia": 25909,
+    "materia": 26136,
     "assunto": 17
   },
   {

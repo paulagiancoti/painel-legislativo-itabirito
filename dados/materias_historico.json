@@ -134622,11 +134622,41 @@
   {
     "id": "26136",
     "ano": "2026",
-    "numero": "301",
+    "numero": "297",
     "tipo__sigla": "PLS",
     "tipo__descricao": "Projeto de Lei Substitutivo",
     "autoria": "Manoel da Autoescola",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26136/pls_institui_a_semana_municipal_da_arvore_no_municipio_de_itabirito.pdf",
     "ementa": "Institui as diretrizes para a Semana Municipal da Árvore, autoriza a criação do Cadastro Municipal de Patrimônio Arbóreo Protegido, dispõe sobre as bases para o Programa de Reflorestamento Ciliar do Rio Itabirito, fixa sanções administrativas para a supressão irregular de árvores protegidas e dá outras providências."
+  },
+  {
+    "id": "26146",
+    "ano": "2026",
+    "numero": "1019",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Fernando da Sheila",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26146/dia_09_req_-_mocao_de_aplausos_as_mantenedoras_e_mantenedor_do_pastel_de_angu.pdf",
+    "ementa": "Moção de Aplausos – Moção de Aplausos concedida às Mantenedoras e ao Mantenedor do Pastel de Angu, pelos serviços prestados com excelência ao nosso Município"
+  },
+  {
+    "id": "26145",
+    "ano": "2026",
+    "numero": "312",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Elio da Mata",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26145/projeto_de_lei_no_312.2026_-_executivo_recebido_281026_as_14.40.pdf",
+    "ementa": "Altera o Art. 6º da Lei Municipal nº 3990, de 21 de novembro de 2023, para modificar a composição do Conselho Municipal de Habitação."
+  },
+  {
+    "id": "26147",
+    "ano": "2026",
+    "numero": "301",
+    "tipo__sigla": "PLS",
+    "tipo__descricao": "Projeto de Lei Substitutivo",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26147/pls_institui_o_dia_municipal_de_conscientizacao_sobre_a_menopausa_no_municipio_de_itabirito.pdf",
+    "ementa": "Institui o \"Dia Municipal de Conscientização sobre a Menopausa\" no Município de Itabirito e dá outras providências."
   }
 ]

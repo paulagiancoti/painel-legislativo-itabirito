@@ -38713,5 +38713,52 @@
       28
     ],
     "autores": []
+  },
+  {
+    "id": 5313,
+    "__str__": "Lei Ordinária Municipal nº 4.687, de 27 de outubro de 2026",
+    "link_detail_backend": "/norma/5313",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-10-27T15:16:20-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5313/lei_no_4687_de_27_de_outubro_de_2026_pl_229.2026.pdf",
+    "numero": "4687",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-10-27",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre a ratificação da quarta alteração do protocolo de intenções da Agência\nIntermunicipal de Saneamento Básico de Minas Gerais – ARISB-MG.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-10-29T07:04:03.748887-03:00",
+    "data_ultima_atualizacao": "2026-10-29T07:04:03.770998-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-10-29T07:04:02.984055-03:00",
+    "tipo": 1,
+    "materia": 24779,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4
+    ],
+    "autores": []
   }
 ]
