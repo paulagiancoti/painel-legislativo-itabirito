@@ -36958,5 +36958,25 @@
     "autoria": "Lucas do Zé Maria",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26201/requerimento_1_.pdf",
     "ementa": "Requeiro a Vossa Excelência, nos termos regimentais, que seja encaminhada ao Chefe do Poder Executivo Municipal a solicitação para a implantação de uma faixa de pedestres elevada na rua João Pinheiro em frente ao número 116, no Bairro Santa Efigênia, com o objetivo de aumentar a segurança viária, reduzir a velocidade dos veículos e proporcionar melhores condições de travessia aos pedestres, especialmente idosos, crianças e pessoas com mobilidade reduzida, contribuindo para a prevenção de acidentes e a promoção de um trânsito mais seguro."
+  },
+  {
+    "id": "26202",
+    "ano": "2026",
+    "numero": "1027",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26202/requerimento_retirando_de_pauta_homangem_de_mocao_a_dona_ephigenia.pdf",
+    "ementa": "Requer a retirada de pauta do requerimento datado de 26 de outubro de outubro de 2026, que solicita a concessão de Moção de Aplausos à Sra. Ephigênia."
+  },
+  {
+    "id": "26203",
+    "ano": "2026",
+    "numero": "31",
+    "tipo__sigla": "VETO",
+    "tipo__descricao": "Veto do Prefeito",
+    "autoria": "Elio da Mata",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26203/veto_integral_ao_autografo_de_lei_no_262.2026_-_executivo_recebido_051126_as_15.42.pdf",
+    "ementa": "Veto Integral ao Autógrafo de Lei nº 262 que: Institui diretrizes para a implantação de Áreas de Espera para motocicletas, motonetas e ciclomotores nas aproximações semaforizadas do Município de Itabirito e dá outras providências."
   }
 ]
