@@ -16785,5 +16785,33 @@
     "sessao_legislativa": 72,
     "legislatura": 41,
     "correspondencias": []
+  },
+  {
+    "id": 598,
+    "__str__": "14ª Sessão Extraordinária da 2ª Sessão Legislativa da 22ª Legislatura",
+    "link_detail_backend": "/sessao/598",
+    "metadata": {},
+    "cod_andamento_sessao": null,
+    "painel_aberto": false,
+    "data_inicio": "2026-11-06",
+    "hora_inicio": "16:41",
+    "hora_fim": "17:08",
+    "numero": 14,
+    "data_fim": "2026-11-06",
+    "url_audio": "",
+    "url_video": "",
+    "upload_pauta": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/598/pauta/reuniao_extraordinaria_061126.pdf",
+    "upload_ata": null,
+    "upload_anexo": null,
+    "iniciada": true,
+    "finalizada": true,
+    "interativa": false,
+    "tema_solene": "",
+    "data_ultima_atualizacao": "2026-11-06T17:08:08.212754-03:00",
+    "publicar_pauta": true,
+    "tipo": 2,
+    "sessao_legislativa": 72,
+    "legislatura": 41,
+    "correspondencias": []
   }
 ]
