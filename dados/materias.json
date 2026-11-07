@@ -38008,5 +38008,75 @@
     "autoria": "Elio da Mata",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26245/projeto_de_lei_no_276.2026_-_executivo_substitutivo_2_recebido_051126_as_18.00h.pdf",
     "ementa": "Estima as receitas e fixa as despesas do orçamento fiscal do município de Itabirito para o exercício de 2027."
+  },
+  {
+    "id": "26317",
+    "ano": "2026",
+    "numero": "2257",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Renê Butekus",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26317/indicacao-_pintura_de_faixa_de_pedestre_frente_rodoviaria_velha.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, solicitando a realização da pintura da faixa de pedestres em frente ao ponto de ônibus, localizado na Praça da Estação, próximo à Rodoviária Velha."
+  },
+  {
+    "id": "26318",
+    "ano": "2026",
+    "numero": "2258",
+    "tipo__sigla": "IND",
+    "tipo__descricao": "Indicação",
+    "autoria": "Renê Butekus",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26318/indicacao-_vaga_de_deficiente_frente_escola_natalia.pdf",
+    "ementa": "Indica o envio ao Poder Executivo Municipal, solicitando a instalação de placa de sinalização e demarcação de vaga exclusiva para pessoas com deficiência em frente à Escola Natália Donada Melillo."
+  },
+  {
+    "id": "26314",
+    "ano": "2026",
+    "numero": "1051",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26314/requerimento_-_tapa_buraco_av._manoel_salvador_oliveira_bela_vista.pdf",
+    "ementa": "Realização de operação tapa-buracos na Av. Manoel Salvador Oliveira, 947, Bela Vista."
+  },
+  {
+    "id": "26315",
+    "ano": "2026",
+    "numero": "1052",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26315/requerimento_-_manutencao_em_estrada_de_terra_corrego_do_bacao.pdf",
+    "ementa": "Realização de serviços de manutenção e recuperação do pavimento da estrada, com a devida correção dos buracos e irregularidades existentes na Rua Principal, nº 900, Córrego do Bação."
+  },
+  {
+    "id": "26316",
+    "ano": "2026",
+    "numero": "1053",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26316/requerimento_-_limpeza_bueiro_rua_principal_861_corrego_do_bacao.pdf",
+    "ementa": "Realização de serviços de limpeza, desobstrução e manutenção do bueiro localizado na Rua Principal, nº 861, na comunidade de São Gonçalo do Bação."
+  },
+  {
+    "id": "26319",
+    "ano": "2026",
+    "numero": "1054",
+    "tipo__sigla": "REQ",
+    "tipo__descricao": "Requerimento",
+    "autoria": "Renê Butekus",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26319/requerimento-_consorcio_mais_educacao.pdf",
+    "ementa": "Requer o envio ao Poder Executivo Municipal, solicitando informações e documentos referentes aos danos causados ao telhado do CMEI Vovó Ana, em decorrência das fortes chuvas ocorridas no município."
+  },
+  {
+    "id": "26320",
+    "ano": "2026",
+    "numero": "319",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26320/pl_institui_o_dia_da_merendeira_escolar_no_municipio_de_itabirito.pdf",
+    "ementa": "Institui o \"Dia Municipal da Merendeira Escolar\" no âmbito do Município de Itabirito, e dá outras providências."
   }
 ]
