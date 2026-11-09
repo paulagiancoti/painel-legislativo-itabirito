@@ -134652,7 +134652,7 @@
   {
     "id": "26147",
     "ano": "2026",
-    "numero": "301",
+    "numero": "310",
     "tipo__sigla": "PLS",
     "tipo__descricao": "Projeto de Lei Substitutivo",
     "autoria": "Manoel da Autoescola",
@@ -135882,7 +135882,7 @@
   {
     "id": "26263",
     "ano": "2026",
-    "numero": "302",
+    "numero": "307",
     "tipo__sigla": "PLS",
     "tipo__descricao": "Projeto de Lei Substitutivo",
     "autoria": "Anderson do Sou Notícia",
@@ -135968,5 +135968,305 @@
     "autoria": "Manoel da Autoescola",
     "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26320/pl_institui_o_dia_da_merendeira_escolar_no_municipio_de_itabirito.pdf",
     "ementa": "Institui o \"Dia Municipal da Merendeira Escolar\" no âmbito do Município de Itabirito, e dá outras providências."
+  },
+  {
+    "id": "26326",
+    "ano": "2026",
+    "numero": "320",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Elio da Mata",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26326/projeto_de_lei_no_320.2026_-_executivo_recebido_061126_as_17.56h.pdf",
+    "ementa": "Altera a Lei Municipal nº 4581, de 12 de julho de 2026, e dá outras providências."
+  },
+  {
+    "id": "26327",
+    "ano": "2026",
+    "numero": "321",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Elio da Mata",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26327/projeto_de_lei_no_321.2026_-_executivo_recebido_061126_as_17.56h.pdf",
+    "ementa": "Institui a Contribuição para o Custeio, a Expansão e a Melhoria do Serviço de Iluminação Pública e de Sistemas de Monitoramento para Segurança e Preservação de Logradouros Públicos no âmbito do Município de Itabirito/MG (COSIP), revoga o art. 102 da Lei Municipal nº 1.816, de 17 de dezembro de1993, e dá outras providências."
+  },
+  {
+    "id": "26328",
+    "ano": "2026",
+    "numero": "322",
+    "tipo__sigla": "PLO",
+    "tipo__descricao": "Projeto de Lei Ordinária",
+    "autoria": "Elio da Mata",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26328/projeto_de_lei_no_322.2026_-_executivo_recebido_061126_as_17.56h.pdf",
+    "ementa": "Institui o Programa Nota Fiscal Itabiritense, destinado a estimular a emissão de notas fiscais de serviços e de consumo no âmbito do Município de Itabirito e a promover a cidadania fiscal, e dá outras providências."
+  },
+  {
+    "id": "26343",
+    "ano": "2026",
+    "numero": "52",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26343/emenda_aditiva_no_01_ao_projeto_de_lei_no_3032026.pdf",
+    "ementa": "Acrescenta o § 2º ao art. 8º do Projeto de Lei nº 303/2026, para ampliar a transparência das informações relativas ao Fundo Municipal dos Direitos da Pessoa Idosa."
+  },
+  {
+    "id": "26344",
+    "ano": "2026",
+    "numero": "53",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26344/emenda_aditiva_no_05_ao_projeto_de_lei_no_303_2026_1.pdf",
+    "ementa": "Acrescenta o § 2º ao art. 11 do Projeto de Lei nº 303/2026, para aperfeiçoar a prestação de contas dos recursos do Fundo Municipal dos Direitos da Pessoa Idosa."
+  },
+  {
+    "id": "26345",
+    "ano": "2026",
+    "numero": "54",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26345/emenda_aditiva_no_03_ao_projeto_de_lei_no_303_2026_1.pdf",
+    "ementa": "Acrescenta o art. 14-A ao Projeto de Lei nº 303/2026, para assegurar a continuidade dos atos, projetos, mandatos e compromissos regularmente constituídos no âmbito do Conselho e do Fundo Municipal dos Direitos da Pessoa Idosa."
+  },
+  {
+    "id": "26346",
+    "ano": "2026",
+    "numero": "55",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26346/emenda_aditiva_no_06_ao_projeto_de_lei_no_3032026_1.pdf",
+    "ementa": "Acrescenta o art. 12-A ao Projeto de Lei nº 303/2026, para estabelecer critérios objetivos de aplicação dos recursos do Fundo Municipal dos Direitos da Pessoa Idosa."
+  },
+  {
+    "id": "26347",
+    "ano": "2026",
+    "numero": "56",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26347/emenda_aditiva_no_08_ao_projeto_de_lei_no_3032026.pdf",
+    "ementa": "Acrescenta o inciso XVI ao art. 2º do Projeto de Lei nº 303/2026, para incentivar a participação direta das pessoas idosas na discussão e avaliação das políticas públicas municipais."
+  },
+  {
+    "id": "26348",
+    "ano": "2026",
+    "numero": "57",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26348/emenda_substitutiva_no_02_ao_projeto_de_lei_no_3032026.pdf",
+    "ementa": "Substitui a redação do art. 12 do Projeto de Lei nº 303/2026, para assegurar a competência deliberativa do Conselho Municipal dos Direitos da\nPessoa Idosa sobre a destinação dos recursos do Fundo Municipal dos Direitos da Pessoa Idosa."
+  },
+  {
+    "id": "26349",
+    "ano": "2026",
+    "numero": "58",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26349/emenda_substitutiva_no_01_ao_projeto_de_lei_no_3022026_1.pdf",
+    "ementa": "Substitui a redação do § 3º do art. 9º do Projeto de Lei nº 302/2026, para aperfeiçoar o acompanhamento institucional dos termos de conversão de multas ambientais pelo CODEMA."
+  },
+  {
+    "id": "26350",
+    "ano": "2026",
+    "numero": "59",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26350/emenda_substitutiva_no_03_ao_projeto_de_lei_no_3022026_1.pdf",
+    "ementa": "Substitui a redação do art. 19 do Projeto de Lei nº 302/2026, para ampliar a transparência das informações relativas à conversão de multas ambientais."
+  },
+  {
+    "id": "26351",
+    "ano": "2026",
+    "numero": "60",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26351/emenda_aditiva_no_04_ao_projeto_de_lei_no_3022026_1.pdf",
+    "ementa": "Acrescenta o § 6º ao art. 11 do Projeto de Lei nº 302/2026, para aperfeiçoar a comprovação dos serviços ambientais executados."
+  },
+  {
+    "id": "26352",
+    "ano": "2026",
+    "numero": "61",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26352/emendas_ao_projeto_de_lei_no_302_2026_emenda_aditiva_no_02_1.pdf",
+    "ementa": "Acrescenta o § 4º ao art. 9º do Projeto de Lei nº 302/2026, para reforçar a fundamentação das decisões de conversão de multas ambientais."
+  },
+  {
+    "id": "26353",
+    "ano": "2026",
+    "numero": "62",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26353/emenda_aditiva_no_02_ao_projeto_de_lei_no_302_2026.pdf",
+    "ementa": "Acrescenta o § 3º ao art. 6º do Projeto de Lei nº 302/2026, para prever a consideração do histórico ambiental do interessado na análise da conveniência da conversão."
+  },
+  {
+    "id": "26354",
+    "ano": "2026",
+    "numero": "63",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26354/emenda_aditiva_no_09_ao_projeto_de_lei_no_3022026_1.pdf",
+    "ementa": "Acrescenta parágrafo único ao art. 21 do Projeto de Lei nº 302/2026, para reforçar a segurança jurídica na conversão de multas relativas a processos administrativos em curso."
+  },
+  {
+    "id": "26355",
+    "ano": "2026",
+    "numero": "64",
+    "tipo__sigla": "EME",
+    "tipo__descricao": "Emenda a Projeto de Lei",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26355/emenda_aditiva_no_07_ao_projeto_de_lei_no_3022026_1.pdf",
+    "ementa": "Acrescenta o § 4º ao art. 13 do Projeto de Lei nº 302/2026, para reforçar o acompanhamento dos prazos legais de cobrança e das providências adotadas em caso de inadimplemento."
+  },
+  {
+    "id": "26342",
+    "ano": "2026",
+    "numero": "32",
+    "tipo__sigla": "VETO",
+    "tipo__descricao": "Veto do Prefeito",
+    "autoria": "Elio da Mata",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26342/veto_integral_ao_autografo_de_lei_no_263.2026_-_executivo_recebido_091126_as_17.07h.pdf",
+    "ementa": "Veto Integral ao Autógrafo de Lei nº 263.2026 que: Institui diretrizes para o Programa “Vaga Rápida Itabirito”, destinado à implantação de vagas de estacionamento de curta duração em locais estratégicos do Município, e dá outras providências."
+  },
+  {
+    "id": "26329",
+    "ano": "2026",
+    "numero": "1",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Daniel Sudano",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26329/mocao_01.2026_-_daniel.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Elis Regina Maurilo, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26330",
+    "ano": "2026",
+    "numero": "2",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Danilo Donato do Só Por Hoje",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26330/mocao_02.2026_-_danilo.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Maria Ramos Santos, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26331",
+    "ano": "2026",
+    "numero": "3",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Ezio Pimenta",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26331/mocao_03.2026_-_ezio.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Maria Efigênia Placedino, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26332",
+    "ano": "2026",
+    "numero": "4",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Fabinho Fonseca",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26332/mocao_04.2026_-_fabio.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Janaína Cristina Afonso Nascimento, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26333",
+    "ano": "2026",
+    "numero": "5",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Fernando da Sheila",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26333/mocao_05.2026_-_fernando.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Ronice Luciana Bernardo Marques, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26334",
+    "ano": "2026",
+    "numero": "6",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Léo do Social",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26334/mocao_06.2026_-_leandro.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Fabíola de Pena Forte Nonato, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26335",
+    "ano": "2026",
+    "numero": "7",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Lucas do Zé Maria",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26335/mocao_07.2026_-_lucas.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Fátima Maria Do Carmo, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26336",
+    "ano": "2026",
+    "numero": "8",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Manoel da Autoescola",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26336/mocao_08.2026_-_manoel.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Nilza Vitorina Gomes de Almeida, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26337",
+    "ano": "2026",
+    "numero": "9",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Márcio Juninho",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26337/mocao_09.2026_-_marcio.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Maria do Rosário Malaquias, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26338",
+    "ano": "2026",
+    "numero": "10",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Max Fortes",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26338/mocao_10.2026_-_maximiliano.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Maria Luisa Rosa, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26339",
+    "ano": "2026",
+    "numero": "11",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Renê Butekus",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26339/mocao_11.2026_-_rene.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Maria de Souza Ferreira, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26340",
+    "ano": "2026",
+    "numero": "12",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Rose da Saúde",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26340/mocao_12.2026_-_rosilene.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Vanessa Carla Assis Ferreira, pela sua notória atuação voltada à temática."
+  },
+  {
+    "id": "26341",
+    "ano": "2026",
+    "numero": "13",
+    "tipo__sigla": "MOC",
+    "tipo__descricao": "Dia Municipal da Mulher Negra",
+    "autoria": "Danilo Grilo",
+    "texto_original": "http://sapl.itabirito.mg.leg.br/media/sapl/public/materialegislativa/2026/26341/mocao_13.2026_-_wellington.pdf",
+    "ementa": "Concede Moção de Dia Municipal da Mulher Negra a Ephigenia Rosa de Oliveira, pela sua notória atuação voltada à temática."
   }
 ]

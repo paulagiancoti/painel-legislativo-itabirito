@@ -38760,5 +38760,99 @@
       4
     ],
     "autores": []
+  },
+  {
+    "id": 5326,
+    "__str__": "Lei Ordinária Municipal nº 4.689, de 05 de novembro de 2026",
+    "link_detail_backend": "/norma/5326",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-05T16:28:34-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5326/lei_no_4689_de_05_de_novembro_de_2026_pl_264.2026.pdf",
+    "numero": "4689",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-05",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Denomina “Rua Regivan Porto dos Santos” a via pública localizada no Bairro Água Limpa, neste Município.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-09T08:29:11.268914-03:00",
+    "data_ultima_atualizacao": "2026-11-09T08:29:11.286262-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-09T08:29:11.090910-03:00",
+    "tipo": 1,
+    "materia": 25235,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23
+    ],
+    "autores": []
+  },
+  {
+    "id": 5325,
+    "__str__": "Lei Ordinária Municipal nº 4.688, de 04 de novembro de 2026",
+    "link_detail_backend": "/norma/5325",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-04T15:19:23-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5325/lei_no_4688_de_4_de_novembro_de_2026.pdf",
+    "numero": "4688",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-04",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Autoriza o Poder Executivo Municipal a doar materiais recicláveis, resíduos orgânicos e\nmadeiras apreendidas em fiscalizações a instituições sem fins lucrativos que desenvolvam\nprogramas de ressocialização de pessoas em cumprimento de pena ou egressas do sistema\nprisional, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-09T08:27:17.436358-03:00",
+    "data_ultima_atualizacao": "2026-11-09T08:27:17.457662-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-09T08:27:17.258582-03:00",
+    "tipo": 1,
+    "materia": 22630,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      33
+    ],
+    "autores": []
   }
 ]
