@@ -38854,5 +38854,52 @@
       33
     ],
     "autores": []
+  },
+  {
+    "id": 5328,
+    "__str__": "Lei Ordinária Municipal nº 4.690, de 09 de novembro de 2026",
+    "link_detail_backend": "/norma/5328",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-09T15:08:56-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5328/lei_no_4690_de_09_de_novembro_de_2026_pl_244.2026.pdf",
+    "numero": "4690",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-09",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Campanha ‘Setembro Amarelo’ de prevenção ao suicídio e valorização da vida no\nMunicípio de Itabirito, prevê ações integradas com a Câmara Municipal, e dá outras\nprovidências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-11T07:15:06.224339-03:00",
+    "data_ultima_atualizacao": "2026-11-11T07:15:06.423918-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-11T07:13:09.192140-03:00",
+    "tipo": 1,
+    "materia": 24933,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      40
+    ],
+    "autores": []
   }
 ]
