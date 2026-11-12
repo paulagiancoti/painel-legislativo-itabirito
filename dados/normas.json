@@ -38901,5 +38901,50 @@
       40
     ],
     "autores": []
+  },
+  {
+    "id": 5330,
+    "__str__": "Lei Ordinária Municipal nº 4.691, de 10 de novembro de 2026",
+    "link_detail_backend": "/norma/5330",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-10T16:06:36-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5330/lei_no_4691_de_10_de_novembro_de_2026_pl_183.2026.pdf",
+    "numero": "4691",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-10",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Altera a Lei Municipal nº 3.383, de 31 de março de 2020, que autoriza a criação do Conselho\nMunicipal dos Direitos da Mulher – CMDM, institui o Fundo Municipal dos Direitos da Mulher\n– FMDM, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-12T07:49:40.563488-03:00",
+    "data_ultima_atualizacao": "2026-11-12T07:49:41.009774-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-12T07:46:54.862615-03:00",
+    "tipo": 1,
+    "materia": 23768,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
+    "autores": []
   }
 ]
