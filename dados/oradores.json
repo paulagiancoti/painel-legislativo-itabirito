@@ -7714,5 +7714,113 @@
     "upload_anexo": null,
     "sessao_plenaria": 599,
     "parlamentar": 28
+  },
+  {
+    "id": 653,
+    "__str__": "Rose da Saúde (8º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/653",
+    "metadata": {},
+    "numero_ordem": 8,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 603,
+    "parlamentar": 23
+  },
+  {
+    "id": 654,
+    "__str__": "Fernando da Sheila (9º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/654",
+    "metadata": {},
+    "numero_ordem": 9,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 603,
+    "parlamentar": 186
+  },
+  {
+    "id": 646,
+    "__str__": "Dr. Edson (1º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/646",
+    "metadata": {},
+    "numero_ordem": 1,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 603,
+    "parlamentar": 27
+  },
+  {
+    "id": 647,
+    "__str__": "Ezio Pimenta (2º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/647",
+    "metadata": {},
+    "numero_ordem": 2,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 603,
+    "parlamentar": 185
+  },
+  {
+    "id": 648,
+    "__str__": "Márcio Juninho (3º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/648",
+    "metadata": {},
+    "numero_ordem": 3,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 603,
+    "parlamentar": 37
+  },
+  {
+    "id": 649,
+    "__str__": "Fabinho Fonseca (4º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/649",
+    "metadata": {},
+    "numero_ordem": 4,
+    "url_discurso": "",
+    "observacao": "Abstenção.",
+    "upload_anexo": null,
+    "sessao_plenaria": 603,
+    "parlamentar": 34
+  },
+  {
+    "id": 650,
+    "__str__": "Max Fortes (5º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/650",
+    "metadata": {},
+    "numero_ordem": 5,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 603,
+    "parlamentar": 19
+  },
+  {
+    "id": 651,
+    "__str__": "Anderson do Sou Notícia (6º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/651",
+    "metadata": {},
+    "numero_ordem": 6,
+    "url_discurso": "",
+    "observacao": "Abstenção.",
+    "upload_anexo": null,
+    "sessao_plenaria": 603,
+    "parlamentar": 33
+  },
+  {
+    "id": 652,
+    "__str__": "Renê Butekus (7º orador)",
+    "link_detail_backend": "/sessao/oradorordemdia/652",
+    "metadata": {},
+    "numero_ordem": 7,
+    "url_discurso": "",
+    "observacao": "",
+    "upload_anexo": null,
+    "sessao_plenaria": 603,
+    "parlamentar": 28
   }
 ]

@@ -38946,5 +38946,38 @@
     "user": 89,
     "assuntos": [],
     "autores": []
+  },
+  {
+    "id": 5331,
+    "__str__": "Lei Ordinária Municipal nº 4.692, de 12 de novembro de 2026",
+    "link_detail_backend": "/norma/5331",
+    "metadata": {},
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5331/lei_no_4692_de_12_de_novembro_de_2026_pl_262.2026.pdf",
+    "numero": "4692",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-12",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a implantação de Áreas de Espera para motocicletas, motonetas e\nciclomotores nas aproximações semaforizadas do Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-16T07:05:43.104450-03:00",
+    "data_ultima_atualizacao": "2026-11-16T07:05:43.105940-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-16T07:05:42.964593-03:00",
+    "tipo": 1,
+    "materia": 25218,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      23,
+      35
+    ],
+    "autores": []
   }
 ]
