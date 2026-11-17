@@ -38979,5 +38979,37 @@
       35
     ],
     "autores": []
+  },
+  {
+    "id": 5332,
+    "__str__": "Resolução nº 21, de 16 de novembro de 2026",
+    "link_detail_backend": "/norma/5332",
+    "metadata": {},
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5332/resolucao_21.2026.pdf",
+    "numero": "21",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-16",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre a aprovação das Contas do Executivo Municipal relativas ao exercício de 2024 e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-17T07:24:53.779192-03:00",
+    "data_ultima_atualizacao": "2026-11-17T07:24:53.780395-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-17T07:24:53.670379-03:00",
+    "tipo": 3,
+    "materia": null,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      13
+    ],
+    "autores": []
   }
 ]
