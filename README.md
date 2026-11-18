@@ -16,12 +16,10 @@ Em caso de divergência, ou para consulta aos textos integrais das matérias, re
 
 ## Funcionalidades
 
-### Modos de visualização
-O painel possui dois modos, selecionáveis no filtro "🗳️ Visualização":
-- **Modo público** (hoje rotulado "🗳️ Período Eleitoral", sem senha) — versão simplificada, sem rankings, pódios ou comparativos individuais entre parlamentares. Pensado para períodos que exigem maior neutralidade (ex. proximidade de eleições), mas o rótulo e o gatilho podem ser adaptados livremente para o contexto de cada Casa.
-- **Modo padrão** ("📊 Painel padrão", protegido por senha) — versão completa, com rankings, pódios e comparativos entre vereadores, pensada para uso interno.
+### Período eleitoral (modo hoje desativado)
+Entre julho e novembro de 2026 o painel teve um modo **"🗳️ Período Eleitoral"** — público, sem rankings, pódios ou comparativos individuais entre parlamentares — enquanto a versão completa ficava protegida por senha para uso interno. Com o fim das eleições de 2026, o modo foi retirado e o painel voltou a exibir a versão completa para todos, sem senha.
 
-A senha do modo padrão é lida via `st.secrets` (Streamlit Cloud) ou variável de ambiente (outros serviços de hospedagem) — ver "Como rodar localmente" abaixo e `COMO_PUBLICAR.md`. Sem essa senha configurada, o modo padrão fica permanentemente inacessível e o painel roda sempre no modo público — útil para hospedar uma cópia pública (ex. embed no site) separada da versão de revisão interna.
+O código completo do modo e o passo a passo para reativá-lo (por exemplo, nas eleições municipais de 2028) estão em **[PERIODO_ELEITORAL.md](PERIODO_ELEITORAL.md)**. Outras Casas que queiram uma versão mais neutra em períodos eleitorais podem partir dali.
 
 ### Seletor de ano
 Os dados podem ser consultados por ano (hoje **2026** e **2025**). Em 2025 as abas de assunto não aparecem, porque não há classificação por assunto para as matérias daquele ano.
@@ -42,7 +40,7 @@ Os dados podem ser consultados por ano (hoje **2026** e **2025**). Em 2025 as ab
 - **Pronunciamentos** — histórico de sessões com links para a sessão no YouTube e para o recorte da fala no Instagram
 
 ### Recursos gerais
-- **Filtros combinados** — Ano, Assunto, Vereador, Tipo de matéria, Contraste (tema visual) e Visualização (modo)
+- **Filtros combinados** — Ano, Assunto, Vereador, Tipo de matéria e Contraste (tema visual)
 - **Links clicáveis** nos gráficos e tabelas — abrem a pesquisa no SAPL já filtrada
 - **Seletores dropdown** abaixo dos gráficos para navegação direta no celular
 - **Temas visuais** — Claro, Escuro e Institucional (cores da identidade visual da Câmara)
@@ -78,6 +76,7 @@ painel-legislativo-itabirito/
 ├── atualizar_fotos.py            # Coleta manual de fotos dos vereadores
 ├── requirements.txt              # Dependências Python
 ├── COMO_PUBLICAR.md              # Guia completo de publicação e manutenção
+├── PERIODO_ELEITORAL.md          # Registro do modo Período Eleitoral (desativado) e como reativar
 ├── .streamlit/
 │   └── config.toml               # Configuração de tema
 ├── .github/
@@ -148,11 +147,7 @@ pip install -r requirements.txt
 python coletar_dados_iniciais.py
 python atualizar_dados.py
 
-# 5. (Opcional) configure a senha do modo padrão em .streamlit/secrets.toml:
-# SENHA_PADRAO = "sua_senha_aqui"
-# Sem isso, o painel roda sempre no modo público.
-
-# 6. Rode o painel
+# 5. Rode o painel
 python -m streamlit run app.py
 ```
 
