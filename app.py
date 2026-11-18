@@ -1951,7 +1951,6 @@ if vereador_selecionado != "Todos":
                 </div>
             </div>
             """, unsafe_allow_html=True)
-        st.divider()
         st.markdown("**🏷️ Principais assuntos dos projetos de lei aprovados**")
         st.markdown(f'<div style="padding:6px 0 16px 0">{pills}</div>', unsafe_allow_html=True)
         materias_mesa = int(dados_v.get('materias_mesa', 0))
