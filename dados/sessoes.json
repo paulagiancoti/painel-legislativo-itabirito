@@ -16981,5 +16981,33 @@
     "sessao_legislativa": 72,
     "legislatura": 41,
     "correspondencias": []
+  },
+  {
+    "id": 605,
+    "__str__": "19ª Sessão Extraordinária da 2ª Sessão Legislativa da 22ª Legislatura",
+    "link_detail_backend": "/sessao/605",
+    "metadata": {},
+    "cod_andamento_sessao": null,
+    "painel_aberto": false,
+    "data_inicio": "2026-11-19",
+    "hora_inicio": "18:40",
+    "hora_fim": "18:57",
+    "numero": 19,
+    "data_fim": "2026-11-19",
+    "url_audio": "",
+    "url_video": "https://www.youtube.com/watch?v=dCDE2Y5PDbw",
+    "upload_pauta": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/605/pauta/reuniao_191126.pdf",
+    "upload_ata": null,
+    "upload_anexo": null,
+    "iniciada": true,
+    "finalizada": false,
+    "interativa": false,
+    "tema_solene": "",
+    "data_ultima_atualizacao": "2026-11-19T18:56:28.819192-03:00",
+    "publicar_pauta": true,
+    "tipo": 2,
+    "sessao_legislativa": 72,
+    "legislatura": 41,
+    "correspondencias": []
   }
 ]

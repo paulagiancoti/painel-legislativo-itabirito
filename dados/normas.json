@@ -39011,5 +39011,428 @@
       13
     ],
     "autores": []
+  },
+  {
+    "id": 5342,
+    "__str__": "Lei Ordinária Municipal nº 4.701, de 17 de novembro de 2026",
+    "link_detail_backend": "/norma/5342",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-17T14:46:56-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5342/lei_no_4701_de_17_de_novembro_de_2026_pl_275.2026.pdf",
+    "numero": "4701",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-17",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Dia Municipal de Conscientização da Síndrome de \"Tourette” no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-19T07:29:40.849466-03:00",
+    "data_ultima_atualizacao": "2026-11-19T07:29:40.866338-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-19T07:29:40.689050-03:00",
+    "tipo": 1,
+    "materia": 25515,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5341,
+    "__str__": "Lei Ordinária Municipal nº 4.700, de 17 de novembro de 2026",
+    "link_detail_backend": "/norma/5341",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-17T14:47:39-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5341/lei_no_4700_de_17_de_novembro_de_2026_pl_274.2026.pdf",
+    "numero": "4700",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-17",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui no calendário oficial do Município de Itabirito o dia de conscientização sobre a DOENÇA FALCIFORME.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-19T07:29:57.453473-03:00",
+    "data_ultima_atualizacao": "2026-11-19T07:29:57.474157-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-19T07:29:57.312285-03:00",
+    "tipo": 1,
+    "materia": 25504,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5340,
+    "__str__": "Lei Ordinária Municipal nº 4.699, de 17 de novembro de 2026",
+    "link_detail_backend": "/norma/5340",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-17T14:48:16-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5340/lei_no_4699_de_17_de_novembro_de_2026_pl_269.2026.pdf",
+    "numero": "4699",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-17",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a criação de pontos voluntários de troca e compartilhamento de livros no Município de Itabirito/MG e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-19T07:25:01.182734-03:00",
+    "data_ultima_atualizacao": "2026-11-19T07:25:01.201157-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-19T07:25:01.027197-03:00",
+    "tipo": 1,
+    "materia": 25419,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      3
+    ],
+    "autores": []
+  },
+  {
+    "id": 5339,
+    "__str__": "Lei Ordinária Municipal nº 4.698, de 17 de novembro de 2026",
+    "link_detail_backend": "/norma/5339",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-17T14:48:58-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5339/lei_no_4698_de_17_de_novembro_de_2026_pl_268.2026.pdf",
+    "numero": "4698",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-17",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para o Projeto “Doadores do Futuro”, destinado à conscientização de estudantes da rede municipal de ensino sobre a importância da doação voluntária de sangue, órgãos e medula óssea, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-19T07:22:39.959550-03:00",
+    "data_ultima_atualizacao": "2026-11-19T07:22:40.136939-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-19T07:20:30.166750-03:00",
+    "tipo": 1,
+    "materia": 25418,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5338,
+    "__str__": "Lei Ordinária Municipal nº 4.697, de 17 de novembro de 2026",
+    "link_detail_backend": "/norma/5338",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-17T14:49:33-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5338/lei_no_4697_de_17_de_novembro_de_2026_pl_267.2026.pdf",
+    "numero": "4697",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-17",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o dia 27 de janeiro como o dia de luto e de memória às mulheres vítimas de feminicídio no âmbito do Município de Itabirito, estabelece diretrizes para a implementação de memoriais simbólicos, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-19T07:20:25.704511-03:00",
+    "data_ultima_atualizacao": "2026-11-19T07:20:25.873977-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-19T07:16:10.483444-03:00",
+    "tipo": 1,
+    "materia": 25505,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [],
+    "autores": []
+  },
+  {
+    "id": 5337,
+    "__str__": "Lei Ordinária Municipal nº 4.696, de 17 de novembro de 2026",
+    "link_detail_backend": "/norma/5337",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-17T14:50:07-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5337/lei_no_4696_de_17_de_novembro_de_2026_pl_266.2026.pdf",
+    "numero": "4696",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-17",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Dia Municipal e a Semana Municipal de Conscientização e Incentivo ao Diagnóstico Precoce do Retinoblastoma no Município de Itabirito, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-19T07:15:11.015555-03:00",
+    "data_ultima_atualizacao": "2026-11-19T07:15:11.034788-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-19T07:15:10.818906-03:00",
+    "tipo": 1,
+    "materia": 25394,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      25,
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5336,
+    "__str__": "Lei Ordinária Municipal nº 4.695, de 17 de novembro de 2026",
+    "link_detail_backend": "/norma/5336",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-17T14:50:45-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5336/lei_no_4695_de_17_de_novembro_de_2026_pl_265.2026.pdf",
+    "numero": "4695",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-17",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Dia Municipal de Combate e Prevenção à Trombose e a Trombofilia, bem como a Semana Municipal de Conscientização sobre a Trombose Venosa Profunda e a Embolia Pulmonar no Município de Itabirito, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-19T07:12:45.404563-03:00",
+    "data_ultima_atualizacao": "2026-11-19T07:12:45.421376-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-19T07:12:45.199757-03:00",
+    "tipo": 1,
+    "materia": 25393,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      25,
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5335,
+    "__str__": "Lei Ordinária Municipal nº 4.694, de 17 de novembro de 2026",
+    "link_detail_backend": "/norma/5335",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-17T14:51:27-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5335/lei_no_4694_de_17_de_novembro_de_2026_pl_257.2026.pdf",
+    "numero": "4694",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-17",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Política Municipal de Transparência e Qualidade no Transporte Escolar de Itabirito, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-19T07:09:08.119687-03:00",
+    "data_ultima_atualizacao": "2026-11-19T07:09:08.580132-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-19T07:05:32.144536-03:00",
+    "tipo": 1,
+    "materia": 25435,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      35
+    ],
+    "autores": []
+  },
+  {
+    "id": 5334,
+    "__str__": "Lei Ordinária Municipal nº 4.693, de 17 de novembro de 2026",
+    "link_detail_backend": "/norma/5334",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-17T15:00:49-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5334/lei_no_4693_de_17_de_novembro_de_2026_pl_235.2026.pdf",
+    "numero": "4693",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-17",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o \"Dia da Alimentação Saudável\" no Calendário Oficial de Eventos do Município de Itabirito, em complemento à Política Municipal de Segurança Alimentar e Nutricional e à Semana da Educação Alimentar Nutricional, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-19T07:30:55.635090-03:00",
+    "data_ultima_atualizacao": "2026-11-19T07:30:55.653771-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-19T07:30:55.483772-03:00",
+    "tipo": 1,
+    "materia": 25502,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
   }
 ]
