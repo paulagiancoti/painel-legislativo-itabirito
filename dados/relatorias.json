@@ -65482,5 +65482,65 @@
     "parlamentar": 34,
     "tipo_fim_relatoria": null,
     "comissao": 2
+  },
+  {
+    "id": 5510,
+    "__str__": "Projeto de Lei Substitutivo (2) nº 276 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5510",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 26245,
+    "parlamentar": 187,
+    "tipo_fim_relatoria": null,
+    "comissao": 4
+  },
+  {
+    "id": 5511,
+    "__str__": "Veto do Prefeito nº 32 de 2026 - 16/11/2026",
+    "link_detail_backend": "/materia/relatoria/5511",
+    "metadata": {},
+    "data_designacao_relator": "2026-11-16",
+    "data_destituicao_relator": null,
+    "materia": 26342,
+    "parlamentar": 186,
+    "tipo_fim_relatoria": null,
+    "comissao": 21
+  },
+  {
+    "id": 5507,
+    "__str__": "Projeto de Lei Ordinária nº 316 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5507",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 26259,
+    "parlamentar": 187,
+    "tipo_fim_relatoria": null,
+    "comissao": 4
+  },
+  {
+    "id": 5508,
+    "__str__": "Projeto de Lei Ordinária nº 318 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5508",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 26278,
+    "parlamentar": 187,
+    "tipo_fim_relatoria": null,
+    "comissao": 4
+  },
+  {
+    "id": 5509,
+    "__str__": "Projeto de Lei Ordinária nº 319 de 2026 - 19/01/2026",
+    "link_detail_backend": "/materia/relatoria/5509",
+    "metadata": {},
+    "data_designacao_relator": "2026-01-19",
+    "data_destituicao_relator": null,
+    "materia": 26320,
+    "parlamentar": 187,
+    "tipo_fim_relatoria": null,
+    "comissao": 4
   }
 ]

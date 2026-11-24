@@ -17009,5 +17009,33 @@
     "sessao_legislativa": 72,
     "legislatura": 41,
     "correspondencias": []
+  },
+  {
+    "id": 606,
+    "__str__": "35ª Sessão Ordinária da 2ª Sessão Legislativa da 22ª Legislatura",
+    "link_detail_backend": "/sessao/606",
+    "metadata": {},
+    "cod_andamento_sessao": null,
+    "painel_aberto": false,
+    "data_inicio": "2026-11-23",
+    "hora_inicio": "17:05",
+    "hora_fim": "18:53",
+    "numero": 35,
+    "data_fim": "2026-11-23",
+    "url_audio": "",
+    "url_video": "",
+    "upload_pauta": "http://sapl.itabirito.mg.leg.br/media/sapl/public/sessaoplenaria/606/pauta/reuniao_ordinaria_231126_ats.pdf",
+    "upload_ata": null,
+    "upload_anexo": null,
+    "iniciada": true,
+    "finalizada": true,
+    "interativa": false,
+    "tema_solene": "",
+    "data_ultima_atualizacao": "2026-11-23T18:53:49.393876-03:00",
+    "publicar_pauta": true,
+    "tipo": 1,
+    "sessao_legislativa": 72,
+    "legislatura": 41,
+    "correspondencias": []
   }
 ]
