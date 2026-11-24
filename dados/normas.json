@@ -39434,5 +39434,99 @@
       2
     ],
     "autores": []
+  },
+  {
+    "id": 5344,
+    "__str__": "Lei Ordinária Municipal nº 4.703, de 19 de novembro de 2026",
+    "link_detail_backend": "/norma/5344",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-19T15:28:26-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5344/lei_no_4703_de_19_de_novembro_de_2026_pl_303.2026.pdf",
+    "numero": "4703",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-19",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Reformula o Conselho Municipal dos Direitos da Pessoa Idosa - CMDPI, o Fundo Municipal dos Direitos da Pessoa Idosa - FMDPI, revoga a Lei Municipal nº 2.788, de 05 de outubro de 2010 e a Lei Municipal nº 2.991, de 03 de abril de 2014, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-24T06:34:36.401887-03:00",
+    "data_ultima_atualizacao": "2026-11-24T06:34:36.419803-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-24T06:34:36.218992-03:00",
+    "tipo": 1,
+    "materia": 25910,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      20
+    ],
+    "autores": []
+  },
+  {
+    "id": 5343,
+    "__str__": "Lei Ordinária Municipal nº 4.702, de 19 de novembro de 2026",
+    "link_detail_backend": "/norma/5343",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-19T16:04:20-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5343/lei_no_4702_de_19_de_novembro_de_2026_pl_302.2026.pdf",
+    "numero": "4702",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-19",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Programa Municipal de Conversão de Multas Ambientais em serviços de preservação, melhoria e recuperação da qualidade do meio ambiente, no Município de Itabirito/MG, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-24T06:32:18.502826-03:00",
+    "data_ultima_atualizacao": "2026-11-24T06:32:18.520694-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-24T06:32:18.280695-03:00",
+    "tipo": 1,
+    "materia": 25909,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4
+    ],
+    "autores": []
   }
 ]
