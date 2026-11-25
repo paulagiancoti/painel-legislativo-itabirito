@@ -39528,5 +39528,52 @@
       4
     ],
     "autores": []
+  },
+  {
+    "id": 5346,
+    "__str__": "Lei Ordinária Municipal nº 4.704, de 23 de novembro de 2026",
+    "link_detail_backend": "/norma/5346",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos:505.479.176-00 1",
+              [
+                "2026-11-23T14:58:39-03:00",
+                "IPM SISTEMAS LTDA"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5346/lei_no__4704_de_23_de_novembro_de_2026.pdf",
+    "numero": "4704",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-23",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Estima as receitas e fixa as despesas do orçamento fiscal do município de Itabirito para o\nexercício de 2027.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-25T10:48:34.032418-03:00",
+    "data_ultima_atualizacao": "2026-11-25T10:48:34.069030-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-25T10:48:32.582395-03:00",
+    "tipo": 1,
+    "materia": 26245,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      13
+    ],
+    "autores": []
   }
 ]
