@@ -39575,5 +39575,52 @@
       13
     ],
     "autores": []
+  },
+  {
+    "id": 5347,
+    "__str__": "Lei Ordinária Municipal nº 4.705, de 24 de novembro de 2026",
+    "link_detail_backend": "/norma/5347",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos:505.479.176-00 1",
+              [
+                "2026-11-24T14:42:21-03:00",
+                "IPM SISTEMAS LTDA"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5347/lei_no_4705_de_24_de_novembro_de_2026.pdf",
+    "numero": "4705",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-24",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Altera a Lei Municipal nº 4581, de 12 de junho de 2026, e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-26T07:13:09.922964-03:00",
+    "data_ultima_atualizacao": "2026-11-26T07:13:09.947104-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-26T07:13:09.746659-03:00",
+    "tipo": 1,
+    "materia": 26326,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      32
+    ],
+    "autores": []
   }
 ]
