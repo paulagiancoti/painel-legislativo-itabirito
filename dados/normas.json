@@ -39622,5 +39622,323 @@
       32
     ],
     "autores": []
+  },
+  {
+    "id": 5354,
+    "__str__": "Lei Ordinária Municipal nº 4.713, de 25 de novembro de 2026",
+    "link_detail_backend": "/norma/5354",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-25T17:32:48-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5354/lei_no_4713_de_25_de_novembro_de_2026.pdf",
+    "numero": "4713",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a transparência e o acompanhamento das solicitações de serviços de\nmanutenção urbana no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-27T07:46:22.434937-03:00",
+    "data_ultima_atualizacao": "2026-11-27T07:46:22.456918-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-27T07:46:22.274257-03:00",
+    "tipo": 1,
+    "materia": 25654,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      4,
+      6
+    ],
+    "autores": []
+  },
+  {
+    "id": 5353,
+    "__str__": "Lei Ordinária Municipal nº 4.712, de 25 de novembro de 2026",
+    "link_detail_backend": "/norma/5353",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-25T17:33:24-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5353/lei_no_4712_de_25_de_novembro_de_2026.pdf",
+    "numero": "4712",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui diretrizes para a promoção do conforto térmico e da melhoria das condições de ventilação nas Unidades Básicas de Saúde (UBSs) do Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-27T07:42:30.078558-03:00",
+    "data_ultima_atualizacao": "2026-11-27T07:42:30.098284-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-27T07:42:29.915486-03:00",
+    "tipo": 1,
+    "materia": 25653,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5352,
+    "__str__": "Lei Ordinária Municipal nº 4.711, de 25 de novembro de 2026",
+    "link_detail_backend": "/norma/5352",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-25T17:29:13-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5352/lei_no_4711_de_25_de_novembro_de_2026.pdf",
+    "numero": "4711",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre a atualização das ações de conscientização, prevenção e promoção da\nsaúde da mulher durante o mês de outubro no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-27T07:39:31.028838-03:00",
+    "data_ultima_atualizacao": "2026-11-27T07:39:31.047942-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-27T07:39:30.886706-03:00",
+    "tipo": 1,
+    "materia": 25642,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5351,
+    "__str__": "Lei Ordinária Municipal nº 4.710, de 25 de novembro de 2026",
+    "link_detail_backend": "/norma/5351",
+    "metadata": {},
+    "texto_integral": null,
+    "numero": "4710",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui a Política Municipal de Conscientização sobre as Doenças Oculares Raras, Genéticas,\nHereditárias e Degenerativas da Visão e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-27T07:31:29.212377-03:00",
+    "data_ultima_atualizacao": "2026-11-27T07:31:29.213359-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-27T07:31:29.124574-03:00",
+    "tipo": 1,
+    "materia": 25641,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5350,
+    "__str__": "Lei Ordinária Municipal nº 4.709, de 25 de novembro de 2026",
+    "link_detail_backend": "/norma/5350",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-25T17:30:27-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5350/lei_no_4709_de_25_de_novembro_de_2026.pdf",
+    "numero": "4709",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Institui o Dia Municipal da Conscientização da Cardiopatia Congênita no Município de Itabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-27T07:28:20.826458-03:00",
+    "data_ultima_atualizacao": "2026-11-27T07:28:20.845906-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-27T07:28:20.652061-03:00",
+    "tipo": 1,
+    "materia": 25638,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      25,
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5349,
+    "__str__": "Lei Ordinária Municipal nº 4.708, de 25 de novembro de 2026",
+    "link_detail_backend": "/norma/5349",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-25T17:31:21-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5349/lei_no_4708_de_25_de_novembro_de_2026.pdf",
+    "numero": "4708",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Estabelece diretrizes para a identificação de sinais indicativos do Transtorno do Espectro Autista – TEA em estudantes, o acolhimento das famílias e a orientação para avaliação especializada no âmbito do Sistema Municipal de Ensino de Itabirito.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-27T07:24:22.507158-03:00",
+    "data_ultima_atualizacao": "2026-11-27T07:24:22.538537-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-27T07:24:22.318670-03:00",
+    "tipo": 1,
+    "materia": 25636,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      34,
+      8,
+      2
+    ],
+    "autores": []
+  },
+  {
+    "id": 5348,
+    "__str__": "Lei Ordinária Municipal nº 4.707, de 25 de novembro de 2026",
+    "link_detail_backend": "/norma/5348",
+    "metadata": {
+      "signs": {
+        "texto_integral": {
+          "admin": [],
+          "autores": [
+            [
+              "Elio da Mata Santos",
+              [
+                "2026-11-25T17:32:02-03:00",
+                "ICP-Brasil"
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "texto_integral": "http://sapl.itabirito.mg.leg.br/media/sapl/public/normajuridica/2026/5348/lei_no_4707_de_25_de_novembro_de_2026.pdf",
+    "numero": "4707",
+    "ano": 2026,
+    "esfera_federacao": "M",
+    "data": "2026-11-25",
+    "data_publicacao": null,
+    "veiculo_publicacao": "",
+    "pagina_inicio_publicacao": null,
+    "pagina_fim_publicacao": null,
+    "ementa": "Dispõe sobre a presença de médico veterinário em eventos que envolvam a participação\norganizada de animais no Município de Itabirito e dá outras providências.",
+    "indexacao": "",
+    "observacao": "",
+    "complemento": false,
+    "data_vigencia": null,
+    "timestamp": "2026-11-27T07:17:37.997511-03:00",
+    "data_ultima_atualizacao": "2026-11-27T07:17:38.016049-03:00",
+    "ip": "189.90.249.57",
+    "ultima_edicao": "2026-11-27T07:17:37.814890-03:00",
+    "tipo": 1,
+    "materia": 25480,
+    "orgao": null,
+    "user": 89,
+    "assuntos": [
+      41
+    ],
+    "autores": []
   }
 ]
